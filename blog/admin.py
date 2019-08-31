@@ -19,7 +19,8 @@ from .models import (
   CarouselImage,
   FoodSearchBanner,
   LifeBlogSearchBanner,
-  AboutUsBanner
+  AboutUsBanner,
+  FoodMap
 )
 
 # Clean up the Post layout page in the admin console
@@ -74,4 +75,5 @@ admin.site.register(CarouselImage)
 admin.site.register(FoodSearchBanner)
 admin.site.register(LifeBlogSearchBanner)
 admin.site.register(AboutUsBanner)
+admin.site.register(FoodMap)
 

@@ -29,7 +29,8 @@ from .models import (
     CarouselImage,
     FoodSearchBanner,
     LifeBlogSearchBanner,
-    AboutUsBanner
+    AboutUsBanner,
+    FoodMap
 )
 
 from django.contrib.auth.models import User
@@ -164,8 +165,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def about(request):
     qs = AboutUsPicture.objects.all()
     banner = AboutUsBanner.objects.all()
-    
-
 
     context = {
         'qs': qs,
@@ -357,6 +356,17 @@ class CommentListView(ListView):
 
 class MapView(TemplateView):
     template_name = "blog/map.html"
+
+    # Add map url context
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Query the map model to grab the url
+        map_query = FoodMap.objects.all()
+        context['map'] = map_query
+        return context
+
+
 
     
 class LifeBlogListView(ListView):

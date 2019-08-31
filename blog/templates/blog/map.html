@@ -9,8 +9,10 @@
 
 <div class="container pt-3">
   <div style="height:100%px; width:100%; display:inline-block; overflow:hidden;">
-    <iframe class="custom-google-map" style="position:relative; top:-46px; border:none;" src="https://www.google.com/maps/d/embed?mid=1bkc6zy9FGXZTgCSzkYb_DQSt2hw" width="100%" height="600px">
-    </iframe>
+    {% for map in map %}
+      <iframe class="custom-google-map" style="position:relative; top:-46px; border:none;" src="{{map.link}}" width="100%" height="600px">
+      </iframe>
+    {% endfor %}
   </div>
 </div>
 

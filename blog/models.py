@@ -273,3 +273,11 @@ class AboutUsBanner(models.Model):
 
     def __str__(self):
         return self.caption
+
+
+class FoodMap(models.Model):
+
+    link = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link.')
+
+    def __str__(self):
+        return self.link
