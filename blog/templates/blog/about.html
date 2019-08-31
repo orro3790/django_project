@@ -1,0 +1,148 @@
+{% extends "blog/base.html" %}
+{% block nav_item_about %}active{% endblock nav_item_about %} 
+{% block content %}
+{% load static %}
+<section id="about-body">
+
+<!-- VIDEO PLAY -->
+
+<section id="video-play">
+  <div class="dark-overlay">
+    <div class="row">
+      <div class="col d-none d-md-block">
+        <div class="container p-5 mt-4">
+          <!-- UNCOMMENT WHEN THE LINK IS READY FOR OUR YOUTUBE CHANNEL!
+          <a href="#" class="video" data-video="https://www.youtube.com/embed/hsYC_5aHkes" data-toggle="modal" data-target="#videoModal">
+            <i class="fas fa-play fa-2x"></i>
+          </a>
+          
+          <h3 class="mt-3" style=font-size:1.5rem;>Our Lives in Moscow</h3>
+        </div>
+        -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Media Cards -->
+<section id="socialmedia" class="mb-5 text-center">
+  <div class="container-fluid p-3">
+    <div class="row">
+      <div class="col">
+        <div class="info-header mb-5">
+          <h3 class="pb-3 pt-5">
+            Reach us on Social Media
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{qs.0.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
+            <h3>Matt</h3>
+            <h5 class="text" style=font-size:1.2rem;>Coffee + Dessert = Life</h5>
+            <hr>
+            <p>
+              For years, I've been fascinated by Russia and dreamed of exploring it. Finally, I'm here!
+              I moved to Moscow to discover the city for myself, from its streets, sweet shops and cafes, to its restaurants, museums, and more. Now it's my passion to help cultivate the expat community here by sharing all the incredible places that I've discovered. Don't be shy, say hi!
+            </p>
+            
+            <div class="d-flex justify-content-center">
+              <div class="p-4">
+                <a href="https://twitter.com/Whattheblin">
+                  <i class="fab fa-twitter fa-3x"></i>
+                </a>
+              </div>
+              <div class="p-4">
+                <a href="https://www.instagram.com/theblinmachine/">
+                  <i class="fab fa-instagram fa-3x"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{qs.1.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
+            <h3>Steph</h3>
+            <h5 class="text">Sweets Obsessed</h5>
+            <hr>
+            <p>My motivations for travelling are to see the amazing sights and learn new games from other cultures. Although they are certainly fun, and I do enjoy them, my real motivation is...food! I love exploring different cultures through tasting the food. It is always the most exciting part of travelling and I look forward to sharing my food adventures in Russia with you all!</p>
+            <div class="d-flex justify-content-center">
+              <div class="p-4">
+                <a href="https://www.instagram.com/labelle44/">
+                  <i class="fab fa-instagram fa-3x"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h3 style=font-size:1.8rem;>
+              Business Inquiries:
+            </h3>
+          </div>
+          <div class="col-12">
+            contact@whattheblin.com
+          </div>
+        </div>
+        <div class="py-3">
+          <i class="far fa-envelope fa-3x"></i>
+        </div>
+      </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+        <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+{% endblock content %}
+
+<script>
+  // Video Play
+  $(function () {
+    // Auto play modal video
+    $(".video").click(function () {
+      var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-video"),
+        videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+      $(theModal + ' iframe').attr('src', videoSRCauto);
+      $(theModal).click(function () {
+        $(theModal + ' iframe').attr('src', videoSRC);
+      });
+    });
+  });
+</script>
+

@@ -1,0 +1,30 @@
+{% extends "blog/base.html" %}
+{% block nav_item_blog-map %}active{% endblock nav_item_blog-map %}
+{% load static %}
+{% block content %}
+
+<section id="maps">
+
+<div class="container text-center pt-5"></div>
+
+<div class="container pt-3">
+  <div style="height:100%px; width:100%; display:inline-block; overflow:hidden;">
+    <iframe class="custom-google-map" style="position:relative; top:-46px; border:none;" src="https://www.google.com/maps/d/embed?mid=1bkc6zy9FGXZTgCSzkYb_DQSt2hw" width="100%" height="600px">
+    </iframe>
+  </div>
+</div>
+
+
+
+  
+</section>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col mb-5"></div>
+  </div>
+</div>
+
+
+{% endblock content %}

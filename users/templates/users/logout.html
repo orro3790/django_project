@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% block content %}
+{% load static %}
+
+<section id="login-logout">
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-4 mx-auto py-5 ">
+      <div class="card card-hover" style="border-color: #343a40">
+        <div class="card-body">
+          <div class="display-4 text-center">
+            <div class="container">
+              <img class="w-50" src="{% static 'blog/images/wbrussia.jpg' %}">
+            </div>
+          </div>
+          <div class="container text-center py-1">
+            <hr>
+            <h4>Logged Out.</h4>
+            <hr class="pb-3">
+          </div>
+          <div class="py-3 text-center">
+             <p>Thanks for stopping by!</p>
+          </div>
+          <div class="text-center pt-3">
+            <a href="{% url 'login' %}">
+              <small class="text-muted">Click <strong>here</strong> to log in again.</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+{% endblock content %}
+
+

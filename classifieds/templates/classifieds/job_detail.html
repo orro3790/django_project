@@ -1,0 +1,149 @@
+{% extends "blog/base.html" %}
+{% block nav_item_blog-map %}active{% endblock nav_item_blog-map %}
+{% load static %}
+{% load humanize %}
+{% block content %}
+
+<section id="ad-detail">
+
+<div class="container text-center pt-5 pb-3">
+  <div class="row">
+    <div class="col ">
+      <h3>
+        Ad #{{ad.id}} - {{ad.title}}
+      </h3>
+    </div>
+  </div>
+</div>
+
+    
+<!-- Ad Section -->
+<div class="container-fluid p-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 col-md">
+      <div class="card classifieds-list-card">
+        <div class="card-body">
+          <!-- Resume Header -->
+          <div class="row align-items-center">
+            <div class="col-4 d-none d-lg-block">
+              <div class="row pt-3">
+                <div class="container text-center">
+                  <img src="{{ ad.image.url }}" class="rounded" style="border-radius: 1.1rem !important" width="90%" height="95%">
+                </div>
+              </div>  
+            </div>
+            <div class="col-lg-8 col-md-12">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <h2>{{ad.name}} </h2>
+                  </div>
+                </div>
+                
+                <div class="row pt-3">
+                  <div class="col-6">
+                    <!-- Salary/Hourly Rate-->
+                    {% if ad.position_type == "hourly" %}
+                      <p>Hourly Rate: <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
+                    {% else %}
+                      <p>Salary: <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
+                    {% endif %}
+                  </div>
+                  <div class="col-6">
+                    <!-- Experience Required -->
+                    <p>Experience Required: <strong>{{ad.experience}}</strong></p>
+                  </div>
+                </div>
+                
+                <div class="row">
+                  <div class="col-6">
+                    <!-- Travel required ? -->
+                    {% if ad.involves_travel == True %}
+                      <p>Traveling Required: <i class="fas fa-check" style="color: seagreen;"></i></p>
+                    {% else %}
+                      <p>Traveling Required: <i class="fas fa-times" style="color: red;"></i></p>
+                    {% endif %}
+                  </div>
+                  <div class="col-6">
+                    <!-- Degree required? -->
+                    {% if ad.education == True %}
+                      <p>Degree Required: <i class="fas fa-check" style="color: seagreen;"></i></p>
+                    {% else %}
+                      <p>Traveling Required: <i class="fas fa-times" style="color: red;"></i></p>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    <!-- Location -->
+                    <p>Location: <strong>{{ad.location}}</strong></p>
+                  </div>
+                  <div class="col-6">
+                    <!-- Company website? -->
+                    {% if ad.company_website != "N/A" %}
+                      <a href="http://{{ad.company_website}}" style="color: royalblue;">{{ad.company_website}}</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Resume Body -->
+            <div class="row py-4">
+              <div class="col">
+                <div class="container">
+                  <h3 class="border-bottom">Company Description</h3>
+                  {{ad.company_description}}
+                </div>
+              </div>
+            </div>
+            <div class="row py-4">
+              <div class="col">
+                <div class="container">
+                  <h3 class="border-bottom">Job Description</h3>
+                  {{ad.job_description}}
+                </div>
+              </div>
+            </div>
+
+            <div class="row py-4">
+              <div class="col">
+                <div class="container text-center">
+                  <h4 class="pb-1">Submit Your Application:</h4>
+                  <p>
+                    {{ad.email}}
+                  </p>
+                  <p>
+                    <i class="fab fa-skype pr-1" style="color: royalblue; font-size: 1.25rem;"></i>{{ad.skype_id}}
+                  </p>
+                </div>
+              </div>  
+            </div>
+            {% if user == ad.author %}
+              <div class="row">
+                <div class="col-6 text-right pt-4 pb-5">
+                  <a href="{% url 'job-update' ad.id %}" class="btn btn-dark btn-md text-white">Update Ad</a>
+                </div>
+                <div class="col-6 text-left pt-4 pb-5">
+                  <a href="{% url 'job-delete' ad.id %}" class="btn btn-danger btn-md text-white">Delete Ad</a>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        <!-- Card Body Ended Here-->
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- Adding padding at the bottom. *Must be in a container, or will mess up navbar -->
+<div class="container">
+  <div class="row">
+    <div class="col" style="height: 100px;"></div>
+  </div>
+</div>
+
+{% endblock content %}

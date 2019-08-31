@@ -1,0 +1,252 @@
+{% extends "blog/base.html" %}
+{% block nav_item_life-blog-search %}active{% endblock nav_item_life-blog-search %} 
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+
+<link href="https://fonts.googleapis.com/css?family=Unica+One&display=swap" rel="stylesheet">
+
+
+<!-- Search Food Banner -->
+<section id="blog-banner">
+{% for banner in banner %}
+  {% if banner.visibility == 'Display' %}
+    <div class="container-fluid" style="padding:0;">
+      <div class="row-full">
+        <div class="banner-text d-none d-md-block">
+          {{ banner.caption }}
+        </div>
+        <img class="w-100 img-fluid" src="{{ banner.image.url }}">
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+
+<!-- Search Section Starts -->
+<section id="search-form">
+<form method="GET" action=".">
+<div class="container pt-3">
+  <!-- Search by title: -->
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group">
+          <div class="input-group">
+            <input class="form-control border-right-0 border" type="search" name="title" placeholder="Title contains..." />
+              <span class="input-group-append">
+                <div class="input-group-text bg-transparent">
+                  <i class="fa fa-search"></i>
+                </div>
+              </span> 
+          </div>
+      </div>
+    </div>
+
+    <!-- Search by blog type -->
+    <div class="col-4">
+      <select id="blog_type" class="form-control" name="blog_type">
+        <option selected>
+          Category...
+        </option>
+        {% for type in blog_type %}
+          <option value="{{ type }}">
+            {{ type }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Search by tags -->
+    <div class="col-4">
+      <select id="tags" class="form-control" name="tags">
+        <option selected>
+          Tags...
+        </option>
+        {% for tag in tags %}
+          <option value="{{ tag }}">
+            {{ tag }}
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Submit button -->
+    <div class="col text-center pt-0 pb-3">
+      <button type="submit" class="btn btn-dark" value="Filter">
+        Search
+      </button>
+    </div>
+  
+  </div>
+</div>
+</form>
+</section>
+
+<!-- Search result text and criteria -->
+{% if tags_query == None and blog_type_query == None and title_query == None %}
+<!-- display no results, take no action! -->
+<div class="container text-center">
+  <b>({{queryset.paginator.count}}) Blogs</b> 
+  <hr>
+</div>
+
+{% elif tags_query == 'Tags...' and blog_type_query == 'Category...' and title_query == '' %}
+<!-- display no results, take no action! -->
+<div class="container text-center">
+  <b>({{queryset.paginator.count}}) Blogs</b> 
+  <hr>
+</div>
+
+  {% else %}
+    <div class="container text-center">
+      {% if queryset.paginator.count == 0 %}
+        <b>(0) Blogs</b>
+      {% endif %}
+
+      {% if queryset.paginator.count == 1 %}
+        <b>(1) Blog:</b>
+      {% endif %}
+
+      {% if queryset.paginator.count > 1 %}
+        <b>({{ queryset.paginator.count }}) Blogs</b>
+      {% endif %}
+
+      {% if tags_query and tags_query != 'Tags...' %}
+        <span>
+          tagged <b><em>{{tags_query}}</em></b>
+        </span>
+      {% endif %}
+
+      {% if blog_type_query and blog_type_query != 'Category...' %}
+        <span>
+          in the <b><em>{{blog_type_query}}</em></b> category
+        </span>
+      {% endif %}
+
+      {% if title_query and title_query != '' %}
+        <span>
+          with <b><em>{{title_query}}</em></b> in the title.
+        </span>
+      {% endif %}
+
+      <hr>
+      
+      <!-- If there are no results -->
+      {% if queryset.paginator.count == 0 %}
+      <section id="no-search-results">
+        <div class="container pt-3">
+          <h5 style="font-family: Kurale;">
+            Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!
+          </h5>
+        </div>
+
+        <div class="row py-5">
+          <div class="col-3 d-none d-md-block">
+            <!-- empty spacing -->
+          </div>
+          <div class="col-md-3 col-6">
+            <div>
+              <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
+            </div>
+            <div class="d-flex justify-content-center py-2 text-right">
+              <div class="p-1">
+                <a href="https://www.twitter.com/whattheblin">
+                  <i class="fab fa-twitter" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+              <div class="p-1">
+                <a href="https://www.instagram.com/theblinmachine">
+                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div>
+            <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
+            </div>
+            <div class="d-flex justify-content-center py-2 text-left">
+              <div class="p-1">
+                <a href="https://www.instagram.com/labelle44">
+                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 d-none d-md-block">
+            <!-- empty spacing -->
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+    </div>
+{% endif %}
+
+<!-- Search results -->
+<div class="container pb-5">
+  <div class="card-columns">
+    {% for post in queryset %}
+      <a href="{% url 'life-blog-detail' post.id %}" class="card stretched-link card-hover my-4">
+      <img src="{{ post.card_image.url }}" class="card-img-top">
+      <span class="badge badge-pill notify-badge badge-light">{{ post.blog_type.get }}</span>
+      <div class="card-body">
+        <h4 class="card-title">{{ post.title }}</h4>
+        <hr>
+        <p class="card-text">{{ post.card_content }}</p>
+        <div class="text-center">
+          <i class="fas fa-comments"></i>  {{ post.lifeblogcomment_set.all.count }}
+        </div>
+        <hr>
+        <footer class="blockquote-footer ">
+          <cite title="Source Title">Posted by {{post.author}}, on {{ post.date_posted|date:"F d, Y" }}</cite>
+        </footer>
+      </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Paginate Buttons -->
+{% if queryset.paginator.num_pages > 1 %}
+<section id="paginate-buttons">
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col">
+        {% if queryset.has_previous and title_query == '' %}
+          <a href="?page={{ queryset.previous_page_number }}&title=&blog_type={{blog_type_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% endif %}
+
+        {% if queryset.has_previous and title_query %}
+          <a href="?page={{ queryset.previous_page_number }}&title={{title_query}}&blog_type={{blog_type_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% endif %}
+
+        {% if queryset.has_previous and tags_query == None and blog_type_query == None and title_query == None %}
+          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% endif %} 
+
+        <span class="px-2" style="vertical-align: middle;">
+            {{ queryset.number }} of {{ queryset.paginator.num_pages }}
+        </span>
+        
+        {% if queryset.has_next and title_query == '' %}
+          <a href="?page={{ queryset.next_page_number }}&title=&blog_type={{blog_type_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% endif %}
+
+        {% if queryset.has_next and title_query %}
+          <a href="?page={{ queryset.next_page_number }}&title={{title_query}}&blog_type={{blog_type_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% endif %}
+
+        {% if queryset.has_next and tags_query == None and blog_type_query == None and title_query == None %}
+          <a href="?page={{ queryset.next_page_number }}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% endif %} 
+    </div>
+  </div>
+</div>
+</section>
+{% endif %}
+
+
+{% endblock %}
+

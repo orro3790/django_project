@@ -1,0 +1,223 @@
+{% extends "blog/base.html" %}
+{% block nav_item_profile %}active{% endblock nav_item_profile %} 
+{% load crispy_forms_tags %}
+{% block content %}
+
+<br>
+
+<section id="profile-page">
+
+<div class="container my-5 d-none d-md-block">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <div class="col text-center">
+              <img src="{{ user.profile.image.url }}" alt="" class="img-fluid rounded-circle" style="width:150px; height:150px; margin-top:-50px;">
+              <p class="comment-title border-bottom py-3 lead">Update Your Profile</p>
+            </div>
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+              </fieldset>
+
+              <!-- Show user ads -->
+              <p class="border-bottom">
+                My Active Ads*
+              </p>
+              <div class="container pb-4">
+                {% for ad in ads %}
+                  {% if ad.author == user %}
+                    <div class="row">
+                      <div class="col">
+                      <span class="text-muted small pr-1">
+                        {{ad.date_posted|date:"M d"}}
+                      </span>
+                      <a href="{% url 'ad-detail' ad.id %}" style="color:royalblue;">
+                        {{ad.title}}
+                      </a>
+                      {% if ad.image_1 != "default_ad.jpg" %}
+                        <span style="color:#F5A65B;">
+                          <em>pic</em>
+                        </span>
+                      {% endif %}
+                      {% if user == ad.author %}
+                        <span class="d-inline pl-1">
+                          <a href="{% url 'ad-update' ad.id %}">
+                            <i class="fas fa-edit" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                          </a>
+                          <a href="{% url 'ad-delete' ad.id %}">
+                            <i class="fas fa-trash" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                          </a>
+                        </span>
+                      {% endif %}
+                      </div>
+                    </div> 
+                  {% endif %}
+                {% endfor %}
+                <!-- If there are no ads -->
+                {% if ad.count == None %}
+                    <b>You haven't created any ads</b>. Any ads that you create in the <b>"Classifieds - Buy and Sell"</b> section will appear here.
+                {% endif %}
+              </div>
+
+              <!-- Show user job ads -->
+              <p class="border-bottom">
+                My Active Job Ads*
+              </p>
+              <div class="container pb-4">
+                {% for ad in job_ads %}
+                  {% if ad.author == user %}
+                    <div class="row">
+                      <div class="col">
+                      <span class="text-muted small pr-1">
+                        {{ad.date_posted|date:"M d"}}
+                      </span>
+                      <a href="{% url 'job-detail' ad.id %}" style="color:royalblue;">
+                        {{ad.title}}
+                      </a>
+                      {% if ad.image_1 != "default_ad.jpg" %}
+                        <span style="color:#F5A65B;">
+                          <em>pic</em>
+                        </span>
+                      {% endif %}
+                      {% if user == ad.author %}
+                        <span class="d-inline pl-1">
+                          <a href="{% url 'ad-update' ad.id %}">
+                            <i class="fas fa-edit" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                          </a>
+                          <a href="{% url 'ad-delete' ad.id %}">
+                            <i class="fas fa-trash" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                          </a>
+                        </span>
+                      {% endif %}
+                      </div>
+                    </div> 
+                  {% endif %}
+                {% endfor %}
+                <!-- If there are no ads -->
+                {% if ad.count == None %}
+                    <b>You haven't created any job ads</b>. Any job ads that you create in the <b>"Classifieds - Jobs"</b> section will appear here.
+                {% endif %}
+              </div>
+              <div class="form-group text-center pt-5">
+                <button class="btn btn-outline-dark" type="submit">
+                  Save Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile view -->
+
+<div class="container my-5 d-sm-block d-md-none">
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <div class="col text-center">
+          <img src="{{ user.profile.image.url }}" alt="" class="img-fluid rounded-circle" style="width:150px; height:150px; margin-top:-50px;">
+          <p class="comment-title border-bottom py-3 lead">Update Your Profile</p>
+        </div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            {{ u_form|crispy }}
+            {{ p_form|crispy }}
+          </fieldset>
+
+          <!-- Show user ads -->
+          <p class="border-bottom">
+            Your Active Ads*
+          </p>
+          <div class="container pb-4">
+            {% for ad in ads %}
+              {% if ad.author == user %}
+                <div class="row">
+                  <div class="col">
+                  <span class="text-muted small pr-1">
+                    {{ad.date_posted|date:"M d"}}
+                  </span>
+                  <a href="{% url 'ad-detail' ad.id %}" style="color:royalblue;">
+                    {{ad.title}}
+                  </a>
+                  {% if ad.image_1 != "default_ad.jpg" %}
+                    <span style="color:#F5A65B;">
+                      <em>pic</em>
+                    </span>
+                  {% endif %}
+                  {% if user == ad.author %}
+                    <span class="d-inline pl-1">
+                      <a href="{% url 'ad-update' ad.id %}">
+                        <i class="fas fa-edit" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                      </a>
+                      <a href="{% url 'ad-delete' ad.id %}">
+                        <i class="fas fa-trash" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                      </a>
+                    </span>
+                  {% endif %}
+                  </div>
+                </div> 
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <!-- Show user job ads -->
+          <p class="border-bottom">
+            Your Active Ads*
+          </p>
+          <div class="container pb-4">
+            {% for ad in job_ads %}
+              {% if ad.author == user %}
+                <div class="row">
+                  <div class="col">
+                  <span class="text-muted small pr-1">
+                    {{ad.date_posted|date:"M d"}}
+                  </span>
+                  <a href="{% url 'job-detail' ad.id %}" style="color:royalblue;">
+                    {{ad.title}}
+                  </a>
+                  {% if ad.image_1 != "default_ad.jpg" %}
+                    <span style="color:#F5A65B;">
+                      <em>pic</em>
+                    </span>
+                  {% endif %}
+                  {% if user == ad.author %}
+                    <span class="d-inline pl-1">
+                      <a href="{% url 'ad-update' ad.id %}">
+                        <i class="fas fa-edit" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                      </a>
+                      <a href="{% url 'ad-delete' ad.id %}">
+                        <i class="fas fa-trash" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                      </a>
+                    </span>
+                  {% endif %}
+                  </div>
+                </div> 
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="form-group text-center pt-5">
+            <button class="btn btn-outline-dark" type="submit">
+              Save Changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,137 @@
+{% extends "blog/base.html" %}
+{% block nav_item_classifieds %}active{% endblock nav_item_classifieds %}
+{% load static %}
+{% load humanize %}
+{% load classifieds_tags %}
+{% block content %}
+
+<section id="ad-list">
+
+<div class="container py-5">
+  <div class="row">
+    <div class="col">
+      <div class="card classifieds-list-card">
+          <img class="card-img-top" src="{% static 'blog/images/faq.jpg' %}" style="width:100.1%;">
+        <div class="card-body">
+          <h3>FAQ & Terms of Use</h3>
+          <div class="row border-bottom">
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                1) Do I need to create an account in order to create an ad?
+              </h5>
+              <div class="container">
+                <p>
+                  <b>Yes, you will need an account</b> in order to create an ad, or send an email to the owner of an ad.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                2) I'm interested in an ad, how can I contact that user?
+              </h5>
+              <div class="container">
+                <p>
+                  When a user creates an ad, they are given the opportunity to select their preferred method of contact. Supported methods are: <b>twitter, instagram, facebook, and email</b>. You can find all of these contact methods within the detailed view of the ad.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                3) Can everybody see my email address or social media links?
+              </h5>
+              <div class="container">
+                <p>
+                No. <b>Your email is never displayed publicly</b>, even in your ads (this is why we use a mail server for you: notifications@whattheblin.com). It is not recommended that you post your email within your ad. However, if you link your social media accounts to your profile, you can optionally allow users to respond to your ads or contact you via any of those accounts. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                4) Is it free to create an ad?
+              </h5>
+              <div class="container">
+                <p>
+                  Yes, it is <b>completely free!</b>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                5) Can I update or delete an ad once it has been made?
+              </h5>
+              <div class="container">
+                <p>
+                  Yes. Beside your ad you will see two icons, one for editing your ad and one for deleting it. Additionally, you have the option of updating or deleting your ad from within the detailed view of your ad. 
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3 border-bottom">
+            <div class="col">
+              <h5>
+                6) Someone scammed me or is harassing me! What should I do?
+              </h5>
+              <div class="container">
+                <p>
+                  <b>You as the user take full responsibility</b> for any and all transactions or agreements that take place upon creating ad, or responding to another user's ad. We are merely providing a domain for members of Moscow's expat community to connect with one another. However, if a user has scammed you, has attempted to scam you, or is harassing you, please contact us at <b>contact@whattheblin.com</b>.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col">
+              <h5>
+                7) What things are prohibited?
+              </h5>
+              <div class="container">
+                <p>
+                  Use common sense when creating or responding to ads. <b>You must comply with Russia's laws.</b> Therefore, any items or actions prohibited by Russian law are also prohibited on this domain. By using our domain, you agree to act in accordance with Russian law. Any ads that breach this agreement will be taken down, and those users will be permanently banned.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row pt-3">
+            <div class="col">
+              <h5>
+                8) I am interested in an ad, but the author is not answering my messages!
+              </h5>
+              <div class="container">
+                <p>
+                  When you click the <b>"I'm Interested!"</b> button" and send an email to a user, the email will be sent from our email server at <b>"notifications@whattheblin.com"</b>. This is so that users <b>do not have to display their email address publically</b> on their ads. The email address in your profile will be attached in the email you send. If the author of the ad wishes to reply to you, they must contact you using the attached address. In other words, What The Blin will place you in initial contact with one another, but all further communications must be done privately, outside of our domain. 
+                  <br>
+                  <br>
+                  <b>We do not have access to the contents of your email, and all communications to and from the server are encrypted.</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- Adding padding at the bottom. *Must be in a container, or will mess up navbar -->
+<div class="container">
+  <div class="row">
+    <div class="col" style="height: 100px;"></div>
+  </div>
+</div>
+
+      
+
+{% endblock content %}
+
+

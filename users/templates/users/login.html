@@ -1,0 +1,52 @@
+{% extends "blog/base.html" %}
+{% block nav_item_login %}active{% endblock nav_item_login %} 
+{% load crispy_forms_tags %}
+{% block content %}
+{% load static %}
+
+<section id="login-logout">
+<div class="container">
+  <div class="row py-5">
+    <div class="col-lg-4 mx-auto py-5 ">
+      <div class="card card-hover" style="border-color: #343a40">
+        <div class="card-body">
+          <div class="display-4 text-center">
+            <div class="container">
+              <img class="w-50" src="{% static 'blog/images/wbrussia.jpg' %}">
+            </div>
+          </div>
+          <div class="container text-center py-1">
+            <hr>
+            <h4>Log In</h4>
+            <hr class="pb-3">
+          </div>
+          <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              {{ form|crispy }}
+            </fieldset>
+            <div class="form-group text-center">
+              <button class="btn btn-dark" type="submit">Login</button>
+            </div>
+          </form>
+          <div class="border-top pt-3 text-center">
+            <a href="{% url 'register' %}">
+            <small class="text-muted">Click <strong>here</strong> to create a new account.</small>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+{% endblock content %}
+
+
+
+
+
+
+

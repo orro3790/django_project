@@ -1,0 +1,203 @@
+{% extends "blog/base.html" %}
+{% block nav_item_classifieds %}active{% endblock nav_item_classifieds %}
+{% load static %}
+{% load humanize %}
+{% load classifieds_tags %}
+{% block content %}
+
+<section id="ad-list">
+
+<!-- Filter Section -->
+<form method="GET" action=".">
+  <div class="container pt-5 pb-2 d-none d-md-block" style="width: 40%">
+    <div class="row align-items-center">
+      <div class="col-5">
+        <select id="salary_filter" class="form-control" name="salary_filter">
+          <option selected>Salary of at least...</option>
+          <option>50000 - ({% total_salary_50000 %})</option>
+          <option>60000 - ({% total_salary_60000 %})</option>
+          <option>70000 - ({% total_salary_70000 %})</option>
+          <option>80000 - ({% total_salary_80000 %})</option>
+          <option>90000 - ({% total_salary_90000 %})</option>
+          <option>100000 - ({% total_salary_100000 %})</option>               
+        </select>
+      </div>
+      <div class="col-5">
+        <div class="input-group">
+          <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+            <span class="input-group-append">
+              <div class="input-group-text bg-transparent">
+                <i class="fa fa-search"></i>
+              </div>
+            </span>
+            <span class="input-group-append">
+              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
+                <i class="fas fa-history" style="font-size: 0.9rem;"></i>
+              </button>
+            </span>
+        </div>
+      </div>
+      <div class="col-2">
+        <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+      </div>   
+    </div>
+  </div>
+</form>
+
+<!-- Mobile View --> 
+<div class="container pt-3 d-md-none d-sm-block" style="width: 90%">
+  <form method="GET" action=".">
+    <div class="row align-items-center">
+      
+      <div class="col-12">
+        <div class="input-group">
+          <input class="form-control py-2 border-right-0" type="search" name="title_filter" placeholder="Title contains..." />
+            <span class="input-group-append">
+              <div class="input-group-text bg-transparent">
+                <i class="fa fa-search"></i>
+              </div>
+            </span>
+            <span class="input-group-append">
+              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
+              <i class="fas fa-history" style="font-size: 0.9rem;"></i>
+              </button>
+            </span>
+        </div>
+      </div>
+
+      <div class="col-12 pt-3">
+        <select id="salary_filter" class="form-control" name="salary_filter">
+          <option selected>Salary of at least...</option>
+          <option>50000</option>
+          <option>60000</option>
+          <option>70000</option>
+          <option>80000</option>
+          <option>90000</option>
+          <option>100000</option>               
+        </select>
+      </div>
+
+      <div class="col-12">
+        <div class="container pt-3 text-center">
+          <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+        </div>
+      </div>   
+
+    </div>
+  </form>
+</div>
+    
+
+  
+<div class="container py-4">
+  <div class="row">
+    <div class="col">
+      <div class="card classifieds-list-card px-3">
+        <img class="card-img-top border-bottom" src="{% static 'blog/images/hiring.jpg' %}">
+        <div class="card-body">
+          <h3>Job Board</h3>
+          <div class="row border-bottom">
+            <!-- Adjust the search result counts based on whether or not the search filter was used -->
+            <div class="col-8 col-md-6">
+              {% if ads.paginator.count > 0 %}
+                <p class="text-muted m-0 p-0">{{ads.paginator.count}} results.</p>
+              {% elif ads.count > 0 %}
+                <p class="text-muted m-0 p-0">{{ads.count}} results.</p>
+              {% elif ads.count == 0 %}
+                <p class="text-muted m-0 p-0">No results found.</p>
+              {% endif %}
+            </div>
+            <div class="col col-md-2 d-none d-md-block">
+              Position
+            </div>
+            <div class="col-4 col-md-2">
+              Salary
+            </div>
+            <div class="col col-md-2 d-none d-md-block">
+              Location
+            </div>
+          </div>
+          {% for ad in ads %}
+            <div class="row border-bottom align-items-center">
+              <div class="col-8 col-md-6 py-2">
+                <span class="text-muted small pr-1">{{ad.date_posted|date:"M d"}}</span>
+                <a href="{% url 'job-detail' ad.id %}" style="color:royalblue;">
+                  {{ad.title}} <span style="color:#F5A65B;">
+                    {% if ad.image_1 != "default_ad.jpg" %}
+                      <span style="color:#F5A65B;">
+                        <em>pic</em>
+                      </span>
+                    {% endif %}
+                </a>
+                {% if user == ad.author %}
+                  <span class="d-inline pl-1">
+                    <a href="{% url 'job-update' ad.id %}">
+                      <i class="fas fa-edit" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                    </a>
+                    <a href="{% url 'job-delete' ad.id %}">
+                      <i class="fas fa-trash" style="color: #343a40; font-size: 0.75rem !important;"></i>
+                    </a>
+                  </span>
+                {% endif %}
+              </div>
+              <div class="col col-md-2 d-none d-md-block">
+                {{ad.title_of_position}}
+              </div>
+              <div class="col-4 col-md-2">
+                {{ad.salary|intcomma}} <i class="fas fa-ruble-sign" style=font-size:0.8rem;></i>
+              </div>
+              <div class="col col-md-2 d-none d-md-block">
+                {{ad.location}}
+              </div>
+            </div>
+          {% endfor %}
+          <div class="container text-center pt-5 pb-4">
+            <a href="{% url 'job-wanted-create' %}" class="btn btn-dark">Post An Ad</a>
+          </div>
+
+          <section id="paginate-buttons">
+            <div class="container text-center pb-3">
+              <div class="row">
+                <div class="col">
+                    {% if ads.has_previous %}
+                      <a class="btn btn-outline-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+                    {% endif %}
+
+                    {% for num in ads.paginator.page_range %}
+                      {% if ads.number == num %}
+                        {% if ads.paginator.num_pages != 1 %}
+                          <a class="btn btn-dark" href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                      {% elif num > ads.number|add:'-3' and num < ads.number|add:'3' %}
+                        <a class="btn btn-outline-dark" href="?page={{ num }}">{{ num }}</a>
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if ads.has_next %}
+                      <a class="btn btn-outline-dark" href="?page={{ ads.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>
+                    {% endif %}
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- Adding padding at the bottom. *Must be in a container, or will mess up navbar -->
+<div class="container">
+  <div class="row">
+    <div class="col" style="height: 100px;"></div>
+  </div>
+</div>
+
+      
+
+{% endblock content %}
+
+

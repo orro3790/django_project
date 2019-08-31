@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block nav_item_blog-map %}active{% endblock nav_item_blog-map %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+  <div class="content-section">
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+              <legend class="border-bottom mb-4">Post A Job Ad</legend>
+                  {{ form|crispy }}
+          </fieldset>
+          <div class="form-group text-center pb-5">
+              <button class="btn btn-primary" type="submit">Post Ad</button>
+          </div>
+      </form>
+  </div>
+</div>
+
+{% endblock content %}

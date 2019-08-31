@@ -1,0 +1,29 @@
+{% extends "blog/base.html" %}
+{% block nav_item_classifieds %}active{% endblock nav_item_classifieds %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<div class="container py-5">
+   <legend class="pb-2" style="font-size: 1.2rem;">
+    Reply to: <strong>{{ad.title}}</strong>
+    <hr> 
+    <div class="pb-3" style="font-size: 0.8rem;">
+        <em>posted by <strong>{{ad.author}}</strong>, on {{ad.date_posted}}</em>
+    </div>
+   </legend> 
+  <div class="content-section">
+      <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+              <button class="btn-outline-dark" type="submit">Send Email*</button>
+              <p class="pt-3">*The author of this ad will be given the ability to contact you at the email address provided on your profile page. Check your email for their response.</p>
+          </div>
+      </form>
+  </div>
+</div>
+
+{% endblock content %}

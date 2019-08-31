@@ -1,0 +1,5 @@
+venv
+migrations
+settings.py
+media
+.vscode

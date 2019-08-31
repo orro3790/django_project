@@ -1,0 +1,543 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0 0 7rem;
+  margin-bottom: 5rem;
+}
+
+/* Global styling: prevent url links from lighting up or adding any styling when hovering over */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration:none; 
+  cursor:pointer;  
+}
+
+/* Navbar */
+#navbar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.floatingNav {
+  width: calc(100vh - 100px); 
+  border-radius: 2px;
+  box-shadow: 0px 1px 10px #999;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    line-height: 27px;
+  }
+}
+
+.navbar {
+  font-family: 'Kurale', serif;
+  border-bottom: 1px solid #ececec;
+  background-color: #fff;
+  transition: 0.2s;
+  display: flex;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.navbar .nav-link {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.navbar-brand {
+  font-size: 1.2rem;
+}
+
+.nav-bottom-margin {
+  height: 55px;
+}
+
+.nav-profile {
+  width: 25px;
+}
+
+/* nav-bar drop-down styling */
+@media (min-width: 992px) {
+  .animate {
+    animation-duration: 0.3s;
+    -webkit-animation-duration: 0.3s;
+    animation-fill-mode: both;
+    -webkit-animation-fill-mode: both;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  100% {
+    transform:translateY(0rem);
+    opacity: 1;
+  }
+  0% {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes slideIn {
+  0% {
+    -webkit-transform: transform;
+    -webkit-opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    -webkit-opacity: 1;
+  }
+  0% {
+    -webkit-transform: translateY(1rem);
+    -webkit-opacity: 0;
+  }
+}
+
+.slideIn {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+}
+
+/* Homepage */
+#carousel-section i {
+  color: #ef8a47;
+}
+
+#carousel-section h4 {
+  font-size: 2.5rem;
+}
+
+#carousel-section p {
+  font-size: 1.2rem;
+}
+
+.carousel-item {
+  max-height: 400px !important;
+  max-width: 100%;
+}
+
+.carousel-caption-1 {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  font-family: 'Kurale', serif;
+}
+
+.carousel-caption-2 {
+  top: 5%;
+  transform: translateX(-10%);
+  bottom: 0;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  text-align: left;
+  font-family: 'Kurale', serif;
+}
+
+.carousel-caption-3 {
+  top: 1%;
+  transform: translateX(5%);
+  bottom: 0;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  text-align: right;
+  font-family: 'Kurale', serif;
+}
+
+#home-icons h5 {
+  font-family: 'Kurale', serif;
+  font-size: 1.2rem;
+}
+
+#home-icons p {
+  font-family: 'Kurale', serif;
+  font-size: 0.9rem;
+}
+
+#home-icons i {
+  font-size: 120%;
+}
+
+.card-columns {
+  font-family: 'Kurale', serif;
+  font-size: 0.9rem;
+}
+
+.notify-badge {
+    position: absolute;
+    left:5px;
+    top:5px;
+    background: #343a40;
+    color: white;
+    font-size:12px;
+    opacity: 0.6;
+}
+
+.card-hover:hover {
+  -webkit-box-shadow: -5px 8px 20px -5px rgba(52, 58, 64, 0.6);
+  -moz-box-shadow: -5px 8px 20px -5px rgba(52, 58, 64, 0.6);
+  box-shadow: -5px 8px 20px -5px rgba(52, 58, 64, 0.6);
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -webkit-transform: translate(1px, -1px);
+  -moz-transform: translate(1px, -1px);
+}
+
+.card-columns img:hover { 
+  opacity: 0.95;
+}
+
+#commentcards img {
+  width: 100%;
+}
+
+#main-footer {
+  background: #343a40;
+  color: #fff;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  font-family: 'Kurale', serif;
+  font-size: 0.8rem;
+  margin-top: 0%;
+}
+
+
+/* Blog detail */
+#banner {
+  height: 250px;
+  background: url('images/banner.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#banner h1 {
+  color:  #343a40;
+  font-family: 'Kurale', serif;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+#tldr {
+  font-family: 'Kurale', serif;
+}
+
+.unfilled {
+  opacity: 0.15;
+}
+
+.blog-title {
+  font-family: 'Kurale', serif;
+}
+
+#blog-detail-body {
+  font-family: 'Kurale', serif;
+}
+
+#blog-detail-body .card:hover {
+  border-color: #F5A65B;
+  border-width: 1px;
+}
+
+#blog-detail-body .view-all {
+  font-family: 'Kurale', serif;
+  font-size: 1.5rem;
+}
+
+#blog-detail-body .map {
+  height: 400px;
+}
+
+#blog-detail-body i {
+  color: #F5A65B;
+}
+
+#blog-detail-body .profile-img {
+  margin-top: -50px; 
+  width: 115px;
+  height: 115px;
+}
+
+#comments .comment-img {
+  margin-top: -50px;
+  width: 50px;
+  height: 50px;
+}
+
+#comments h1 {
+  font-family: 'Kurale', serif;
+  color: #343a40;
+}
+
+#comments h5 {
+  font-family: 'Kurale', serif;
+  color: #343a40;
+}
+
+#comments .card:hover {
+  border-color: #F5A65B
+}
+
+#comments i.link-active {
+  color: #F5A65B;
+  font-size: 85%;
+}
+
+#comments i.link-inactive {
+  color: rgba(0, 0, 0, 0.10);
+  font-size: 85%;
+}
+
+#comments img {
+  margin-top: -50px; 
+  width: 115px;
+  height: 115px;
+}
+
+/* Life blogs */
+#blog-banner .row-full {
+  position: relative;
+  text-align: center;
+  color: white;
+  background-size: cover;
+}
+
+#blog-banner .banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:  white;
+  font-family: 'Kurale', serif;
+  font-size: 2.5vw;
+}
+
+#blog-banner .mobile-banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:  white;
+  font-family: 'Kurale', serif;
+  font-size: 7vw;
+}
+
+/* Profile Page */
+#profile-page {
+  font-family: 'Kurale', serif;
+  color: #343a40;
+}
+
+#profile-page i {
+  color: #F5A65B;
+}
+#profile-page img {
+  margin-top: -50px; 
+  max-width: 200px;
+  max-height: 200px;
+}
+
+#profile-page .card:hover {
+  border-color: #F5A65B
+}
+
+#profile-page .fab {
+  color: #F5A65B;
+}
+
+#profile-page .comment-title {
+  color: #343a40;
+  border-bottom: #343a40;
+}
+
+#seach-form {
+  max-height: 700px;
+}
+
+/* About Page */
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#socialmedia h3 {
+  color: #343a40;
+  font-family: 'Kurale', serif;
+  font-size: 2rem;
+}
+
+#socialmedia {
+  font-family: 'Kurale', serif;
+}
+
+#socialmedia .fa-envelope {
+  color: #343a40;
+  font-size: 2rem;
+}
+
+#socialmedia img {
+  margin-top: -50px; 
+  width: 200px;
+  height: 200px;
+}
+
+#socialmedia .card {
+  background: #F5A65B;
+  color: #fff; 
+}
+
+#socialmedia .container-fluid {
+  max-width: 800px;
+}
+
+.dark-overlay {
+  position: inherit;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.40);
+}
+
+#video-play {
+  position: relative;
+  height: 275px;
+  background: url('images/mountain.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 0 0px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Kurale', serif;
+}
+
+#video-play a {
+  color: #fff;
+}
+
+/* Maps Page */
+.logo {
+  width: 15%;
+}
+
+.text-highlight {
+  color: #F5A65B;
+}
+
+#maps {
+  font-family: 'Kurale', serif;
+}
+
+#maps .title {
+  color: #F5A65B;
+}
+
+#maps p {
+  font-size: 1.1rem;
+}
+
+#maps i {
+  color: #F5A65B;
+}
+
+#maps .map {
+  height: 600px;
+}
+
+#login-logout {
+  font-family: 'Kurale', serif;
+  color: #343a40;
+}
+
+#login-logout .form-group>input, .form-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+  height: auto;
+  border-radius: 2rem;
+}
+
+
+#profile h1 {
+  font-family: 'Kurale', serif;
+  color: white;
+}
+
+
+/* Ads Section */
+#ad-contact-methods .method-enabled {
+  color: #F5A65B;
+}
+
+#ad-contact-methods .method-disabled {
+  opacity: 0.15;
+}
+
+#ad-contact-methods i {
+  font-size: 1.25rem;
+}
+
+.buying {
+  color: green;
+}
+
+.selling {
+  color: red;
+}
+
+#paginate-buttons .btn {
+  font-size: 0.7rem;
+}
+
+#ad-detail {
+  font-family: 'Kurale', serif;
+}
+
+#ad-list .btn {
+  font-size: 0.8rem;
+}
+
+#ad-list {
+  font-family: 'Kurale', serif;
+  font-size: 0.9rem;
+}
+
+.classifieds-list-card {
+  border-radius: 1rem;
+  box-shadow: 8px 8px 20px -5px rgba(52, 58, 64, 0.8);
+}
+
+#ad-update-delete {
+  font-family: 'Kurale', serif !important;
+}
+
+#no-search-results i:hover {
+  color: #F5A65B;
+}
+
