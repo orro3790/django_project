@@ -94,9 +94,9 @@ class Ad(models.Model):
     ]
 
     title = models.CharField(max_length=60, help_text="Do not include price or location in your title, you can input these details below!")
-    image_1 = models.ImageField(default='default_ad.jpg', help_text="This image will be displayed as the main image for your ad.", upload_to='buy_and_sell_ad_images')
-    image_2 = models.ImageField(default='default_ad.jpg', help_text="Upload a second image. Try to get provide a different angle.", upload_to='buy_and_sell_ad_images')
-    image_3 = models.ImageField(default='default_ad.jpg', help_text="Upload a third image. Try to get provide a different angle.", upload_to='buy_and_sell_ad_images')
+    image_1 = models.ImageField(default='default_ad.jpg', help_text="This image will be displayed as the main image for your ad.")
+    image_2 = models.ImageField(default='default_ad.jpg', help_text="Upload a second image. Try to get provide a different angle.")
+    image_3 = models.ImageField(default='default_ad.jpg', help_text="Upload a third image. Try to get provide a different angle.")
     items_or_model_names = models.CharField(max_length=70, help_text="What are you interested in buying or selling?")
     category = models.CharField(max_length=70, choices=CATEGORIES, default=GENERAL, help_text="Choose a category for your ad listing.")
     buying_or_selling = models.CharField(max_length=30, choices=BUY_OR_SELL, default=SELL, help_text="Are you buying or selling?")
@@ -174,7 +174,7 @@ class Job(models.Model):
     ]
 
     title = models.CharField(max_length=60, help_text="This is the title that will be displayed on the job board.")
-    image = models.ImageField(default='default.jpg', help_text="Upload an image. This image will be displayed above your ad.", upload_to='job_ad_images')
+    image = models.ImageField(default='default.jpg', help_text="Upload an image. This image will be displayed above your ad.")
     title_of_position = models.CharField(max_length=70, help_text="What is the title of the position Ex. 'English teacher'?")
     position_type = models.CharField(max_length=50, choices=POSITION_TYPE, default=FULL_TIME, help_text="Please select 'full-time', 'part-time', or 'hourly'.")
     experience = models.CharField(max_length=100, choices=EXPERIENCE, help_text="How much experience is required?")
