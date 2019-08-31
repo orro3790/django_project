@@ -18,7 +18,8 @@ from .models import (
   Tag,
   CarouselImage,
   FoodSearchBanner,
-  LifeBlogSearchBanner
+  LifeBlogSearchBanner,
+  AboutUsBanner
 )
 
 # Clean up the Post layout page in the admin console
@@ -72,4 +73,5 @@ admin.site.register(LifeBlogComment)
 admin.site.register(CarouselImage)
 admin.site.register(FoodSearchBanner)
 admin.site.register(LifeBlogSearchBanner)
+admin.site.register(AboutUsBanner)
 

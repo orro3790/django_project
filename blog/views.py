@@ -28,7 +28,8 @@ from .models import (
     Tag,
     CarouselImage,
     FoodSearchBanner,
-    LifeBlogSearchBanner
+    LifeBlogSearchBanner,
+    AboutUsBanner
 )
 
 from django.contrib.auth.models import User
@@ -162,9 +163,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 def about(request):
     qs = AboutUsPicture.objects.all()
+    banner = AboutUsBanner.objects.all()
+    
+
+
     context = {
         'qs': qs,
-        'matt': qs.filter(name='Matt')
+        'banner': banner
     }
     return render(request, 'blog/about.html', context)
 

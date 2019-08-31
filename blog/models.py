@@ -257,3 +257,19 @@ class LifeBlogSearchBanner(models.Model):
 
     def __str__(self):
         return self.caption
+
+
+class AboutUsBanner(models.Model):
+
+    BANNER_STATUS = [
+    ('Display', 'Display'),
+    ('Hide', 'Hide')
+    ]
+
+    visibility = models.CharField(max_length=100, choices=BANNER_STATUS, default='Display', help_text="If inactive, the banner will not be displayed but can remain stored as a backup. Must select active to display.")
+    caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
+    image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='life_blog_search_banners', default='')
+    link = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link.')
+
+    def __str__(self):
+        return self.caption
