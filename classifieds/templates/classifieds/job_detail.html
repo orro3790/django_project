@@ -114,9 +114,11 @@
                   <p>
                     {{ad.email}}
                   </p>
-                  <p>
-                    <i class="fab fa-skype pr-1" style="color: royalblue; font-size: 1.25rem;"></i>{{ad.skype_id}}
-                  </p>
+                  {% if ad.skype %}
+                    <p>
+                      <i class="fab fa-skype pr-1" style="color: royalblue; font-size: 1.25rem;"></i>{{ad.skype_id}}
+                    </p>
+                  {% endif %}
                 </div>
               </div>  
             </div>
