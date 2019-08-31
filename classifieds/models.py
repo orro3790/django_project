@@ -35,7 +35,7 @@ class Ad(models.Model):
     ELECTRONICS = "electronics"
     GARDEN = "garden"
     FREE = "free"
-    GENERAL = 'life'
+    GENERAL = 'general'
     HOUSEHOLD = "household"
     PETS = "pets"
     FURNITURE = "furniture"
@@ -61,7 +61,7 @@ class Ad(models.Model):
         (GARDEN, "garden"),
         (FURNITURE, "furniture"),
         (FREE, "free"),
-        (GENERAL, "life"),
+        (GENERAL, "general"),
         (HOUSEHOLD, "household"),
         (PETS, "pets"),
         (JEWELERY, "jewelery"),
