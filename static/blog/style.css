@@ -121,7 +121,7 @@ a:hover {
 }
 
 #carousel-section h4 {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 #carousel-section p {
@@ -129,7 +129,7 @@ a:hover {
 }
 
 .carousel-item {
-  max-height: 400px !important;
+  max-height: 500px !important;
   max-width: 100%;
 }
 
