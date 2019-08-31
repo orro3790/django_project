@@ -59,7 +59,7 @@
                   {% endif %}
                 {% endfor %}
                 <!-- If there are no ads -->
-                {% if ad.count == None %}
+                {% if ad.count == 0 %}
                     <b>You haven't created any ads</b>. Any ads that you create in the <b>"Classifieds - Buy and Sell"</b> section will appear here.
                 {% endif %}
               </div>
@@ -99,7 +99,7 @@
                   {% endif %}
                 {% endfor %}
                 <!-- If there are no ads -->
-                {% if ad.count == None %}
+                {% if ad.count == 0 %}
                     <b>You haven't created any job ads</b>. Any job ads that you create in the <b>"Classifieds - Jobs"</b> section will appear here.
                 {% endif %}
               </div>
