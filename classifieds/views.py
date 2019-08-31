@@ -201,7 +201,8 @@ class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         'skype_id',
         'email',
         'company_website',
-        'company_description'
+        'company_description',
+        'job_description'
         ]
 
     def form_valid(self, form, *args, **kwargs):

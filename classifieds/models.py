@@ -183,7 +183,7 @@ class Job(models.Model):
     location = models.CharField(max_length=100, help_text="State the job location.")
     involves_travel = models.BooleanField(help_text="Does the job involve travel?")
     name = models.CharField(max_length=100, help_text="State the name of your company, or your name.")
-    skype_id = models.CharField(max_length=100, help_text="Provide your Skype ID if you wished to be contacted via skype.")
+    skype_id = models.CharField(blank=True, max_length=100, help_text="Provide your Skype ID if you wished to be contacted via skype.")
     email = models.CharField(max_length=100, help_text="Provide an email where applicants can reach you.")
     company_website = models.CharField(max_length=100, default="N/A", help_text="Provide your website url if applicable.")
     company_description = models.TextField(max_length=1000, help_text="Describe your company. Do not describe the job details here!")
