@@ -23,12 +23,19 @@
 <!-- Google ReCaptchav2 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
+var onloadCallback = function() {
+	grecaptcha.render('html_element', {
+    'sitekey' : '6LeMArYUAAAAAG2xeuGSS1BUFNsimqW7igtZBPNa'
+  });
+};
+onloadCallback();
+
 $('form').on('submit', function(e) {
   if(grecaptcha.getResponse() == "") {
     e.preventDefault();
-    alert("Oops! You forgot to solve the captcha!");
+    alert("You can't proceed!");
   } else {
-    alert("Thank you!");
+    alert("Thank you");
   }
 });
 </script>
