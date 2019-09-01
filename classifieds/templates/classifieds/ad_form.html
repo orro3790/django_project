@@ -22,5 +22,15 @@
 
 <!-- Google ReCaptchav2 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+$('form').on('submit', function(e) {
+  if(grecaptcha.getResponse() == "") {
+    e.preventDefault();
+    alert("Oops! You forgot to solve the captcha!");
+  } else {
+    alert("Thank you!");
+  }
+});
+</script>
 
 {% endblock content %}
