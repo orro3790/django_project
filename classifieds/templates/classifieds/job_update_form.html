@@ -6,18 +6,37 @@
 <section id="ad-update-delete">
 <div class="container py-5">
   <div class="content-section">
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data" onsubmit="return submitUserForm();">
           {% csrf_token %}
           <fieldset class="form-group">
+            <div class="g-recaptcha" data-sitekey="6Le9ArYUAAAAANZ_UerCig5v9iUPrR8v0yIOnMS2" data-callback="verifyCaptcha"></div>
+            <div id="g-recaptcha-error" class="form-group pb-3"></div>
               <legend class="border-bottom mb-4">Update Ad: "{{ad.title}}"</legend>
                   {{ form|crispy }}
           </fieldset>
           <div class="form-group text-center">
-              <button class="btn btn-primary" type="submit">Update</button>
+              <button class="btn btn-primary" name="submit" type="submit">Update</button>
           </div>
       </form>
   </div>
 </div>
 </section>
+
+<!-- Google ReCaptchav2 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function submitUserForm() {
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        return false;
+    }
+    return true;
+}
+ 
+function verifyCaptcha() {
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>
 
 {% endblock content %}
