@@ -5,8 +5,9 @@
 {% block content %}
 
 <div class="container py-5">
-  <div id='html_element' class="content-section">
+  <div class="content-section">
       <form method="POST" enctype="multipart/form-data">
+        <div id="html_element"></div>
           {% csrf_token %}
           <fieldset class="form-group">
               <legend class="border-bottom mb-4">Post A New Ad</legend>
