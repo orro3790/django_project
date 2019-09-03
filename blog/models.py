@@ -78,6 +78,14 @@ class Tag(models.Model):
 
 class Post(models.Model):
 
+    ENGLISH = 'English'
+    RUSSIAN = 'Russian'
+
+    LANGUAGE = [
+        (ENGLISH, 'English'),
+        (RUSSIAN, 'Russian')
+    ]
+
     banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='food_blog_banners', default='')
     mobile_banner = models.ImageField(blank=False, help_text='This is the mobile version of the banner (600 x 600)', upload_to='food_blog_mobile_banners', default='')
     card_image = models.ImageField(blank=False, default='', upload_to='food_blog_card_images')
@@ -109,6 +117,8 @@ class Post(models.Model):
     service_rating = models.ManyToManyField(ServiceRating)
     price_rating = models.ManyToManyField(PriceRating)
     special_feature = models.ManyToManyField(SpecialFeature)
+    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="Is this post in English, or Russian?")
+    translated_blog_link = models.CharField(blank=True, default='', max_length=500, help_text="If the blog exists in only one language, leave this field blank.")
     google_map = models.CharField(default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', blank=False, max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
@@ -148,6 +158,14 @@ class BlogType(models.Model):
 
 class LifeBlog(models.Model):
 
+    ENGLISH = 'English'
+    RUSSIAN = 'Russian'
+
+    LANGUAGE = [
+        (ENGLISH, 'English'),
+        (RUSSIAN, 'Russian')
+    ]
+
     card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
     title = models.CharField(max_length=100)
     card_content = models.TextField(default='Write your article here!', max_length=300)
@@ -169,6 +187,8 @@ class LifeBlog(models.Model):
     snapshot_5 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_5_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 5.')
     blog_type = models.ManyToManyField(BlogType)
+    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="Is this post in English, or Russian?")
+    translated_blog_link = models.CharField(blank=True, default='', max_length=500, help_text="If the blog exists in only one language, leave this field blank.")
     google_map = models.CharField(blank=True, default='', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -222,6 +242,11 @@ class CarouselImage(models.Model):
     image = models.ImageField(blank=False, help_text='This image will be displayed in the carousel (2560 x 720).', upload_to='carousel_images', default='')
     mobile_image = models.ImageField(blank=False, help_text='This image will be displayed in the carousel when viewed on cellphones (600 x 600).', upload_to='carousel_images', default='')
     link = models.CharField(blank=True, max_length=200, help_text='Ex: https://www.brave.com/features/')
+
+    # Russian settings
+    title_russian = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
+    caption_russian = models.TextField(blank=True, max_length=200, help_text='The caption goes here.')
+    link_russian = models.CharField(blank=True, max_length=200, help_text='Ex: https://www.brave.com/features/')
 
     def __str__(self):
         return self.title

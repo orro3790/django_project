@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import (
     PostListView,
+    PostListViewRussian,
     PostDetailView,
     PostCreateView,
     PostUpdateView,
@@ -9,10 +10,9 @@ from .views import (
     CommentCreateView,
     CommentListView,
     MapView,
-    LifeBlogListView,
     LifeBlogDetailView,
     LifeBlogCommentCreateView,
-    LifeBlogFilter
+    LifeBlogFilter,
 )
 from . import views
 
@@ -28,7 +28,9 @@ urlpatterns = [
     path('post/<int:pk>/allcomments/', CommentListView.as_view(), name='comment-list'),
     path('life/<int:pk>/comment/', LifeBlogCommentCreateView.as_view(), name='life-blog-comment'),
     path('map/', MapView.as_view(), name='blog-map'),
-    path('life/', LifeBlogListView.as_view(), name='blog-life'),
     path('life/<int:pk>/', LifeBlogDetailView.as_view(), name='life-blog-detail'),
     path('blog/life/filtered/', LifeBlogFilter, name='life-blog-search'),
+    
+    #Russian pages
+    path('ru/', PostListViewRussian.as_view(), name='blog-home-ru'),
 ]

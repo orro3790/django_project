@@ -1,4 +1,4 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base_ru.html" %}
 {% block nav_item_home %}active{% endblock nav_item_home %} 
 {% block content %}
 {% load static %}
@@ -16,13 +16,13 @@
           <div class="carousel-item active">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'First' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
                   <div class="carousel-caption carousel-caption-1">
-                    <h4 class="display-4">{{ carousel.title }}</h4>
+                    <h4 class="display-4">{{ carousel.title_russian }}</h4>
                     <p class="lead">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -33,13 +33,13 @@
           <div class="carousel-item">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'Second' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
                   <div class="carousel-caption carousel-caption-2">
-                    <h4 class="display-4">{{ carousel.title }}</h4>
+                    <h4 class="display-4">{{ carousel.title_russian }}</h4>
                     <p class="lead">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -50,13 +50,13 @@
           <div class="carousel-item">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'Third' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
                   <div class="carousel-caption carousel-caption-3">
-                    <h4 class="display-4">{{ carousel.title }}</h4>
+                    <h4 class="display-4">{{ carousel.title_russian }}</h4>
                     <p class="lead">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -87,13 +87,13 @@
           <div class="carousel-item active">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'First' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
                   <div class="carousel-caption carousel-caption-1">
-                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
                     <p class="lead" style="font-size: 20x;">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -104,13 +104,13 @@
           <div class="carousel-item">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'Second' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
                   <div class="carousel-caption carousel-caption-2">
-                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
                     <p class="lead" style="font-size: 20px;">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -121,13 +121,13 @@
           <div class="carousel-item">
             {% for carousel in carousel %}
               {% if carousel.slide_number == 'Third' %}
-                <a href="{{ carousel.link }}" class="stretched-link">
+                <a href="{{ carousel.link_russian }}" class="stretched-link">
                 <div class="container">
                   <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
                   <div class="carousel-caption carousel-caption-3">
-                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                    <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
                     <p class="lead" style="font-size: 20px;">
-                      {{ carousel.caption }}
+                      {{ carousel.caption_russian }}
                     </p>
                   </div>
                 </div>
@@ -156,8 +156,8 @@
       <div class="col-sm-4 text-center">
         <a href="{% url 'blog-search' %}" class="nav-link">
         <i class="fas fa-coffee fa-2x mb-2"></i>
-        <h5>Cafés & Restaurants</h5>
-        <p>Browse a variety of cafés, coffee houses, dessert cafés, and restaurants.</p>
+        <h5>Кафе и Рестораны</h5>
+        <p>Просмотр разнообразие кафе, кофейни, десерт кафе, и рестораны.</p>
         </a>
       </div>
       <div class="col-sm-4 text-center">
@@ -165,15 +165,15 @@
         <i class="fas fa-star fa-2x mb-2"></i>
         <i class="fas fa-star fa-2x mb-2"></i>
         <i class="fas fa-star-half-alt fa-2x mb-2"></i>
-        <h5>Search by Features</h5>
-        <p>Click to Search destinations by ratings, nearest subway station, unique features, and more.</p>
+        <h5>Поиск по качествам</h5>
+        <p>Нажмите, чтобы найти пункты назначения по рейтингам, ближайшей станции метро, уникальные функции и многое другое.</p>
         </a>
       </div>
       <div class="col-sm-4 text-center">
         <a href="{% url 'blog-map' %}" class="nav-link">
         <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
-        <h5>View Locations</h5>
-        <p>Every review contains a location pin. You can also click here to browse the Tasty Map.</p>
+        <h5>Просмотр мест</h5>
+        <p>Каждый обзор содержит пин-код местоположения. Вы также можете нажать здесь, чтобы просмотреть Вкусную карту.</p>
         </a>
       </div>
     </div>

@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% block content %}
 
 <link href="https://fonts.googleapis.com/css?family=Unica+One&display=swap" rel="stylesheet">
@@ -7,6 +8,20 @@
 <section id="blog-banner">
 <div class="container-fluid d-none d-md-block pb-5" style="padding:0;">
   <div class="row-full">
+    {% if post.translated_blog_link %}
+      {% if post.language == 'English' %}
+        <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+          <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+          <p class="muted" style="font-size: 14px;">на русском</p>
+        </a>  
+      {% endif %}
+      {% if post.language == 'Russian' %}
+        <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+          <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+          <p class="muted" style="font-size: 14px;">in English</p>
+        </a>
+      {% endif %}
+    {% endif %}
     <div class="banner-text d-none d-md-block">
       {{post.title}}
       {% if post.author.username == 'Matt' or 'Steph' %}
@@ -21,6 +36,20 @@
 <!-- Mobile View Blog Banner -->
 <div class="container-fluid pb-4 d-md-none d-sm-block" style="padding:0;">
   <div class="row-full">
+    {% if post.translated_blog_link %}
+        {% if post.language == 'English' %}
+          <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+            <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+            <p class="muted" style="font-size: 14px;">на русском</p>
+          </a>  
+        {% endif %}
+        {% if post.language == 'Russian' %}
+          <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+            <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+            <p class="muted" style="font-size: 14px;">in English</p>
+          </a>
+        {% endif %}
+      {% endif %}
     <div class="mobile-banner-text">
       {{post.title}}
       {% if post.author.username == 'Matt' or 'Steph' %}
@@ -48,9 +77,16 @@
         <div class="card card-hover">
           <div class="card-header">
             <h5 class="mb-0">
+              {% if post.language == "English" %}
               <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
                 <i class="fas fa-arrow-circle-down"></i> The Good
               </div>
+              {% endif %}
+              {% if post.language == "Russian" %}
+              <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
+                <i class="fas fa-arrow-circle-down"></i> Плюсы
+              </div>
+              {% endif %}
             </h5>
           </div>
           <div id="collapse1" class="collapse">
@@ -63,9 +99,16 @@
         <div class="card card-hover">
           <div class="card-header">
             <h5 class="mb-0">
+              {% if post.language == "English" %}
               <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
                 <i class="fas fa-arrow-circle-down"></i> The Bad
               </div>
+              {% endif %}
+              {% if post.language == "Russian" %}
+              <div href="#collapse2" data-toggle="collapse" data-parent="#accordion">
+                <i class="fas fa-arrow-circle-down"></i> Mинусы
+              </div>
+              {% endif %}
             </h5>
           </div>
           <div id="collapse2" class="collapse">
@@ -79,9 +122,16 @@
         <div class="card card-hover">
           <div class="card-header">
             <h5 class="mb-0">
+              {% if post.language == "English" %}
               <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
                 <i class="fas fa-arrow-circle-down"></i> Score Breakdown
               </div>
+              {% endif %}
+              {% if post.language == "Russian" %}
+              <div href="#collapse3" data-toggle="collapse" data-parent="#accordion">
+                <i class="fas fa-arrow-circle-down"></i> Количество Очков
+              </div>
+              {% endif %}
             </h5>
           </div>
           <div id="collapse3" class="collapse">

@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404, reverse, HttpResponseRedirect
+from django.shortcuts import render, render_to_response, get_object_or_404, reverse, HttpResponseRedirect, HttpResponse
+from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.paginator import Paginator
 from django.views.generic import (
@@ -30,24 +31,42 @@ from .models import (
     FoodSearchBanner,
     LifeBlogSearchBanner,
     AboutUsBanner,
-    FoodMap
+    FoodMap,
+    Profile
 )
 
 from django.contrib.auth.models import User
 from django.contrib import messages
 
 
-
 class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
-    context_object_name = 'posts'
     ordering = ['-date_posted']
     paginate_by = 27
-
+    
     def get_context_data(self, **kwargs):
+
         context = super().get_context_data(**kwargs)
         context['carousel'] = CarouselImage.objects.all()
+        context['posts'] = Post.objects.all().filter(language='English')
+            
+        return context
+
+
+
+class PostListViewRussian(ListView):
+    model = Post
+    template_name = 'blog/home_ru.html' #<app>/<model>_<viewtype>.html
+    ordering = ['-date_posted']
+    paginate_by = 27
+    
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['carousel'] = CarouselImage.objects.all()
+        context['posts'] = Post.objects.all().filter(language='Russian')
+            
         return context
 
 
@@ -60,7 +79,6 @@ class PostDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         # Get the blog from id and add it to the context
         context['post'] = get_object_or_404(Post, pk = self.kwargs['pk'])
-        # query comments, filter those related to the post
         comments_query = Comment.objects.all().order_by('-date_posted')
         comments_query_filtered = comments_query.filter(post_id=context['post'])
         context['user_comments'] = comments_query_filtered
@@ -179,8 +197,9 @@ def valid_query(param):
 
 
 def PostFilter(request):
-    # query all post objects and feature objects
-    qs = Post.objects.all()
+
+    # Query all life post objects
+    qs = Post.objects.all().filter(language='English')
     banner = FoodSearchBanner.objects.all()
     store_type = StoreType.objects.all()
     nearest_station = Station.objects.all()
@@ -203,8 +222,8 @@ def PostFilter(request):
     atmosphere_rating_query = request.GET.get('atmosphere_rating')
     price_rating_query = request.GET.get('price_rating')
     service_rating_query = request.GET.get('service_rating')
- 
-    # retrieve the form request queries for the life blogs
+
+    # retrieve the form request queries for the life blogs ('qs' is pre-filtered for language above)
     if valid_query(title_query):
         qs = qs.filter(title__icontains=title_query)
 
@@ -367,16 +386,6 @@ class MapView(TemplateView):
         return context
 
 
-
-    
-class LifeBlogListView(ListView):
-    model = LifeBlog
-    template_name = 'blog/life.html' #<app>/<model>_<viewtype>.html
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
-    paginate_by = 27
-
-
 class LifeBlogDetailView(DetailView):
     model = LifeBlog
     template_name = 'blog/life_detail.html'
@@ -435,22 +444,21 @@ class LifeBlogCommentCreateView(LoginRequiredMixin, CreateView):
 
 
 def LifeBlogFilter(request):
-    # query all life post objects and blog types
-    qs = LifeBlog.objects.all()
+
+    # Query all life post objects and blog types for logged-in users
+    qs = LifeBlog.objects.all().filter(language='English')
     banner = LifeBlogSearchBanner.objects.all()
     blog_type = BlogType.objects.all()
     tags = Tag.objects.all()
     
-
     # retreive the form request
     title_query = request.GET.get('title')
     blog_type_query = request.GET.get('blog_type')
     tags_query = request.GET.get('tags')
 
-
     # retrieve the form request queries for the life blogs
     if valid_query(title_query):
-        qs = qs.filter(title__icontains=title_query)
+        qs = qs.filter(title__icontains=title_query) 
 
     if valid_query(blog_type_query) and blog_type_query != 'Category...':
         qs = qs.filter(blog_type__name=blog_type_query)

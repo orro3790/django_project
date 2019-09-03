@@ -19,14 +19,6 @@
 <title>What The Blin</title>
 </head>
 
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M4QHDHD');</script>
-<!-- End Google Tag Manager -->
-
 <section id="navbar">
 <div id="navbar-container">
   <nav class="navbar navbar-expand-lg fixed-top navbar-light py-1" data-spy="affix">
@@ -41,56 +33,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
 
+
+
           <li class="nav-item nav-link {% block nav_item_blog-search %}{% endblock nav_item_blog-search %}">
-            <a href="{% url 'blog-search' %}" class="nav-link">Search Food Blogs</a>
+            <a href="{% url 'blog-search' %}" class="nav-link">Поиск еды</a>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_life-blog-search %}{% endblock nav_item_life-blog-search %}">
-            <a href="{% url 'life-blog-search' %}" class="nav-link">Life in Moscow</a>
+            <a href="{% url 'life-blog-search' %}" class="nav-link">Жизнь в москве</a>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_blog-map %}{% endblock nav_item_blog-map %}">
-            <a href="{% url 'blog-map' %}" class="nav-link">Map</a>
+            <a href="{% url 'blog-map' %}" class="nav-link">Mарта</a>
           </li>
 
           <li class="nav-item dropdown nav-link {% block nav_item_classifieds %}{% endblock nav_item_classifieds %}">
-            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classifieds</a>
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Объявления</a>
             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'ad-list' %}">Buy and Sell</a>
-              <a class="dropdown-item" href="{% url 'jobs-list' %}">Jobs</a>
+              <a class="dropdown-item" href="{% url 'ad-list' %}">Покупать и продавать</a>
+              <a class="dropdown-item" href="{% url 'jobs-list' %}">Работы</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'faq' %}">FAQ & Terms of Use</a>
+              <a class="dropdown-item" href="{% url 'faq' %}">ЧаВо и и условия использования</a>
             </div>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_about %}{% endblock nav_item_about %}">
-            <a href="{% url 'blog-about' %}" class="nav-link">Contact</a>
+            <a href="{% url 'blog-about' %}" class="nav-link">Контакт</a>
           </li>
 
           {% if user.is_authenticated %}
           <li class="nav-item nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}">
-            <a href="{% url 'profile' %}" class="nav-link">Profile
+            <a href="{% url 'profile' %}" class="nav-link">Профиль
               <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle nav-profile" style="width:30px; height:30px;">
             </a>
           </li>
 
-          <li class="nav-item nav-link {% block nav_item_blog-home-ru %}{% endblock nav_item_blog-home-ru %}">
-            <a href="{% url 'blog-home-ru' %}" class="stretched-link nav-language-flag">
-              <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded" style="width:25px;">
-              EN
+          <li class="nav-item nav-link {% block nav_item_blog-home %}{% endblock nav_item_blog-home %}">
+            <a href="{% url 'blog-home' %}" class="stretched-link nav-language-flag">
+              <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded" style="width:25px;">
+              RU
             </a>  
           </li>
 
           <li class="nav-item nav-link {% block nav_item_logout %}{% endblock nav_item_logout %}">
-            <a href="{% url 'logout' %}" class="nav-link">Logout</i></a>
+            <a href="{% url 'logout' %}" class="nav-link">Выход</i></a>
           </li>
           {% else %}
           <li class="nav-item nav-link {% block nav_item_login %}{% endblock nav_item_login %}">
-            <a href="{% url 'login' %}" class="nav-link">Login</i>
+            <a href="{% url 'login' %}" class="nav-link">Вход</i>
           </a>
           </li>
           <li class="nav-item nav-link {% block nav_item_register %}{% endblock nav_item_register %}">
-            <a href="{% url 'register' %}" class="nav-link">Register</a>
+            <a href="{% url 'register' %}" class="nav-link">Регистрация</a>
           </li>
           {% endif %}
         </ul>
@@ -109,10 +103,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% endfor %}
 
 <body class="my-0 pb-5">
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QHDHD"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 <!-- Insert Content -->
 {% block content %}{% endblock %}
 </body>
