@@ -201,7 +201,9 @@ class LifeBlog(models.Model):
         """
         Returns the url to access a particular blog post instance.
         """
-        return reverse('life-post-detail', kwargs={'pk': self.pk})
+        return reverse('life-blog-detail', kwargs={'pk': self.pk})
+
+
 
 
 class LifeBlogComment(models.Model):

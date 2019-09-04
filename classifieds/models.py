@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from PIL import Image
+from django.urls import reverse
 
 
 
@@ -137,6 +138,12 @@ class Ad(models.Model):
             image_3.thumbnail(output_size)
             image_3.save(self.image_3.path)
 
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular ad instance.
+        """
+        return reverse('ad-detail', kwargs={'pk': self.pk})
+
         
 class Job(models.Model):
 
@@ -193,6 +200,12 @@ class Job(models.Model):
 
     def __str__(self):
         return '%s, by %s' % (self.title, self.author)
+
+    def get_absolute_url(self):
+        """
+        Returns the url to access a particular job instance.
+        """
+        return reverse('job-detail', kwargs={'pk': self.pk})
 
 
 class AdEmail(models.Model):
