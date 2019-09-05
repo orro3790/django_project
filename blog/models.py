@@ -263,7 +263,7 @@ def save_life_blog(sender, instance, **kwargs):
 
     automated_subject = 'A New "Life in Moscow" Blog is Out: %s' % (instance.title)
 
-    automated_message = 'What The Blin has a "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to food blogs' field. Thanks for supporting us!"
+    automated_message = 'What The Blin has a "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to Life in Moscow blogs' field. Thanks for supporting us!"
 
     
     if instance.send_email_notification == True:
