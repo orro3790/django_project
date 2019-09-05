@@ -54,7 +54,6 @@ class PostListView(ListView):
         return context
 
 
-
 class PostListViewRussian(ListView):
     model = Post
     template_name = 'blog/home_ru.html' #<app>/<model>_<viewtype>.html
@@ -83,44 +82,6 @@ class PostDetailView(DetailView):
         comments_query_filtered = comments_query.filter(post_id=context['post'])
         context['user_comments'] = comments_query_filtered
         return context
-
-
-class PostCreateView(LoginRequiredMixin, CreateView):
-    model = Post
-    fields = [
-        'card_image',
-        'title',
-        'overall_rating',
-        'card_content',
-        'banner',
-        'the_good',
-        'the_bad',
-        'paragraph_1',
-        'snapshot_1',
-        'paragraph_2',
-        'snapshot_2',
-        'paragraph_3',
-        'snapshot_3',
-        'paragraph_4',
-        'snapshot_4',
-        'paragraph_5',
-        'snapshot_5',
-        'store_type',
-        'nearest_station',
-        'taste_rating',
-        'appearance_rating',
-        'atmosphere_rating',
-        'service_rating',
-        'price_rating',
-        'special_feature',
-        'google_map',
-        'dish_recommendation',
-        'recommendation_write_up'
-        ]
-
-    def form_valid(self, form, *args, **kwargs):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

@@ -19,8 +19,9 @@ class Profile(models.Model):
     twitter_link = models.CharField(max_length=150, help_text="Links your twitter URL to your comments. You can optionally enable people to respond to your classified ads, via twitter.", default="https://twitter.com", blank=True)
     instagram_link = models.CharField(max_length=150, help_text="Links your instagram URL to your comments. You can optionally enable people to respond to your classified ads, via instagram", default="https://www.instagram.com", blank=True)
     facebook_link = models.CharField(max_length=150, help_text="Links your facebook URL to your comments. You can optionally enable people to respond to your classified ads, via facebook", default="https://www.facebook.com", blank=True)
-    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="Display the site in English, or Russian? --- (Blogs are written in English first. To view new blogs as soon as they are released, select English!)")
-
+    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="(Blogs are written in English first.")
+    subscribe_to_food_blogs = models.BooleanField(default=True, help_text='Do you wish to be notified with an email when a new food blog post is published?')
+    subscribe_to_Life_in_Moscow_blogs = models.BooleanField(default=True, help_text='Do you wish to be notified with an email when a new "Life in Moscow" blog is published?')
 
     def __str__(self):
         return f'{self.user.username} Profile'

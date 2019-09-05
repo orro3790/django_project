@@ -30,8 +30,9 @@ class PostAdmin(admin.ModelAdmin):
     ("Card", {"fields": ["card_image","title", "card_content"]}),
     ("Blog Article", {"fields": ["banner", "mobile_banner", "the_good", "the_bad", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B",]}),
     ("Ratings and Location", {"fields": ["taste_rating", "appearance_rating", "atmosphere_rating", "price_rating",
-    "service_rating", "overall_rating","special_feature", "store_type", "nearest_station", "google_map", "language", "translated_blog_link"]}),
-    ("Meta", {"fields": ["date_posted"]})
+    "service_rating", "overall_rating","special_feature", "store_type", "nearest_station", "google_map"]}),
+    ("Meta Data", {"fields": [ "language", "translated_blog_link", "date_posted"]}),
+    ("Subscriber Notifications", {"fields": ["send_email_notification", "email_message"]})
   ]
 
   def save_model(self, request, obj, form, change):
@@ -45,7 +46,8 @@ class LifeBlogAdmin(admin.ModelAdmin):
     ("Card", {"fields": ["card_image","title", "card_content"]}),
     ("Blog Article", {"fields": ["banner", "mobile_banner", "blog_type", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B", "language", "translated_blog_link"]}),
     ("Location", {"fields": ["google_map"]}),
-    ("Meta", {"fields": ["date_posted","tags"]})
+    ("Meta Data", {"fields": ["date_posted","tags"]}),
+    ("Subscriber Notifications", {"fields": ["send_email_notification", "email_message"]})
   ]
 
   def save_model(self, request, obj, form, change):

@@ -21,7 +21,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['language', 'image', 'twitter_link', 'instagram_link', 'facebook_link']
+        fields = ['image', 'subscribe_to_food_blogs', 'twitter_link', 'instagram_link', 'facebook_link']
 
     def clean_facebook_link(self, *args, **kwargs):
         facebook_link = self.cleaned_data.get("facebook_link")

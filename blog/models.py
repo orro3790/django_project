@@ -3,6 +3,9 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
 from users.models import Profile
+from django.db.models.signals import post_save
+from django.core.mail import send_mail
+from django.http import HttpRequest
 
 
 class StoreType(models.Model):
@@ -122,6 +125,8 @@ class Post(models.Model):
     google_map = models.CharField(default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', blank=False, max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    send_email_notification = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
+    email_message = models.TextField(blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
     
     def __str__(self):
         return self.title
@@ -131,6 +136,46 @@ class Post(models.Model):
         Returns the url to access a particular blog post instance.
         """
         return reverse('post-detail', kwargs={'pk': self.pk})
+
+
+def save_post(sender, instance, **kwargs):
+
+    # Instance URL
+    instance_url_path = instance.get_absolute_url()
+    blog_link = 'https://www.whattheblin.com'+(instance_url_path)
+
+
+    # Query subscriber list:
+    subscribers = Profile.objects.all().filter(subscribe_to_food_blogs=True)
+
+    automated_subject = 'A New Food Blog is Out!: %s' % (instance.title)
+
+    automated_message = 'What The Blin has a new food blog for you! Have you been to '+ instance.title +'? \n \nRead our blog post about it at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think, especially if you've been there too (we want to know your favorite menu item from " + instance.title + ", in case we haven't tried it!) \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to food blogs' field. Thanks for supporting us, and enjoy!"
+
+    
+    if instance.send_email_notification == True:
+        if instance.email_message:
+            for profile in subscribers:
+                send_mail(
+                        automated_subject,
+                        instance.email_message,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+        else:
+            for profile in subscribers:
+                send_mail(
+                        automated_subject,
+                        automated_message,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+
+
+# parameters = (Event function, Model that triggers the desired function)
+post_save.connect(save_post, sender=Post)
 
 
 class Comment(models.Model):
@@ -193,6 +238,8 @@ class LifeBlog(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag)
+    send_email_notification = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
+    email_message = models.TextField(blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
 
     def __str__(self):
         return self.title
@@ -204,6 +251,44 @@ class LifeBlog(models.Model):
         return reverse('life-blog-detail', kwargs={'pk': self.pk})
 
 
+def save_life_blog(sender, instance, **kwargs):
+
+    # Instance URL
+    instance_url_path = instance.get_absolute_url()
+    blog_link = 'https://www.whattheblin.com'+(instance_url_path)
+
+
+    # Query subscriber list:
+    subscribers = Profile.objects.all().filter(subscribe_to_Life_in_Moscow_blogs=True)
+
+    automated_subject = 'A New "Life in Moscow" Blog is Out: %s' % (instance.title)
+
+    automated_message = 'What The Blin has a "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to food blogs' field. Thanks for supporting us!"
+
+    
+    if instance.send_email_notification == True:
+        if instance.email_message:
+            for profile in subscribers:
+                send_mail(
+                        automated_subject,
+                        instance.email_message,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+        else:
+            for profile in subscribers:
+                send_mail(
+                        automated_subject,
+                        automated_message,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+
+
+# parameters = (Event function, Model that triggers the desired function)
+post_save.connect(save_life_blog, sender=LifeBlog)
 
 
 class LifeBlogComment(models.Model):
