@@ -12,13 +12,13 @@
       {% if post.language == 'English' %}
         <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
           <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
-          <p class="muted" style="font-size: 14px;">на русском</p>
+          <p class="muted" style="font-size: 14px;">на русском?</p>
         </a>  
       {% endif %}
       {% if post.language == 'Russian' %}
         <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
           <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded mt-3" style="width:50px;">
-          <p class="muted" style="font-size: 14px;">in English</p>
+          <p class="muted" style="font-size: 14px;">in English?</p>
         </a>
       {% endif %}
     {% endif %}
