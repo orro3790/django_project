@@ -1,0 +1,150 @@
+{% extends "blog/base_ru.html" %}
+{% block nav_item_about %}active{% endblock nav_item_about %} 
+{% block content %}
+{% load static %}
+<head>
+<meta name="description" CONTENT="We're two Canadians living and working in Moscow. Learn about life in Moscow along with us by following our weekly blogs!">
+</head>
+
+
+<section id="about-body">
+
+<!-- VIDEO PLAY -->
+
+<section id="blog-banner">
+{% for banner in banner %}
+  {% if banner.visibility == 'Display' %}
+    <div class="container-fluid" style="padding:0;">
+      <div class="row-full">
+        <div class="banner-text d-none d-md-block">
+          {{ banner.caption }}
+        </div>
+        <img class="w-100 img-fluid" src="{{ banner.image.url }}">
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+</section>
+
+<!-- Social Media Cards -->
+<section id="socialmedia" class="mb-5 text-center">
+  <div class="container-fluid p-3">
+    <div class="row">
+      <div class="col">
+        <div class="info-header mb-5">
+          <h3 class="pb-3 pt-5">
+            Свяжитесь с нами в социальных сетях
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{qs.0.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
+            <h3>Matt</h3>
+            <h5 class="text" style=font-size:1.2rem;>Кофе + Десерт = Жизнь</h5>
+            <hr>
+            <p>
+              В течение многих лет я был очарован Россией и мечтал исследовать ее. Наконец-то я здесь!
+              Я переехал в Москву, чтобы открыть для себя город, от его улиц, кондитерских и кафе до ресторанов, музеев и многого другого. Теперь я страстно помогаю развивать здесь сообщество экспатов, делясь всеми невероятными местами, которые я обнаружил. Я - самоописанный наркоман кофе и десерта. Не стесняйся, скажи привет!
+            </p>
+            
+            <div class="d-flex justify-content-center">
+              <div class="p-4">
+                <a href="https://twitter.com/Whattheblin">
+                  <i class="fab fa-twitter fa-3x"></i>
+                </a>
+              </div>
+              <div class="p-4">
+                <a href="https://www.instagram.com/theblinmachine/">
+                  <i class="fab fa-instagram fa-3x"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <img src="{{qs.1.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
+            <h3>Steph</h3>
+            <h5 class="text">Конфеты Одержимые</h5>
+            <hr>
+            <p>Мои мотивы для путешествий - видеть удивительные достопримечательности и изучать новые игры из других культур. Хотя они, безусловно, веселые, и я наслаждаюсь ими, моя настоящая мотивация - это ... еда! Я люблю исследовать различные культуры через дегустацию еды. Это всегда самая захватывающая часть путешествия, и я с нетерпением жду возможности поделиться своими приключениями в России со всеми вами!</p>
+            <div class="d-flex justify-content-center">
+              <div class="p-4">
+                <a href="https://www.instagram.com/labelle44/">
+                  <i class="fab fa-instagram fa-3x"></i>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12">
+            <h3 style=font-size:1.8rem;>
+              Деловые Запросы:
+            </h3>
+          </div>
+          <div class="col-12">
+            contact@whattheblin.com
+          </div>
+        </div>
+        <div class="py-3">
+          <i class="far fa-envelope fa-3x"></i>
+        </div>
+      </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO MODAL -->
+<div class="modal fade" id="videoModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button class="close" data-dismiss="modal">
+          <span>&times;</span>
+        </button>
+        <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+{% endblock content %}
+
+<script>
+  // Video Play
+  $(function () {
+    // Auto play modal video
+    $(".video").click(function () {
+      var theModal = $(this).data("target"),
+        videoSRC = $(this).attr("data-video"),
+        videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
+      $(theModal + ' iframe').attr('src', videoSRCauto);
+      $(theModal).click(function () {
+        $(theModal + ' iframe').attr('src', videoSRC);
+      });
+    });
+  });
+</script>
+

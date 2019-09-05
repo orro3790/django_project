@@ -10,14 +10,15 @@ from .views import (
     LifeBlogDetailView,
     LifeBlogCommentCreateView,
     LifeBlogFilter,
+    about,
+    about_ru
 )
-from . import views
 
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
     path('blog/filtered/', PostFilter, name='blog-search'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
-    path('about/', views.about, name='blog-about'),
+    path('about/', about, name='blog-about'),
     path('post/<int:pk>/comment/', CommentCreateView.as_view(), name='post-comment'),
     path('post/<int:pk>/allcomments/', CommentListView.as_view(), name='comment-list'),
     path('life/<int:pk>/comment/', LifeBlogCommentCreateView.as_view(), name='life-blog-comment'),
@@ -27,4 +28,5 @@ urlpatterns = [
     
     #Russian pages
     path('ru/', PostListViewRussian.as_view(), name='blog-home-ru'),
+    path('about/ru/', about_ru, name='blog-about-ru'),
 ]

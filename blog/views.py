@@ -54,21 +54,6 @@ class PostListView(ListView):
         return context
 
 
-class PostListViewRussian(ListView):
-    model = Post
-    template_name = 'blog/home_ru.html' #<app>/<model>_<viewtype>.html
-    ordering = ['-date_posted']
-    paginate_by = 27
-    
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-        context['carousel'] = CarouselImage.objects.all()
-        context['posts'] = Post.objects.all().filter(language='Russian')
-            
-        return context
-
-
 class PostDetailView(DetailView):
     model = Post
 
@@ -443,3 +428,30 @@ def LifeBlogFilter(request):
     }
 
     return render(request, 'blog/life_search.html', context)
+
+
+# Russian views
+
+class PostListViewRussian(ListView):
+    model = Post
+    template_name = 'blog/home_ru.html' #<app>/<model>_<viewtype>.html
+    ordering = ['-date_posted']
+    paginate_by = 27
+    
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+        context['carousel'] = CarouselImage.objects.all()
+        context['posts'] = Post.objects.all().filter(language='Russian')
+        return context
+
+
+def about_ru(request):
+    qs = AboutUsPicture.objects.all()
+    banner = AboutUsBanner.objects.all()
+
+    context = {
+        'qs': qs,
+        'banner': banner
+    }
+    return render(request, 'blog/about_ru.html', context)

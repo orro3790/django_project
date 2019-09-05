@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div id="navbar-container">
   <nav class="navbar navbar-expand-lg fixed-top navbar-light py-1" data-spy="affix">
     <div class="container">
-      <a href="{% url 'blog-home' %}" class="navbar-brand justify-left">
+      <a href="{% url 'blog-home-ru' %}" class="navbar-brand justify-left">
           <img src="{% static 'blog/images/wbrussia.jpg' %}" style="width: 40px;">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </li>
 
           <li class="nav-item nav-link {% block nav_item_blog-map %}{% endblock nav_item_blog-map %}">
-            <a href="{% url 'blog-map' %}" class="nav-link">Mарта</a>
+            <a href="{% url 'blog-map' %}" class="nav-link">Карта</a>
           </li>
 
           <li class="nav-item dropdown nav-link {% block nav_item_classifieds %}{% endblock nav_item_classifieds %}">
@@ -65,8 +65,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
           </li>
 
-          <li class="nav-item nav-link {% block nav_item_about %}{% endblock nav_item_about %}">
-            <a href="{% url 'blog-about' %}" class="nav-link">Контакт</a>
+          <li class="nav-item nav-link {% block nav_item_about_ru %}{% endblock nav_item_about_ru %}">
+            <a href="{% url 'blog-about-ru' %}" class="nav-link">Контакт</a>
           </li>
 
           {% if user.is_authenticated %}
