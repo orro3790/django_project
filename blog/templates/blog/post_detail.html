@@ -720,7 +720,14 @@
   </div>
 </div>
 {% else %}
-  <h4 class="text-center pt-4">Comments: {{user_comments.count}}</h4>
+
+  <h4 class="text-center pt-4">
+    {% if post.language == 'English' %}
+      Comments: {{user_comments.count}}
+    {% elif post.language == 'Russian' %}
+      Комментарии: {{user_comments.count}}
+    {% endif %}
+  </h4>
   <div class="container text-center py-5">
   {% for comment in user_comments|slice:":50" %}
     <div class="card">
