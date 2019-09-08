@@ -448,7 +448,7 @@ class FoodSearchBanner(models.Model):
     link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
-        return self.title
+        return self.slide_number
 
 
 class LifeBlogSearchBanner(models.Model):
@@ -472,7 +472,7 @@ class LifeBlogSearchBanner(models.Model):
     link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
-        return self.title
+        return self.slide_number
 
 
 class AboutUsBanner(models.Model):
