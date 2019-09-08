@@ -4,6 +4,8 @@
 {% load classifieds_tags %}
 {% load humanize %}
 {% block content %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <head>
 <meta name="description" CONTENT="Welcome to Moscow's expat classifieds board. New to Moscow and looking for something? Got something to sell? Check the Buy and Sell board. Want a new job? Head to jobs section.">
@@ -17,48 +19,71 @@
     <div class="row align-items-center">
       <div class="col-5">
         <select id="category_filter" class="form-control" name="category_filter">
-          <option selected>Category...</option>
-          <option>arts and crafts - ({% total_arts_and_crafts %})</option>
-          <option>baby and kids - ({% total_baby_and_kids %})</option>
-          <option>beauty and health - ({% total_beauty_and_health %})</option>
-          <option>bikes - ({% total_bikes %})</option>
-          <option>books - ({% total_books %})</option>
-          <option>cell phones - ({% total_cell_phones %})</option>
-          <option>clothing - ({% total_clothing %})</option> 
-          <option>collectibles - ({% total_collectibles %})</option>
-          <option>computers - ({% total_computers %})</option>
-          <option>electronics - ({% total_electronics %})</option>
-          <option>garden - ({% total_garden %})</option>
-          <option>free - ({% total_free %})</option>
-          <option>life - ({% total_life %})</option>
-          <option>household - ({% total_household %})</option>
-          <option>pets - ({% total_pets %})</option>
-          <option>furniture - ({% total_furniture %})</option>
-          <option>jewelery - ({% total_jewelery %})</option>
-          <option>materials - ({% total_materials %})</option>
-          <option>musical instruments - ({% total_musical_instruments %})</option>
-          <option>cameras - ({% total_cameras %})</option>
-          <option>tools - ({% total_tools %})</option>
-          <option>games - ({% total_games %})</option>
+          {% if LANGUAGE_CODE == "en" %}
+            <option selected>Category...</option>
+            <option>arts and crafts - ({% total_arts_and_crafts %})</option>
+            <option>baby and kids - ({% total_baby_and_kids %})</option>
+            <option>beauty and health - ({% total_beauty_and_health %})</option>
+            <option>bikes - ({% total_bikes %})</option>
+            <option>books - ({% total_books %})</option>
+            <option>cell phones - ({% total_cell_phones %})</option>
+            <option>clothing - ({% total_clothing %})</option> 
+            <option>collectibles - ({% total_collectibles %})</option>
+            <option>computers - ({% total_computers %})</option>
+            <option>electronics - ({% total_electronics %})</option>
+            <option>garden - ({% total_garden %})</option>
+            <option>free - ({% total_free %})</option>
+            <option>household - ({% total_household %})</option>
+            <option>pets - ({% total_pets %})</option>
+            <option>furniture - ({% total_furniture %})</option>
+            <option>jewelery - ({% total_jewelery %})</option>
+            <option>materials - ({% total_materials %})</option>
+            <option>musical instruments - ({% total_musical_instruments %})</option>
+            <option>cameras - ({% total_cameras %})</option>
+            <option>tools - ({% total_tools %})</option>
+            <option>games - ({% total_games %})</option>
+          {% elif LANGUAGE_CODE == "ru" %}
+            <option selected>Категория...</option>
+            <option>искусства и ремесла - ({% total_arts_and_crafts %})</option>
+            <option>малыш и дети - ({% total_baby_and_kids %})</option>
+            <option>красота и здоровье - ({% total_beauty_and_health %})</option>
+            <option>велосипеды - ({% total_bikes %})</option>
+            <option>книги - ({% total_books %})</option>
+            <option>телефоны - ({% total_cell_phones %})</option>
+            <option>одежда - ({% total_clothing %})</option> 
+            <option>предметы коллекционирования - ({% total_collectibles %})</option>
+            <option>компьютеры - ({% total_computers %})</option>
+            <option>электроника - ({% total_electronics %})</option>
+            <option>сад - ({% total_garden %})</option>
+            <option>свободно - ({% total_free %})</option>
+            <option>домашнее хозяйство - ({% total_household %})</option>
+            <option>домашнее животное - ({% total_pets %})</option>
+            <option>мебель - ({% total_furniture %})</option>
+            <option>ювелирные изделия - ({% total_jewelery %})</option>
+            <option>материалы - ({% total_materials %})</option>
+            <option>музыкальные инструменты - ({% total_musical_instruments %})</option>
+            <option>камеры - ({% total_cameras %})</option>
+            <option>инструменты - ({% total_tools %})</option>
+            <option>игры - ({% total_games %})</option>
+          {% endif %}
         </select>
       </div>
       <div class="col-5">
         <div class="input-group">
-          <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+          {% if LANGUAGE_CODE == "en" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+          {% elif LANGUAGE_CODE == "ru" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Название содержит..." />
+          {% endif %}
             <span class="input-group-append">
               <div class="input-group-text bg-transparent">
                 <i class="fa fa-search"></i>
               </div>
             </span>
-            <span class="input-group-append">
-              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
-                <i class="fas fa-history" style="font-size: 0.9rem;"></i>
-              </button>
-            </span>
         </div>
       </div>
       <div class="col-2">
-        <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+        <button type="submit" class="btn btn-dark" value="Filter">{% trans "Submit" %}</button>
       </div>   
     </div>
   </div>
@@ -76,17 +101,12 @@
                 <i class="fa fa-search"></i>
               </div>
             </span>
-            <span class="input-group-append">
-              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
-              <i class="fas fa-history" style="font-size: 0.9rem;"></i>
-              </button>
-            </span>
         </div>
       </div>
 
       <div class="col-12 py-3">
         <select id="category_filter" class="form-control" name="category_filter">
-          <option selected>Category...</option>
+          <option selected>{% trans "Category..." %}</option>
           <option>arts and crafts - ({% total_arts_and_crafts %})</option>
           <option>baby and kids - ({% total_baby_and_kids %})</option>
           <option>beauty and health - ({% total_beauty_and_health %})</option>
@@ -99,7 +119,6 @@
           <option>electronics - ({% total_electronics %})</option>
           <option>garden - ({% total_garden %})</option>
           <option>free - ({% total_free %})</option>
-          <option>life - ({% total_life %})</option>
           <option>household - ({% total_household %})</option>
           <option>furniture - ({% total_furniture %})</option>
           <option>jewelery - ({% total_jewelery %})</option>
@@ -113,7 +132,7 @@
 
       <div class="col">
         <div class="container text-center">
-          <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+          <button type="submit" class="btn btn-dark" value="Filter">{% trans "Submit" %}</button>
         </div>
       </div>   
 
@@ -121,33 +140,32 @@
   </form>
 </div>
 
-
 <div class="container py-4">
   <div class="row">
     <div class="col">
       <div class="card classifieds-list-card px-3">
         <img class="card-img-top border-bottom" src="{% static 'blog/images/buyandsell.jpg' %}">
         <div class="card-body">
-          <h3>Community Ads</h3>
+          <h3>{% trans "Community Ads" %}</h3>
           <div class="row border-bottom">
             <!-- Adjust the search result counts based on whether or not the search filter was used -->
             <div class="col-8 col-md-6">
               {% if ads.paginator.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.paginator.count}} results.</p>
+                <p class="text-muted m-0 p-0">{{ads.paginator.count}} {% trans "results." %}</p>
               {% elif ads.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.count}} results.</p>
+                <p class="text-muted m-0 p-0">{{ads.count}} {% trans "results." %}</p>
               {% elif ads.count == 0 %}
-                <p class="text-muted m-0 p-0">No results found.</p>
+                <p class="text-muted m-0 p-0">{% trans "No results found." %}</p>
               {% endif %}
             </div>
             <div class="col col-md-2 d-none d-md-block">
-              Condition
+              {% trans "Condition" %}
             </div>
             <div class="col-4 col-md-2">
-              Price
+              {% trans "Price" %}
             </div>
             <div class="col col-md-2 d-none d-md-block">
-              Location
+              {% trans "Location" %}
             </div>
           </div>
           {% for ad in ads %}
@@ -185,7 +203,7 @@
             </div>
           {% endfor %}
           <div class="container text-center pt-5 pb-4">
-            <a href="{% url 'ad-create' %}" class="btn btn-dark">Post An Ad</a>
+            <a href="{% url 'ad-create' %}" class="btn btn-dark">{% trans "Post An Ad" %}</a>
           </div>
           <section id="paginate-buttons">
             <div class="container text-center pb-3">

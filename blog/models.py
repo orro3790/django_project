@@ -6,6 +6,9 @@ from users.models import Profile
 from django.db.models.signals import post_save
 from django.core.mail import send_mail
 from django.http import HttpRequest
+from django.utils.translation import gettext_lazy as _
+
+
 
 
 class StoreType(models.Model):
@@ -79,7 +82,53 @@ class Tag(models.Model):
         return self.name
 
 
-class Post(models.Model):
+# Russian models
+class RussianBlogCategory(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        # Display the plural form correctly in the admin panel
+        verbose_name_plural = "Russian blog categories"
+
+    def __str__(self):
+        return self.name
+
+
+class RussianTag(models.Model):
+    # Russian topic tags for life blogs
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class RussianPriceRating(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+class RussianStoreType(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class RussianStation(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+class RussianSpecialFeature(models.Model):
+    name = models.CharField(max_length=520)
+
+    def __str__(self):
+        return self.name
+
+
+class FoodBlog(models.Model):
 
     ENGLISH = 'English'
     RUSSIAN = 'Russian'
@@ -89,29 +138,34 @@ class Post(models.Model):
         (RUSSIAN, 'Russian')
     ]
 
-    banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='food_blog_banners', default='')
-    mobile_banner = models.ImageField(blank=False, help_text='This is the mobile version of the banner (600 x 600)', upload_to='food_blog_mobile_banners', default='')
-    card_image = models.ImageField(blank=False, default='', upload_to='food_blog_card_images')
+    # Text fields
     title = models.CharField(max_length=100)
     overall_rating = models.ManyToManyField(OverallRating)
     card_content = models.TextField(help_text='This is the preview text shown on the card.', default=None, max_length=300)
     the_good = models.TextField(help_text='Write a short summary describing the good features', max_length=500)
     the_bad = models.TextField(help_text='Write a short summary describing the bad features', max_length=500)
-    paragraph_1 = models.TextField(help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_1 = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_2 = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
+    paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
+    paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
+    paragraph_5 = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+
+    # Image fields
+    banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='food_blog_banners', default='')
+    mobile_banner = models.ImageField(blank=False, help_text='This is the mobile version of the banner (600 x 600)', upload_to='food_blog_mobile_banners', default='')
+    card_image = models.ImageField(blank=False, default='', upload_to='food_blog_card_images')
     snapshot_1 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_1_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 1.')
-    paragraph_2 = models.TextField(help_text='Paragraph 2', default=None, max_length=3000)
     snapshot_2 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_2_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 2.')
-    paragraph_3 = models.TextField(help_text='Paragraph 3', default=None, max_length=3000)
     snapshot_3 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_3_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 3.')
-    paragraph_4 = models.TextField(help_text='Paragraph 4', default=None, max_length=3000)
     snapshot_4 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_4_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 4.')
-    paragraph_5 = models.TextField(help_text='Paragraph 5', default=None, max_length=3000)
     snapshot_5 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_5_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 1.')
+
+    # Metric fields
     store_type = models.ManyToManyField(StoreType)
     nearest_station = models.ManyToManyField(Station)
     taste_rating = models.ManyToManyField(TasteRating)
@@ -120,9 +174,26 @@ class Post(models.Model):
     service_rating = models.ManyToManyField(ServiceRating)
     price_rating = models.ManyToManyField(PriceRating)
     special_feature = models.ManyToManyField(SpecialFeature)
-    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="Is this post in English, or Russian?")
-    translated_blog_link = models.CharField(blank=True, default='', max_length=500, help_text="If the blog exists in only one language, leave this field blank.")
-    google_map = models.CharField(default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', blank=False, max_length=600)
+
+    # Russian fields
+    title_russian = models.CharField(blank=True, max_length=100)
+    card_content_russian = models.TextField(blank=True, help_text='This is the preview text shown on the card.', default=None, max_length=300)
+    the_good_russian = models.TextField(blank=True, help_text='Write a short summary describing the good features', max_length=500)
+    the_bad_russian = models.TextField(blank=True, help_text='Write a short summary describing the bad features', max_length=500)
+    paragraph_1_russian = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_2_russian = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
+    paragraph_3_russian = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
+    paragraph_4_russian = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
+    paragraph_5_russian = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    store_type_russian = models.ManyToManyField(RussianStoreType, blank=True)
+    nearest_station_russian = models.ManyToManyField(RussianStation, blank=True)
+    special_feature_russian = models.ManyToManyField(RussianSpecialFeature, blank=True)
+    price_rating_russian = models.ManyToManyField(RussianPriceRating, blank=True)
+
+    publish_translated_blog = models.BooleanField(default=False)
+
+    # Meta fields
+    google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
     send_email_notification = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
@@ -138,7 +209,7 @@ class Post(models.Model):
         return reverse('post-detail', kwargs={'pk': self.pk})
 
 
-def save_post(sender, instance, **kwargs):
+def save_food_blog(sender, instance, **kwargs):
 
     # Instance URL
     instance_url_path = instance.get_absolute_url()
@@ -146,7 +217,7 @@ def save_post(sender, instance, **kwargs):
 
 
     # Query subscriber list:
-    subscribers = Profile.objects.all().filter(subscribe_to_food_blogs=True)
+    subscribers = Profile.objects.all().filter(subscribe_to_food_blogs=True).filter(language='English')
 
     automated_subject = 'A New Food Blog is Out!: %s' % (instance.title)
 
@@ -175,7 +246,7 @@ def save_post(sender, instance, **kwargs):
 
 
 # parameters = (Event function, Model that triggers the desired function)
-post_save.connect(save_post, sender=Post)
+post_save.connect(save_food_blog, sender=FoodBlog)
 
 
 class Comment(models.Model):
@@ -183,19 +254,21 @@ class Comment(models.Model):
     """
     Model representing a comment against a blog post.
     """
-    comment = models.TextField(max_length=500, help_text="Post your comment in here.")
+    comment = models.TextField(max_length=500, help_text=_("Post your comment here."), verbose_name=_('comment'))
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
      # Foreign Key used because PostComment can only have one author/User, but users can have multiple comments
     date_posted = models.DateTimeField(auto_now_add=True)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    post = models.ForeignKey(FoodBlog, on_delete=models.CASCADE)
 
     def __str__(self):
         return str(self.post)+' : '+self.comment[:200]+' — '+str(self.author)
 
-
-class BlogType(models.Model):
+class BlogCategory(models.Model):
     name = models.CharField(max_length=100)
+
+    class Meta:
+        # Display the plural form correctly in the admin panel
+        verbose_name_plural = "Blog categories"
 
     def __str__(self):
         return self.name
@@ -211,33 +284,48 @@ class LifeBlog(models.Model):
         (RUSSIAN, 'Russian')
     ]
 
-    card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
+    # Text fields
     title = models.CharField(max_length=100)
     card_content = models.TextField(default='Write your article here!', max_length=300)
+    paragraph_1 = models.TextField(default='Paragraph 1', max_length=3000)
+    paragraph_2 = models.TextField(default='Paragraph 2', max_length=3000)
+    paragraph_3 = models.TextField(default='Paragraph 3', max_length=3000)
+    paragraph_4 = models.TextField(default='Paragraph 4', max_length=3000)
+    paragraph_5 = models.TextField(default='Paragraph 5', max_length=3000)
+    card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
+    
+    # Image fields
     banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='life_blog_banners', default='')
     mobile_banner = models.ImageField(blank=False, help_text='This is the mobile version of the banner (600 x 600)', upload_to='life_blog_banners_mobile', default='')
-    paragraph_1 = models.TextField(default='Paragraph 1', max_length=3000)
     snapshot_1 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_1_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 1.')
-    paragraph_2 = models.TextField(default='Paragraph 1', max_length=3000)
     snapshot_2 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_2_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 2.')
-    paragraph_3 = models.TextField(default='Paragraph 1', max_length=3000)
     snapshot_3 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_3_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 3.')
-    paragraph_4 = models.TextField(default='Paragraph 1', max_length=3000)
     snapshot_4 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_4_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 4.')
-    paragraph_5 = models.TextField(default='Paragraph 1', max_length=3000)
     snapshot_5 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_5_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 5.')
-    blog_type = models.ManyToManyField(BlogType)
-    language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text="Is this post in English, or Russian?")
-    translated_blog_link = models.CharField(blank=True, default='', max_length=500, help_text="If the blog exists in only one language, leave this field blank.")
-    google_map = models.CharField(blank=True, default='', max_length=600)
+
+    # Russian fields
+    title_russian = models.CharField(max_length=100, blank=True)
+    card_content_russian = models.TextField(default='Write your article here!', max_length=300, blank=True)
+    paragraph_1_russian = models.TextField(help_text='Paragraph 1', default=None, max_length=3000, blank=True)
+    paragraph_2_russian = models.TextField(help_text='Paragraph 2', default=None, max_length=3000, blank=True)
+    paragraph_3_russian = models.TextField(help_text='Paragraph 3', default=None, max_length=3000, blank=True)
+    paragraph_4_russian = models.TextField(help_text='Paragraph 4', default=None, max_length=3000, blank=True)
+    paragraph_5_russian = models.TextField(help_text='Paragraph 5', default=None, max_length=3000, blank=True)
+    blog_category_russian = models.ManyToManyField(RussianBlogCategory, blank=True)
+    tags_russian = models.ManyToManyField(RussianTag, blank=True)
+
+    # Meta
+    blog_category = models.ManyToManyField(BlogCategory, blank=True)
+    tags = models.ManyToManyField(Tag, blank=True)
+    google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag)
+    publish_translated_blog = models.BooleanField(default=False)
     send_email_notification = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
     email_message = models.TextField(blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
 
@@ -259,11 +347,11 @@ def save_life_blog(sender, instance, **kwargs):
 
 
     # Query subscriber list:
-    subscribers = Profile.objects.all().filter(subscribe_to_Life_in_Moscow_blogs=True)
+    subscribers = Profile.objects.all().filter(subscribe_to_Life_in_Moscow_blogs=True).filter(language="English")
 
     automated_subject = 'A New "Life in Moscow" Blog is Out: %s' % (instance.title)
 
-    automated_message = 'What The Blin has a "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to Life in Moscow blogs' field. Thanks for supporting us!"
+    automated_message = 'What The Blin has a new "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to Life in Moscow blogs' field. Thanks for supporting us!"
 
     
     if instance.send_email_notification == True:
@@ -294,14 +382,13 @@ post_save.connect(save_life_blog, sender=LifeBlog)
 class LifeBlogComment(models.Model):
     
     """
-    Model representing a comment against a blog post.
+    Model representing a comment against a life blog post.
     """
-    comment = models.TextField(max_length=500, help_text="Post your comment in here.")
+    comment = models.TextField(max_length=500, help_text=_("Post your comment here."), verbose_name=_('comment'))
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
      # Foreign Key used because PostComment can only have one author/User, but users can have multiple comments
     date_posted = models.DateTimeField(auto_now_add=True)
     post = models.ForeignKey(LifeBlog, on_delete=models.CASCADE)
-    profile = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.post)+' : '+self.comment[:200]+' — '+str(self.author)
@@ -341,15 +428,24 @@ class CarouselImage(models.Model):
 
 class FoodSearchBanner(models.Model):
 
-    BANNER_STATUS = [
-    ('Display', 'Display'),
-    ('Hide', 'Hide')
+
+    SLIDE_NUMBER = [
+    ('First', 'First Slide'),
+    ('Second', 'Second Slide'),
+    ('Third', 'Third Slide'),
     ]
 
-    visibility = models.CharField(max_length=100, choices=BANNER_STATUS, default='Display', help_text="If inactive, the banner will not be displayed but can remain stored as a backup. Must select active to display.")
+
+    slide_number = models.CharField(max_length=100, choices=SLIDE_NUMBER, default='First Slide')
+    title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='food_blog_search_banners', default='')
     link = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link.')
+
+    # Russian fields
+    title_russian = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
+    caption_russian = models.TextField(blank=True, max_length=200, help_text='Creates a Russian caption over the image.')
+    link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
         return self.caption
@@ -357,15 +453,23 @@ class FoodSearchBanner(models.Model):
 
 class LifeBlogSearchBanner(models.Model):
 
-    BANNER_STATUS = [
-    ('Display', 'Display'),
-    ('Hide', 'Hide')
+
+    SLIDE_NUMBER = [
+    ('First', 'First Slide'),
+    ('Second', 'Second Slide'),
+    ('Third', 'Third Slide'),
     ]
 
-    visibility = models.CharField(max_length=100, choices=BANNER_STATUS, default='Display', help_text="If inactive, the banner will not be displayed but can remain stored as a backup. Must select active to display.")
+    slide_number = models.CharField(max_length=100, choices=SLIDE_NUMBER, default='First Slide')
+    title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='life_blog_search_banners', default='')
     link = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link.')
+
+    # Russian fields
+    title_russian = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
+    caption_russian = models.TextField(blank=True, max_length=200, help_text='Creates a Russian caption over the image.')
+    link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
         return self.caption
@@ -393,3 +497,4 @@ class FoodMap(models.Model):
 
     def __str__(self):
         return self.link
+

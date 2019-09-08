@@ -1,4 +1,5 @@
 {% load static %}
+{% load static i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-M4QHDHD');</script>
 <!-- End Google Tag Manager -->
+
 <meta name="description" CONTENT="Moscow's greatest food blog and home to the city's greatest expat community. Search for cafes, desserts, restaurants, and more. Use filters to find exactly what you're in the mood for, with location pins for every blog. Learn about life in Moscow by following our weekly blogs!">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +30,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 
 <section id="navbar">
-<div id="navbar-container">
+<div id="navbar-container ">
   <nav class="navbar navbar-expand-lg fixed-top navbar-light py-1" data-spy="affix">
-    <div class="container">
+    <div class="container-fluid">
       <a href="{% url 'blog-home' %}" class="navbar-brand justify-left">
           <img src="{% static 'blog/images/wbrussia.jpg' %}" style="width: 40px;">
       </a>
@@ -42,55 +44,91 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <ul class="navbar-nav ml-auto">
 
           <li class="nav-item nav-link {% block nav_item_blog-search %}{% endblock nav_item_blog-search %}">
-            <a href="{% url 'blog-search' %}" class="nav-link">Search Food Blogs</a>
+            <a href="{% url 'blog-search' %}" class="nav-link">
+              {% trans "Search Food Blogs" %}</a>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_life-blog-search %}{% endblock nav_item_life-blog-search %}">
-            <a href="{% url 'life-blog-search' %}" class="nav-link">Life in Moscow</a>
+            <a href="{% url 'life-blog-search' %}" class="nav-link">
+              {% trans "Life in Moscow" %}
+            </a>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_blog-map %}{% endblock nav_item_blog-map %}">
-            <a href="{% url 'blog-map' %}" class="nav-link">Map</a>
+            <a href="{% url 'blog-map' %}" class="nav-link">
+              {% trans "Map" %}
+            </a>
           </li>
 
           <li class="nav-item dropdown nav-link {% block nav_item_classifieds %}{% endblock nav_item_classifieds %}">
-            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Classifieds</a>
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {% trans "Classifieds" %}
+            </a>
             <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{% url 'ad-list' %}">Buy and Sell</a>
-              <a class="dropdown-item" href="{% url 'jobs-list' %}">Jobs</a>
+              <a class="dropdown-item" href="{% url 'ad-list' %}">
+                {% trans "Buy and Sell" %}
+              </a>
+              <a class="dropdown-item" href="{% url 'jobs-list' %}">
+                {% trans "Jobs" %}
+              </a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'faq' %}">FAQ & Terms of Use</a>
+              <a class="dropdown-item" href="{% url 'faq' %}">
+                {% trans "FAQ & Terms of Use" %}
+              </a>
             </div>
           </li>
 
           <li class="nav-item nav-link {% block nav_item_about %}{% endblock nav_item_about %}">
-            <a href="{% url 'blog-about' %}" class="nav-link">Contact</a>
+            <a href="{% url 'blog-about' %}" class="nav-link">
+              {% trans "Contact" %}</a>
           </li>
 
           {% if user.is_authenticated %}
           <li class="nav-item nav-link {% block nav_item_profile %}{% endblock nav_item_profile %}">
-            <a href="{% url 'profile' %}" class="nav-link">Profile
+            <a href="{% url 'profile' %}" class="nav-link">
+              {% trans "Profile" %}
               <img src="{{ user.profile.image.url }}" class="img-fluid rounded-circle nav-profile" style="width:30px; height:30px;">
             </a>
           </li>
 
-          <li class="nav-item nav-link {% block nav_item_blog-home-ru %}{% endblock nav_item_blog-home-ru %}">
-            <a href="{% url 'blog-home-ru' %}" class="stretched-link nav-language-flag">
-              <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded" style="width:25px;">
-              EN
-            </a>  
+          {% get_current_language as LANGUAGE_CODE %}
+          {% get_language_info for LANGUAGE_CODE as lang %}
+          {% get_available_languages as LANGUAGES %}
+          {% get_language_info_list for LANGUAGES as languages %}
+
+          <li class="nav-item nav-link dropdown">
+            <form name="langselect" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <input name="language" type="hidden"/>
+            <a href="#" class="nav-link dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <img src="/static/blog/images/{{lang.code}}.png" style="width: 25px;">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+              {% for language in languages %}
+                <a class="dropdown-item text-center" href="#" onclick="document.langselect.language.value='{{language.code}}'; document.langselect.submit();">
+                  <img src="/static/blog/images/{{language.code}}.png" style="width: 25px;">
+                </a>
+              {% endfor %}
+            </div>
+            </form>
           </li>
+          
 
           <li class="nav-item nav-link {% block nav_item_logout %}{% endblock nav_item_logout %}">
-            <a href="{% url 'logout' %}" class="nav-link">Logout</i></a>
+            <a href="{% url 'logout' %}" class="nav-link">
+              {% trans "Logout" %}
+            </a>
           </li>
           {% else %}
           <li class="nav-item nav-link {% block nav_item_login %}{% endblock nav_item_login %}">
-            <a href="{% url 'login' %}" class="nav-link">Login</i>
+            <a href="{% url 'login' %}" class="nav-link">
+              {% trans "Login" %}
           </a>
           </li>
           <li class="nav-item nav-link {% block nav_item_register %}{% endblock nav_item_register %}">
-            <a href="{% url 'register' %}" class="nav-link">Register</a>
+            <a href="{% url 'register' %}" class="nav-link">
+              {% trans "Register" %}
+            </a>
           </li>
           {% endif %}
         </ul>
@@ -122,8 +160,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="container">
     <div class="row">
       <div class="col">
-        <p>Copyright &copy;
-          <span id="year"></span> What the Blin?!</p>
+        <p>
+          {% trans "Copyright" %} &copy;
+          <span id="year"></span> What the Blin?!
+        </p>
       </div>
     </div>
   </div>
@@ -133,7 +173,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
 
 
 <script>
@@ -142,7 +181,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // Configure Slider
   $('.carousel').carousel({
-    interval: 6000,
+    interval: 4500,
     pause: 'hover'
   });
   

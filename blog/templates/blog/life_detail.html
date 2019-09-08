@@ -1,285 +1,337 @@
 {% extends "blog/base.html" %}
 {% load static %}
 {% block content %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <link href="https://fonts.googleapis.com/css?family=Unica+One&display=swap" rel="stylesheet">
 
-<!-- Blog Banner -->
-<section id="blog-banner">
-<div class="container-fluid d-none d-md-block pb-5" style="padding:0;">
-  <div class="row-full">
-    {% if post.translated_blog_link %}
-      {% if post.language == 'English' %}
-        <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
-          <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
-          <p class="muted" style="font-size: 14px;">на русском</p>
-        </a>  
-      {% endif %}
-      {% if post.language == 'Russian' %}
-        <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
-          <img src="{% static 'blog/images/English flag.jpg' %}" class="rounded mt-3" style="width:50px;">
-          <p class="muted" style="font-size: 14px;">in English</p>
-        </a>
-      {% endif %}
-    {% endif %}
-    <div class="banner-text d-none d-md-block">
-      {{post.title}}
-      {% if post.author.username == 'Matt' or 'Steph' %}
-        <div>
-          <img src="{{ post.author.profile.image.url }}" class="rounded-circle mt-3" style="width:55px;">
-        </div>
-      {% endif %}
-    </div>
-    <img src="{{ post.banner.url }}" class="img-fluid">
-  </div>
-</div>
-<!-- Mobile View Blog Banner -->
-<div class="container-fluid d-md-none d-sm-block" style="padding:0;">
-  <div class="row-full">
-    <div class="mobile-banner-text">
-      {{post.title}}
-      {% if post.author.username == 'Matt' or 'Steph' %}
-        <div>
-          <img src="{{ post.author.profile.image.url }}" class="rounded-circle mt-3" style="width:85px;">
-        </div>
-      {% endif %}
-    </div>
-    <img src="{{ post.mobile_banner.url }}" class="img-fluid">
-  </div>
-</div>
-</section>
-
-<!-- Blog Start -->
-<section id="blog-detail-body">
-<div class="container pt-3">
-  <div class="row p-3">
-    <p>{{ post.paragraph_1 }}</p>
-  </div>
-</div>
-
-<div>
-  <div class="container text-center pb-3">
-    <div class="row">
-      {% if post.snapshot_1 and post.snapshot_1_B %}
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_1.url }}" class="img-fluid">
-        </div>
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_1_B.url }}" class="img-fluid">
-        </div>
-      {% elif post.snapshot_1 %}
-        <div class="col">
-          <img src="{{ post.snapshot_1.url }}" class="img-fluid">
-        </div>
-      {% endif %}
+<!-- In case someone forces the /ru/ URL for the post, before a translation is out -->
+{% if LANGUAGE_CODE == 'ru' and post.publish_translated_blog == False %}
+<div class="container text-center">
+  <div class="row">
+    <div class="col py-5">
+       <img src="{% static 'blog/images/notranslatedyet.jpg' %}" class="rounded mt-3">
     </div>
   </div>
 </div>
+{% endif %}
 
-<div>
+<!-- Display the blog if the viewer is reading it in English, or there is a Russian translation available -->
+{% if LANGUAGE_CODE == "en" or post.publish_translated_blog == True %}
+  <!-- Blog Banner -->
+  <section id="blog-banner">
+    <div class="container-fluid d-none d-md-block pb-5" style="padding:0;">
+      <div class="row-full">
+        {% if post.translated_blog_link %}
+          <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+            <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+            <p class="muted" style="font-size: 14px;">на русском?</p>
+          </a>  
+        {% endif %}
+        <div class="banner-text d-none d-md-block">
+          {% if LANGUAGE_CODE == "en" %}
+            {{post.title}}
+          {% elif LANGUAGE_CODE == "ru" %}
+            {{post.title_russian}}
+          {% endif %}
+        {% if post.author.username == 'Matt' or 'Steph' %}
+          <div>
+            <img src="{{ post.author.profile.image.url }}" class="rounded-circle mt-3" style="width:55px;">
+          </div>
+        {% endif %}
+        </div>
+        <img src="{{ post.banner.url }}" class="img-fluid">
+      </div>
+    </div>
+    <!-- Mobile View Blog Banner -->
+    <div class="container-fluid pb-4 d-md-none d-sm-block" style="padding:0;">
+      <div class="row-full">
+        {% if post.translated_blog_link %}
+          <a href="{{ post.translated_blog_link }}" class="stretched-link language-flag">
+            <img src="{% static 'blog/images/Russian flag.jpg' %}" class="rounded mt-3" style="width:50px;">
+            <p class="muted" style="font-size: 14px;">на русском</p>
+          </a>  
+        {% endif %}
+        <div class="mobile-banner-text">
+          {{post.title}}
+          {% if post.author.username == 'Matt' or 'Steph' %}
+            <div>
+              <img src="{{ post.author.profile.image.url }}" class="rounded-circle mt-3" style="width:85px;">
+            </div>
+          {% endif %}
+        </div>
+        <img src="{{ post.mobile_banner.url }}" class="img-fluid">
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Start -->
+  <section id="blog-detail-body">
   <div class="container">
     <div class="row p-3">
-      <p>{{ post.paragraph_2 }}</p>
+      <p>
+        {% if LANGUAGE_CODE == "en" %}
+          {{ post.paragraph_1 }}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {{ post.paragraph_1_russian }}
+        {% endif %}
+      </p>
     </div>
   </div>
 
-  <div class="container text-center pb-3">
-    <div class="row">
-      {% if post.snapshot_2 and post.snapshot_2_B %}
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_2.url }}" class="img-fluid">
-        </div>
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_2_B.url }}" class="img-fluid">
-        </div>
-      {% elif post.snapshot_2 %}
-        <div class="col">
-          <img src="{{ post.snapshot_2.url }}" class="img-fluid">
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-<div>
-  <div class="container">
-    <div class="row p-3">
-      <p>{{ post.paragraph_3 }}</p>
-    </div>
-  </div>
-
-  <div class="container text-center pb-3">
-    <div class="row">
-      {% if post.snapshot_3 and post.snapshot_3_B %}
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_3.url }}" class="img-fluid">
-        </div>
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_3_B.url }}" class="img-fluid">
-        </div>
-      {% elif post.snapshot_3 %}
-        <div class="col">
-          <img src="{{ post.snapshot_3.url }}" class="img-fluid">
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-<div>
-  <div class="container">
-    <div class="row p-3">
-      <p>{{ post.paragraph_4 }}</p>
-    </div>
-  </div>
-
-  <div class="container text-center pb-3">
-    <div class="row">
-      {% if post.snapshot_4 and post.snapshot_4_B %}
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_4.url }}" class="img-fluid">
-        </div>
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_4_B.url }}" class="img-fluid">
-        </div>
-      {% elif post.snapshot_4 %}
-        <div class="col">
-          <img src="{{ post.snapshot_4.url }}" class="img-fluid">
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-<div>
-  <div class="container">
-    <div class="row p-3">
-      <p>{{ post.paragraph_5 }}</p>
-    </div>
-  </div>
-
-  <div class="container text-center pb-3">
-    <div class="row">
-      {% if post.snapshot_5 and post.snapshot_5_B %}
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_5.url }}" class="img-fluid">
-        </div>
-        <div class="col-sm col-md-6">
-          <img src="{{ post.snapshot_5_B.url }}" class="img-fluid">
-        </div>
-      {% elif post.snapshot_5 %}
-        <div class="col">
-          <img src="{{ post.snapshot_5.url }}" class="img-fluid">
-        </div>
-      {% endif %}
-    </div>
-  </div>
-</div>
-
-
-<!-- Google Maps -->
-{% if post.google.map %}
-  <div class="container text-center mt-5 pb-4">
-    <div class="row">
-      <div class="col map">
-          <iframe src="{{ post.google_map }}" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+  <div>
+    <div class="container text-center pb-3">
+      <div class="row">
+        {% if post.snapshot_1 and post.snapshot_1_B %}
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_1.url }}" class="img-fluid">
+          </div>
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_1_B.url }}" class="img-fluid">
+          </div>
+        {% elif post.snapshot_1 %}
+          <div class="col">
+            <img src="{{ post.snapshot_1.url }}" class="img-fluid">
+          </div>
+        {% endif %}
       </div>
     </div>
   </div>
-{% else %}
-  <div class="container text-center pb-4">
-  </div>
-{% endif %}
-<!-- body end -->
-</section>
 
-<!-- Comments Section Starts -->
-<section id="comments">
-<!-- Comment Cards -->
-{% if user_comments.count == 0 %}
-<div class="container text-center py-2">
-  <div class="row pb-5">
-    <div class="col text-center">
-      {% if user.is_authenticated %}
-        <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-dark btn-md text-white">Add a Comment</a></p>
-      {% else %}
-        <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-dark btn-md text-white" style=font-size:0.8rem;>
-          <strong>Login</strong> to add a new comment
-        </a>
-      {% endif %} 
+  <div>
+    <div class="container">
+      <div class="row p-3">
+        <p>
+        {% if LANGUAGE_CODE == "en" %}
+          {{ post.paragraph_2 }}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {{ post.paragraph_2_russian }}
+        {% endif %}
+      </p>
+      </div>
+    </div>
+
+    <div class="container text-center pb-3">
+      <div class="row">
+        {% if post.snapshot_2 and post.snapshot_2_B %}
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_2.url }}" class="img-fluid">
+          </div>
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_2_B.url }}" class="img-fluid">
+          </div>
+        {% elif post.snapshot_2 %}
+          <div class="col">
+            <img src="{{ post.snapshot_2.url }}" class="img-fluid">
+          </div>
+        {% endif %}
+      </div>
     </div>
   </div>
-</div>
-{% else %}
-  <h4 class="text-center pt-4">Comments: {{user_comments.count}}</h4>
-  <div class="container text-center py-5">
-  {% for comment in user_comments|slice:":50" %}
-    <div class="card">
-      <div class="card-body">
-        <div class="col">
-          <img src="{{ comment.author.profile.image.url }}" alt="" class="img-fluid rounded-circle comment-img">
-          <div class="d-flex justify-content-center" style="margin-top: -10px;">
-            <!--Facebook-->
-            {% if comment.author.profile.facebook_link and comment.author.profile.facebook_link != 'https://www.facebook.com' %}
+
+  <div>
+    <div class="container">
+      <div class="row p-3">
+        <p>
+        {% if LANGUAGE_CODE == "en" %}
+          {{ post.paragraph_3 }}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {{ post.paragraph_3_russian }}
+        {% endif %}
+      </p>
+      </div>
+    </div>
+
+    <div class="container text-center pb-3">
+      <div class="row">
+        {% if post.snapshot_3 and post.snapshot_3_B %}
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_3.url }}" class="img-fluid">
+          </div>
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_3_B.url }}" class="img-fluid">
+          </div>
+        {% elif post.snapshot_3 %}
+          <div class="col">
+            <img src="{{ post.snapshot_3.url }}" class="img-fluid">
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="container">
+      <div class="row p-3">
+        <p>
+        {% if LANGUAGE_CODE == "en" %}
+          {{ post.paragraph_4 }}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {{ post.paragraph_4_russian }}
+        {% endif %}
+      </p>
+      </div>
+    </div>
+
+    <div class="container text-center pb-3">
+      <div class="row">
+        {% if post.snapshot_4 and post.snapshot_4_B %}
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_4.url }}" class="img-fluid">
+          </div>
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_4_B.url }}" class="img-fluid">
+          </div>
+        {% elif post.snapshot_4 %}
+          <div class="col">
+            <img src="{{ post.snapshot_4.url }}" class="img-fluid">
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="container">
+      <div class="row p-3">
+        <p>
+        {% if LANGUAGE_CODE == "en" %}
+          {{ post.paragraph_5 }}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {{ post.paragraph_5_russian }}
+        {% endif %}
+      </p>
+      </div>
+    </div>
+
+    <div class="container text-center pb-3">
+      <div class="row">
+        {% if post.snapshot_5 and post.snapshot_5_B %}
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_5.url }}" class="img-fluid">
+          </div>
+          <div class="col-sm col-md-6">
+            <img src="{{ post.snapshot_5_B.url }}" class="img-fluid">
+          </div>
+        {% elif post.snapshot_5 %}
+          <div class="col">
+            <img src="{{ post.snapshot_5.url }}" class="img-fluid">
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Maps -->
+  {% if post.google_map != 'Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca' %}
+    <div class="container text-center mt-5 pb-4">
+      <div class="row">
+        <div class="col map">
+            <iframe src="{{ post.google_map }}" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  
+  <hr>
+
+  <!-- Comments Section Starts -->
+  <section id="comments">
+  <!-- Comment Cards -->
+  {% if user_comments.count == 0 %}
+    <div class="container text-center py-2">
+      <div class="row pb-5">
+        <div class="col text-center">
+          {% if user.is_authenticated %}
+            <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-dark btn-md text-white">
+              {% trans "Add a Comment" %}
+            </a>
+          {% else %}
+            <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-dark btn-md text-white" style=font-size:0.8rem;>
+              {% trans "<strong>Login</strong> to add a new comment" %}
+            </a>
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <h4 class="text-center pt-4">
+      {% trans "Comments:" %} {{user_comments.count}}
+    </h4>
+    <div class="container text-center py-5">
+    {% for comment in user_comments|slice:":50" %}
+      <div class="card">
+        <div class="card-body">
+          <div class="col">
+            <img src="{{ comment.author.profile.image.url }}" alt="" class="img-fluid rounded-circle comment-img">
+            <div class="d-flex justify-content-center" style="margin-top: -10px;">
+              <!--Facebook-->
+              {% if comment.author.profile.facebook_link and comment.author.profile.facebook_link != 'https://www.facebook.com' %}
+                <div class="p-1">
+                  <a href="{{ comment.author.profile.facebook_link }}">
+                    <i class="fab fa-facebook link-active"></i>
+                  </a>
+                </div>
+              {% else %}
+                <div class="p-1">
+                  <i class="fab fa-facebook link-inactive"></i>
+                </div>
+              {% endif %}
+              <!--Twitter-->
+              {% if comment.author.profile.twitter_link and comment.author.profile.twitter_link != 'https://www.twitter.com' %}
               <div class="p-1">
-                <a href="{{ comment.author.profile.facebook_link }}">
-                  <i class="fab fa-facebook link-active"></i>
+                <a href="{{ comment.author.profile.twitter_link }}">
+                  <i class="fab fa-twitter link-active"></i>
                 </a>
               </div>
-            {% else %}
+              {% else %}
               <div class="p-1">
-                <i class="fab fa-facebook link-inactive"></i>
+                <i class="fab fa-twitter link-inactive"></i>
               </div>
-            {% endif %}
-            <!--Twitter-->
-            {% if comment.author.profile.twitter_link and comment.author.profile.twitter_link != 'https://www.twitter.com' %}
-            <div class="p-1">
-              <a href="{{ comment.author.profile.twitter_link }}">
-                <i class="fab fa-twitter link-active"></i>
-              </a>
+              {% endif %}
+              <!--Instagram-->
+              {% if comment.author.profile.instagram_link and comment.author.profile.instagram_link != 'https://www.instagram.com' %}
+              <div class="p-1">
+                <a href="{{ comment.author.profile.instagram_link }}">
+                  <i class="fab fa-instagram link-active"></i>
+                </a>
+              </div>
+              {% else %}
+              <div class="p-1">
+                <i class="fab fa-instagram link-inactive"></i>
+              </div>
+              {% endif %}
             </div>
-            {% else %}
-            <div class="p-1">
-              <i class="fab fa-twitter link-inactive"></i>
-            </div>
-            {% endif %}
-            <!--Instagram-->
-            {% if comment.author.profile.instagram_link and comment.author.profile.instagram_link != 'https://www.instagram.com' %}
-            <div class="p-1">
-              <a href="{{ comment.author.profile.instagram_link }}">
-                <i class="fab fa-instagram link-active"></i>
-              </a>
-            </div>
-            {% else %}
-            <div class="p-1">
-              <i class="fab fa-instagram link-inactive"></i>
-            </div>
-            {% endif %}
+            <p class="mb-0 pb-2">{{comment.comment}}</p>
+            <footer class="blockquote-footer text-end pb-2">
+              <cite>{{ comment.author }}, {{ comment.date_posted|date:"m/d/Y" }}</cite>
+            </footer>
           </div>
-          <p class="mb-0 pb-2">{{comment.comment}}</p>
-           <footer class="blockquote-footer text-end pb-2">
-            <cite>{{ comment.author }}, {{ comment.date_posted|date:"F d, Y" }}</cite>
-          </footer>
         </div>
       </div>
+    {% endfor %}
     </div>
-  {% endfor %}
+
+  <div class="container text-center py-2">
+    <div class="row pb-5">
+      <div class="col text-center">
+        {% if user.is_authenticated %}
+          <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-dark btn-md text-white">
+            {% trans "Add a Comment" %}
+          </a>
+        {% else %}
+          <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-dark btn-md text-white" style=font-size:0.8rem;>
+            {% trans "<strong>Login</strong> to add a new comment" %}
+          </a>
+        {% endif %} 
+      </div>
+    </div>
   </div>
 
-<div class="container text-center py-2">
-  <div class="row pb-5">
-    <div class="col text-center">
-      {% if user.is_authenticated %}
-        <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-dark btn-md text-white">Add a Comment</a></p>
-      {% else %}
-        <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-dark btn-md text-white" style=font-size:0.8rem;>
-          <strong>Login</strong> to add a new comment
-        </a>
-      {% endif %} 
-    </div>
-  </div>
-</div>
-
+  {% endif %}
+  </section>
 {% endif %}
-</section>
+
+
 {% endblock content %}

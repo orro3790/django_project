@@ -2,6 +2,7 @@
 {% block nav_item_login %}active{% endblock nav_item_login %} 
 {% load crispy_forms_tags %}
 {% block content %}
+{% load i18n %}
 {% load static %}
 
 <section id="login-logout">
@@ -18,7 +19,7 @@
           </div>
           <div class="container text-center py-1">
             <hr>
-            <h4>Log In</h4>
+            <h4>{% trans "Log In" %}</h4>
             <hr class="pb-3">
           </div>
           <form method="POST">
@@ -27,17 +28,17 @@
               {{ form|crispy }}
             </fieldset>
             <div class="form-group text-center">
-              <button class="btn btn-dark" type="submit">Login</button>
+              <button class="btn btn-dark" type="submit">{% trans "Login" %}</button>
             </div>
           </form>
           <div class="border-top pt-3 text-center">
             <a href="{% url 'register' %}">
-            <small class="text-muted">Click <strong>here</strong> to create a new account.</small>
+            <small class="text-muted">{% trans "Click <strong>here</strong> to create a new account.</small>" %}
             </a>
           </div>
           <div class="text-center">
             <a href="{% url 'password_reset' %}">
-            <small class="text-muted">Forgot your password? Click <strong>here</strong> to reset it.</small>
+            <small class="text-muted">{% trans "Forgot your password? Click <strong>here</strong> to reset it.</small>" %}"
             </a>
           </div>
         </div>

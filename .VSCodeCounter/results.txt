@@ -1,0 +1,107 @@
+Date : 2019-09-06 23:43:35
+Directory : d:\django_env\django_project
+Total : 65 files,  7001 codes, 325 comments, 1050 blanks, all 8376 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| HTML             |         31 |      4,480 |        118 |        401 |      4,999 |
+| Python           |         31 |      1,614 |        187 |        455 |      2,256 |
+| CSS              |          2 |        894 |         20 |        194 |      1,108 |
+| pip requirements |          1 |         13 |          0 |          0 |         13 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                      | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                         |         65 |      7,001 |        325 |      1,050 |      8,376 |
+| blog                                                      |         20 |      4,045 |        182 |        540 |      4,767 |
+| blog\templates\blog                                       |         11 |      2,919 |         81 |        227 |      3,227 |
+| blog\templates                                            |         11 |      2,919 |         81 |        227 |      3,227 |
+| classifieds                                               |         22 |      1,706 |         93 |        250 |      2,049 |
+| classifieds\templates                                     |         12 |      1,070 |         28 |         97 |      1,195 |
+| classifieds\templates\classifieds                         |         12 |      1,070 |         28 |         97 |      1,195 |
+| users                                                     |         16 |        665 |         13 |        127 |        805 |
+| users\templates\users                                     |          8 |        491 |          9 |         77 |        577 |
+| users\templates                                           |          8 |        491 |          9 |         77 |        577 |
+| static\blog                                               |          1 |        447 |         10 |         97 |        554 |
+| static                                                    |          1 |        447 |         10 |         97 |        554 |
+| blog\static\blog                                          |          1 |        447 |         10 |         97 |        554 |
+| blog\static                                               |          1 |        447 |         10 |         97 |        554 |
+| classifieds\templatetags                                  |          2 |        143 |          0 |         30 |        173 |
+| django_project                                            |          3 |         64 |         25 |         14 |        103 |
++-----------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                  | language         | code       | comment    | blank      | total      |
++-----------------------------------------------------------+------------------+------------+------------+------------+------------+
+| blog\__init__.py                                          | Python           |          0 |          0 |          1 |          1 |
+| blog\admin.py                                             | Python           |         85 |          4 |         12 |        101 |
+| blog\apps.py                                              | Python           |          3 |          0 |          3 |          6 |
+| blog\models.py                                            | Python           |        306 |         30 |        129 |        465 |
+| blog\signals.py                                           | Python           |          0 |          0 |          1 |          1 |
+| blog\static\blog\style.css                                | CSS              |        447 |         10 |         97 |        554 |
+| blog\templates\blog\about.html                            | HTML             |        134 |          3 |         16 |        153 |
+| blog\templates\blog\base.html                             | HTML             |        162 |          7 |         30 |        199 |
+| blog\templates\blog\comment_form.html                     | HTML             |         30 |          0 |          6 |         36 |
+| blog\templates\blog\comment_list.html                     | HTML             |         97 |          5 |          5 |        107 |
+| blog\templates\blog\foodblog_detail.html                  | HTML             |        781 |         16 |         36 |        833 |
+| blog\templates\blog\home.html                             | HTML             |        548 |          5 |         12 |        565 |
+| blog\templates\blog\life_blog_comment_form.html           | HTML             |         19 |          0 |          6 |         25 |
+| blog\templates\blog\life_detail.html                      | HTML             |        251 |         10 |         17 |        278 |
+| blog\templates\blog\life_search.html                      | HTML             |        208 |         14 |         32 |        254 |
+| blog\templates\blog\map.html                              | HTML             |         25 |          0 |         13 |         38 |
+| blog\templates\blog\search.html                           | HTML             |        664 |         21 |         54 |        739 |
+| blog\tests.py                                             | Python           |          1 |          1 |          2 |          4 |
+| blog\urls.py                                              | Python           |         25 |          1 |          2 |         28 |
+| blog\views.py                                             | Python           |        259 |         55 |         66 |        380 |
+| classifieds\__init__.py                                   | Python           |          0 |          0 |          1 |          1 |
+| classifieds\admin.py                                      | Python           |          5 |          0 |          4 |          9 |
+| classifieds\apps.py                                       | Python           |          3 |          0 |          3 |          6 |
+| classifieds\forms.py                                      | Python           |         49 |          0 |          6 |         55 |
+| classifieds\models.py                                     | Python           |        199 |         25 |         40 |        264 |
+| classifieds\templates\classifieds\ad_confirm_delete.html  | HTML             |         28 |          0 |          2 |         30 |
+| classifieds\templates\classifieds\ad_detail.html          | HTML             |        199 |          5 |         14 |        218 |
+| classifieds\templates\classifieds\ad_form.html            | HTML             |         38 |          1 |          5 |         44 |
+| classifieds\templates\classifieds\ad_list.html            | HTML             |        213 |          4 |         18 |        235 |
+| classifieds\templates\classifieds\ad_update_form.html     | HTML             |         23 |          0 |          2 |         25 |
+| classifieds\templates\classifieds\ademail_form.html       | HTML             |         28 |          0 |          2 |         30 |
+| classifieds\templates\classifieds\faq.html                | HTML             |        128 |          1 |         10 |        139 |
+| classifieds\templates\classifieds\job_confirm_delete.html | HTML             |         28 |          0 |          2 |         30 |
+| classifieds\templates\classifieds\job_detail.html         | HTML             |        130 |         11 |         11 |        152 |
+| classifieds\templates\classifieds\job_form.html           | HTML             |         37 |          1 |          5 |         43 |
+| classifieds\templates\classifieds\job_list.html           | HTML             |        179 |          4 |         22 |        205 |
+| classifieds\templates\classifieds\job_update_form.html    | HTML             |         39 |          1 |          4 |         44 |
+| classifieds\templatetags\__init__.py                      | Python           |          0 |          0 |          1 |          1 |
+| classifieds\templatetags\classifieds_tags.py              | Python           |        143 |          0 |         29 |        172 |
+| classifieds\tests.py                                      | Python           |          1 |          1 |          2 |          4 |
+| classifieds\urls.py                                       | Python           |         31 |          2 |          3 |         36 |
+| classifieds\views.py                                      | Python           |        205 |         37 |         64 |        306 |
+| django_project\__init__.py                                | Python           |          0 |          0 |          1 |          1 |
+| django_project\urls.py                                    | Python           |         60 |         17 |          8 |         85 |
+| django_project\wsgi.py                                    | Python           |          4 |          8 |          5 |         17 |
+| manage.py                                                 | Python           |         15 |          2 |          5 |         22 |
+| requirements.txt                                          | pip requirements |         13 |          0 |          0 |         13 |
+| sitemaps.py                                               | Python           |         46 |          0 |         17 |         63 |
+| static\blog\style.css                                     | CSS              |        447 |         10 |         97 |        554 |
+| users\__init__.py                                         | Python           |          0 |          0 |          1 |          1 |
+| users\admin.py                                            | Python           |          5 |          0 |          2 |          7 |
+| users\apps.py                                             | Python           |          5 |          0 |          4 |          9 |
+| users\forms.py                                            | Python           |         49 |          0 |         11 |         60 |
+| users\models.py                                           | Python           |         29 |          0 |         10 |         39 |
+| users\signals.py                                          | Python           |         11 |          0 |          3 |         14 |
+| users\templates\users\login.html                          | HTML             |         48 |          0 |         14 |         62 |
+| users\templates\users\logout.html                         | HTML             |         35 |          0 |          8 |         43 |
+| users\templates\users\password_reset.html                 | HTML             |         38 |          0 |          6 |         44 |
+| users\templates\users\password_reset_complete.html        | HTML             |         34 |          0 |          7 |         41 |
+| users\templates\users\password_reset_confirm.html         | HTML             |         54 |          1 |         13 |         68 |
+| users\templates\users\password_reset_done.html            | HTML             |         34 |          0 |         11 |         45 |
+| users\templates\users\profile.html                        | HTML             |        221 |          8 |         18 |        247 |
+| users\templates\users\register.html                       | HTML             |         27 |          0 |          0 |         27 |
+| users\tests.py                                            | Python           |          1 |          1 |          2 |          4 |
+| users\views.py                                            | Python           |         74 |          3 |         17 |         94 |
+| Total                                                     |                  |      7,001 |        325 |      1,050 |      8,376 |
++-----------------------------------------------------------+------------------+------------+------------+------------+------------+

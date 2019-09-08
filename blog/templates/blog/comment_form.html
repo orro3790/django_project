@@ -1,20 +1,32 @@
 {% extends "blog/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <div class="container py-5">
-    <div class="row">
-        <div class="col">
-            <p>Post your comment for: <a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a></p>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Post</button>
-                </div>
-            </form>
+  <div class="row">
+    <div class="col">
+      <p>
+        {% trans "Post your comment for:" %}
+        <a href="{% url 'post-detail' post.pk %}">
+          {% if LANGUAGE_CODE == "en" %}
+            {{ post.title }}
+          {% elif LANGUAGE_CODE == "ru" %}
+            {{ post.title_russian }}
+          {% endif %}
+        </a>
+      </p>
+      <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">
+            {% trans "Post" %}</button>
         </div>
+      </form>
     </div>
+  </div>
 </div>
 
 {% endblock %}

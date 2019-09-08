@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <section id="login-logout">
 
@@ -16,15 +17,15 @@
           </div>
           <div class="container text-center py-1">
             <hr>
-            <h4>Logged Out.</h4>
+            <h4>{% trans "Logged Out." %}</h4>
             <hr class="pb-3">
           </div>
           <div class="py-3 text-center">
-             <p>Thanks for stopping by!</p>
+             <p>{% trans "Thanks for stopping by!" %}</p>
           </div>
           <div class="text-center pt-3">
             <a href="{% url 'login' %}">
-              <small class="text-muted">Click <strong>here</strong> to log in again.</small>
+              <small class="text-muted">{% trans "Click <strong>here</strong> to log in again.</small>" %}
             </a>
           </div>
         </div>

@@ -3,6 +3,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
+{% load i18n %}
 
 <section id="ad-detail">
 
@@ -12,7 +13,7 @@
       <h3>
         {{ad.title}}
         {% if user != ad.author %}
-          <em><p class="text-muted small" style="font-size: 0.9rem;">posted by {{ad.author}}</p></em>
+          <em><p class="text-muted small" style="font-size: 0.9rem;">{% trans "posted by" %} {{ad.author}}</p></em>
         {% endif %}
       </h3>
     </div>
@@ -81,47 +82,47 @@
         <hr>
         <div class="card-body pb-0">
           <div class="container">
-            <h3>Details</h3>    
+            <h3>{% trans "Details" %}</h3>    
             <table class="table table-hover">
               <tbody>
                 <tr>
-                  <td>Item</td>
+                  <td>{% trans "Item" %}</td>
                   <td></td>
                   <td>{{ad.items_or_model_names}}</td> 
                 </tr>
                 <tr>
-                  <td>Condition</td>
+                  <td>{% trans "Condition" %}</td>
                   <td></td>
                   <td>{{ad.condition}}</td>                
                 </tr>
                 <tr>
-                  <td>Asking Price</td>
+                  <td>{% trans "Asking Price" %}</td>
                   <td></td>
                   <td>{{ad.asking_price|intcomma}}<i class="fas fa-ruble-sign" style=font-size:0.8rem;></i></td>
                 </tr>
-                <td>Buying or Selling</td>
+                <td>{% trans "Buying or Selling" %}</td>
                   <td></td>
                   <td>
                     {% if ad.buying_or_selling == "I'm a buyer" %}
-                      Buying
+                      {% trans "Buying" %}
                     {% elif ad.buying_or_selling == "I'm a seller" %}
-                      Selling
+                      {% trans "Selling" %}
                     {% elif ad.buying_or_selling == "I want to trade" %}
-                      I want to trade
+                      {% trans "I want to trade" %}
                     {% endif %}
                   </td>           
                 <tr>
-                  <td>Cosmetic Damage</td>
+                  <td>{% trans "Cosmetic Damage" %}</td>
                   <td></td>
                   <td>{{ad.cosmetic_damage}}</td>
                 </tr>
                 <tr>
-                  <td>Location</td>
+                  <td>{% trans "Location" %}</td>
                   <td></td>
                   <td>{{ad.location}}</td>
                 </tr>
                 <tr>
-                  <td>Willing to Travel</td>
+                  <td>{% trans "Willing to Travel" %}</td>
                   <td></td>
                   <td>{% if ad.willing_to_travel == True %}
                         <i class="fas fa-check" style="color: seagreen;"></i>
@@ -131,12 +132,12 @@
                   </td>
                 </tr>
                 <tr>
-                  <td>Date Posted</td>
+                  <td>{% trans "Date Posted" %}</td>
                   <td></td>
-                  <td>{{ad.date_posted|date:"F d, Y"}}</td>
+                  <td>{{ad.date_posted|date:"m/d/Y"}}</td>
                 </tr>
                 <tr>
-                  <td>Methods of Contact</td>
+                  <td>{% trans "Methods of Contact" %}</td>
                   <td></td>
                   <td>  
                     <section id="ad-contact-methods">
@@ -186,16 +187,16 @@
         {% if user != ad.author %}
           <div class="row">
             <div class="col text-center pt-4 pb-5">
-              <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-md text-white">I'm interested!</a>
+              <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-md text-white">{% trans "I'm interested!" %}</a>
             </div>
           </div>
         {% elif user == ad.author %}
           <div class="row">
             <div class="col-6 text-right pt-4 pb-5">
-              <a href="{% url 'ad-update' ad.id %}" class="btn btn-dark btn-md text-white">Update Ad</a>
+              <a href="{% url 'ad-update' ad.id %}" class="btn btn-dark btn-md text-white">{% trans "Update Ad" %}</a>
             </div>
             <div class="col-6 text-left pt-4 pb-5">
-              <a href="{% url 'ad-delete' ad.id %}" class="btn btn-danger btn-md text-white">Delete Ad</a>
+              <a href="{% url 'ad-delete' ad.id %}" class="btn btn-danger btn-md text-white">{% trans "Delete Ad" %}</a>
             </div>
           </div>
         {% endif %}

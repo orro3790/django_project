@@ -4,6 +4,8 @@
 {% load humanize %}
 {% load classifieds_tags %}
 {% block content %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <section id="ad-list">
 
@@ -13,7 +15,7 @@
     <div class="row align-items-center">
       <div class="col-5">
         <select id="salary_filter" class="form-control" name="salary_filter">
-          <option selected>Salary of at least...</option>
+          <option selected>{% trans "Salary of at least..." %}</option>
           <option>50000 - ({% total_salary_50000 %})</option>
           <option>60000 - ({% total_salary_60000 %})</option>
           <option>70000 - ({% total_salary_70000 %})</option>
@@ -24,21 +26,20 @@
       </div>
       <div class="col-5">
         <div class="input-group">
-          <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+          {% if LANGUAGE_CODE == "en" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+          {% elif LANGUAGE_CODE == "ru" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Название содержит..." />
+          {% endif %}
             <span class="input-group-append">
               <div class="input-group-text bg-transparent">
                 <i class="fa fa-search"></i>
               </div>
             </span>
-            <span class="input-group-append">
-              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
-                <i class="fas fa-history" style="font-size: 0.9rem;"></i>
-              </button>
-            </span>
         </div>
       </div>
       <div class="col-2">
-        <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+        <button type="submit" class="btn btn-dark" value="Filter">{% trans "Submit" %}</button>
       </div>   
     </div>
   </div>
@@ -57,17 +58,12 @@
                 <i class="fa fa-search"></i>
               </div>
             </span>
-            <span class="input-group-append">
-              <button type="submit" class="btn btn-outline-dark d-inline border" style="border:none;">
-              <i class="fas fa-history" style="font-size: 0.9rem;"></i>
-              </button>
-            </span>
         </div>
       </div>
 
       <div class="col-12 pt-3">
         <select id="salary_filter" class="form-control" name="salary_filter">
-          <option selected>Salary of at least...</option>
+          <option selected>{% trans "Salary of at least..." %}</option>
           <option>50000</option>
           <option>60000</option>
           <option>70000</option>
@@ -79,7 +75,7 @@
 
       <div class="col-12">
         <div class="container pt-3 text-center">
-          <button type="submit" class="btn btn-dark" value="Filter">Submit</button>
+          <button type="submit" class="btn btn-dark" value="Filter">{% trans "Submit" %}</button>
         </div>
       </div>   
 
@@ -95,26 +91,26 @@
       <div class="card classifieds-list-card px-3">
         <img class="card-img-top border-bottom" src="{% static 'blog/images/hiring.jpg' %}">
         <div class="card-body">
-          <h3>Job Board</h3>
+          <h3>{% trans "Job Board" %}</h3>
           <div class="row border-bottom">
             <!-- Adjust the search result counts based on whether or not the search filter was used -->
             <div class="col-8 col-md-6">
               {% if ads.paginator.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.paginator.count}} results.</p>
+                <p class="text-muted m-0 p-0">{{ads.paginator.count}} {% trans "results." %}</p>
               {% elif ads.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.count}} results.</p>
+                <p class="text-muted m-0 p-0">{{ads.count}} {% trans "results." %}</p>
               {% elif ads.count == 0 %}
-                <p class="text-muted m-0 p-0">No results found.</p>
+                <p class="text-muted m-0 p-0">{% trans "No results found." %}</p>
               {% endif %}
             </div>
             <div class="col col-md-2 d-none d-md-block">
-              Position
+              {% trans "Position" %}
             </div>
             <div class="col-4 col-md-2">
-              Salary
+              {% trans "Salary" %}
             </div>
             <div class="col col-md-2 d-none d-md-block">
-              Location
+              {% trans "Location" %}
             </div>
           </div>
           {% for ad in ads %}
@@ -152,7 +148,7 @@
             </div>
           {% endfor %}
           <div class="container text-center pt-5 pb-4">
-            <a href="{% url 'job-wanted-create' %}" class="btn btn-dark">Post An Ad</a>
+            <a href="{% url 'job-wanted-create' %}" class="btn btn-dark">{% trans "Post An Ad" %}</a>
           </div>
 
           <section id="paginate-buttons">

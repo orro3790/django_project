@@ -11,7 +11,7 @@ from django.views.generic import (
     TemplateView
 )
 from .models import (
-    Post,
+    FoodBlog,
     StoreType,
     Station,
     SpecialFeature,
@@ -25,44 +25,52 @@ from .models import (
     LifeBlogComment,
     AboutUsPicture,
     LifeBlog,
-    BlogType,
+    BlogCategory,
     Tag,
     CarouselImage,
     FoodSearchBanner,
     LifeBlogSearchBanner,
     AboutUsBanner,
     FoodMap,
-    Profile
+    Profile,
+    # Russian models
+    RussianBlogCategory,
+    RussianTag,
+    RussianStoreType,
+    RussianStation,
+    RussianSpecialFeature,
+    RussianPriceRating
 )
 
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
+class FoodBlogListView(ListView):
+    model = FoodBlog
+    template_name = 'blog/home.html'
     ordering = ['-date_posted']
     paginate_by = 27
     
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
-        context['carousel'] = CarouselImage.objects.all()
-        context['posts'] = Post.objects.all().filter(language='English')
-            
+        context['carousel_images'] = CarouselImage.objects.all()
+        context['posts'] = FoodBlog.objects.all()
         return context
-
+    
 
 class PostDetailView(DetailView):
-    model = Post
+    model = FoodBlog
 
     # Add comments related to each food blog post to its context
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Get the blog from id and add it to the context
-        context['post'] = get_object_or_404(Post, pk = self.kwargs['pk'])
+        context['post'] = get_object_or_404(FoodBlog, pk = self.kwargs['pk'])
         comments_query = Comment.objects.all().order_by('-date_posted')
         comments_query_filtered = comments_query.filter(post_id=context['post'])
         context['user_comments'] = comments_query_filtered
@@ -70,7 +78,7 @@ class PostDetailView(DetailView):
 
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Post
+    model = FoodBlog
     fields = [
         'card_image',
         'title',
@@ -116,7 +124,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Post
+    model = FoodBlog
     success_url = '/'
 
     def test_func(self):
@@ -142,11 +150,11 @@ def valid_query(param):
     return param != '' and param is not None
 
 
-def PostFilter(request):
+def FoodBlogFilter(request):
 
     # Query all life post objects
-    qs = Post.objects.all().filter(language='English')
-    banner = FoodSearchBanner.objects.all()
+    qs = FoodBlog.objects.all()
+    carousel_image = FoodSearchBanner.objects.all()
     store_type = StoreType.objects.all()
     nearest_station = Station.objects.all()
     special_feature = SpecialFeature.objects.all()
@@ -156,6 +164,10 @@ def PostFilter(request):
     atmosphere_rating = AtmosphereRating.objects.all()
     price_rating = PriceRating.objects.all()
     service_rating = ServiceRating.objects.all()
+    store_type_russian = RussianStoreType.objects.all()
+    nearest_station_russian = RussianStation.objects.all()
+    special_feature_russian = RussianSpecialFeature.objects.all()
+    price_rating_russian = RussianPriceRating.objects.all()
 
     # retreive the form request
     title_query = request.GET.get('title')
@@ -163,42 +175,51 @@ def PostFilter(request):
     nearest_station_query = request.GET.get('nearest_station')
     special_feature_query = request.GET.get('special_feature')
     overall_rating_query = request.GET.get('overall_rating')
-    taste_rating_query = request.GET.get('taste_rating')
-    appearance_rating_query = request.GET.get('appearance_rating')
-    atmosphere_rating_query = request.GET.get('atmosphere_rating')
     price_rating_query = request.GET.get('price_rating')
-    service_rating_query = request.GET.get('service_rating')
 
-    # retrieve the form request queries for the life blogs ('qs' is pre-filtered for language above)
-    if valid_query(title_query):
-        qs = qs.filter(title__icontains=title_query)
-
-    if valid_query(store_type_query) and store_type_query != 'Type...':
-        qs = qs.filter(store_type__name=store_type_query)
+    # check the language settings of the user
+    language = get_language()
     
-    if valid_query(nearest_station_query) and nearest_station_query != 'Station...':
-        qs = qs.filter(nearest_station__name=nearest_station_query)
+    if language == "en":
 
-    if valid_query(special_feature_query) and special_feature_query != 'Has...':
-        qs = qs.filter(special_feature__name=special_feature_query)
+        if valid_query(title_query):
+            qs = qs.filter(title__icontains=title_query)
+
+        if valid_query(store_type_query) and store_type_query != 'Type...' and store_type_query != 'Тип...':
+            qs = qs.filter(store_type__name=store_type_query)
         
-    if valid_query(overall_rating_query) and overall_rating_query != 'Rating ≥ ...':
-        qs = qs.filter(overall_rating__rating__gte=overall_rating_query).order_by('-overall_rating')
+        if valid_query(nearest_station_query) and nearest_station_query != 'Station...' and nearest_station_query != 'Станция...':
+            qs = qs.filter(nearest_station__name=nearest_station_query)
 
-    if valid_query(taste_rating_query) and taste_rating_query != 'At least...':
-        qs = qs.filter(taste_rating__rating__gte=taste_rating_query).order_by('-taste_rating')
-    
-    if valid_query(appearance_rating_query) and appearance_rating_query != 'At least...':
-        qs = qs.filter(appearance_rating__rating__gte=appearance_rating_query).order_by('-appearance_rating')
-    
-    if valid_query(atmosphere_rating_query) and atmosphere_rating_query != 'At least...':
-        qs = qs.filter(atmosphere_rating__rating__gte=atmosphere_rating_query).order_by('-atmosphere_rating')
-    
-    if valid_query(price_rating_query) and price_rating_query != 'Price...':
-        qs = qs.filter(price_rating__name=price_rating_query)
+        if valid_query(special_feature_query) and special_feature_query != 'Features...' and special_feature_query != 'Характеристики...':
+            qs = qs.filter(special_feature__name=special_feature_query)
+            
+        if valid_query(overall_rating_query) and overall_rating_query != 'Rating ≥ ...' and overall_rating_query != 'Рейтинг ≥ ...':
+            qs = qs.filter(overall_rating__rating__gte=overall_rating_query)
 
-    if valid_query(service_rating_query) and service_rating_query != 'At least...':
-        qs = qs.filter(service_rating__rating__gte=service_rating_query).order_by('-service_rating')
+        if valid_query(price_rating_query) and price_rating_query != 'Price...' and price_rating_query != 'Цена...':
+            qs = qs.filter(price_rating__name=price_rating_query)
+    
+    if language == "ru":
+
+        if valid_query(title_query):
+            qs = qs.filter(title_russian__icontains=title_query)
+
+        if (valid_query(store_type_query) and store_type_query != 'Тип...' and store_type_query != 'Type...'):
+            qs = qs.filter(store_type_russian__name=store_type_query)
+
+        if valid_query(nearest_station_query) and nearest_station_query != 'Станция...' and nearest_station_query != 'Station...':
+            qs = qs.filter(nearest_station_russian__name=nearest_station_query)
+
+        if valid_query(special_feature_query) and special_feature_query != 'Характеристики...' and special_feature_query != 'Features...':
+            qs = qs.filter(special_feature_russian__name=special_feature_query)
+
+        if valid_query(overall_rating_query) and overall_rating_query != 'Рейтинг ≥ ...' and overall_rating_query != 'Rating ≥ ...':
+            qs = qs.filter(overall_rating__rating__gte=overall_rating_query)
+
+        if valid_query(price_rating_query) and price_rating_query != 'Цена...' and price_rating_query != 'Price...':
+            qs = qs.filter(price_rating_russian__name=price_rating_query)
+        
 
     # paginate settings
     paginator = Paginator(qs, 27) # Show 27 blogs per page
@@ -207,7 +228,7 @@ def PostFilter(request):
 
     context = {
         'queryset': qs,
-        'banner': banner,
+        'carousel_images': carousel_image,
         'title_query': title_query,
         'store_type': store_type,
         'store_type_query': store_type_query,
@@ -222,7 +243,11 @@ def PostFilter(request):
         'atmosphere_rating': atmosphere_rating,
         'price_rating': price_rating,
         'price_rating_query': price_rating_query,
-        'service_rating': service_rating
+        'service_rating': service_rating,
+        'store_type_russian': store_type_russian,
+        'special_feature_russian': special_feature_russian,
+        'nearest_station_russian': nearest_station_russian,
+        'price_rating_russian': price_rating_russian,
     }
 
     return render(request, 'blog/search.html', context)
@@ -243,7 +268,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Get the blog from id and add it to the context
-        context['post'] = get_object_or_404(Post, pk = self.kwargs['pk'])
+        context['post'] = get_object_or_404(FoodBlog, pk = self.kwargs['pk'])
         return context
         
     def form_valid(self, form, *args, **kwargs):
@@ -253,7 +278,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         # Add logged-in user as author of comment
         form.instance.author = self.request.user
         # Associate comment with blog based on passed id
-        form.instance.post=get_object_or_404(Post, pk = self.kwargs['pk'])
+        form.instance.post=get_object_or_404(FoodBlog, pk = self.kwargs['pk'])
         # Call super-class form validation behaviour
         return super().form_valid(form)
 
@@ -262,7 +287,7 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your comment has been successfully posted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your comment has been successfully posted!'))
         return reverse('post-detail', kwargs={'pk': self.kwargs['pk'],})
 
 
@@ -276,47 +301,8 @@ class CommentListView(ListView):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         # Get the blog from id and add it to the context
-        context['post'] = get_object_or_404(Post, pk = self.kwargs['pk'])
+        context['post'] = get_object_or_404(FoodBlog, pk = self.kwargs['pk'])
         return context
-
-
-
-    """
-    Form for adding a food blog comment. Requires login. 
-    """
-    model = LifeBlogComment
-    fields = ['comment']
-    context_object_name = 'comments'
-    template_name = 'blog/life_blog_comment_form.html'
-
-    def get_context_data(self, **kwargs):
-        """
-        Add associated life blog to form template so can display its title in HTML.
-        """
-        # Call the base implementation first to get a context
-        context = super().get_context_data(**kwargs)
-        # Get the blog from id and add it to the context
-        context['post'] = get_object_or_404(LifeBlog, pk = self.kwargs['pk'])
-        return context
-        
-    def form_valid(self, form, *args, **kwargs):
-        """
-        Add author and associated life blog to form data before setting it as valid (so it is saved to model)
-        """
-        # Add logged-in user as author of comment
-        form.instance.author = self.request.user
-        # Associate comment with blog based on passed id
-        form.instance.post=get_object_or_404(LifeBlog, pk = self.kwargs['pk'])
-        # Call super-class form validation behaviour
-        return super().form_valid(form)
-
-        
-    def get_success_url(self): 
-        """
-        After posting comment, provide success message and return to associated life blog post.
-        """
-        messages.add_message(self.request, messages.SUCCESS, 'Your comment has been successfully posted!')
-        return reverse('life-blog-detail', kwargs={'pk': self.kwargs['pk'],})
 
 
 class MapView(TemplateView):
@@ -385,32 +371,50 @@ class LifeBlogCommentCreateView(LoginRequiredMixin, CreateView):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your comment has been successfully posted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your comment has been successfully posted!'))
         return reverse('life-blog-detail', kwargs={'pk': self.kwargs['pk'],})
 
 
 def LifeBlogFilter(request):
 
     # Query all life post objects and blog types for logged-in users
-    qs = LifeBlog.objects.all().filter(language='English')
-    banner = LifeBlogSearchBanner.objects.all()
-    blog_type = BlogType.objects.all()
+    qs = LifeBlog.objects.all()
+    carousel_image = LifeBlogSearchBanner.objects.all()
+    blog_category = BlogCategory.objects.all()
     tags = Tag.objects.all()
+    blog_category_russian = RussianBlogCategory.objects.all()
+    tags_russian= RussianTag.objects.all()
     
-    # retreive the form request
+    # retreive form requests
     title_query = request.GET.get('title')
-    blog_type_query = request.GET.get('blog_type')
+    blog_category_query = request.GET.get('blog_category')
     tags_query = request.GET.get('tags')
 
-    # retrieve the form request queries for the life blogs
-    if valid_query(title_query):
-        qs = qs.filter(title__icontains=title_query) 
+    # check the language settings of the user
+    language = get_language()
 
-    if valid_query(blog_type_query) and blog_type_query != 'Category...':
-        qs = qs.filter(blog_type__name=blog_type_query)
+    # retrieve the English form request queries
+    if language == 'en':
+        if valid_query(title_query):
+            qs = qs.filter(title__icontains=title_query) 
 
-    if valid_query(tags_query) and tags_query != 'Tags...':
-        qs = qs.filter(tags__name=tags_query)
+        if valid_query(blog_category_query) and blog_category_query != 'Category...':
+            qs = qs.filter(blog_category__name=blog_category_query)
+
+        if valid_query(tags_query) and tags_query != 'Tags...':
+            qs = qs.filter(tags__name=tags_query)
+
+    # retrieve the Russian form request queries
+    if language == 'ru':
+        if valid_query(title_query):
+            qs = qs.filter(title_russian__icontains=title_query)
+
+        if valid_query(blog_category_query) and blog_category_query != 'Категория...':
+            qs = qs.filter(blog_category_russian__name=blog_category_query)
+
+        if valid_query(tags_query) and tags_query != 'Теги...':
+            qs = qs.filter(tags_russian__name=tags_query)
+
 
     # paginate
     paginator = Paginator(qs, 27) # Show 1 blogs per page
@@ -420,38 +424,13 @@ def LifeBlogFilter(request):
     context = {
         'queryset': qs,
         'title_query': title_query,
-        'blog_type': blog_type,
-        'blog_type_query': blog_type_query,
+        'blog_category': blog_category,
+        'blog_category_query': blog_category_query,
         'tags': tags,
         'tags_query': tags_query,
-        'banner': banner,
+        'carousel_images': carousel_image,
+        'blog_category_russian': blog_category_russian,
+        'tags_russian': tags_russian,
     }
 
     return render(request, 'blog/life_search.html', context)
-
-
-# Russian views
-
-class PostListViewRussian(ListView):
-    model = Post
-    template_name = 'blog/home_ru.html' #<app>/<model>_<viewtype>.html
-    ordering = ['-date_posted']
-    paginate_by = 27
-    
-    def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(**kwargs)
-        context['carousel'] = CarouselImage.objects.all()
-        context['posts'] = Post.objects.all().filter(language='Russian')
-        return context
-
-
-def about_ru(request):
-    qs = AboutUsPicture.objects.all()
-    banner = AboutUsBanner.objects.all()
-
-    context = {
-        'qs': qs,
-        'banner': banner
-    }
-    return render(request, 'blog/about_ru.html', context)

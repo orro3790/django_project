@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 from blog.models import (
-  Post,
+  FoodBlog,
   LifeBlog,
 )
 from users.models import (
@@ -17,7 +17,7 @@ from classifieds.models import (
 class PostSitemap(Sitemap):
   
   def items(self):
-    return Post.objects.all()
+    return FoodBlog.objects.all()
 
 
 class LifeBlogSitemap(Sitemap):

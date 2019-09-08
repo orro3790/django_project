@@ -1,0 +1,565 @@
+{% extends "blog/base.html" %}
+{% block nav_item_home %}active{% endblock nav_item_home %} 
+{% block content %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!-- SHOWCASE SLIDER -->
+<section id="carousel-section">
+  <div class="w-100 p-0 mt-0 d-none d-lg-block">
+    <div id="carouselExampleIndicators" class="carousel carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'First' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-center">
+                      <h4 class="display-4">{{ carousel.title }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-center">
+                      <h4 class="display-4">{{ carousel.title_russian }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="carousel-item">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'Second' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-top-left">
+                      <h4 class="display-4">{{ carousel.title }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-top-left">
+                      <h4 class="display-4">{{ carousel.title_russian }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="carousel-item">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'Third' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-top-right">
+                      <h4 class="display-4">{{ carousel.title }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.image.url }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-top-right">
+                      <h4 class="display-4">{{ carousel.title_russian }}</h4>
+                      <p class="lead">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <a class="carousel-control-prev d-none" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next d-none" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+  </div>
+
+  <!-- Mobile Carousel view -->
+  <div class="container p-0 mt-0 d-lg-none d-sm-block">
+    <div id="carouselExampleIndicatorsMobile" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicatorsMobile" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicatorsMobile" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicatorsMobile" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'First' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-center">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-center">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="carousel-item">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'Second' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-top-left">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-top-left">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="carousel-item">
+            {% for carousel in carousel %}
+              {% if carousel.slide_number == 'Third' %}
+                {% if LANGUAGE_CODE == 'en' %}
+                  <a href="{{ carousel.link }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-top-right">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption }}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                {% elif LANGUAGE_CODE == 'ru' %}
+                  <a href="{{ carousel.link_russian }}" class="stretched-link">
+                  <div class="container">
+                    <img class="d-block w-100" src="{{ carousel.mobile_image.url }}">
+                    <div class="carousel-caption carousel-caption-top-right">
+                      <h4 class="display-4" style="font-size: 26px;">{{ carousel.title_russian }}</h4>
+                      <p class="lead" style="font-size: 20x;">
+                        {{ carousel.caption_russian }}
+                      </p>
+                    </div>
+                  </div>
+                  </a>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicatorsMobile" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicatorsMobile" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!--HOME ICON SECTION  -->
+<section id="home-icons" class="pt-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 text-center">
+        <a href="{% url 'blog-search' %}" class="nav-link">
+        <i class="fas fa-coffee fa-2x mb-2"></i>
+        <h5>{% trans "Cafes & Restaurants" %}</h5>
+        <p>{% trans "Browse a variety of cafes, coffee houses, dessert cafes, and restaurants." %}</p>
+        </a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <a href="{% url 'blog-search' %}" class="nav-link">
+        <i class="fas fa-star fa-2x mb-2"></i>
+        <i class="fas fa-star fa-2x mb-2"></i>
+        <i class="fas fa-star-half-alt fa-2x mb-2"></i>
+        <h5>{% trans "Search by Features" %}</h5>
+        <p>{% trans "Click to Search destinations by ratings, nearest subway station, unique features, and more." %}</p>
+        </a>
+      </div>
+      <div class="col-sm-4 text-center">
+        <a href="{% url 'blog-map' %}" class="nav-link">
+        <i class="fas fa-map-marked-alt fa-2x mb-2"></i>
+        <h5>{% trans "View Locations" %}</h5>
+        <p>{% trans "Every review contains a location pin. You can also click here to browse the Tasty Map." %}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG CARD SECTION -->
+<section id="blog">
+  <div class="container pb-5">
+    <div class="card-columns">
+      {% if LANGUAGE_CODE == 'en' %}
+        {% for post in posts %}
+          <a href="{% url 'post-detail' post.id %}" class="card stretched-link my-4 card-hover">
+          <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+          <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
+          <div class="card-body">
+            <h4 class="card-title">{{ post.title }}</h4>
+            {% if post.overall_rating.get.rating == 1 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 1.5 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 2 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 2.5 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 3 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 3.5 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 4 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 4.5 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </span>
+            {% elif post.overall_rating.get.rating == 5 %}
+            <span>Overall: 
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+            {% endif %}
+            <div>
+
+            Price:
+            {% if post.price_rating.get.name == "Cheap" %}
+            <span>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+            </span>
+            {% elif post.price_rating.get.name == "Average" %}
+            <span> 
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+            </span>
+            {% elif post.price_rating.get.name == "Expensive" %}
+            <span>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign unfilled"></i>
+            </span>
+            {% elif post.price_rating.get.name == "Very Expensive" %}
+            <span>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+              <i class="fas fa-ruble-sign"></i>
+            </span>
+            {% endif %}
+            <div></div>
+            Nearest Station: <em>{{ post.nearest_station.get }}</em>
+            </div>
+            <div class="text-right pr-0">
+              <i class="fas fa-comments"></i>
+              <span>
+                {{ post.comment_set.all.count }}
+              </span>
+            </div>
+            <hr>
+            <p class="card-text">{{ post.card_content }}</p>
+            <hr>
+            <footer class="blockquote-footer ">
+              <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
+            </footer>
+          </div>
+          </a>
+        {% endfor %}
+      {% endif %}
+
+      <!-- Russian blogs -->
+      {% if LANGUAGE_CODE == 'ru' %}
+        {% for post in posts %}
+          {% if post.publish_translated_blog == True %}
+            <a href="{% url 'post-detail' post.id %}" class="card stretched-link my-4 card-hover">
+            <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+            <span class="badge badge-pill notify-badge badge-light">{{ post.store_type_russian.get }}</span>
+            <div class="card-body">
+              <h4 class="card-title">{{ post.title_russian }}</h4>
+              {% trans "Overall:" %}
+              {% if post.overall_rating.get.rating == 1 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 1.5 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 2 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 2.5 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 3 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 3.5 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 4 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star unfilled"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 4.5 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </span>
+              {% elif post.overall_rating.get.rating == 5 %}
+              <span>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </span>
+              {% endif %}
+              <div>
+
+              {% trans "Price:" %}
+              {% if post.price_rating.get.name == "Cheap" %}
+              <span>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+              </span>
+              {% elif post.price_rating.get.name == "Average" %}
+              <span> 
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+              </span>
+              {% elif post.price_rating.get.name == "Expensive" %}
+              <span>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign unfilled"></i>
+              </span>
+              {% elif post.price_rating.get.name == "Very Expensive" %}
+              <span>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+                <i class="fas fa-ruble-sign"></i>
+              </span>
+              {% endif %}
+              <div></div>
+              {% trans "Nearest Station:" %} <em>{{ post.nearest_station_russian.get }}</em>
+              </div>
+              <div class="text-right pr-0">
+                <i class="fas fa-comments"></i>
+                <span>
+                  {{ post.comment_set.all.count }}
+                </span>
+              </div>
+              <hr>
+              <p class="card-text">{{ post.card_content_russian }}</p>
+              <hr>
+              <footer class="blockquote-footer ">
+                <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
+              </footer>
+            </div>
+            </a>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% if is_paginated %}
+<section id="paginate-buttons">
+<div class="container text-center pb-5">
+  <div class="row">
+    <div class="col">
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-dark" href="?page=1"><i class="fas fa-angle-double-left"></i></a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-dark" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-dark" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-dark" href="?page={{ page_obj.paginator.num_pages }}"><i class="fas fa-angle-double-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+</section>
+{% endif %}
+
+
+{% endblock content %}

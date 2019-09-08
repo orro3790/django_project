@@ -133,7 +133,7 @@ a:hover {
   max-width: 100%;
 }
 
-.carousel-caption-1 {
+.carousel-caption-center {
   top: 50%;
   transform: translateY(-50%);
   bottom: 0;
@@ -143,7 +143,7 @@ a:hover {
   font-family: 'Kurale', serif;
 }
 
-.carousel-caption-2 {
+.carousel-caption-top-left {
   top: 5%;
   transform: translateX(-10%);
   bottom: 0;
@@ -154,7 +154,7 @@ a:hover {
   font-family: 'Kurale', serif;
 }
 
-.carousel-caption-3 {
+.carousel-caption-top-right {
   top: 1%;
   transform: translateX(5%);
   bottom: 0;

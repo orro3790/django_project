@@ -16,6 +16,10 @@ from . forms import (
     JobForm,
     SendEmailForm
 )
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language
+from django.contrib.postgres import search
+
 
 class AdCreateView(LoginRequiredMixin, CreateView):
 
@@ -30,7 +34,7 @@ class AdCreateView(LoginRequiredMixin, CreateView):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully posted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully posted!'))
         return reverse('ad-list')
 
 
@@ -44,26 +48,110 @@ def AdListView(request):
     template_name = 'classifieds/ad_list.html'
     context_object_name = 'ads'
     ordering = ['-date_posted']
-    full_qs = Ad.objects.all().order_by('-date_posted')
-    paginator_qs = Ad.objects.all().order_by('-date_posted')
+    all_ads = Ad.objects.all()
+
+    # paginate
+    paginator_qs = all_ads.order_by('-date_posted')
     paginator = Paginator(paginator_qs, 5) # controls the # of objects per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
-    title_query = request.GET.get('title_filter')
-    category_query = request.GET.get('category_filter')
-    
-    if valid_query(title_query) and title_query != "I'm looking for...":
-        # display only top 100 most recent results if search is initiated
-        qs = full_qs.filter(title__icontains=title_query).order_by('-date_posted')[:100]
 
-    if valid_query(category_query) and category_query != "Category...":
-        # look for a match containing first 4 letters of query, because the embedded counts in the template get passed into the query also and interfere with the matching. 
-        # display only top 100 most recent results if search is initiated, 
-        qs = full_qs.filter(category__contains=category_query[:4]).order_by('-date_posted')[:100]
+    LANGUAGE_CODE = get_language()
+
+    # get queries
+    title_query = request.GET.get('title_filter')
+    
+    category_query = request.GET.get('category_filter')
+
+    # If there is a category query, split the string value from the count and grab just the string itself:
+    if category_query != None:
+        category_query = request.GET.get('category_filter').split('-')[0]
+    
+    if valid_query(title_query) and title_query != "Title contains..." and title_query != "Название содержит...":
+        qs = all_ads.filter(title__search=title_query).order_by('-date_posted')[:100]
+    
+    # If a user presses search but didn't select a category
+    if valid_query(category_query) and category_query != "Category..." and category_query != "Категория...":
+        qs = all_ads.filter(category__search=category_query).order_by('-date_posted')[:100]
+
+    # If a category is submitted, pull English their respective ads as well.
+    if category_query != None:
+
+        if 'посуда и приборы' in category_query:
+            qs = all_ads.filter(category__search='kitchenware and appliances').order_by('-date_posted')[:100]
+
+        if 'искусства и ремесла' in category_query:
+            qs = all_ads.filter(category__search='arts and crafts').order_by('-date_posted')[:100]
+
+        if 'малыш и дети' in category_query:
+            qs = all_ads.filter(category__search='baby and kids').order_by('-date_posted')[:100]
+
+        if 'красота и здоровье' in category_query:
+            qs = all_ads.filter(category__search='beauty and health').order_by('-date_posted')[:100]
+
+        if 'велосипеды' in category_query:
+            qs = all_ads.filter(category__search='bikes').order_by('-date_posted')[:100]
+
+        if 'книги' in category_query:
+            qs = all_ads.filter(category__search='books').order_by('-date_posted')[:100]
+
+        if 'телефоны' in category_query:
+            qs = all_ads.filter(category__search='cell phones').order_by('-date_posted')[:100]
+
+        if 'одежда' in category_query:
+            qs = all_ads.filter(category__search='clothing').order_by('-date_posted')[:100]
+
+        if 'предметы коллекционирования' in category_query:
+            qs = all_ads.filter(category__search='collectibles').order_by('-date_posted')[:100]
+
+        if 'компьютеры' in category_query:
+            qs = all_ads.filter(category__search='computers').order_by('-date_posted')[:100]
+        
+        if 'электроника' in category_query:
+            qs = all_ads.filter(category__search='electronics').order_by('-date_posted')[:100]
+
+        if 'сад' in category_query:
+            qs = all_ads.filter(category__search='garden').order_by('-date_posted')[:100]
+
+        if 'мебель' in category_query:
+            qs = all_ads.filter(category__search='furniture').order_by('-date_posted')[:100]
+
+        if 'свободно' in category_query:
+            qs = all_ads.filter(category__search='free').order_by('-date_posted')[:100]
+        
+        if 'генеральный' in category_query:
+            qs = all_ads.filter(category__search='general').order_by('-date_posted')[:100]
+
+        if 'домашнее хозяйство' in category_query:
+            qs = all_ads.filter(category__search='household').order_by('-date_posted')[:100]
+
+        if 'домашнее животное' in category_query:
+            qs = all_ads.filter(category__search='pets').order_by('-date_posted')[:100]
+        
+        if 'ювелирные изделия' in category_query:
+            qs = all_ads.filter(category__search='jewelery').order_by('-date_posted')[:100]
+
+        if 'материалы' in category_query:
+            qs = all_ads.filter(category__search='materials').order_by('-date_posted')[:100]
+
+        if 'музыкальные инструменты' in category_query:
+            qs = all_ads.filter(category__search='musical instruments').order_by('-date_posted')[:100]
+
+        if 'камеры' in category_query:
+            qs = all_ads.filter(category__search='cameras').order_by('-date_posted')[:100]
+
+        if 'инструменты' in category_query:
+            qs = all_ads.filter(category__search='tools').order_by('-date_posted')[:100]
+
+        if 'игры' in category_query:
+            qs = all_ads.filter(category__search='games').order_by('-date_posted')[:100]   
+
 
     context = {
         'ads': qs,
-        'full_qs': full_qs
+        'all_ads': all_ads,
+        'category_query': category_query,
+        'CODE': LANGUAGE_CODE
     }
 
     return render(request, 'classifieds/ad_list.html', context)
@@ -110,7 +198,7 @@ class AdUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         After updating ad, provide success message and return to the detail view of associated ad.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully updated!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully updated!'))
         return reverse('ad-list')
 
 
@@ -130,7 +218,7 @@ class AdDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         After deleting ad, provide success message and return to the list of ads.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully deleted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully deleted!'))
         return reverse('ad-list')
 
 
@@ -147,7 +235,7 @@ class JobCreateView(LoginRequiredMixin, CreateView):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully posted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully posted!'))
         return reverse('jobs-list')
 
 
@@ -164,7 +252,7 @@ def JobListView(request):
     salary_query = request.GET.get('salary_filter')
     title_query = request.GET.get('title_filter')
 
-    if valid_query(salary_query) and salary_query != 'Salary of at least...':
+    if valid_query(salary_query) and salary_query != 'Salary of at least...' and salary_query != 'Зарплата как минимум ...':
         # look for a match containing first 6 digits of query, because the embedded counts in the template get passed into the query also and interfere with the matching. 
         qs = full_qs.filter(salary__gte=salary_query[:6]).order_by('-date_posted')[:100]
 
@@ -219,7 +307,7 @@ class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         """
         After updating ad, provide success message and return to the detail view of associated ad.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully updated!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully updated!'))
         return reverse('jobs-list')
 
 
@@ -239,7 +327,7 @@ class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         After deleting ad, provide success message and return to the list of ads.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your ad has been successfully deleted!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully deleted!'))
         return reverse('jobs-list')
 
 class SendEmailCreateView(CreateView):
@@ -287,7 +375,7 @@ class SendEmailCreateView(CreateView):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, 'Your email has been sent!')
+        messages.add_message(self.request, messages.SUCCESS, _('Your email has been sent!'))
         return reverse('ad-list')
 
 

@@ -3,6 +3,7 @@
 {% load static %}
 {% load humanize %}
 {% block content %}
+{% load i18n %}
 
 <section id="ad-detail">
 
@@ -10,7 +11,7 @@
   <div class="row">
     <div class="col ">
       <h3>
-        Ad #{{ad.id}} - {{ad.title}}
+        {% trans "Ad #" %}{{ad.id}} - {{ad.title}}
       </h3>
     </div>
   </div>
@@ -44,14 +45,14 @@
                   <div class="col-6">
                     <!-- Salary/Hourly Rate-->
                     {% if ad.position_type == "hourly" %}
-                      <p>Hourly Rate: <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
+                      <p>{% trans "Hourly Rate:" %} <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
                     {% else %}
-                      <p>Salary: <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
+                      <p>{% trans "Salary:" %} <strong>{{ad.salary|intcomma}}</strong><i class="fas fa-ruble-sign" style="font-size: 0.8rem;"></i></p>
                     {% endif %}
                   </div>
                   <div class="col-6">
                     <!-- Experience Required -->
-                    <p>Experience Required: <strong>{{ad.experience}}</strong></p>
+                    <p>{% trans "Experience Required:" %} <strong>{{ad.experience}}</strong></p>
                   </div>
                 </div>
                 
@@ -59,17 +60,17 @@
                   <div class="col-6">
                     <!-- Travel required ? -->
                     {% if ad.involves_travel == True %}
-                      <p>Traveling Required: <i class="fas fa-check" style="color: seagreen;"></i></p>
+                      <p>{% trans "Traveling Required:" %} <i class="fas fa-check" style="color: seagreen;"></i></p>
                     {% else %}
-                      <p>Traveling Required: <i class="fas fa-times" style="color: red;"></i></p>
+                      <p>{% trans "Traveling Required:" %} <i class="fas fa-times" style="color: red;"></i></p>
                     {% endif %}
                   </div>
                   <div class="col-6">
                     <!-- Degree required? -->
                     {% if ad.education == True %}
-                      <p>Degree Required: <i class="fas fa-check" style="color: seagreen;"></i></p>
+                      <p>{% trans "Degree Required:" %} <i class="fas fa-check" style="color: seagreen;"></i></p>
                     {% else %}
-                      <p>Traveling Required: <i class="fas fa-times" style="color: red;"></i></p>
+                      <p>{% trans "Traveling Required:" %} <i class="fas fa-times" style="color: red;"></i></p>
                     {% endif %}
                   </div>
                 </div>
@@ -77,7 +78,7 @@
                 <div class="row">
                   <div class="col-6">
                     <!-- Location -->
-                    <p>Location: <strong>{{ad.location}}</strong></p>
+                    <p>{% trans "Location:" %} <strong>{{ad.location}}</strong></p>
                   </div>
                   <div class="col-6">
                     <!-- Company website? -->
@@ -93,7 +94,7 @@
             <div class="row py-4">
               <div class="col">
                 <div class="container">
-                  <h3 class="border-bottom">Company Description</h3>
+                  <h3 class="border-bottom">{% trans "Company Description" %}</h3>
                   {{ad.company_description}}
                 </div>
               </div>
@@ -101,7 +102,7 @@
             <div class="row py-4">
               <div class="col">
                 <div class="container">
-                  <h3 class="border-bottom">Job Description</h3>
+                  <h3 class="border-bottom">{% trans "Job Description" %}</h3>
                   {{ad.job_description}}
                 </div>
               </div>
@@ -110,7 +111,7 @@
             <div class="row py-4">
               <div class="col">
                 <div class="container text-center">
-                  <h4 class="pb-1">Submit Your Application:</h4>
+                  <h4 class="pb-1">{% trans "Submit Your Application:" %}</h4>
                   <p>
                     {{ad.email}}
                   </p>
@@ -125,10 +126,10 @@
             {% if user == ad.author %}
               <div class="row">
                 <div class="col-6 text-right pt-4 pb-5">
-                  <a href="{% url 'job-update' ad.id %}" class="btn btn-dark btn-md text-white">Update Ad</a>
+                  <a href="{% url 'job-update' ad.id %}" class="btn btn-dark btn-md text-white">{% trans "Update Ad" %}</a>
                 </div>
                 <div class="col-6 text-left pt-4 pb-5">
-                  <a href="{% url 'job-delete' ad.id %}" class="btn btn-danger btn-md text-white">Delete Ad</a>
+                  <a href="{% url 'job-delete' ad.id %}" class="btn btn-danger btn-md text-white">{% trans "Delete Ad" %}</a>
                 </div>
               </div>
             {% endif %}

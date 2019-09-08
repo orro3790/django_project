@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
+{% load i18n %}
 
 <!-- Comments Section Starts -->
 <section id="comments">
@@ -78,7 +79,7 @@
           </div>
           <p class="mb-0 pb-2">{{comment.comment}}</p>
            <footer class="blockquote-footer text-end pb-2">
-            <cite>{{ comment.author }}, {{ comment.date_posted|date:"F d, Y" }}</cite>
+            <cite>{{ comment.author }}, {{ comment.date_posted|date:"m/d/Y" }}</cite>
           </footer>
         </div>
       </div>

@@ -1,0 +1,1311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-09-07 23:46-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\blog\models.py:257 .\blog\models.py:387
+msgid "Post your comment here."
+msgstr "Оставьте свой комментарий здесь."
+
+#: .\blog\models.py:257 .\blog\models.py:387
+msgid "comment"
+msgstr "комментарий"
+
+#: .\blog\templates\blog\about.html:37
+msgid "Reach us on Social Media"
+msgstr "Свяжитесь с нами в социальных сетях"
+
+#: .\blog\templates\blog\about.html:50
+msgid "Matt"
+msgstr "Мэт"
+
+#: .\blog\templates\blog\about.html:55
+msgid ""
+"For years, I've been fascinated by Russia and dreamed of exploring it. "
+"Finally, I'm here! I moved to Moscow to discover the city for myself, from "
+"its streets, sweet shops and cafes, to its restaurants, museums, and more. "
+"Now it's my passion to help cultivate the expat community here by sharing "
+"all the incredible places that I've discovered. Don't be shy, say hi!"
+msgstr ""
+"Всем привет! Последние несколько лет я был очарован Россией и мечтал ее "
+"изучить. Наконец-то я здесь! Я переехал в Москву, чтобы открыть для себя "
+"город, от его улиц, кондитерских и кафе до ресторанов, музеев и многого "
+"другого. Теперь я страстно помогаю развивать сообщество экспатов, делясь "
+"всеми невероятными местами, которые я обнаружил. Я - самоописанный наркоман "
+"кофе и десерта. Я люблю слышать от вас, ребята, так что не бойтесь сказать "
+"привет!"
+
+#: .\blog\templates\blog\about.html:78
+msgid "Steph"
+msgstr "Стеф"
+
+#: .\blog\templates\blog\about.html:79
+msgid "Sweets Obsessed"
+msgstr "Конфеты Одержимые"
+
+#: .\blog\templates\blog\about.html:82
+msgid ""
+"My motivations for travelling are to see the amazing sights and learn new "
+"games from other cultures. Although they are certainly fun, and I do enjoy "
+"them, my real motivation is...food! I love exploring different cultures "
+"through tasting the food. It is always the most exciting part of travelling "
+"and I look forward to sharing my food adventures in Russia with you all!"
+msgstr ""
+"Мои мотивы для путешествий - видеть удивительные достопримечательности и "
+"изучать новые игры из других культур. Хотя они, безусловно, веселые, и я "
+"наслаждаюсь ими, моя настоящая мотивация - это ... еда! Я люблю исследовать "
+"различные культуры через дегустацию еды. Это всегда самая захватывающая "
+"часть путешествия, и я с нетерпением жду возможности поделиться своими "
+"приключениями в России со всеми вами!"
+
+#: .\blog\templates\blog\about.html:100
+msgid "Business Inquiries:"
+msgstr "Деловые Запросы:"
+
+#: .\blog\templates\blog\base.html:47
+msgid "Search Food Blogs"
+msgstr "Поиск еды"
+
+#: .\blog\templates\blog\base.html:52
+msgid "Life in Moscow"
+msgstr "Жизнь в москве"
+
+#: .\blog\templates\blog\base.html:57
+msgid "Map"
+msgstr "карта"
+
+#: .\blog\templates\blog\base.html:62
+msgid "Classifieds"
+msgstr "Объявления"
+
+#: .\blog\templates\blog\base.html:66
+msgid "Buy and Sell"
+msgstr "Покупать и продавать"
+
+#: .\blog\templates\blog\base.html:69
+msgid "Jobs"
+msgstr "Работы"
+
+#: .\blog\templates\blog\base.html:73
+#: .\classifieds\templates\classifieds\faq.html:17
+msgid "FAQ & Terms of Use"
+msgstr "ЧаВо и и условия использования"
+
+#: .\blog\templates\blog\base.html:80
+msgid "Contact"
+msgstr "Контакт"
+
+#: .\blog\templates\blog\base.html:86
+msgid "Profile"
+msgstr "Профиль"
+
+#: .\blog\templates\blog\base.html:116
+msgid "Logout"
+msgstr "Выйти"
+
+#: .\blog\templates\blog\base.html:122 .\users\templates\users\login.html:31
+msgid "Login"
+msgstr "Вход"
+
+#: .\blog\templates\blog\base.html:127
+msgid "Register"
+msgstr "Регистрировать"
+
+#: .\blog\templates\blog\base.html:161
+msgid "Copyright"
+msgstr "Aвторское право"
+
+#: .\blog\templates\blog\comment_form.html:11
+#: .\blog\templates\blog\life_blog_comment_form.html:11
+msgid "Post your comment for:"
+msgstr "Оставьте свой комментарий для:"
+
+#: .\blog\templates\blog\comment_form.html:25
+#: .\blog\templates\blog\life_blog_comment_form.html:25
+msgid "Post"
+msgstr "Оставьте"
+
+#: .\blog\templates\blog\foodblog_detail.html:85
+msgid "The Good"
+msgstr "Плюсы"
+
+#: .\blog\templates\blog\foodblog_detail.html:105
+msgid "The Bad"
+msgstr "Минусы"
+
+#: .\blog\templates\blog\foodblog_detail.html:126
+msgid "Score Breakdown"
+msgstr "Рейтинги"
+
+#: .\blog\templates\blog\foodblog_detail.html:133
+#: .\blog\templates\blog\home.html:411 .\blog\templates\blog\search.html:440
+msgid "Overall:"
+msgstr "Общая оценка:"
+
+#: .\blog\templates\blog\foodblog_detail.html:210
+#: .\blog\templates\blog\search.html:531
+msgid "Taste:"
+msgstr "Вкус"
+
+#: .\blog\templates\blog\foodblog_detail.html:286
+#: .\blog\templates\blog\search.html:607
+msgid "Appearance:"
+msgstr "Вид"
+
+#: .\blog\templates\blog\foodblog_detail.html:362
+#: .\blog\templates\blog\search.html:684
+msgid "Atmosphere:"
+msgstr "Атмосфера:"
+
+#: .\blog\templates\blog\foodblog_detail.html:438
+#: .\blog\templates\blog\home.html:484 .\blog\templates\blog\search.html:760
+msgid "Price:"
+msgstr "Цена:"
+
+#: .\blog\templates\blog\foodblog_detail.html:470
+msgid "Service"
+msgstr "Oбслуживание"
+
+#: .\blog\templates\blog\foodblog_detail.html:548
+msgid "Special Features:"
+msgstr "Особые возможности:"
+
+#: .\blog\templates\blog\foodblog_detail.html:750
+#: .\blog\templates\blog\foodblog_detail.html:823
+#: .\blog\templates\blog\life_detail.html:248
+#: .\blog\templates\blog\life_detail.html:321
+msgid "Add a Comment"
+msgstr "Добавить комментарий"
+
+#: .\blog\templates\blog\foodblog_detail.html:754
+#: .\blog\templates\blog\foodblog_detail.html:827
+#: .\blog\templates\blog\life_detail.html:252
+#: .\blog\templates\blog\life_detail.html:325
+msgid "<strong>Login</strong> to add a new comment"
+msgstr "<strong> Войти </ strong>, чтобы добавить новый комментарий"
+
+#: .\blog\templates\blog\foodblog_detail.html:762
+#: .\blog\templates\blog\life_detail.html:260
+msgid "Comments:"
+msgstr "Комментарии:"
+
+#: .\blog\templates\blog\home.html:245
+msgid "Cafes & Restaurants"
+msgstr "Кафе и рестораны"
+
+#: .\blog\templates\blog\home.html:246
+msgid ""
+"Browse a variety of cafes, coffee houses, dessert cafes, and restaurants."
+msgstr "Просмотрите множество кафе, кофеен, десертных кафе и ресторанов."
+
+#: .\blog\templates\blog\home.html:254
+msgid "Search by Features"
+msgstr "Поиск по функциям"
+
+#: .\blog\templates\blog\home.html:255
+msgid ""
+"Click to Search destinations by ratings, nearest subway station, unique "
+"features, and more."
+msgstr ""
+"Нажмите, чтобы найти пункты назначения по рейтингу, ближайшей станции метро, ​​"
+"уникальной особенности и многое другое."
+
+#: .\blog\templates\blog\home.html:261
+msgid "View Locations"
+msgstr "Посмотреть места"
+
+#: .\blog\templates\blog\home.html:262
+msgid ""
+"Every review contains a location pin. You can also click here to browse the "
+"Tasty Map."
+msgstr ""
+"Каждый отзыв содержит указатель местоположения. Вы также можете нажать "
+"здесь, чтобы просмотреть карту"
+
+#: .\blog\templates\blog\home.html:515 .\blog\templates\blog\search.html:516
+msgid "Nearest Station:"
+msgstr "Ближайшая станция:"
+
+#: .\blog\templates\blog\home.html:527
+#: .\blog\templates\blog\life_search.html:406
+msgid "Posted on"
+msgstr "Написано в"
+
+#: .\blog\templates\blog\life_search.html:39
+#: .\blog\templates\blog\search.html:37
+msgid "Title contains..."
+msgstr "Название содержит..."
+
+#: .\blog\templates\blog\life_search.html:53
+#: .\classifieds\templates\classifieds\ad_list.html:109
+msgid "Category..."
+msgstr "Категория..."
+
+#: .\blog\templates\blog\life_search.html:75
+msgid "Tags..."
+msgstr "Теги..."
+
+#: .\blog\templates\blog\life_search.html:96
+#: .\blog\templates\blog\search.html:117
+msgid "Search"
+msgstr "Поиск"
+
+#: .\blog\templates\blog\life_search.html:324
+msgid ""
+"Looking for something? Tell us on Twitter or Instagram, and we'll blog about "
+"it for you!"
+msgstr ""
+"Ищете что-то? Сообщите нам в Твиттере или Инстаграме, и мы об этом сообщим в "
+"блоге!"
+
+#: .\blog\templates\blog\search.html:48
+msgid "Type..."
+msgstr "Тип..."
+
+#: .\blog\templates\blog\search.html:63
+msgid "Features..."
+msgstr "Характеристики..."
+
+#: .\blog\templates\blog\search.html:78
+msgid "Station..."
+msgstr "Станция..."
+
+#: .\blog\templates\blog\search.html:93
+msgid "Price..."
+msgstr "Цена..."
+
+#: .\blog\templates\blog\search.html:108
+msgid "Rating ≥ ..."
+msgstr "Рейтинг ≥ ..."
+
+#: .\blog\templates\blog\search.html:226 .\blog\templates\blog\search.html:376
+msgid "No places found with that specific criteria"
+msgstr "Не найдено мест с такими конкретными критериями"
+
+#: .\blog\templates\blog\search.html:229 .\blog\templates\blog\search.html:379
+msgid ""
+"If you have a suggestion, tell us on Twitter or Instagram, and we'll blog "
+"about it for you!"
+msgstr ""
+"Если у вас есть предложения, сообщите нам в Twitter или Instagram, и мы "
+"будем вести блог об этом для вас!"
+
+#: .\blog\templates\blog\search.html:792
+#, fuzzy
+#| msgid "Service"
+msgid "Service:"
+msgstr "Oбслуживание"
+
+#: .\blog\views.py:286 .\blog\views.py:370
+msgid "Your comment has been successfully posted!"
+msgstr "Ваш комментарий был успешно отправлен!"
+
+#: .\classifieds\models.py:52
+msgid "kitchenware and appliances"
+msgstr "посуда и приборы"
+
+#: .\classifieds\models.py:53
+msgid "arts and crafts"
+msgstr "искусства и ремесла"
+
+#: .\classifieds\models.py:54
+msgid "baby and kids"
+msgstr "малыш и дети"
+
+#: .\classifieds\models.py:55
+msgid "beauty and health"
+msgstr "красота и здоровье"
+
+#: .\classifieds\models.py:56
+msgid "bikes"
+msgstr "велосипеды"
+
+#: .\classifieds\models.py:57
+msgid "books"
+msgstr "книги"
+
+#: .\classifieds\models.py:58
+msgid "cell phones"
+msgstr "телефоны"
+
+#: .\classifieds\models.py:59
+msgid "clothing"
+msgstr "одежда"
+
+#: .\classifieds\models.py:60
+msgid "collectibles"
+msgstr "предметы коллекционирования"
+
+#: .\classifieds\models.py:61
+msgid "computers"
+msgstr "компьютеры"
+
+#: .\classifieds\models.py:62
+msgid "electronics"
+msgstr "электроника"
+
+#: .\classifieds\models.py:63
+msgid "garden"
+msgstr "сад"
+
+#: .\classifieds\models.py:64
+msgid "furniture"
+msgstr "мебель"
+
+#: .\classifieds\models.py:65
+msgid "free"
+msgstr "свободно"
+
+#: .\classifieds\models.py:66
+msgid "general"
+msgstr "генеральный"
+
+#: .\classifieds\models.py:67
+msgid "household"
+msgstr "домашнее хозяйство"
+
+#: .\classifieds\models.py:68
+msgid "pets"
+msgstr "домашнее животное"
+
+#: .\classifieds\models.py:69
+msgid "jewelery"
+msgstr "ювелирные изделия"
+
+#: .\classifieds\models.py:70
+msgid "materials"
+msgstr "материалы"
+
+#: .\classifieds\models.py:71
+msgid "musical instruments"
+msgstr "музыкальные инструменты"
+
+#: .\classifieds\models.py:72
+msgid "cameras"
+msgstr "камеры"
+
+#: .\classifieds\models.py:73
+msgid "tools"
+msgstr "инструменты"
+
+#: .\classifieds\models.py:74
+msgid "games"
+msgstr "игры"
+
+#: .\classifieds\models.py:78
+msgid "I'm a buyer"
+msgstr "Я покупатель"
+
+#: .\classifieds\models.py:79
+msgid "I'm a seller"
+msgstr "Я продавец"
+
+#: .\classifieds\models.py:80
+#: .\classifieds\templates\classifieds\ad_detail.html:111
+msgid "I want to trade"
+msgstr "Я хочу торговать"
+
+#: .\classifieds\models.py:84
+msgid "The item is brand new."
+msgstr "Товар совершенно новый."
+
+#: .\classifieds\models.py:85
+msgid "The item is almost like new."
+msgstr "Товар совершенно новый."
+
+#: .\classifieds\models.py:86
+msgid "The item is used. There are minor blemishes or signs of wear."
+msgstr "Товар используется. Есть незначительные пятна или признаки износа."
+
+#: .\classifieds\models.py:87
+msgid "The item is used. There are signs of wear or damage."
+msgstr "Товар используется. Есть признаки износа или повреждения."
+
+#: .\classifieds\models.py:88 .\classifieds\models.py:95
+msgid "N/A"
+msgstr "N/A"
+
+#: .\classifieds\models.py:92
+msgid "There are no cosmetic defects"
+msgstr "Нет косметических дефектов"
+
+#: .\classifieds\models.py:93
+msgid "There are few cosmetic defects"
+msgstr "Есть несколько косметических дефектов"
+
+#: .\classifieds\models.py:94
+msgid "There are significant cosmetic defects"
+msgstr "Есть значительные косметические дефекты"
+
+#: .\classifieds\models.py:98
+msgid ""
+"Do not include price or location in your title, you can input these details "
+"below!"
+msgstr ""
+"Не включайте цену или местоположение в свой заголовок, вы можете ввести эти "
+"данные ниже!"
+
+#: .\classifieds\models.py:98 .\classifieds\models.py:184
+#: .\classifieds\models.py:216
+msgid "title"
+msgstr "название"
+
+#: .\classifieds\models.py:99
+msgid "This image will be displayed as the main image for your ad."
+msgstr ""
+"Это изображение будет отображаться в качестве основного изображения для "
+"вашей рекламы."
+
+#: .\classifieds\models.py:99 .\classifieds\models.py:185 .\users\models.py:19
+msgid "image"
+msgstr "образ"
+
+#: .\classifieds\models.py:100
+msgid "Upload a second image. Try to get provide a different angle."
+msgstr "Загрузите второе изображение. Попытайтесь получить другой угол."
+
+#: .\classifieds\models.py:100
+msgid "image_2"
+msgstr "образ_2"
+
+#: .\classifieds\models.py:101
+msgid "Upload a third image. Try to get provide a different angle."
+msgstr "Загрузите третье изображение. Постарайтесь обеспечить другой угол."
+
+#: .\classifieds\models.py:101
+msgid "image_3"
+msgstr "образ_3"
+
+#: .\classifieds\models.py:102
+msgid "What are you interested in buying or selling?"
+msgstr "Загрузите третье изображение. Постарайтесь обеспечить другой угол."
+
+#: .\classifieds\models.py:102
+msgid "items_or_model_names"
+msgstr "наименования_предметов_или_моделей"
+
+#: .\classifieds\models.py:103
+msgid "Choose a category for your ad listing."
+msgstr "Выберите категорию для вашего объявления."
+
+#: .\classifieds\models.py:103
+msgid "category"
+msgstr "категория"
+
+#: .\classifieds\models.py:104
+msgid "Are you buying or selling?"
+msgstr "Покупать и продавать"
+
+#: .\classifieds\models.py:104
+msgid "buying or selling"
+msgstr "Покупать и продавать"
+
+#: .\classifieds\models.py:105
+msgid "Describe the condition of your item"
+msgstr "Опишите состояние вашего товара."
+
+#: .\classifieds\models.py:105
+msgid "condition"
+msgstr "состояние"
+
+#: .\classifieds\models.py:106
+msgid "Describe the degree of cosmetic damage."
+msgstr ""
+
+#: .\classifieds\models.py:106
+msgid "cosmetic_damage"
+msgstr "Опишите степень косметического повреждения."
+
+#: .\classifieds\models.py:107
+msgid "What is your initial asking price in rubles? (₽)"
+msgstr "Какова ваша начальная цена в рублях? (₽)"
+
+#: .\classifieds\models.py:107
+msgid "asking_price"
+msgstr "запрашиваемая цена"
+
+#: .\classifieds\models.py:108
+msgid "Where are you located?"
+msgstr "Где ты находишься?"
+
+#: .\classifieds\models.py:108 .\classifieds\models.py:191
+msgid "location"
+msgstr "Посмотреть места"
+
+#: .\classifieds\models.py:109
+msgid "willing_to_travel"
+msgstr "готов путешествовать"
+
+#: .\classifieds\models.py:110
+msgid ""
+"Can people respond to you via your Twitter? (you can update the link from "
+"your profile page)"
+msgstr ""
+"Могут ли люди ответить вам через ваш Twitter? (вы можете обновить ссылку со "
+"страницы своего профиля)"
+
+#: .\classifieds\models.py:110
+msgid "twitter_contact"
+msgstr "ссылка на твиттер"
+
+#: .\classifieds\models.py:111
+msgid ""
+"Can people respond to you via your Instagram? (you can update the link from "
+"your profile page)"
+msgstr ""
+"Могут ли люди ответить вам через ваш Instagram? (вы можете обновить ссылку "
+"со страницы своего профиля)"
+
+#: .\classifieds\models.py:111
+msgid "instagram_contact"
+msgstr "ссылка на инстаграм"
+
+#: .\classifieds\models.py:112
+msgid ""
+"Can people respond to you via your Facebook? (you can update the link from "
+"your profile page)"
+msgstr ""
+"Могут ли люди отвечать вам через ваш Facebook? (вы можете обновить ссылку со "
+"страницы своего профиля)"
+
+#: .\classifieds\models.py:112
+msgid "facebook_contact"
+msgstr "ссылка на фейсбук"
+
+#: .\classifieds\models.py:113
+msgid "Write your ad here."
+msgstr "Оставьте свой комментарий здесь."
+
+#: .\classifieds\models.py:113 .\classifieds\models.py:217
+msgid "description"
+msgstr "описание"
+
+#: .\classifieds\models.py:184
+msgid "This is the title that will be displayed on the job board."
+msgstr ""
+
+#: .\classifieds\models.py:185
+msgid "Upload an image. This image will be displayed above your ad."
+msgstr ""
+"Загрузите изображение. Это изображение будет отображаться над вашей рекламой."
+
+#: .\classifieds\models.py:186
+msgid "What is the title of the position Ex. 'English teacher'?"
+msgstr "Как называется должность Ex. 'Учитель английского'?"
+
+#: .\classifieds\models.py:186
+msgid "title_of_position"
+msgstr ""
+
+#: .\classifieds\models.py:187
+msgid "Please select 'full-time', 'part-time', or 'hourly'."
+msgstr ""
+"Пожалуйста, выберите «полный рабочий день», «неполный рабочий день» или "
+"«почасовой»."
+
+#: .\classifieds\models.py:187
+msgid "position_type"
+msgstr "тип позиции"
+
+#: .\classifieds\models.py:188
+msgid "How much experience is required?"
+msgstr "Сколько опыта требуется?"
+
+#: .\classifieds\models.py:188
+msgid "experience"
+msgstr "опыт"
+
+#: .\classifieds\models.py:189
+msgid "Is a university degree required?"
+msgstr "Требуется ли университетское образование?"
+
+#: .\classifieds\models.py:189
+msgid "education"
+msgstr "Посмотреть места"
+
+#: .\classifieds\models.py:190
+msgid "Desired salary or hourly wage (₽)."
+msgstr "Желаемая заработная плата или почасовая заработная плата (₽)."
+
+#: .\classifieds\models.py:190
+msgid "salary"
+msgstr "оплата труда"
+
+#: .\classifieds\models.py:191
+msgid "State the job location."
+msgstr "Укажите место работы."
+
+#: .\classifieds\models.py:192
+msgid "Does the job involve travel?"
+msgstr "Работа требует путешествий?"
+
+#: .\classifieds\models.py:192
+msgid "involves_travel"
+msgstr "включает в себя путешествие"
+
+#: .\classifieds\models.py:193
+msgid "State the name of your company, or your name."
+msgstr "Укажите название вашей компании или ваше имя."
+
+#: .\classifieds\models.py:193
+msgid "name"
+msgstr "имя"
+
+#: .\classifieds\models.py:194
+msgid "Provide your Skype ID if you wished to be contacted via skype."
+msgstr ""
+"Укажите свой Skype ID, если вы хотите, чтобы с вами связались через Skype."
+
+#: .\classifieds\models.py:194
+msgid "skype_id"
+msgstr "skype id"
+
+#: .\classifieds\models.py:195
+msgid "Provide an email where applicants can reach you."
+msgstr ""
+"Укажите электронное письмо, по которому кандидаты могут связаться с вами."
+
+#: .\classifieds\models.py:195
+msgid "email"
+msgstr "Эл. адрес"
+
+#: .\classifieds\models.py:196
+msgid "Provide your website url if applicable."
+msgstr "Укажите URL вашего сайта, если это применимо."
+
+#: .\classifieds\models.py:196
+msgid "company_website"
+msgstr "вебсайт компании"
+
+#: .\classifieds\models.py:197
+msgid "Describe your company. Do not describe the job details here!"
+msgstr "Опишите свою компанию. Не опишите детали работы здесь!"
+
+#: .\classifieds\models.py:197
+msgid "company_description"
+msgstr "Описание Компании"
+
+#: .\classifieds\models.py:198
+msgid "Describe the job description here."
+msgstr ""
+
+#: .\classifieds\models.py:198
+msgid "job_description"
+msgstr "Опишите описание работы здесь."
+
+#: .\classifieds\models.py:217
+msgid "Write your message here."
+msgstr "Оставьте свой комментарий здесь."
+
+#: .\classifieds\models.py:219
+msgid "ad"
+msgstr "объявление"
+
+#: .\classifieds\models.py:246
+msgid "Your email has been successfully posted!"
+msgstr "Ваш комментарий был успешно отправлен!"
+
+#: .\classifieds\templates\classifieds\ad_confirm_delete.html:15
+#: .\classifieds\templates\classifieds\ad_detail.html:199
+#: .\classifieds\templates\classifieds\job_confirm_delete.html:15
+#: .\classifieds\templates\classifieds\job_detail.html:132
+msgid "Delete Ad"
+msgstr "Удалить объявление"
+
+#: .\classifieds\templates\classifieds\ad_confirm_delete.html:16
+msgid "Are you sure you want to delete your ad: "
+msgstr "Вы уверены, что хотите удалить свое объявление:"
+
+#: .\classifieds\templates\classifieds\ad_confirm_delete.html:19
+#: .\classifieds\templates\classifieds\job_confirm_delete.html:19
+msgid "Yes, Delete"
+msgstr "Да, удалить"
+
+#: .\classifieds\templates\classifieds\ad_confirm_delete.html:20
+#: .\classifieds\templates\classifieds\job_confirm_delete.html:20
+msgid "Cancel"
+msgstr "отменить"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:16
+msgid "posted by"
+msgstr "Написано в"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:85
+msgid "Details"
+msgstr "подробности"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:89
+msgid "Item"
+msgstr "Вещь"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:94
+#: .\classifieds\templates\classifieds\ad_list.html:162
+msgid "Condition"
+msgstr "Состояние"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:99
+msgid "Asking Price"
+msgstr "Запрашиваемая цена"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:103
+msgid "Buying or Selling"
+msgstr "Покупать и продавать"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:107
+msgid "Buying"
+msgstr "покупка"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:109
+msgid "Selling"
+msgstr "Я продаю"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:115
+msgid "Cosmetic Damage"
+msgstr "Косметический ущерб"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:120
+#: .\classifieds\templates\classifieds\ad_list.html:168
+#: .\classifieds\templates\classifieds\job_list.html:113
+msgid "Location"
+msgstr "Посмотреть места"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:125
+msgid "Willing to Travel"
+msgstr "Готов путешествовать"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:135
+msgid "Date Posted"
+msgstr "Написано в"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:140
+msgid "Methods of Contact"
+msgstr "Методы контакта"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:190
+msgid "I'm interested!"
+msgstr "Я заинтересован!"
+
+#: .\classifieds\templates\classifieds\ad_detail.html:196
+#: .\classifieds\templates\classifieds\job_detail.html:129
+msgid "Update Ad"
+msgstr "Обновить объявление"
+
+#: .\classifieds\templates\classifieds\ad_form.html:14
+msgid "Post A New Ad"
+msgstr "Добавить новое объявление"
+
+#: .\classifieds\templates\classifieds\ad_form.html:20
+#: .\classifieds\templates\classifieds\job_form.html:19
+msgid "Post Ad"
+msgstr "Оставьте"
+
+#: .\classifieds\templates\classifieds\ad_list.html:86
+#: .\classifieds\templates\classifieds\ad_list.html:135
+#: .\classifieds\templates\classifieds\job_list.html:42
+#: .\classifieds\templates\classifieds\job_list.html:78
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\classifieds\templates\classifieds\ad_list.html:149
+msgid "Community Ads"
+msgstr "Комментарии:"
+
+#: .\classifieds\templates\classifieds\ad_list.html:154
+#: .\classifieds\templates\classifieds\ad_list.html:156
+#: .\classifieds\templates\classifieds\job_list.html:99
+#: .\classifieds\templates\classifieds\job_list.html:101
+msgid "results."
+msgstr "Результаты."
+
+#: .\classifieds\templates\classifieds\ad_list.html:158
+#: .\classifieds\templates\classifieds\job_list.html:103
+msgid "No results found."
+msgstr "Результаты не найдены."
+
+#: .\classifieds\templates\classifieds\ad_list.html:165
+msgid "Price"
+msgstr "Цена:"
+
+#: .\classifieds\templates\classifieds\ad_list.html:206
+#: .\classifieds\templates\classifieds\job_list.html:151
+msgid "Post An Ad"
+msgstr "Написано в"
+
+#: .\classifieds\templates\classifieds\ad_update_form.html:13
+#: .\classifieds\templates\classifieds\job_update_form.html:13
+msgid "Update Ad:"
+msgstr "Обновить объявление:"
+
+#: .\classifieds\templates\classifieds\ad_update_form.html:17
+msgid "Update"
+msgstr "Обновить"
+
+#: .\classifieds\templates\classifieds\ademail_form.html:10
+msgid "Reply to:"
+msgstr "Ответить на:"
+
+#: .\classifieds\templates\classifieds\ademail_form.html:13
+msgid "posted by <strong>{{ad.author}}</strong>, on {{ad.date_posted}}"
+msgstr "опубликовано <strong>{{ad.author}}</strong> на {{ad.date_posted}}"
+
+#: .\classifieds\templates\classifieds\ademail_form.html:23
+msgid "Send Email*"
+msgstr "Отправить письмо*"
+
+#: .\classifieds\templates\classifieds\ademail_form.html:24
+msgid ""
+"*The author of this ad will be given the ability to contact you at the email "
+"address provided on your profile page. Check your email for their response."
+msgstr ""
+"* Автору этого объявления будет предоставлена возможность связаться с вами "
+"по адресу электронной почты, указанному на странице вашего профиля. "
+"Проверьте свою электронную почту для их ответа."
+
+#: .\classifieds\templates\classifieds\faq.html:23
+msgid "1) Do I need to create an account in order to create an ad?"
+msgstr "1) Нужно ли создавать аккаунт для создания рекламы?"
+
+#: .\classifieds\templates\classifieds\faq.html:27
+msgid ""
+"<b>Yes, you will need an account</b> in order to create an ad, or send an "
+"email to the owner of an ad."
+msgstr ""
+"<b>Да, вам понадобится аккаунт</b>, чтобы создать объявление или отправить "
+"электронное письмо владельцу объявления."
+
+#: .\classifieds\templates\classifieds\faq.html:35
+msgid "2) I'm interested in an ad, how can I contact that user?"
+msgstr "2) Меня интересует реклама, как я могу связаться с этим пользователем?"
+
+#: .\classifieds\templates\classifieds\faq.html:39
+msgid ""
+"When a user creates an ad, they are given the opportunity to select their "
+"preferred method of contact. Supported methods are: <b>twitter, instagram, "
+"facebook, and email</b>. You can find all of these contact methods within "
+"the detailed view of the ad."
+msgstr ""
+"Когда пользователь создает объявление, ему предоставляется возможность "
+"выбрать предпочтительный способ контакта. Поддерживаются следующие методы: "
+"<b> Twitter, Instagram, Facebook и электронная почта </b>. Вы можете найти "
+"все эти способы контакта в подробном просмотре объявления."
+
+#: .\classifieds\templates\classifieds\faq.html:47
+msgid "3) Can everybody see my email address or social media links?"
+msgstr ""
+"3) Все могут видеть мой адрес электронной почты или ссылки в социальных "
+"сетях?"
+
+#: .\classifieds\templates\classifieds\faq.html:51
+msgid ""
+"No. <b>Your email is never displayed publicly</b>, even in your ads (this is "
+"why we use a mail server for you: notifications@whattheblin.com). It is not "
+"recommended that you post your email within your ad. However, if you link "
+"your social media accounts to your profile, you can optionally allow users "
+"to respond to your ads or contact you via any of those accounts."
+msgstr ""
+"Нет. <b> Ваша электронная почта никогда не отображается публично </b>, даже "
+"в ваших объявлениях (поэтому мы используем почтовый сервер для вас: "
+"notifications@whattheblin.com). Не рекомендуется размещать адрес электронной "
+"почты в объявлении. Однако, если вы свяжете свои учетные записи в социальных "
+"сетях с вашим профилем, вы можете разрешить пользователям отвечать на ваши "
+"объявления или связываться с вами через любую из этих учетных записей."
+
+#: .\classifieds\templates\classifieds\faq.html:59
+msgid "4) Is it free to create an ad?"
+msgstr "4) Это бесплатно для создания рекламы?"
+
+#: .\classifieds\templates\classifieds\faq.html:63
+msgid "Yes, it's completely free!"
+msgstr "Да, это абсолютно бесплатно!"
+
+#: .\classifieds\templates\classifieds\faq.html:71
+msgid "5) Can I update or delete an ad once it has been made?"
+msgstr "5) Могу ли я обновить или удалить объявление после его создания?"
+
+#: .\classifieds\templates\classifieds\faq.html:75
+msgid ""
+"Yes. Beside your ad you will see two icons, one for editing your ad and one "
+"for deleting it. Additionally, you have the option of updating or deleting "
+"your ad from within the detailed view of your ad."
+msgstr ""
+"Да. Рядом с вашим объявлением вы увидите два значка: один для редактирования "
+"вашего объявления, а другой для его удаления. Кроме того, у вас есть "
+"возможность обновить или удалить свое объявление из детального просмотра "
+"вашего объявления."
+
+#: .\classifieds\templates\classifieds\faq.html:83
+msgid "6) Someone scammed me or is harassing me! What should I do?"
+msgstr "6) Кто-то обманул меня или преследует меня! Что я должен делать?"
+
+#: .\classifieds\templates\classifieds\faq.html:87
+msgid ""
+"<b>You as the user take full responsibility</b> for any and all transactions "
+"or agreements that take place upon creating ad, or responding to another "
+"user's ad. We are merely providing a domain for members of Moscow's expat "
+"community to connect with one another. However, if a user has scammed you, "
+"has attempted to scam you, or is harassing you, please contact us at "
+"<b>contact@whattheblin.com</b>."
+msgstr ""
+"<b> Вы, как пользователь, несете полную ответственность </b> за все без "
+"исключения транзакции или соглашения, которые имеют место при создании "
+"объявления или ответе на объявление другого пользователя. Мы просто "
+"предоставляем домен, чтобы члены московского сообщества эмигрантов могли "
+"общаться друг с другом. Однако, если пользователь вас обманул, попытался "
+"обмануть или преследует, свяжитесь с нами по адресу <b> contact@whattheblin."
+"com </b>."
+
+#: .\classifieds\templates\classifieds\faq.html:95
+msgid "7) What things are prohibited?"
+msgstr "7) Какие вещи запрещены?"
+
+#: .\classifieds\templates\classifieds\faq.html:99
+msgid ""
+"Use common sense when creating or responding to ads. <b>You must comply with "
+"Russia's laws.</b> Therefore, any items or actions prohibited by Russian law "
+"are also prohibited on this domain. By using our domain, you agree to act in "
+"accordance with Russian law. Any ads that breach this agreement will be "
+"taken down, and those users will be permanently banned."
+msgstr ""
+"Используйте здравый смысл при создании или реагировании на рекламу. <b> Вы "
+"должны соблюдать российское законодательство. </b> Поэтому любые предметы "
+"или действия, запрещенные российским законодательством, также запрещены в "
+"этом домене. Используя наш домен, вы соглашаетесь действовать в соответствии "
+"с российским законодательством. Любая реклама, которая нарушает это "
+"соглашение, будет удалена, и эти пользователи будут навсегда заблокированы."
+
+#: .\classifieds\templates\classifieds\faq.html:107
+msgid ""
+"8) I am interested in an ad, but the author is not answering my messages!"
+msgstr "8) Меня интересует реклама, но автор не отвечает на мои сообщения!"
+
+#: .\classifieds\templates\classifieds\faq.html:111
+msgid ""
+"When you click the <b>I'm Interested!</b> button and send an email to a "
+"user, the email will be sent from our email server at "
+"<b>notifications@whattheblin.com</b>. This is so that users <b>do not have "
+"to display their email address publically</b> on their ads. The email "
+"address in your profile will be attached in the email you send. If the "
+"author of the ad wishes to reply to you, they must contact you using the "
+"attached address. In other words, What The Blin will place you in initial "
+"contact with one another, but all further communications must be done "
+"privately, outside of our domain."
+msgstr ""
+"Когда вы нажмете кнопку <b> «Мне интересно!» </b> и отправите электронное "
+"письмо пользователю, оно будет отправлено с нашего почтового сервера по "
+"адресу <b> notifications@whattheblin.com </b>. Это связано с тем, что "
+"пользователям <b> не нужно публично отображать свой адрес электронной почты "
+"</b> в своих объявлениях. Адрес электронной почты в вашем профиле будет "
+"прикреплен к электронному письму, которое вы отправите. Если автор "
+"объявления хочет ответить вам, он должен связаться с вами, используя "
+"прикрепленный адрес. Другими словами, What The Blin поставит вас в "
+"первоначальный контакт друг с другом, но все дальнейшие коммуникации должны "
+"осуществляться в частном порядке, за пределами нашего домена."
+
+#: .\classifieds\templates\classifieds\faq.html:114
+msgid ""
+"We do not have access to the contents of your email, and all communications "
+"to and from the server are encrypted."
+msgstr ""
+"У нас нет доступа к содержимому вашей электронной почты, и все сообщения на "
+"сервер и с сервера зашифрованы."
+
+#: .\classifieds\templates\classifieds\job_confirm_delete.html:16
+msgid "Are you sure you want to delete your ad:"
+msgstr "Вы уверены, что хотите удалить свое объявление:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:14
+msgid "Ad #"
+msgstr "Объявление №"
+
+#: .\classifieds\templates\classifieds\job_detail.html:48
+msgid "Hourly Rate:"
+msgstr "Почасовая ставка:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:50
+msgid "Salary:"
+msgstr "Оплата труда:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:55
+msgid "Experience Required:"
+msgstr "Требуемый опыт:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:63
+#: .\classifieds\templates\classifieds\job_detail.html:65
+#: .\classifieds\templates\classifieds\job_detail.html:73
+msgid "Traveling Required:"
+msgstr "Требуется путешествие:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:71
+msgid "Degree Required:"
+msgstr "Требуемая степень:"
+
+#: .\classifieds\templates\classifieds\job_detail.html:81
+msgid "Location:"
+msgstr "Посмотреть места"
+
+#: .\classifieds\templates\classifieds\job_detail.html:97
+msgid "Company Description"
+msgstr "Описание Компании"
+
+#: .\classifieds\templates\classifieds\job_detail.html:105
+msgid "Job Description"
+msgstr "Описание работы"
+
+#: .\classifieds\templates\classifieds\job_detail.html:114
+msgid "Submit Your Application:"
+msgstr "Оставить заявку:"
+
+#: .\classifieds\templates\classifieds\job_form.html:13
+msgid "Post A Job Ad"
+msgstr "Разместить объявление о работе"
+
+#: .\classifieds\templates\classifieds\job_list.html:18
+#: .\classifieds\templates\classifieds\job_list.html:66
+msgid "Salary of at least..."
+msgstr "Зарплата как минимум ..."
+
+#: .\classifieds\templates\classifieds\job_list.html:94
+msgid "Job Board"
+msgstr "Биржа труда"
+
+#: .\classifieds\templates\classifieds\job_list.html:107
+msgid "Position"
+msgstr "Позиция"
+
+#: .\classifieds\templates\classifieds\job_list.html:110
+msgid "Salary"
+msgstr "Оплата труда"
+
+#: .\classifieds\views.py:37 .\classifieds\views.py:238
+msgid "Your ad has been successfully posted!"
+msgstr "Ваше объявление было благополучно опубликовано!"
+
+#: .\classifieds\views.py:201 .\classifieds\views.py:310
+msgid "Your ad has been successfully updated!"
+msgstr "Ваше объявление было успешно обновлено!"
+
+#: .\classifieds\views.py:221 .\classifieds\views.py:330
+msgid "Your ad has been successfully deleted!"
+msgstr "Ваше объявление было успешно удалено!"
+
+#: .\classifieds\views.py:378
+msgid "Your email has been sent!"
+msgstr "Ваш аккаунт был обновлен!"
+
+#: .\django_project\settings.py:134
+msgid "Russian"
+msgstr ""
+
+#: .\django_project\settings.py:135
+msgid "English"
+msgstr ""
+
+#: .\users\models.py:19
+msgid ""
+"For the best looking profile picture, use a 1:1 size ratio. Images will be "
+"rescaled to 150x150 pixels!"
+msgstr ""
+"Для лучшего изображения профиля используйте соотношение размеров 1: 1. "
+"Изображения будут масштабируется до 150x150 пикселей!"
+
+#: .\users\models.py:20
+msgid ""
+"Links your twitter URL to your comments. You can optionally enable people to "
+"respond to your classified ads, via twitter."
+msgstr ""
+"Связывает ваш твиттер-URL с вашими комментариями. Вы можете по желанию "
+"разрешить людям отвечать на ваши объявления через твиттер."
+
+#: .\users\models.py:20
+msgid "twitter_link"
+msgstr "ссылка на твиттер"
+
+#: .\users\models.py:21
+msgid ""
+"Links your instagram URL to your comments. You can optionally enable people "
+"to respond to your classified ads, via instagram"
+msgstr ""
+"Связывает ваш Instagram-URL с вашими комментариями. При желании можно "
+"включить людей отвечать на ваши объявления через инстаграм"
+
+#: .\users\models.py:21
+msgid "instagram_link"
+msgstr "ссылка на инстаграм"
+
+#: .\users\models.py:22
+msgid ""
+"Links your facebook URL to your comments. You can optionally enable people "
+"to respond to your classified ads, via facebook"
+msgstr ""
+"Связывает ваш фейсбук-URL с вашими комментариями. При желании можно включить "
+"людей ответить на ваши объявления через Facebook"
+
+#: .\users\models.py:22
+msgid "facebook_link"
+msgstr "ссылка на фейсбук"
+
+#: .\users\models.py:23
+msgid "(Blogs are written in English first.)"
+msgstr "(Блоги пишутся сначала на английском.)"
+
+#: .\users\models.py:23
+msgid "language"
+msgstr "язык"
+
+#: .\users\models.py:24
+msgid ""
+"Do you wish to be notified with an email when a new food blog post is "
+"published?"
+msgstr ""
+"отите ли вы получать уведомления по электронной почте о появлении нового "
+"поста в блоге о продуктах питания? Опубликованы?"
+
+#: .\users\models.py:24
+msgid "subscribe_to_food_blogs"
+msgstr "подписаться на блоги еды"
+
+#: .\users\models.py:25
+msgid ""
+"Do you wish to be notified with an email when a new Life in Moscow blog is "
+"published?"
+msgstr ""
+"Хотите ли вы получать уведомление по электронной почте при публикации нового "
+"блога Жизнь в Москве?"
+
+#: .\users\models.py:25
+msgid "subscribe_to_Life_in_Moscow_blogs"
+msgstr "подписаться на блоги Жизнь в Москве"
+
+#: .\users\templates\users\login.html:22
+msgid "Log In"
+msgstr "Bход"
+
+#: .\users\templates\users\login.html:36
+msgid "Click <strong>here</strong> to create a new account.</small>"
+msgstr "<strong>Создать новый аккаунт?</strong></small>"
+
+#: .\users\templates\users\login.html:41
+msgid "Forgot your password? Click <strong>here</strong> to reset it.</small>"
+msgstr ""
+"Забыли пароль? Нажмите <strong> здесь </strong>, чтобы сбросить его. </small>"
+
+#: .\users\templates\users\logout.html:20
+msgid "Logged Out."
+msgstr "Вышли из."
+
+#: .\users\templates\users\logout.html:24
+msgid "Thanks for stopping by!"
+msgstr "Спасибо, что зашли!"
+
+#: .\users\templates\users\logout.html:28
+msgid "Click <strong>here</strong> to log in again.</small>"
+msgstr "Нажмите <strong> здесь </strong>, чтобы войти снова. </small>"
+
+#: .\users\templates\users\password_reset.html:23
+#: .\users\templates\users\password_reset_confirm.html:22
+msgid "Reset Password"
+msgstr "Сброс пароля"
+
+#: .\users\templates\users\password_reset.html:32
+#: .\users\templates\users\password_reset_confirm.html:33
+msgid "Reset"
+msgstr "Сбрось"
+
+#: .\users\templates\users\password_reset_complete.html:23
+msgid "Password has been set."
+msgstr "Пароль был установлен."
+
+#: .\users\templates\users\password_reset_complete.html:28
+#: .\users\templates\users\password_reset_done.html:28
+msgid "Click <strong>here</strong> to login."
+msgstr "Нажмите <strong> здесь </strong>, чтобы войти."
+
+#: .\users\templates\users\password_reset_done.html:23
+msgid "An email has been sent with instructions to reset your password."
+msgstr "Письмо было отправлено с инструкциями для восстановления пароля."
+
+#: .\users\templates\users\profile.html:19
+#: .\users\templates\users\profile.html:132
+msgid "Update Your Profile"
+msgstr "Обновите свой профиль"
+
+#: .\users\templates\users\profile.html:30
+msgid "My Active Ads*"
+msgstr "Aктивные объявления *"
+
+#: .\users\templates\users\profile.html:64
+msgid ""
+"You haven't created any ads. Any ads that you create in the Classifieds - "
+"Buy and Sell section will appear here."
+msgstr ""
+"Вы не создали ни одной рекламы. Любая реклама, которую вы создаете в "
+"объявлениях - Здесь появится раздел« Купить и продать"
+
+#: .\users\templates\users\profile.html:71
+#: .\users\templates\users\profile.html:143
+#: .\users\templates\users\profile.html:179
+msgid "My Active Job Ads*"
+msgstr "Aктивная работа объявления *"
+
+#: .\users\templates\users\profile.html:105
+msgid ""
+"You haven't created any job ads. Any job ads that you create in the "
+"Classifieds - Jobs section will appear here."
+msgstr ""
+"Вы не создали ни одной вакансии. Все объявления о вакансиях, которые вы "
+"создадите в разделе Объявления - Работа, будут отображаться здесь."
+
+#: .\users\templates\users\profile.html:113
+#: .\users\templates\users\profile.html:214
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: .\users\templates\users\register.html:13
+msgid "Create a New Account"
+msgstr "Создать новый аккаунт"
+
+#: .\users\templates\users\register.html:17
+msgid "Sign Up"
+msgstr "Подписаться"
+
+#: .\users\templates\users\register.html:21
+msgid "Already Have An Account?"
+msgstr "Уже есть аккаунт?"
+
+#: .\users\templates\users\register.html:21
+msgid "Sign In"
+msgstr "Войти в систему"
+
+#: .\users\views.py:19
+msgid "Your account has been created! You are now able to login!"
+msgstr "Ваша учетная запись создана! Теперь вы можете войти!"
+
+#: .\users\views.py:38 .\users\views.py:81
+msgid "Your account has been updated!"
+msgstr "Ваш аккаунт был обновлен!"
+
+#~ msgid "Are you sure you want to delete your ad: {{ ad.title }}?"
+#~ msgstr "Вы действительно хотите удалить свое объявление: {{ad.title}} ?"
+
+#~ msgid "author"
+#~ msgstr "автор"
+
+#~ msgid "date_posted"
+#~ msgstr "Написано в"
