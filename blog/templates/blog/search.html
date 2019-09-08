@@ -347,7 +347,12 @@
   <!-- Outcome #1: Default view upon first page load -->
   {% if tags_query == None and blog_category_query == None and title_query == None %}
     <div class="container text-center">
-      {% if queryset.paginator.count == 1 %}
+      {% if queryset.paginator.count == 0 %}
+        <b>
+          0 блогов:
+        </b>
+        <hr> 
+      {% elif queryset.paginator.count == 1 %}
         <b>
           1 блог:
         </b>
@@ -365,9 +370,14 @@
       {% endif %}
 
   <!-- Outcome #2: The user presses search without any specific criteria -->
-  {% elif title_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..." and store_type_query == "Type" and special_feature_query == "Features" and nearest_station_query == "Station" and price_rating_query == "Price" and overall_rating_query == "Rating ≥ ..." %}
+  {% elif title_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..."%}
     <div class="container text-center">
-      {% if queryset.paginator.count == 1 %}
+      {% if queryset.paginator.count == 0 %}
+        <b>
+          0 блогов:
+        </b>
+        <hr> 
+      {% elif queryset.paginator.count == 1 %}
         <b>
           (1) блог:
         </b> 
