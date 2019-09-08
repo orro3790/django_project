@@ -60,7 +60,7 @@
                   {% endif %}
                 {% endfor %}
                 <!-- If there are no ads -->
-                {% if ads.count == None %}
+                {% if ads.count == None or ads.count == 0 %}
                     <p class="small text-muted">{% trans "You haven't created any ads. Any ads that you create in the Classifieds - Buy and Sell section will appear here." %}
                     </p>
                 {% endif %}
@@ -101,7 +101,7 @@
                   {% endif %}
                 {% endfor %}
                 <!-- If there are no ads -->
-                {% if ads.count == None %}
+                {% if ads.count == None or ads.count == 0 %}
                     <p class="small text-muted">{% trans "You haven't created any job ads. Any job ads that you create in the Classifieds - Jobs section will appear here." %}
                     </p>
                 {% endif %}
