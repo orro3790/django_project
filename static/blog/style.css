@@ -121,15 +121,23 @@ a:hover {
 }
 
 #carousel-section h4 {
-  font-size: 2rem;
+  font-size: 2.3vw;
 }
 
 #carousel-section p {
-  font-size: 1.2rem;
+  font-size: 1.3vw;
+}
+
+
+#carousel-section .mobile-h4 {
+  font-size: 5.5vw;
+}
+
+#carousel-section .mobile-p {
+  font-size: 4vw;
 }
 
 .carousel-item {
-  max-height: 500px !important;
   max-width: 100%;
 }
 
@@ -551,3 +559,51 @@ a:hover {
   color: #F5A65B;
 }
 
+
+
+/*search box css start here*/
+.search-sec{
+    padding: 1.1rem;
+    
+}
+
+@media (min-width: 992px){
+    .search-sec{
+        position: relative;
+        top: -128px;
+        margin-bottom: -100px;
+        background: rgba(0, 0, 0, 0.50);
+    }
+}
+
+@media (max-width: 768px){
+    .search-sec{
+        position: relative;
+        top: -320px;
+        margin-bottom: -300px;
+        background: rgba(0, 0, 0, 0.50);
+    }
+}
+
+.search-sec-life-blog{
+    padding: 1.1rem;
+    
+}
+
+@media (min-width: 992px){
+    .search-sec-life-blog{
+        position: relative;
+        top: -105px;
+        margin-bottom: -105px;
+        background: rgba(0, 0, 0, 0.50);
+    }
+}
+
+@media (max-width: 768px){
+    .search-sec-life-blog{
+        position: relative;
+        top: -320px;
+        margin-bottom: -300px;
+        background: rgba(0, 0, 0, 0.50);
+    }
+}
