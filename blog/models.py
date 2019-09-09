@@ -240,7 +240,7 @@ def save_food_blog(sender, instance, **kwargs):
                 send_mail(
                         automated_subject,
                         instance.email_message_english,
-                        'mattorrock@gmail.com',
+                        'notifications@whattheblin.com',
                         [profile.user.email],
                         fail_silently=False
                         )
@@ -249,7 +249,7 @@ def save_food_blog(sender, instance, **kwargs):
                 send_mail(
                         automated_subject,
                         automated_message,
-                        'mattorrock@gmail.com',
+                        'notifications@whattheblin.com',
                         [profile.user.email],
                         fail_silently=False
                         )
@@ -261,7 +261,7 @@ def save_food_blog(sender, instance, **kwargs):
                 send_mail(
                         automated_subject_russian,
                         instance.email_message_russian,
-                        'mattorrock@gmail.com',
+                        'notifications@whattheblin.com',
                         [profile.user.email],
                         fail_silently=False
                         )
@@ -270,7 +270,7 @@ def save_food_blog(sender, instance, **kwargs):
                 send_mail(
                         automated_subject_russian,
                         automated_message_russian,
-                        'mattorrock@gmail.com',
+                        'notifications@whattheblin.com',
                         [profile.user.email],
                         fail_silently=False
                         )
