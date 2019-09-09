@@ -30,7 +30,6 @@ from .models import (
   RussianPriceRating
 )
 from django.db import models
-from tinymce import TinyMCE
 
 # Clean up the FoodBlog layout page in the admin console
 
@@ -50,9 +49,10 @@ class PostAdmin(admin.ModelAdmin):
     ("Send Emails", {"fields": ["send_emails_english", "email_message_english", 'send_emails_russian', 'email_message_russian']}),
   ]
 
-  formfield_overrides = {
-        models.TextField: {'widget': TinyMCE()},
-        }
+  def save_model(self, request, obj, form, change):
+    obj.author = request.user
+    obj.save()
+
 
 class LifeBlogAdmin(admin.ModelAdmin):
   fieldsets = [
@@ -68,14 +68,6 @@ class LifeBlogAdmin(admin.ModelAdmin):
     ("Russian Meta", {"fields": ["blog_category_russian", "tags_russian"]}),
     ("Publish and Notify Subscribers", {"fields": ["publish_translated_blog"]}),
   ]
-  
-  formfield_overrides = {
-        models.TextField: {'widget': TinyMCE()},
-        }
-
-  def save_model(self, request, obj, form, change):
-    obj.author = request.user
-    obj.save()
 
 
   def save_model(self, request, obj, form, change):

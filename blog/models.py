@@ -7,7 +7,6 @@ from django.db.models.signals import post_save
 from django.core.mail import send_mail
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
-from tinymce import HTMLField
 
 
 class StoreType(models.Model):
@@ -145,7 +144,7 @@ class FoodBlog(models.Model):
     card_content = models.TextField(help_text='This is the preview text shown on the card.', default=None, max_length=300)
     the_good = models.TextField(help_text='Write a short summary describing the good features', max_length=500)
     the_bad = models.TextField(help_text='Write a short summary describing the bad features', max_length=500)
-    paragraph_1 = HTMLField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_1 = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
     paragraph_2 = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
     paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
     paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
