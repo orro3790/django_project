@@ -240,7 +240,7 @@
         </div>
         <div class="col-md-4 my-auto">
           <div class="input-group">
-            <input class="form-control border-right-0 border" type="search" name="title" placeholder="{% trans "Title contains..." %}"/>
+            <input class="form-control border-right-0 border" type="search" name="title" placeholder="{% trans "Contains..." %}"/>
               <span class="input-group-append">
                 <div class="input-group-text">
                   <i class="fa fa-search"></i>
@@ -275,9 +275,9 @@
   <div class="row">
     <div class="col-md-2">
       <div class="input-group">
-        <input class="form-control border-right-0 border" type="search" name="title" placeholder="Title contains..." />
+        <input class="form-control border-right-0 border" type="search" name="title" placeholder="Contains..." />
           <span class="input-group-append">
-            <div class="input-group-text bg-transparent">
+            <div class="input-group-text ">
               <i class="fa fa-search"></i>
             </div>
           </span> 
@@ -347,16 +347,16 @@
 <!-- Search result text for RUSSIAN users -->
 {% if LANGUAGE_CODE == "ru" %}
   <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and title_query == None %}
+  {% if tags_query == None and blog_category_query == None and contains_query == None %}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
         <b>
-          0 блогов:
+          (0) блогов:
         </b>
         <hr> 
       {% elif queryset.paginator.count == 1 %}
         <b>
-          1 блог:
+          (1) блог:
         </b>
         <hr> 
       {% elif queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
@@ -373,11 +373,11 @@
     </div>
 
   <!-- Outcome #2: The user presses search without any specific criteria -->
-  {% elif title_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..."%}
+  {% elif contains_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..."%}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
         <b>
-          0 блогов:
+          (0) блогов:
         </b>
         <hr> 
       {% elif queryset.paginator.count == 1 %}
@@ -476,7 +476,7 @@
 {% if LANGUAGE_CODE == "en" %}
 
   <!-- Search results text and criteria -->
-  {% if title_query == None and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
+  {% if contains_query == None and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
   <div class="container text-center">
     {% if queryset.paginator.count == 0 %}
       <b>(0) Blogs:</b>
@@ -494,7 +494,7 @@
     {% endif %}
   </div>
 
-  {% elif title_query == '' and store_type_query == "Type..." and special_feature_query == "Features..." and nearest_station_query == "Station..." and price_rating_query == "Price..." and overall_rating_query == "Rating ≥ ..." %}
+  {% elif contains_query == '' and store_type_query == "Type..." and special_feature_query == "Features..." and nearest_station_query == "Station..." and price_rating_query == "Price..." and overall_rating_query == "Rating ≥ ..." %}
   <div class="container text-center">
     {% if queryset.paginator.count == 0 %}
       <b>(0) Blogs:</b>
@@ -1492,12 +1492,12 @@
   <div class="row">
     <div class="col">
 
-        {% if queryset.has_previous and title_query == '' %}
+        {% if queryset.has_previous and contains_query == '' %}
           <a href="?page={{ queryset.previous_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and title_query %}
-          <a href="?page={{ queryset.previous_page_number }}&title={{title_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and contains_query %}
+          <a href="?page={{ queryset.previous_page_number }}&title={{contains_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
         {% if queryset.has_previous and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
@@ -1508,12 +1508,12 @@
             {{ queryset.number }} of {{ queryset.paginator.num_pages }}
         </span>
 
-        {% if queryset.has_next and title_query == '' %}
+        {% if queryset.has_next and contains_query == '' %}
           <a href="?page={{ queryset.next_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and title_query %}
-          <a href="?page={{ queryset.next_page_number }}&title={{title_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and contains_query %}
+          <a href="?page={{ queryset.next_page_number }}&title={{contains_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
         {% if queryset.has_next and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}

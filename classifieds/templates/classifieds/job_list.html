@@ -27,12 +27,12 @@
       <div class="col-5">
         <div class="input-group">
           {% if LANGUAGE_CODE == "en" %}
-            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
+            <input class="form-control py-2 border-right-0 border" type="search" name="contains_filter" placeholder="Contains..." />
           {% elif LANGUAGE_CODE == "ru" %}
-            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Название содержит..." />
+            <input class="form-control py-2 border-right-0 border" type="search" name="contains_filter" placeholder="Название содержит..." />
           {% endif %}
             <span class="input-group-append">
-              <div class="input-group-text bg-transparent">
+              <div class="input-group-text ">
                 <i class="fa fa-search"></i>
               </div>
             </span>
@@ -52,7 +52,7 @@
       
       <div class="col-12">
         <div class="input-group">
-          <input class="form-control py-2 border-right-0" type="search" name="title_filter" placeholder="Title contains..." />
+          <input class="form-control py-2 border-right-0" type="search" name="contains_filter" placeholder="Contains..." />
             <span class="input-group-append">
               <div class="input-group-text bg-transparent">
                 <i class="fa fa-search"></i>

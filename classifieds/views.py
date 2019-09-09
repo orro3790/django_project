@@ -19,6 +19,7 @@ from . forms import (
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import get_language
 from django.contrib.postgres import search
+from django.contrib.postgres.search import SearchVector
 
 
 class AdCreateView(LoginRequiredMixin, CreateView):
@@ -50,106 +51,109 @@ def AdListView(request):
     ordering = ['-date_posted']
     all_ads = Ad.objects.all()
 
+    contains_query = request.GET.get('contains_filter')
+    category_query = request.GET.get('category_filter')
+    # split the string value from the count and grab just the string itself:
+    if category_query != None:
+        category_query = request.GET.get('category_filter').split('-')[0]
+        
+    LANGUAGE_CODE = get_language()
+
+    # English views
+    # Outcome #1: default page load
+    if category_query == None and contains_query == None:
+        qs = all_ads
+
+    # Outcome #2: a user presses search with no values
+    if (category_query == 'Category...' and contains_query == '') or (category_query == 'Категория...' and contains_query == ''):
+        qs = all_ads
+
+    # Outcome #3: a user provides search values
+    # Searching for "Contains...", user actually submits a value
+    if valid_query(contains_query) and contains_query != "Contains..." and contains_query != "Название содержит...":
+        qs = Ad.objects.annotate(search=SearchVector('title', 'description', 'items_or_model_names'),).filter(search=contains_query)
+
+
+    # If a category is submitted, pull English their respective ads as well.
+    if valid_query(category_query):
+
+        if 'посуда и приборы' in category_query:
+            qs = all_ads.filter(category__search='kitchenware and appliances').order_by('-date_posted')
+
+        if 'искусства и ремесла' in category_query:
+            qs = all_ads.filter(category__search='arts and crafts').order_by('-date_posted')
+
+        if 'малыш и дети' in category_query:
+            qs = all_ads.filter(category__search='baby and kids').order_by('-date_posted')
+
+        if 'красота и здоровье' in category_query:
+            qs = all_ads.filter(category__search='beauty and health').order_by('-date_posted')
+
+        if 'велосипеды' in category_query:
+            qs = all_ads.filter(category__search='bikes').order_by('-date_posted')
+
+        if 'книги' in category_query:
+            qs = all_ads.filter(category__search='books').order_by('-date_posted')
+
+        if 'телефоны' in category_query:
+            qs = all_ads.filter(category__search='cell phones').order_by('-date_posted')
+
+        if 'одежда' in category_query:
+            qs = all_ads.filter(category__search='clothing').order_by('-date_posted')
+
+        if 'предметы коллекционирования' in category_query:
+            qs = all_ads.filter(category__search='collectibles').order_by('-date_posted')
+
+        if 'компьютеры' in category_query:
+            qs = all_ads.filter(category__search='computers').order_by('-date_posted')
+        
+        if 'электроника' in category_query:
+            qs = all_ads.filter(category__search='electronics').order_by('-date_posted')
+
+        if 'сад' in category_query:
+            qs = all_ads.filter(category__search='garden').order_by('-date_posted')
+
+        if 'мебель' in category_query:
+            qs = all_ads.filter(category__search='furniture').order_by('-date_posted')
+
+        if 'свободно' in category_query:
+            qs = all_ads.filter(category__search='free').order_by('-date_posted')
+        
+        if 'генеральный' in category_query:
+            qs = all_ads.filter(category__search='general').order_by('-date_posted')
+
+        if 'домашнее хозяйство' in category_query:
+            qs = all_ads.filter(category__search='household').order_by('-date_posted')
+
+        if 'домашнее животное' in category_query:
+            qs = all_ads.filter(category__search='pets').order_by('-date_posted')
+        
+        if 'ювелирные изделия' in category_query:
+            qs = all_ads.filter(category__search='jewelery').order_by('-date_posted')
+
+        if 'материалы' in category_query:
+            qs = all_ads.filter(category__search='materials').order_by('-date_posted')
+
+        if 'музыкальные инструменты' in category_query:
+            qs = all_ads.filter(category__search='musical instruments').order_by('-date_posted')
+
+        if 'камеры' in category_query:
+            qs = all_ads.filter(category__search='cameras').order_by('-date_posted')
+
+        if 'инструменты' in category_query:
+            qs = all_ads.filter(category__search='tools').order_by('-date_posted')
+
+        if 'игры' in category_query:
+            qs = all_ads.filter(category__search='games').order_by('-date_posted')   
+
     # paginate
-    paginator_qs = all_ads.order_by('-date_posted')
-    paginator = Paginator(paginator_qs, 5) # controls the # of objects per page
+    paginator = Paginator(qs, 30) # controls the # of objects per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
-    LANGUAGE_CODE = get_language()
-
-    # get queries
-    title_query = request.GET.get('title_filter')
-    
-    category_query = request.GET.get('category_filter')
-
-    # If there is a category query, split the string value from the count and grab just the string itself:
-    if category_query != None:
-        category_query = request.GET.get('category_filter').split('-')[0]
-    
-    if valid_query(title_query) and title_query != "Title contains..." and title_query != "Название содержит...":
-        qs = all_ads.filter(title__search=title_query).order_by('-date_posted')[:100]
-    
-    # If a user presses search but didn't select a category
-    if valid_query(category_query) and category_query != "Category..." and category_query != "Категория...":
-        qs = all_ads.filter(category__search=category_query).order_by('-date_posted')[:100]
-
-    # If a category is submitted, pull English their respective ads as well.
-    if category_query != None:
-
-        if 'посуда и приборы' in category_query:
-            qs = all_ads.filter(category__search='kitchenware and appliances').order_by('-date_posted')[:100]
-
-        if 'искусства и ремесла' in category_query:
-            qs = all_ads.filter(category__search='arts and crafts').order_by('-date_posted')[:100]
-
-        if 'малыш и дети' in category_query:
-            qs = all_ads.filter(category__search='baby and kids').order_by('-date_posted')[:100]
-
-        if 'красота и здоровье' in category_query:
-            qs = all_ads.filter(category__search='beauty and health').order_by('-date_posted')[:100]
-
-        if 'велосипеды' in category_query:
-            qs = all_ads.filter(category__search='bikes').order_by('-date_posted')[:100]
-
-        if 'книги' in category_query:
-            qs = all_ads.filter(category__search='books').order_by('-date_posted')[:100]
-
-        if 'телефоны' in category_query:
-            qs = all_ads.filter(category__search='cell phones').order_by('-date_posted')[:100]
-
-        if 'одежда' in category_query:
-            qs = all_ads.filter(category__search='clothing').order_by('-date_posted')[:100]
-
-        if 'предметы коллекционирования' in category_query:
-            qs = all_ads.filter(category__search='collectibles').order_by('-date_posted')[:100]
-
-        if 'компьютеры' in category_query:
-            qs = all_ads.filter(category__search='computers').order_by('-date_posted')[:100]
-        
-        if 'электроника' in category_query:
-            qs = all_ads.filter(category__search='electronics').order_by('-date_posted')[:100]
-
-        if 'сад' in category_query:
-            qs = all_ads.filter(category__search='garden').order_by('-date_posted')[:100]
-
-        if 'мебель' in category_query:
-            qs = all_ads.filter(category__search='furniture').order_by('-date_posted')[:100]
-
-        if 'свободно' in category_query:
-            qs = all_ads.filter(category__search='free').order_by('-date_posted')[:100]
-        
-        if 'генеральный' in category_query:
-            qs = all_ads.filter(category__search='general').order_by('-date_posted')[:100]
-
-        if 'домашнее хозяйство' in category_query:
-            qs = all_ads.filter(category__search='household').order_by('-date_posted')[:100]
-
-        if 'домашнее животное' in category_query:
-            qs = all_ads.filter(category__search='pets').order_by('-date_posted')[:100]
-        
-        if 'ювелирные изделия' in category_query:
-            qs = all_ads.filter(category__search='jewelery').order_by('-date_posted')[:100]
-
-        if 'материалы' in category_query:
-            qs = all_ads.filter(category__search='materials').order_by('-date_posted')[:100]
-
-        if 'музыкальные инструменты' in category_query:
-            qs = all_ads.filter(category__search='musical instruments').order_by('-date_posted')[:100]
-
-        if 'камеры' in category_query:
-            qs = all_ads.filter(category__search='cameras').order_by('-date_posted')[:100]
-
-        if 'инструменты' in category_query:
-            qs = all_ads.filter(category__search='tools').order_by('-date_posted')[:100]
-
-        if 'игры' in category_query:
-            qs = all_ads.filter(category__search='games').order_by('-date_posted')[:100]   
-
-
     context = {
         'ads': qs,
-        'all_ads': all_ads,
+        'contains_query': contains_query,
         'category_query': category_query,
         'CODE': LANGUAGE_CODE
     }
@@ -250,14 +254,14 @@ def JobListView(request):
     page = request.GET.get('page')
     qs = paginator.get_page(page)
     salary_query = request.GET.get('salary_filter')
-    title_query = request.GET.get('title_filter')
+    contains_query = request.GET.get('contains_filter')
 
     if valid_query(salary_query) and salary_query != 'Salary of at least...' and salary_query != 'Зарплата как минимум ...':
         # look for a match containing first 6 digits of query, because the embedded counts in the template get passed into the query also and interfere with the matching. 
-        qs = full_qs.filter(salary__gte=salary_query[:6]).order_by('-date_posted')[:100]
+        qs = full_qs.filter(salary__gte=salary_query[:6]).order_by('-date_posted')
 
-    if valid_query(title_query) and salary_query != 'Title contains...':
-        qs = full_qs.filter(title__icontains=title_query).order_by('-date_posted')[:100]
+    if valid_query(contains_query) and salary_query != 'Contains...':
+        qs = full_qs.filter(title__icontains=contains_query).order_by('-date_posted')
 
     context = {
         'ads': qs,
@@ -329,6 +333,7 @@ class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         """
         messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully deleted!'))
         return reverse('jobs-list')
+
 
 class SendEmailCreateView(CreateView):
 

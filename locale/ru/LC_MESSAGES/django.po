@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-07 23:46-0400\n"
+"POT-Creation-Date: 2019-09-09 19:50-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: .\blog\models.py:257 .\blog\models.py:387
+#: .\blog\models.py:286 .\blog\models.py:449
 msgid "Post your comment here."
 msgstr "Оставьте свой комментарий здесь."
 
-#: .\blog\models.py:257 .\blog\models.py:387
+#: .\blog\models.py:286 .\blog\models.py:449
 msgid "comment"
 msgstr "комментарий"
 
@@ -79,56 +79,56 @@ msgstr ""
 msgid "Business Inquiries:"
 msgstr "Деловые Запросы:"
 
-#: .\blog\templates\blog\base.html:47
+#: .\blog\templates\blog\base.html:48
 msgid "Search Food Blogs"
 msgstr "Поиск еды"
 
-#: .\blog\templates\blog\base.html:52
+#: .\blog\templates\blog\base.html:53
 msgid "Life in Moscow"
 msgstr "Жизнь в москве"
 
-#: .\blog\templates\blog\base.html:57
+#: .\blog\templates\blog\base.html:59
 msgid "Map"
 msgstr "карта"
 
-#: .\blog\templates\blog\base.html:62
+#: .\blog\templates\blog\base.html:65
 msgid "Classifieds"
 msgstr "Объявления"
 
-#: .\blog\templates\blog\base.html:66
+#: .\blog\templates\blog\base.html:69
 msgid "Buy and Sell"
 msgstr "Покупать и продавать"
 
-#: .\blog\templates\blog\base.html:69
+#: .\blog\templates\blog\base.html:72
 msgid "Jobs"
 msgstr "Работы"
 
-#: .\blog\templates\blog\base.html:73
+#: .\blog\templates\blog\base.html:76
 #: .\classifieds\templates\classifieds\faq.html:17
 msgid "FAQ & Terms of Use"
 msgstr "ЧаВо и и условия использования"
 
-#: .\blog\templates\blog\base.html:80
+#: .\blog\templates\blog\base.html:83
 msgid "Contact"
 msgstr "Контакт"
 
-#: .\blog\templates\blog\base.html:86
+#: .\blog\templates\blog\base.html:89
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\blog\templates\blog\base.html:116
+#: .\blog\templates\blog\base.html:119
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\blog\templates\blog\base.html:122 .\users\templates\users\login.html:31
+#: .\blog\templates\blog\base.html:125 .\users\templates\users\login.html:31
 msgid "Login"
 msgstr "Вход"
 
-#: .\blog\templates\blog\base.html:127
+#: .\blog\templates\blog\base.html:130
 msgid "Register"
 msgstr "Регистрировать"
 
-#: .\blog\templates\blog\base.html:161
+#: .\blog\templates\blog\base.html:164
 msgid "Copyright"
 msgstr "Aвторское право"
 
@@ -154,28 +154,30 @@ msgstr "Минусы"
 msgid "Score Breakdown"
 msgstr "Рейтинги"
 
-#: .\blog\templates\blog\foodblog_detail.html:133
-#: .\blog\templates\blog\home.html:411 .\blog\templates\blog\search.html:440
+#: .\blog\templates\blog\foodblog_detail.html:133 .\blog\templates\blog\home
+#: copy.html:411 .\blog\templates\blog\home.html:412
+#: .\blog\templates\blog\search.html:597 .\blog\templates\blog\search.html:1047
 msgid "Overall:"
 msgstr "Общая оценка:"
 
 #: .\blog\templates\blog\foodblog_detail.html:210
-#: .\blog\templates\blog\search.html:531
+#: .\blog\templates\blog\search.html:688 .\blog\templates\blog\search.html:1138
 msgid "Taste:"
 msgstr "Вкус"
 
 #: .\blog\templates\blog\foodblog_detail.html:286
-#: .\blog\templates\blog\search.html:607
+#: .\blog\templates\blog\search.html:764 .\blog\templates\blog\search.html:1214
 msgid "Appearance:"
 msgstr "Вид"
 
 #: .\blog\templates\blog\foodblog_detail.html:362
-#: .\blog\templates\blog\search.html:684
+#: .\blog\templates\blog\search.html:841 .\blog\templates\blog\search.html:1291
 msgid "Atmosphere:"
 msgstr "Атмосфера:"
 
-#: .\blog\templates\blog\foodblog_detail.html:438
-#: .\blog\templates\blog\home.html:484 .\blog\templates\blog\search.html:760
+#: .\blog\templates\blog\foodblog_detail.html:438 .\blog\templates\blog\home
+#: copy.html:484 .\blog\templates\blog\home.html:485
+#: .\blog\templates\blog\search.html:917 .\blog\templates\blog\search.html:1367
 msgid "Price:"
 msgstr "Цена:"
 
@@ -187,39 +189,39 @@ msgstr "Oбслуживание"
 msgid "Special Features:"
 msgstr "Особые возможности:"
 
-#: .\blog\templates\blog\foodblog_detail.html:750
-#: .\blog\templates\blog\foodblog_detail.html:823
-#: .\blog\templates\blog\life_detail.html:248
-#: .\blog\templates\blog\life_detail.html:321
+#: .\blog\templates\blog\foodblog_detail.html:729
+#: .\blog\templates\blog\foodblog_detail.html:802
+#: .\blog\templates\blog\life_detail.html:228
+#: .\blog\templates\blog\life_detail.html:301
 msgid "Add a Comment"
 msgstr "Добавить комментарий"
 
-#: .\blog\templates\blog\foodblog_detail.html:754
-#: .\blog\templates\blog\foodblog_detail.html:827
-#: .\blog\templates\blog\life_detail.html:252
-#: .\blog\templates\blog\life_detail.html:325
+#: .\blog\templates\blog\foodblog_detail.html:733
+#: .\blog\templates\blog\foodblog_detail.html:806
+#: .\blog\templates\blog\life_detail.html:232
+#: .\blog\templates\blog\life_detail.html:305
 msgid "<strong>Login</strong> to add a new comment"
 msgstr "<strong> Войти </ strong>, чтобы добавить новый комментарий"
 
-#: .\blog\templates\blog\foodblog_detail.html:762
-#: .\blog\templates\blog\life_detail.html:260
+#: .\blog\templates\blog\foodblog_detail.html:741
+#: .\blog\templates\blog\life_detail.html:240
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: .\blog\templates\blog\home.html:245
+#: .\blog\templates\blog\home copy.html:245 .\blog\templates\blog\home.html:246
 msgid "Cafes & Restaurants"
 msgstr "Кафе и рестораны"
 
-#: .\blog\templates\blog\home.html:246
+#: .\blog\templates\blog\home copy.html:246 .\blog\templates\blog\home.html:247
 msgid ""
 "Browse a variety of cafes, coffee houses, dessert cafes, and restaurants."
 msgstr "Просмотрите множество кафе, кофеен, десертных кафе и ресторанов."
 
-#: .\blog\templates\blog\home.html:254
+#: .\blog\templates\blog\home copy.html:254 .\blog\templates\blog\home.html:255
 msgid "Search by Features"
 msgstr "Поиск по функциям"
 
-#: .\blog\templates\blog\home.html:255
+#: .\blog\templates\blog\home copy.html:255 .\blog\templates\blog\home.html:256
 msgid ""
 "Click to Search destinations by ratings, nearest subway station, unique "
 "features, and more."
@@ -227,11 +229,11 @@ msgstr ""
 "Нажмите, чтобы найти пункты назначения по рейтингу, ближайшей станции метро, ​​"
 "уникальной особенности и многое другое."
 
-#: .\blog\templates\blog\home.html:261
+#: .\blog\templates\blog\home copy.html:261 .\blog\templates\blog\home.html:262
 msgid "View Locations"
 msgstr "Посмотреть места"
 
-#: .\blog\templates\blog\home.html:262
+#: .\blog\templates\blog\home copy.html:262 .\blog\templates\blog\home.html:263
 msgid ""
 "Every review contains a location pin. You can also click here to browse the "
 "Tasty Map."
@@ -239,35 +241,36 @@ msgstr ""
 "Каждый отзыв содержит указатель местоположения. Вы также можете нажать "
 "здесь, чтобы просмотреть карту"
 
-#: .\blog\templates\blog\home.html:515 .\blog\templates\blog\search.html:516
+#: .\blog\templates\blog\home copy.html:515 .\blog\templates\blog\home.html:516
+#: .\blog\templates\blog\search.html:673 .\blog\templates\blog\search.html:1123
 msgid "Nearest Station:"
 msgstr "Ближайшая станция:"
 
-#: .\blog\templates\blog\home.html:527
-#: .\blog\templates\blog\life_search.html:406
+#: .\blog\templates\blog\home copy.html:527 .\blog\templates\blog\home.html:528
+#: .\blog\templates\blog\life_search.html:553
+#: .\blog\templates\blog\life_search.html:579
+#: .\blog\templates\blog\search.html:1476
 msgid "Posted on"
 msgstr "Написано в"
 
-#: .\blog\templates\blog\life_search.html:39
-#: .\blog\templates\blog\search.html:37
-msgid "Title contains..."
-msgstr "Название содержит..."
-
-#: .\blog\templates\blog\life_search.html:53
+#: .\blog\templates\blog\life_search.html:158
+#: .\blog\templates\blog\life_search.html:237
 #: .\classifieds\templates\classifieds\ad_list.html:109
 msgid "Category..."
 msgstr "Категория..."
 
-#: .\blog\templates\blog\life_search.html:75
+#: .\blog\templates\blog\life_search.html:184
+#: .\blog\templates\blog\life_search.html:259
 msgid "Tags..."
 msgstr "Теги..."
 
-#: .\blog\templates\blog\life_search.html:96
-#: .\blog\templates\blog\search.html:117
+#: .\blog\templates\blog\life_search.html:204
+#: .\blog\templates\blog\life_search.html:278
+#: .\blog\templates\blog\search.html:254 .\blog\templates\blog\search.html:334
 msgid "Search"
 msgstr "Поиск"
 
-#: .\blog\templates\blog\life_search.html:324
+#: .\blog\templates\blog\life_search.html:482
 msgid ""
 "Looking for something? Tell us on Twitter or Instagram, and we'll blog about "
 "it for you!"
@@ -275,31 +278,35 @@ msgstr ""
 "Ищете что-то? Сообщите нам в Твиттере или Инстаграме, и мы об этом сообщим в "
 "блоге!"
 
-#: .\blog\templates\blog\search.html:48
+#: .\blog\templates\blog\search.html:141
 msgid "Type..."
 msgstr "Тип..."
 
-#: .\blog\templates\blog\search.html:63
+#: .\blog\templates\blog\search.html:162
 msgid "Features..."
 msgstr "Характеристики..."
 
-#: .\blog\templates\blog\search.html:78
+#: .\blog\templates\blog\search.html:183
 msgid "Station..."
 msgstr "Станция..."
 
-#: .\blog\templates\blog\search.html:93
+#: .\blog\templates\blog\search.html:204
 msgid "Price..."
 msgstr "Цена..."
 
-#: .\blog\templates\blog\search.html:108
+#: .\blog\templates\blog\search.html:225
 msgid "Rating ≥ ..."
 msgstr "Рейтинг ≥ ..."
 
-#: .\blog\templates\blog\search.html:226 .\blog\templates\blog\search.html:376
+#: .\blog\templates\blog\search.html:243
+msgid "Contains..."
+msgstr "Cодержит..."
+
+#: .\blog\templates\blog\search.html:425 .\blog\templates\blog\search.html:532
 msgid "No places found with that specific criteria"
 msgstr "Не найдено мест с такими конкретными критериями"
 
-#: .\blog\templates\blog\search.html:229 .\blog\templates\blog\search.html:379
+#: .\blog\templates\blog\search.html:428 .\blog\templates\blog\search.html:535
 msgid ""
 "If you have a suggestion, tell us on Twitter or Instagram, and we'll blog "
 "about it for you!"
@@ -307,13 +314,13 @@ msgstr ""
 "Если у вас есть предложения, сообщите нам в Twitter или Instagram, и мы "
 "будем вести блог об этом для вас!"
 
-#: .\blog\templates\blog\search.html:792
+#: .\blog\templates\blog\search.html:949 .\blog\templates\blog\search.html:1399
 #, fuzzy
 #| msgid "Service"
 msgid "Service:"
 msgstr "Oбслуживание"
 
-#: .\blog\views.py:286 .\blog\views.py:370
+#: .\blog\views.py:292 .\blog\views.py:376
 msgid "Your comment has been successfully posted!"
 msgstr "Ваш комментарий был успешно отправлен!"
 
@@ -756,7 +763,7 @@ msgid "Item"
 msgstr "Вещь"
 
 #: .\classifieds\templates\classifieds\ad_detail.html:94
-#: .\classifieds\templates\classifieds\ad_list.html:162
+#: .\classifieds\templates\classifieds\ad_list.html:164
 msgid "Condition"
 msgstr "Состояние"
 
@@ -781,7 +788,7 @@ msgid "Cosmetic Damage"
 msgstr "Косметический ущерб"
 
 #: .\classifieds\templates\classifieds\ad_detail.html:120
-#: .\classifieds\templates\classifieds\ad_list.html:168
+#: .\classifieds\templates\classifieds\ad_list.html:170
 #: .\classifieds\templates\classifieds\job_list.html:113
 msgid "Location"
 msgstr "Посмотреть места"
@@ -823,27 +830,30 @@ msgstr "Оставьте"
 msgid "Submit"
 msgstr "Отправить"
 
-#: .\classifieds\templates\classifieds\ad_list.html:149
+#: .\classifieds\templates\classifieds\ad_list.html:151
 msgid "Community Ads"
 msgstr "Комментарии:"
 
-#: .\classifieds\templates\classifieds\ad_list.html:154
 #: .\classifieds\templates\classifieds\ad_list.html:156
+#: .\classifieds\templates\classifieds\job_list.html:103
+msgid "No results found."
+msgstr "Результаты не найдены."
+
+#: .\classifieds\templates\classifieds\ad_list.html:158
+msgid "result."
+msgstr "Результат."
+
+#: .\classifieds\templates\classifieds\ad_list.html:160
 #: .\classifieds\templates\classifieds\job_list.html:99
 #: .\classifieds\templates\classifieds\job_list.html:101
 msgid "results."
 msgstr "Результаты."
 
-#: .\classifieds\templates\classifieds\ad_list.html:158
-#: .\classifieds\templates\classifieds\job_list.html:103
-msgid "No results found."
-msgstr "Результаты не найдены."
-
-#: .\classifieds\templates\classifieds\ad_list.html:165
+#: .\classifieds\templates\classifieds\ad_list.html:167
 msgid "Price"
 msgstr "Цена:"
 
-#: .\classifieds\templates\classifieds\ad_list.html:206
+#: .\classifieds\templates\classifieds\ad_list.html:208
 #: .\classifieds\templates\classifieds\job_list.html:151
 msgid "Post An Ad"
 msgstr "Написано в"
@@ -1093,19 +1103,19 @@ msgstr "Позиция"
 msgid "Salary"
 msgstr "Оплата труда"
 
-#: .\classifieds\views.py:37 .\classifieds\views.py:238
+#: .\classifieds\views.py:38 .\classifieds\views.py:242
 msgid "Your ad has been successfully posted!"
 msgstr "Ваше объявление было благополучно опубликовано!"
 
-#: .\classifieds\views.py:201 .\classifieds\views.py:310
+#: .\classifieds\views.py:205 .\classifieds\views.py:314
 msgid "Your ad has been successfully updated!"
 msgstr "Ваше объявление было успешно обновлено!"
 
-#: .\classifieds\views.py:221 .\classifieds\views.py:330
+#: .\classifieds\views.py:225 .\classifieds\views.py:334
 msgid "Your ad has been successfully deleted!"
 msgstr "Ваше объявление было успешно удалено!"
 
-#: .\classifieds\views.py:378
+#: .\classifieds\views.py:383
 msgid "Your email has been sent!"
 msgstr "Ваш аккаунт был обновлен!"
 

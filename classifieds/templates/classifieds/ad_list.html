@@ -18,6 +18,20 @@
   <div class="container pt-5 d-none d-md-block" style="width: 40%">
     <div class="row align-items-center">
       <div class="col-5">
+        <div class="input-group">
+          {% if LANGUAGE_CODE == "en" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="contains_filter" placeholder="Contains..." />
+          {% elif LANGUAGE_CODE == "ru" %}
+            <input class="form-control py-2 border-right-0 border" type="search" name="contains_filter" placeholder="Название содержит..." />
+          {% endif %}
+            <span class="input-group-append">
+              <div class="input-group-text bg-transparent">
+                <i class="fa fa-search" bg></i>
+              </div>
+            </span>
+        </div>
+      </div>
+      <div class="col-5">
         <select id="category_filter" class="form-control" name="category_filter">
           {% if LANGUAGE_CODE == "en" %}
             <option selected>Category...</option>
@@ -68,20 +82,6 @@
           {% endif %}
         </select>
       </div>
-      <div class="col-5">
-        <div class="input-group">
-          {% if LANGUAGE_CODE == "en" %}
-            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Title contains..." />
-          {% elif LANGUAGE_CODE == "ru" %}
-            <input class="form-control py-2 border-right-0 border" type="search" name="title_filter" placeholder="Название содержит..." />
-          {% endif %}
-            <span class="input-group-append">
-              <div class="input-group-text bg-transparent">
-                <i class="fa fa-search"></i>
-              </div>
-            </span>
-        </div>
-      </div>
       <div class="col-2">
         <button type="submit" class="btn btn-dark" value="Filter">{% trans "Submit" %}</button>
       </div>   
@@ -95,9 +95,9 @@
     <div class="row align-items-center">
       <div class="col-12">
         <div class="input-group">
-          <input class="form-control py-2 border-right-0" type="search" name="title_filter" placeholder="Title contains..." />
+          <input class="form-control py-2 border-right-0" type="search" name="contains_filter" placeholder="Contains..." />
             <span class="input-group-append">
-              <div class="input-group-text bg-transparent">
+              <div class="input-group-text ">
                 <i class="fa fa-search"></i>
               </div>
             </span>
@@ -150,12 +150,12 @@
           <div class="row border-bottom">
             <!-- Adjust the search result counts based on whether or not the search filter was used -->
             <div class="col-8 col-md-6">
-              {% if ads.paginator.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.paginator.count}} {% trans "results." %}</p>
-              {% elif ads.count > 0 %}
-                <p class="text-muted m-0 p-0">{{ads.count}} {% trans "results." %}</p>
-              {% elif ads.count == 0 %}
+              {% if ads.paginator.count == 0 %}
                 <p class="text-muted m-0 p-0">{% trans "No results found." %}</p>
+              {% elif ads.paginator.count == 1 %}
+                <p class="text-muted m-0 p-0">1 {% trans "result." %}</p>
+              {% elif ads.paginator.count > 0 %}
+                <p class="text-muted m-0 p-0">{{ads.paginator.count}} {% trans "results." %}</p>
               {% endif %}
             </div>
             <div class="col col-md-2 d-none d-md-block">
