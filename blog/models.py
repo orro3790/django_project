@@ -7,9 +7,7 @@ from django.db.models.signals import post_save
 from django.core.mail import send_mail
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
-
-
-
+from tinymce import models as tinymce_models
 
 class StoreType(models.Model):
     name = models.CharField(max_length=50)
@@ -144,13 +142,13 @@ class FoodBlog(models.Model):
     title = models.CharField(max_length=100)
     overall_rating = models.ManyToManyField(OverallRating)
     card_content = models.TextField(help_text='This is the preview text shown on the card.', default=None, max_length=300)
-    the_good = models.TextField(help_text='Write a short summary describing the good features', max_length=500)
-    the_bad = models.TextField(help_text='Write a short summary describing the bad features', max_length=500)
-    paragraph_1 = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
-    paragraph_2 = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
-    paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
-    paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
-    paragraph_5 = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    the_good = tinymce_models.HTMLField(help_text='Write a short summary describing the good features', max_length=500)
+    the_bad = tinymce_models.HTMLField(help_text='Write a short summary describing the bad features', max_length=500)
+    paragraph_1 = tinymce_models.HTMLField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_2 = tinymce_models.HTMLField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
+    paragraph_3 = tinymce_models.HTMLField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
+    paragraph_4 = tinymce_models.HTMLField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
+    paragraph_5 = tinymce_models.HTMLField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
 
     # Image fields
     banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='food_blog_banners', default='')
@@ -180,13 +178,13 @@ class FoodBlog(models.Model):
     # Russian fields
     title_russian = models.CharField(blank=True, max_length=100)
     card_content_russian = models.TextField(blank=True, help_text='This is the preview text shown on the card.', default=None, max_length=300)
-    the_good_russian = models.TextField(blank=True, help_text='Write a short summary describing the good features', max_length=500)
-    the_bad_russian = models.TextField(blank=True, help_text='Write a short summary describing the bad features', max_length=500)
-    paragraph_1_russian = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
-    paragraph_2_russian = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
-    paragraph_3_russian = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
-    paragraph_4_russian = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
-    paragraph_5_russian = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    the_good_russian = tinymce_models.HTMLField(blank=True, help_text='Write a short summary describing the good features', max_length=500)
+    the_bad_russian = tinymce_models.HTMLField(blank=True, help_text='Write a short summary describing the bad features', max_length=500)
+    paragraph_1_russian = tinymce_models.HTMLField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_2_russian = tinymce_models.HTMLField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
+    paragraph_3_russian = tinymce_models.HTMLField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
+    paragraph_4_russian = tinymce_models.HTMLField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
+    paragraph_5_russian = tinymce_models.HTMLField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
     store_type_russian = models.ManyToManyField(RussianStoreType, blank=True)
     nearest_station_russian = models.ManyToManyField(RussianStation, blank=True)
     special_feature_russian = models.ManyToManyField(RussianSpecialFeature, blank=True)
@@ -320,14 +318,14 @@ class LifeBlog(models.Model):
     # Text fields
     title = models.CharField(max_length=100)
     card_content = models.TextField(default='Write your article here!', max_length=300)
-    paragraph_1 = models.TextField(default='Paragraph 1', max_length=3000)
-    paragraph_2 = models.TextField(default='Paragraph 2', max_length=3000)
-    paragraph_3 = models.TextField(default='Paragraph 3', max_length=3000)
-    paragraph_4 = models.TextField(default='Paragraph 4', max_length=3000)
-    paragraph_5 = models.TextField(default='Paragraph 5', max_length=3000)
-    card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
-    
+    paragraph_1 = tinymce_models.HTMLField(default='Paragraph 1', max_length=3000)
+    paragraph_2 = tinymce_models.HTMLField(default='Paragraph 2', max_length=3000)
+    paragraph_3 = tinymce_models.HTMLField(default='Paragraph 3', max_length=3000)
+    paragraph_4 = tinymce_models.HTMLField(default='Paragraph 4', max_length=3000)
+    paragraph_5 = tinymce_models.HTMLField(default='Paragraph 5', max_length=3000)
+
     # Image fields
+    card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
     banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='life_blog_banners', default='')
     mobile_banner = models.ImageField(blank=False, help_text='This is the mobile version of the banner (600 x 600)', upload_to='life_blog_banners_mobile', default='')
     snapshot_1 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
@@ -344,11 +342,11 @@ class LifeBlog(models.Model):
     # Russian fields
     title_russian = models.CharField(max_length=100, blank=True)
     card_content_russian = models.TextField(default='Write your article here!', max_length=300, blank=True)
-    paragraph_1_russian = models.TextField(help_text='Paragraph 1', default=None, max_length=3000, blank=True)
-    paragraph_2_russian = models.TextField(help_text='Paragraph 2', default=None, max_length=3000, blank=True)
-    paragraph_3_russian = models.TextField(help_text='Paragraph 3', default=None, max_length=3000, blank=True)
-    paragraph_4_russian = models.TextField(help_text='Paragraph 4', default=None, max_length=3000, blank=True)
-    paragraph_5_russian = models.TextField(help_text='Paragraph 5', default=None, max_length=3000, blank=True)
+    paragraph_1_russian = tinymce_models.HTMLField(help_text='Paragraph 1', default=None, max_length=3000, blank=True)
+    paragraph_2_russian = tinymce_models.HTMLField(help_text='Paragraph 2', default=None, max_length=3000, blank=True)
+    paragraph_3_russian = tinymce_models.HTMLField(help_text='Paragraph 3', default=None, max_length=3000, blank=True)
+    paragraph_4_russian = tinymce_models.HTMLField(help_text='Paragraph 4', default=None, max_length=3000, blank=True)
+    paragraph_5_russian = tinymce_models.HTMLField(help_text='Paragraph 5', default=None, max_length=3000, blank=True)
     blog_category_russian = models.ManyToManyField(RussianBlogCategory, blank=True)
     tags_russian = models.ManyToManyField(RussianTag, blank=True)
     publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)

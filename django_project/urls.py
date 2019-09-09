@@ -41,10 +41,13 @@ sitemaps = {
     'job_ads': JobSitemap,
 }
 
+from django.conf.urls import url
+
 # separate admin from localization
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]
 
 # paths that I want to be localized en/ru, will be prepended with language prefix

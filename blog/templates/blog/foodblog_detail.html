@@ -69,7 +69,7 @@
 
 
   <!-- TL;DR -->
-  <section id="tldr" class="pb-3">
+  <section id="tldr" class="pb-5">
     <div class="container">
       <div class="row">
         <div class="col text-center">
@@ -545,7 +545,7 @@
 
                 
                 <p class="card-text">
-                  {% trans "Special Features:" %}
+                {% trans "Special Features:" %}
                 {% if LANGUAGE_CODE == 'en' %}
                   <em>{{ post.special_feature.get }}</em>
                 {% elif LANGUAGE_CODE == 'ru' %}
@@ -568,31 +568,26 @@
 
   <!-- Blog Start -->
   <section id="blog-detail-body">
-  <div class="container">
-    <div class="row p-3">
-      <p>
-        {% if LANGUAGE_CODE == "en" %}
-          {{ post.paragraph_1 }}
-        {% elif LANGUAGE_CODE == "ru" %}
-          {{ post.paragraph_1_russian }}
-        {% endif %}
-      </p>
-    </div>
+  <div class="container pb-5">
+    {% if LANGUAGE_CODE == "en" %}
+      {{ post.paragraph_1|safe }}
+    {% elif LANGUAGE_CODE == "ru" %}
+      {{ post.paragraph_1_russian|safe }}
+    {% endif %}
   </div>
-
   <div>
-    <div class="container text-center pb-3">
+    <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_1 and post.snapshot_1_B %}
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_1.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_1.url }}" class="img-fluid border rounded">
           </div>
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_1_B.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_1_B.url }}" class="img-fluid border rounded">
           </div>
         {% elif post.snapshot_1 %}
           <div class="col">
-            <img src="{{ post.snapshot_1.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_1.url }}" class="img-fluid rounded">
           </div>
         {% endif %}
       </div>
@@ -600,30 +595,26 @@
   </div>
 
   <div>
-    <div class="container">
-      <div class="row p-3">
-        <p>
-        {% if LANGUAGE_CODE == "en" %}
-          {{ post.paragraph_2 }}
-        {% elif LANGUAGE_CODE == "ru" %}
-          {{ post.paragraph_2_russian }}
-        {% endif %}
-      </p>
-      </div>
+    <div class="container pb-5">
+      {% if LANGUAGE_CODE == "en" %}
+        {{ post.paragraph_2|safe }}
+      {% elif LANGUAGE_CODE == "ru" %}
+        {{ post.paragraph_2_russian|safe }}
+      {% endif %}
     </div>
 
-    <div class="container text-center pb-3">
+    <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_2 and post.snapshot_2_B %}
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_2.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_2.url }}" class="img-fluid rounded">
           </div>
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_2_B.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_2_B.url }}" class="img-fluid rounded">
           </div>
         {% elif post.snapshot_2 %}
           <div class="col">
-            <img src="{{ post.snapshot_2.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_2.url }}" class="img-fluid rounded">
           </div>
         {% endif %}
       </div>
@@ -631,30 +622,26 @@
   </div>
 
   <div>
-    <div class="container">
-      <div class="row p-3">
-        <p>
-        {% if LANGUAGE_CODE == "en" %}
-          {{ post.paragraph_3 }}
-        {% elif LANGUAGE_CODE == "ru" %}
-          {{ post.paragraph_3_russian }}
-        {% endif %}
-      </p>
-      </div>
+    <div class="container pb-5">
+      {% if LANGUAGE_CODE == "en" %}
+        {{ post.paragraph_3|safe }}
+      {% elif LANGUAGE_CODE == "ru" %}
+        {{ post.paragraph_3_russian|safe }}
+      {% endif %}
     </div>
 
-    <div class="container text-center pb-3">
+    <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_3 and post.snapshot_3_B %}
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_3.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_3.url }}" class="img-fluid rounded">
           </div>
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_3_B.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_3_B.url }}" class="img-fluid rounded">
           </div>
         {% elif post.snapshot_3 %}
           <div class="col">
-            <img src="{{ post.snapshot_3.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_3.url }}" class="img-fluid rounded">
           </div>
         {% endif %}
       </div>
@@ -662,30 +649,26 @@
   </div>
 
   <div>
-    <div class="container">
-      <div class="row p-3">
-        <p>
-        {% if LANGUAGE_CODE == "en" %}
-          {{ post.paragraph_4 }}
-        {% elif LANGUAGE_CODE == "ru" %}
-          {{ post.paragraph_4_russian }}
-        {% endif %}
-      </p>
-      </div>
+    <div class="container pb-5">
+      {% if LANGUAGE_CODE == "en" %}
+        {{ post.paragraph_4|safe }}
+      {% elif LANGUAGE_CODE == "ru" %}
+        {{ post.paragraph_4_russian|safe }}
+      {% endif %}
     </div>
 
-    <div class="container text-center pb-3">
+    <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_4 and post.snapshot_4_B %}
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_4.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_4.url }}" class="img-fluid rounded">
           </div>
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_4_B.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_4_B.url }}" class="img-fluid rounded">
           </div>
         {% elif post.snapshot_4 %}
           <div class="col">
-            <img src="{{ post.snapshot_4.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_4.url }}" class="img-fluid rounded">
           </div>
         {% endif %}
       </div>
@@ -693,30 +676,26 @@
   </div>
 
   <div>
-    <div class="container">
-      <div class="row p-3">
-        <p>
-        {% if LANGUAGE_CODE == "en" %}
-          {{ post.paragraph_5 }}
-        {% elif LANGUAGE_CODE == "ru" %}
-          {{ post.paragraph_5_russian }}
-        {% endif %}
-      </p>
-      </div>
+    <div class="container pb-5">
+      {% if LANGUAGE_CODE == "en" %}
+        {{ post.paragraph_5|safe }}
+      {% elif LANGUAGE_CODE == "ru" %}
+        {{ post.paragraph_5_russian|safe }}
+      {% endif %}
     </div>
 
-    <div class="container text-center pb-3">
+    <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_5 and post.snapshot_5_B %}
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_5.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_5.url }}" class="img-fluid rounded">
           </div>
           <div class="col-sm col-md-6">
-            <img src="{{ post.snapshot_5_B.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_5_B.url }}" class="img-fluid rounded">
           </div>
         {% elif post.snapshot_5 %}
           <div class="col">
-            <img src="{{ post.snapshot_5.url }}" class="img-fluid">
+            <img src="{{ post.snapshot_5.url }}" class="img-fluid rounded">
           </div>
         {% endif %}
       </div>

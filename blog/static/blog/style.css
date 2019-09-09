@@ -249,18 +249,6 @@ a:hover {
   font-weight: 600;
 }
 
-.language-flag {
-    position: absolute;
-    right:30px;
-    top:15px;
-    font-size:12px;
-}
-
-.nav-language-flag {
-    font-size:12px;
-}
-
-
 #tldr {
   font-family: 'Kurale', serif;
 }
@@ -293,6 +281,11 @@ a:hover {
 
 #blog-detail-body i {
   color: #F5A65B;
+}
+
+#blog-detail-body p {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #blog-detail-body .profile-img {
