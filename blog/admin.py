@@ -68,6 +68,10 @@ class LifeBlogAdmin(admin.ModelAdmin):
     ("Russian Meta", {"fields": ["blog_category_russian", "tags_russian"]}),
     ("Publish and Notify Subscribers", {"fields": ["publish_translated_blog"]}),
   ]
+  
+  formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()},
+        }
 
   def save_model(self, request, obj, form, change):
     obj.author = request.user
