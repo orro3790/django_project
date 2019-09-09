@@ -47,7 +47,6 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('i18n/', include('django.conf.urls.i18n')),
-    url(r'^tinymce/', include('tinymce.urls')),
 ]
 
 # paths that I want to be localized en/ru, will be prepended with language prefix
