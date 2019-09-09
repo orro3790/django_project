@@ -29,6 +29,8 @@ from .models import (
   RussianTag,
   RussianPriceRating
 )
+from django.db import models
+from tinymce import TinyMCE
 
 # Clean up the FoodBlog layout page in the admin console
 
