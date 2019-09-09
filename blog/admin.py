@@ -48,10 +48,9 @@ class PostAdmin(admin.ModelAdmin):
     ("Send Emails", {"fields": ["send_emails_english", "email_message_english", 'send_emails_russian', 'email_message_russian']}),
   ]
 
-  def save_model(self, request, obj, form, change):
-    obj.author = request.user
-    obj.save()
-
+  formfield_overrides = {
+        models.TextField: {'widget': TinyMCE()},
+        }
 
 class LifeBlogAdmin(admin.ModelAdmin):
   fieldsets = [
