@@ -59,7 +59,7 @@ class LifeBlogAdmin(admin.ModelAdmin):
     ("Card", {"fields": ["card_image","title", "card_content"]}),
     ("Blog Article", {"fields": ["banner", "mobile_banner", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B"]}),
     ("Location", {"fields": ["google_map"]}),
-    ("Meta Data", {"fields": ["date_posted", "blog_category", "tags"]}),
+    ("Meta Data", {"fields": ["blog_category", "tags"]}),
     ("Subscriber Notifications", {"fields": ["send_emails_english", "email_message_english"]}),
 
     # Russian fields
