@@ -191,18 +191,19 @@ class FoodBlog(models.Model):
     nearest_station_russian = models.ManyToManyField(RussianStation, blank=True)
     special_feature_russian = models.ManyToManyField(RussianSpecialFeature, blank=True)
     price_rating_russian = models.ManyToManyField(RussianPriceRating, blank=True)
+    publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)
+
+    # Emails
     send_emails_russian = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all RUSSIAN subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
     email_message_russian = models.TextField(null=True, blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the RUSSIAN subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
-
-    publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)
+    send_emails_english = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
+    email_message_english = models.TextField(null=True, blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
 
     # Meta fields
     google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
-    send_emails_english = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
-    email_message_english = models.TextField(null=True, blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
-    
+
     def __str__(self):
         return self.title
 
@@ -230,8 +231,8 @@ def save_food_blog(sender, instance, **kwargs):
     automated_message = 'What The Blin has a new food blog for you! Have you been to '+ instance.title +'? \n \nRead our blog post about it at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think, especially if you've been there too (we want to know your favorite menu item from " + instance.title + ", in case we haven't tried it!) \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to food blogs' field. Thanks for supporting us, and enjoy!"
 
     # Russian emails
-    automated_subject_russian = 'BLYAAAT SUBJECT!'
-    automated_message_russian = 'BLYAAAT MESSAGE!'
+    automated_subject_russian = 'Новый блог о еде вышел !: %s' % (instance.title)
+    automated_message_russian = 'У нас есть новый блог о еде: '+ instance.title +'! \n \nПрочитайте наш блог об этом здесь: '+ blog_link +". Оставьте комментарий внизу блога, чтобы рассказать нам, что вы думаете.\n \nКстати, если вы не хотите получать эти уведомления, снимите флажок «Подписаться на блоги» в своем профиле. Спасибо за поддержку!"
 
     # Send emails for English users
     if instance.send_emails_english == True:
@@ -278,8 +279,6 @@ def save_food_blog(sender, instance, **kwargs):
 
 # parameters = (Event function, Model that triggers the desired function)
 post_save.connect(save_food_blog, sender=FoodBlog)
-
-
 
 
 class Comment(models.Model):
@@ -352,6 +351,13 @@ class LifeBlog(models.Model):
     paragraph_5_russian = models.TextField(help_text='Paragraph 5', default=None, max_length=3000, blank=True)
     blog_category_russian = models.ManyToManyField(RussianBlogCategory, blank=True)
     tags_russian = models.ManyToManyField(RussianTag, blank=True)
+    publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)
+    
+    # Emails
+    send_emails_english = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all ENGLISH subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
+    email_message_english = models.TextField(blank=True, null=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the ENGLISH subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
+    send_emails_russian = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all RUSSIAN subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
+    email_message_russian = models.TextField(blank=True, null=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the RUSSIAN subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
 
     # Meta
     blog_category = models.ManyToManyField(BlogCategory, blank=True)
@@ -359,9 +365,7 @@ class LifeBlog(models.Model):
     google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)
-    send_emails_english = models.BooleanField(default=False, help_text='When selected, ANY saved changes will trigger the email server to send notifications to all ENGLISH subscribers that a new post was made. Always create posts with this option unselected first, to ensure no mistakes, then come back and check it.')
-    email_message_english = models.TextField(blank=True, default=None, max_length=2000, help_text="You can add an optional comment that will be attached in the emails that will be sent to the ENGLISH subscriber list (Any major corrections or personalized messages, holiday greetings, etc.)")
+
 
     def __str__(self):
         return self.title
@@ -382,12 +386,18 @@ def save_life_blog(sender, instance, **kwargs):
 
     # Query subscriber list:
     subscribers = Profile.objects.all().filter(subscribe_to_Life_in_Moscow_blogs=True).filter(language="English")
+    subscribers_russian = Profile.objects.all().filter(subscribe_to_Life_in_Moscow_blogs=True).filter(language="Russian")
 
+    # English emails
     automated_subject = 'A New "Life in Moscow" Blog is Out: %s' % (instance.title)
-
     automated_message = 'What The Blin has a new "Life in Moscow" blog for you, called '+ instance.title +'! \n \nRead it here at '+ blog_link +". Leave a comment at the bottom of the blog to tell us what you think. Your feedback helps us tremendously. We hope you enjoy it! \n \nBy the way, if you are tired of getting these notifications, log in to your profile at https://www.whattheblin.com/profile and uncheck the 'Subscribe to Life in Moscow blogs' field. Thanks for supporting us!"
 
+    # Russian emails
+    automated_subject_russian = 'Новый блог «Жизнь в Москве» вышел: %s' % (instance.title)
+    automated_message_russian = 'Для чего у Blin появился новый блог «Жизнь в Москве»:'+ instance.title +'! \n \nПрочитайте наш блог об этом здесь: '+ blog_link +". Оставьте комментарий внизу блога, чтобы рассказать нам, что вы думаете.\n \nКстати, если вы не хотите получать эти уведомления, снимите флажок «Подписаться на блоги» в своем профиле. Спасибо за поддержку!"
+
     
+    # Send emails for English users
     if instance.send_emails_english == True:
         if instance.email_message_english:
             for profile in subscribers:
@@ -403,6 +413,27 @@ def save_life_blog(sender, instance, **kwargs):
                 send_mail(
                         automated_subject,
                         automated_message,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+    
+    # Send emails for Russian users
+    if instance.send_emails_russian == True:
+        if instance.email_message_russian:
+            for profile in subscribers_russian:
+                send_mail(
+                        automated_subject_russian,
+                        instance.email_message_russian,
+                        'notifications@whattheblin.com',
+                        [profile.user.email],
+                        fail_silently=False
+                        )
+        else:
+            for profile in subscribers_russian:
+                send_mail(
+                        automated_subject_russian,
+                        automated_message_russian,
                         'notifications@whattheblin.com',
                         [profile.user.email],
                         fail_silently=False
