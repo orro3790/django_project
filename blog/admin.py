@@ -39,13 +39,13 @@ class PostAdmin(admin.ModelAdmin):
     ("Metrics", {"fields": ["taste_rating", "appearance_rating", "atmosphere_rating", "price_rating",
     "service_rating", "overall_rating","special_feature", "store_type", "nearest_station", ]}),
     ("Location Pin", {"fields": ["google_map"]}),
-    ("Notify Subscribers", {"fields": ["send_email_notification", "email_message"]}),
 
     # Russian fields
     ("Russian Card", {"fields": ["title_russian", "card_content_russian"]}),
     ("Russian Blog Article", {"fields": ["the_good_russian", "the_bad_russian", "paragraph_1_russian", "paragraph_2_russian", "paragraph_3_russian", "paragraph_4_russian", "paragraph_5_russian"]}),
     ("Russian Metrics", {"fields": ["special_feature_russian", "store_type_russian", "nearest_station_russian", 'price_rating_russian']}),
-    ("Publish and Notify Subscribers", {"fields": ["publish_translated_blog"]}),
+    ("Publish Russian Version", {"fields": ["publish_translated_blog"]}),
+    ("Send Emails", {"fields": ["send_emails_english", "email_message_english", 'send_emails_russian', 'email_message_russian']}),
   ]
 
   def save_model(self, request, obj, form, change):
@@ -59,7 +59,7 @@ class LifeBlogAdmin(admin.ModelAdmin):
     ("Blog Article", {"fields": ["banner", "mobile_banner", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B"]}),
     ("Location", {"fields": ["google_map"]}),
     ("Meta Data", {"fields": ["date_posted", "blog_category", "tags"]}),
-    ("Subscriber Notifications", {"fields": ["send_email_notification", "email_message"]}),
+    ("Subscriber Notifications", {"fields": ["send_emails_english", "email_message_english"]}),
 
     # Russian fields
     ("Russian Card", {"fields": ["title_russian", "card_content_russian"]}),
