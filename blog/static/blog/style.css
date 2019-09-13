@@ -326,7 +326,6 @@ a:hover {
 
 /* Profile Page */
 #profile-page {
-  
   color: #343a40;
 }
 
@@ -373,10 +372,6 @@ a:hover {
   font-size: 2rem;
 }
 
-#socialmedia {
-  
-}
-
 #socialmedia .fa-envelope {
   color: #343a40;
   font-size: 2rem;
@@ -415,9 +410,6 @@ a:hover {
   color: #F5A65B;
 }
 
-#maps {
-  
-}
 
 #maps .title {
   color: #F5A65B;
@@ -440,14 +432,8 @@ a:hover {
   color: #343a40;
 }
 
-#login-logout .form-group>input, .form-group>label {
-  padding: var(--input-padding-y) var(--input-padding-x);
-  height: auto;
-  border-radius: 2rem;
-}
 
 #profile h1 {
-  
   color: white;
 }
 
@@ -497,13 +483,14 @@ a:hover {
 
 .search-sec{
     padding: 1.1rem;
-    
+    z-index: 1;
 }
 
 @media (min-width: 992px){
     .search-sec{
+        z-index: 1;
         position: relative;
-        top: -128px;
+        top: -113px;
         margin-bottom: -100px;
         background: rgba(0, 0, 0, 0.50);
     }
@@ -511,26 +498,18 @@ a:hover {
 
 .search-sec-life-blog{
     padding: 1.1rem;
-    
+    z-index: 1;
 }
 
 @media (min-width: 992px){
     .search-sec-life-blog{
+        z-index: 1;
         position: relative;
-        top: -75px;
-        margin-bottom: -75px;
+        top: -66px;
+        margin-bottom: -66px;
         background: rgba(0, 0, 0, 0.50);
     }
 }
-
-#ad-email {
-  
-}
-
-#ad-create {
-  
-}
-
 
 :root {
   --overlay-color: rgba(0, 0, 0, 0.7);
