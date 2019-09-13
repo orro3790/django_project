@@ -50,18 +50,30 @@ from django.contrib.postgres import search
 from django.contrib.postgres.search import SearchVector
 
 
-class FoodBlogListView(ListView):
-    model = FoodBlog
-    template_name = 'blog/home.html'
-    ordering = ['-date_posted']
-    paginate_by = 27
-    
-    def get_context_data(self, **kwargs):
+def FoodBlogListView(request):
 
-        context = super().get_context_data(**kwargs)
-        context['carousel_images'] = CarouselImage.objects.all()
-        context['posts'] = FoodBlog.objects.all()
-        return context
+    carousel_images = CarouselImage.objects.all()
+    template_name = 'blog/home.html'
+
+    language = get_language()
+    
+    if language == "en":
+        posts = FoodBlog.objects.all()
+
+    if language == "ru":
+        posts = FoodBlog.objects.all().filter(publish_translated_blog=True)
+    
+    # paginate settings
+    paginator = Paginator(posts, 1) # Show # blogs per page
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    
+    context = {
+        'posts': posts,
+        'carousel_images': carousel_images
+    }
+    
+    return render(request, 'blog/home.html', context)
     
 
 class PostDetailView(DetailView):
@@ -139,10 +151,14 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 def about(request):
     qs = AboutUsPicture.objects.all()
     banner = AboutUsBanner.objects.all()
+    matt = User.objects.get(username='Matt')
+    steph = User.objects.get(username='Steph')
 
     context = {
         'qs': qs,
-        'banner': banner
+        'banner': banner,
+        'matt': matt,
+        'steph': steph
     }
     return render(request, 'blog/about.html', context)
 
@@ -155,7 +171,6 @@ def valid_query(param):
 def FoodBlogFilter(request):
 
     # Query all life post objects
-    qs = FoodBlog.objects.all()
     carousel_image = FoodSearchBanner.objects.all()
     store_type = StoreType.objects.all()
     nearest_station = Station.objects.all()
@@ -172,7 +187,7 @@ def FoodBlogFilter(request):
     price_rating_russian = RussianPriceRating.objects.all()
 
     # retreive the form request
-    contains_query = request.GET.get('title')
+    keyword_query = request.GET.get('title')
     store_type_query = request.GET.get('store_type')
     nearest_station_query = request.GET.get('nearest_station')
     special_feature_query = request.GET.get('special_feature')
@@ -184,7 +199,9 @@ def FoodBlogFilter(request):
     
     if language == "en":
 
-        if valid_query(contains_query):
+        qs = FoodBlog.objects.all()
+
+        if valid_query(keyword_query):
             qs = LifeBlog.objects.annotate(search=SearchVector('title', 'paragraph_1'),).filter(search='Cheese')
 
         if valid_query(store_type_query) and store_type_query != 'Type...' and store_type_query != 'Тип...':
@@ -204,8 +221,10 @@ def FoodBlogFilter(request):
     
     if language == "ru":
 
-        if valid_query(contains_query):
-            qs = qs.filter(title_russian__icontains=contains_query)
+        qs = FoodBlog.objects.all().filter(publish_translated_blog=True)
+
+        if valid_query(keyword_query):
+            qs = qs.filter(title_russian__icontains=keyword_query)
 
         if (valid_query(store_type_query) and store_type_query != 'Тип...' and store_type_query != 'Type...'):
             qs = qs.filter(store_type_russian__name=store_type_query)
@@ -224,14 +243,14 @@ def FoodBlogFilter(request):
         
 
     # paginate settings
-    paginator = Paginator(qs, 27) # Show 27 blogs per page
+    paginator = Paginator(qs, 1) # Show 27 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
     context = {
         'queryset': qs,
         'carousel_images': carousel_image,
-        'contains_query': contains_query,
+        'keyword_query': keyword_query,
         'store_type': store_type,
         'store_type_query': store_type_query,
         'nearest_station': nearest_station,
@@ -388,7 +407,7 @@ def LifeBlogFilter(request):
     tags_russian= RussianTag.objects.all()
     
     # retreive form requests
-    contains_query = request.GET.get('title')
+    keyword_query = request.GET.get('title')
     blog_category_query = request.GET.get('blog_category')
     tags_query = request.GET.get('tags')
 
@@ -397,8 +416,8 @@ def LifeBlogFilter(request):
 
     # retrieve the English form request queries
     if language == 'en':
-        if valid_query(contains_query):
-            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=contains_query)
+        if valid_query(keyword_query):
+            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
 
         if valid_query(blog_category_query) and blog_category_query != 'Category...':
             qs = qs.filter(blog_category__name=blog_category_query)
@@ -408,7 +427,7 @@ def LifeBlogFilter(request):
 
     # retrieve the Russian form request queries
     if language == 'ru':
-        qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=contains_query)
+        qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
 
         if valid_query(blog_category_query) and blog_category_query != 'Категория...':
             qs = qs.filter(blog_category_russian__name=blog_category_query)
@@ -418,13 +437,13 @@ def LifeBlogFilter(request):
 
 
     # paginate
-    paginator = Paginator(qs, 27) # Show 1 blogs per page
+    paginator = Paginator(qs, 1) # Show 1 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
     context = {
         'queryset': qs,
-        'contains_query': contains_query,
+        'keyword_query': keyword_query,
         'blog_category': blog_category,
         'blog_category_query': blog_category_query,
         'tags': tags,

@@ -13,206 +13,223 @@
       <h3>
         {{ad.title}}
         {% if user != ad.author %}
-          <em><p class="text-muted small" style="font-size: 0.9rem;">{% trans "posted by" %} {{ad.author}}</p></em>
+          <em>
+            <p class="text-muted small pt-2" style="font-size: 0.9rem;">
+              {% trans "posted by" %} {{ad.author}}
+            </p>
+          </em>
         {% endif %}
       </h3>
     </div>
   </div>
 </div>
 
-
-<div class="container-fluid p-4">
-  <div class="row justify-content-center">
-    <div class="col-lg-6 col-md-12">
-      <div class="card classifieds-list-card">
-        <div class="card-body pt-0" style="min-height:730px;">
-          <!-- Image fills the left half -->
-          <div class="row">
-            <div class="col-lg-4 col-md-12 text-center py-4">
-            <a href="{{ ad.image_1.url }}">
-              <img src="{{ ad.image_1.url }}" class="image-fluid w-100 rounded-border" style="border-radius: 15px;">
-            </a>
-          </div>
-          <div class="col-lg-4 col-md-12 text-center py-4">
-            <a href="{{ ad.image_2.url }}">
-              <img src="{{ ad.image_2.url }}" class="image-fluid w-100 rounded-border" style="border-radius: 15px;">
-            </a>
-          </div>
-          <div class="col-lg-4 col-md-12 text-center py-4">
-            <a href="{{ ad.image_3.url }}">
-              <img src="{{ ad.image_3.url }}" class="image-fluid w-100 rounded-border" style="border-radius: 15px;">
-            </a>
-          </div>
-          </div>
-          <!-- Image Description -->
-          <hr class="mt-0">
-          <div class="container" style="text-overflow: clip;">
-            <div class="row">
-              <div class="col">
-                {{ad.description}}
-              </div>
-            </div>     
-          </div>
-        </div>
-        <!-- Container that provides padding only in mobile view, separating the cards -->
-        
-      </div>
-    </div>
-
-    <div class="container d-md-none d-sm-block" style="height: 50px;">
-          <div class="row align-items-center">
-            <div class="col">
-              
-            </div>
-          </div>
-        </div>
-    
-    <!-- Ad details fill the right half -->
-    <div class="col-lg-4 col-md-12">
-      <div class="card classifieds-list-card">
-        <div class="container">
-          <div class="row">
-            <div class="col text-center">
-              <a href="{% url 'ad-detail' ad.id %}">
-                <img src="{{ ad.author.profile.image.url }}" class="card-img-top img-fluid rounded-circle profile-img" style="width:100px; height:100px; margin-top: -30px;">
-              </a>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="card-body pb-0">
-          <div class="container">
-            <h3>{% trans "Details" %}</h3>    
-            <table class="table table-hover">
-              <tbody>
-                <tr>
-                  <td>{% trans "Item" %}</td>
-                  <td></td>
-                  <td>{{ad.items_or_model_names}}</td> 
-                </tr>
-                <tr>
-                  <td>{% trans "Condition" %}</td>
-                  <td></td>
-                  <td>{{ad.condition}}</td>                
-                </tr>
-                <tr>
-                  <td>{% trans "Asking Price" %}</td>
-                  <td></td>
-                  <td>{{ad.asking_price|intcomma}}<i class="fas fa-ruble-sign" style=font-size:0.8rem;></i></td>
-                </tr>
-                <td>{% trans "Buying or Selling" %}</td>
-                  <td></td>
-                  <td>
-                    {% if ad.buying_or_selling == "I'm a buyer" %}
-                      {% trans "Buying" %}
-                    {% elif ad.buying_or_selling == "I'm a seller" %}
-                      {% trans "Selling" %}
-                    {% elif ad.buying_or_selling == "I want to trade" %}
-                      {% trans "I want to trade" %}
-                    {% endif %}
-                  </td>           
-                <tr>
-                  <td>{% trans "Cosmetic Damage" %}</td>
-                  <td></td>
-                  <td>{{ad.cosmetic_damage}}</td>
-                </tr>
-                <tr>
-                  <td>{% trans "Location" %}</td>
-                  <td></td>
-                  <td>{{ad.location}}</td>
-                </tr>
-                <tr>
-                  <td>{% trans "Willing to Travel" %}</td>
-                  <td></td>
-                  <td>{% if ad.willing_to_travel == True %}
-                        <i class="fas fa-check" style="color: seagreen;"></i>
-                      {% else %}
-                        <i class="fas fa-times" style="color: red;"></i>
-                      {% endif %}
-                  </td>
-                </tr>
-                <tr>
-                  <td>{% trans "Date Posted" %}</td>
-                  <td></td>
-                  <td>{{ad.date_posted|date:"m/d/Y"}}</td>
-                </tr>
-                <tr>
-                  <td>{% trans "Methods of Contact" %}</td>
-                  <td></td>
-                  <td>  
-                    <section id="ad-contact-methods">
-                    <div class="d-flex justify-content-left">
-                      {% if ad.twitter_contact == True %}
-                        <div class="pr-3">
-                          <a href="{{ ad.author.profile.twitter_link }}">
-                            <i class="fab fa-twitter fa-1x method-enabled"></i>
-                          </a>
-                        </div>
-                      {% elif ad.twitter_contact == False %}
-                        <div class="pr-3">
-                          <i class="fab fa-twitter fa-1x method-disabled"></i>
-                        </div>
-                      {% endif %}
-
-                      {% if ad.instagram_contact == True %}
-                        <div class="pr-3">
-                          <a href="{{ ad.author.profile.instagram_link }}">
-                            <i class="fab fa-instagram fa-1x method-enabled"></i>
-                          </a>
-                        </div>
-                      {% elif ad.instagram_contact == False %}
-                        <div class="pr-3">
-                          <i class="fab fa-instagram fa-1x method-disabled"></i>
-                        </div>
-                      {% endif %}
-
-                      {% if ad.facebook_contact == True %}
-                        <div class="pr-3">
-                          <a href="{{ ad.author.profile.facebook_link }}">
-                            <i class="fab fa-facebook-square fa-1x method-enabled"></i>
-                          </a>
-                        </div>
-                      {% elif ad.facebook_contact == False %}
-                        <div class="pr-3">
-                          <i class="fab fa-facebook-square fa-1x method-disabled"></i>
-                        </div>
-                      {% endif %}
-                    </section>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        {% if user != ad.author %}
-          <div class="row">
-            <div class="col text-center pt-4 pb-5">
-              <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-md text-white">{% trans "I'm interested!" %}</a>
-            </div>
-          </div>
-        {% elif user == ad.author %}
-          <div class="row">
-            <div class="col-6 text-right pt-4 pb-5">
-              <a href="{% url 'ad-update' ad.id %}" class="btn btn-dark btn-md text-white">{% trans "Update Ad" %}</a>
-            </div>
-            <div class="col-6 text-left pt-4 pb-5">
-              <a href="{% url 'ad-delete' ad.id %}" class="btn btn-danger btn-md text-white">{% trans "Delete Ad" %}</a>
-            </div>
-          </div>
-        {% endif %}
-      </div>
-    </div>
-
-  </div>
-</div>
-</section>
-
-
-<!-- Adding padding at the bottom. *Must be in a container, or will mess up navbar -->
+<!-- Images -->
 <div class="container">
-  <div class="row">
-    <div class="col" style="height: 100px;"></div>
+  <div class="row mx-auto">
+
+    <!-- Outcome #1: all three images uploaded -->
+    {% if ad.image_2 != '' and ad.image_3 != '' %}
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.main_image.url }}">
+        <img src="{{ ad.main_image.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.image_2.url }}">
+        <img src="{{ ad.image_2.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.image_3.url }}">
+        <img src="{{ ad.image_3.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <!-- Outcome #2: No image_2 or image_3 -->
+    {% elif ad.image_2 == '' and ad.image_3 == '' %}
+    <div class="col-lg-4 col-md-12 my-auto py-1"></div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.main_image.url }}">
+        <img src="{{ ad.main_image.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 my-auto py-1"></div>
+    <!-- Outcome #3: only main image and image_2 uploaded -->
+    {% elif ad.image_2 != '' and ad.image_3 == '' %}
+    <div class="col-lg-2 col-md-12 my-auto py-1"></div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.main_image.url }}">
+        <img src="{{ ad.main_image.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.image_2.url }}">
+        <img src="{{ ad.image_2.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-2 col-md-12 my-auto py-1"></div>
+    {% endif %}
   </div>
 </div>
+
+
+<hr style="position:relative; top: 105px; width: 700px;">
+<!-- Ad details -->
+<div class="container pt-4">
+  <div class="row">
+    <div class="col text-center">
+      <a href="{% url 'ad-detail' ad.id %}">
+        <img src="{{ ad.author.profile.image.url }}" class="card-img-top img-fluid rounded-circle profile-img" style="width:100px; height:100px;">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="container py-3">
+  <div class="col text-center">
+    <h3>{% trans "Details" %}</h3>   
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <!-- Empty padding for large view -->
+    </div>
+  <div class="col-lg-6" style="width: 450px;">
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <td style="width: 40%;">{% trans "Item" %}</td>
+          <td></td>
+          <td>{{ad.item_or_model_names}}</td> 
+        </tr>
+        <tr>
+          <td>{% trans "Condition" %}</td>
+          <td></td>
+          <td>{{ad.condition}}</td>                
+        </tr>
+        <tr>
+          <td>{% trans "Asking Price" %}</td>
+          <td></td>
+          <td>{{ad.asking_price|intcomma}}<i class="fas fa-ruble-sign" style=font-size:0.8rem;></i></td>
+        </tr>
+        <td>{% trans "Buying or Selling" %}</td>
+          <td></td>
+          <td>
+            {% if ad.buying_or_selling == "I'm a buyer" %}
+              {% trans "Buying" %}
+            {% elif ad.buying_or_selling == "I'm a seller" %}
+              {% trans "Selling" %}
+            {% elif ad.buying_or_selling == "I want to trade" %}
+              {% trans "I want to trade" %}
+            {% endif %}
+          </td>           
+        <tr>
+          <td>{% trans "Cosmetic Damage" %}</td>
+          <td></td>
+          <td>{{ad.cosmetic_damage}}</td>
+        </tr>
+        <tr>
+          <td>{% trans "Location" %}</td>
+          <td></td>
+          <td>{{ad.location}}</td>
+        </tr>
+        <tr>
+          <td>{% trans "Willing to Travel" %}</td>
+          <td></td>
+          <td>{% if ad.willing_to_travel == True %}
+                <i class="fas fa-check" style="color: seagreen;"></i>
+              {% else %}
+                <i class="fas fa-times" style="color: red;"></i>
+              {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <td>{% trans "Date Posted" %}</td>
+          <td></td>
+          <td>{{ad.date_posted|date:"m/d/Y"}}</td>
+        </tr>
+        <tr>
+          <td>{% trans "Methods of Contact" %}</td>
+          <td></td>
+          <td>  
+            <section id="ad-contact-methods">
+            <div class="d-flex justify-content-left">
+              {% if ad.twitter_contact == True %}
+                <div class="pr-3">
+                  <a href="{{ ad.author.profile.twitter_link }}">
+                    <i class="fab fa-twitter fa-1x method-enabled"></i>
+                  </a>
+                </div>
+              {% elif ad.twitter_contact == False %}
+                <div class="pr-3">
+                  <i class="fab fa-twitter fa-1x method-disabled"></i>
+                </div>
+              {% endif %}
+
+              {% if ad.instagram_contact == True %}
+                <div class="pr-3">
+                  <a href="{{ ad.author.profile.instagram_link }}">
+                    <i class="fab fa-instagram fa-1x method-enabled"></i>
+                  </a>
+                </div>
+              {% elif ad.instagram_contact == False %}
+                <div class="pr-3">
+                  <i class="fab fa-instagram fa-1x method-disabled"></i>
+                </div>
+              {% endif %}
+
+              {% if ad.facebook_contact == True %}
+                <div class="pr-3">
+                  <a href="{{ ad.author.profile.facebook_link }}">
+                    <i class="fab fa-facebook-square fa-1x method-enabled"></i>
+                  </a>
+                </div>
+              {% elif ad.facebook_contact == False %}
+                <div class="pr-3">
+                  <i class="fab fa-facebook-square fa-1x method-disabled"></i>
+                </div>
+              {% endif %}
+            </section>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <div class="col-3">
+      <!-- Empty padding for large view -->
+    </div>
+  </div>
+
+  <div class="container mt-4 py-4 border" style="width: 450px; border-radius: 15px;">
+    <div class="row">
+      <h4 class="pl-3">
+        {% trans 'Description' %}:
+        <hr class="my-0 pb-1">
+      </h4>
+    </div>
+    <div class="col">
+      {{ad.description|linebreaks}}
+    </div>
+  </div>
+
+  {% if user != ad.author %}
+    <div class="row">
+      <div class="col text-center pt-4 pb-5">
+        <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-sm">{% trans "I'm interested!" %}</a>
+      </div>
+    </div>
+  {% elif user == ad.author %}
+    <div class="row">
+      <div class="col-6 text-right pt-4 pb-5">
+        <a href="{% url 'ad-update' ad.id %}" class="btn btn-primary btn-sm">{% trans "Update" %}</a>
+      </div>
+      <div class="col-6 text-left pt-4 pb-5">
+        <a href="{% url 'ad-delete' ad.id %}" class="btn btn-danger btn-sm text-white">{% trans "Delete" %}</a>
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+
 
 {% endblock content %}
+

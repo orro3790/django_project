@@ -41,7 +41,7 @@ class StaticViewSitemap(Sitemap):
         'profile',
         'ad-create',
         'ad-list',
-        'jobs-list',
+        'job-list',
         'faq',
       ]
 

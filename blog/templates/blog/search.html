@@ -133,7 +133,7 @@
       <div class="row">
         <div class="col-md-1"></div>
           <div class="col-md-2 my-auto">
-              <select id="store_type" class="form-control" name="store_type">
+              <select id="store_type" class="custom-select custom-select-sm custom-select custom-select-sm-sm" name="store_type">
                 <option selected>
                   {% if store_type_query %}
                     {{ store_type_query }}
@@ -154,7 +154,7 @@
           </div>
           <!-- Search by special feature -->
           <div class="col-md-2 my-auto">
-            <select id="special_feature" class="form-control" name="special_feature">
+            <select id="special_feature" class="custom-select custom-select-sm" name="special_feature">
               <option selected>
                 {% if special_feature_query %}
                   {{ special_feature_query }}
@@ -175,7 +175,7 @@
           </div>
           <!-- Search by nearest station -->
           <div class="col-md-2 my-auto">
-            <select id="nearest_station" class="form-control" name="nearest_station">
+            <select id="nearest_station" class="custom-select custom-select-sm" name="nearest_station">
               <option selected>
                 {% if nearest_station_query %}
                   {{ nearest_station_query }}
@@ -196,7 +196,7 @@
           </div>
           <!-- Search by price -->
           <div class="col-md-2 my-auto">
-            <select id="price_rating" class="form-control" name="price_rating">
+            <select id="price_rating" class="custom-select custom-select-sm" name="price_rating">
               <option selected>
                 {% if price_rating_query %}
                   {{ price_rating_query }}
@@ -217,7 +217,7 @@
           </div>
           <!-- Search by overall rating -->
           <div class="col-md-2 my-auto">
-            <select id="overall_rating" class="form-control" name="overall_rating">
+            <select id="overall_rating" class="custom-select custom-select-sm" name="overall_rating">
               <option selected>
                 {% if overall_rating_query %}
                   {{ overall_rating_query }}
@@ -240,7 +240,7 @@
         </div>
         <div class="col-md-4 my-auto">
           <div class="input-group">
-            <input class="form-control border-right-0 border" type="search" name="title" placeholder="{% trans "Contains..." %}"/>
+            <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder="{% trans "Keyword..." %}"/>
               <span class="input-group-append">
                 <div class="input-group-text">
                   <i class="fa fa-search"></i>
@@ -250,11 +250,11 @@
         </div>
         <!-- Search Submit Button -->
         <div class="col-md-2 text-center my-auto">
-          <button type="submit" class="btn btn-primary" value="Filter">
+          <button type="submit" class="btn btn-sm btn-dark" value="Filter">
             {% trans "Search" %}
           </button>
           <span class="pl-2">
-            <a href="{% url 'blog-search' %}" class="btn btn-danger justify-content-center" role="button">
+            <a href="{% url 'blog-search' %}" class="btn btn-sm btn-danger justify-content-center" role="button">
               <i class="fas fa-history primary"></i>
             </a>
           </span>
@@ -275,7 +275,7 @@
   <div class="row">
     <div class="col-md-2">
       <div class="input-group">
-        <input class="form-control border-right-0 border" type="search" name="title" placeholder="Contains..." />
+        <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder="Keyword..." />
           <span class="input-group-append">
             <div class="input-group-text ">
               <i class="fa fa-search"></i>
@@ -285,7 +285,7 @@
     </div>
 <!-- Search by store type -->
     <div class="col-md-2">
-        <select id="store_type" class="form-control" name="store_type">
+        <select id="store_type" class="custom-select custom-select-sm" name="store_type">
           <option selected>Type...</option>
           {% for type in store_type %}
             <option value="{{ type }}"> {{ type }} </option>
@@ -294,7 +294,7 @@
     </div>
     <!-- Search by special feature -->
     <div class="col-md-2">
-        <select id="special_feature" class="form-control" name="special_feature">
+        <select id="special_feature" class="custom-select custom-select-sm" name="special_feature">
           <option selected>Features...</option>
           {% for feature in special_feature %}
             <option value="{{ feature }}"> {{ feature }} </option>
@@ -303,7 +303,7 @@
     </div>
     <!-- Search by nearest station -->
     <div class="col-md-2">
-        <select id="nearest_station" class="form-control" name="nearest_station">
+        <select id="nearest_station" class="custom-select custom-select-sm" name="nearest_station">
           <option selected>Station...</option>
           {% for station in nearest_station %}
             <option value="{{ station }}"> {{ station }} </option>
@@ -312,7 +312,7 @@
     </div>
     <!-- Search by price -->
     <div class="col-md-2">
-        <select id="price_rating" class="form-control" name="price_rating">
+        <select id="price_rating" class="custom-select custom-select-sm" name="price_rating">
           <option selected>Price...</option>
           {% for rating in price_rating %}
             <option value="{{ rating }}"> {{ rating }} </option>
@@ -321,7 +321,7 @@
     </div>
     <!-- Search by overall rating -->
     <div class="col-md-2 pb-3">
-        <select id="overall_rating" class="form-control" name="overall_rating">
+        <select id="overall_rating" class="custom-select custom-select-sm" name="overall_rating">
           <option selected>Rating ≥ ...</option>
           {% for rating in overall_rating %}
             <option value="{{ rating }}"> {{ rating }} </option>
@@ -330,12 +330,12 @@
     </div>
     <!-- Search Submit Button -->
     <div class="col-12 text-center my-auto">
-      <button type="submit" class="btn btn-primary" value="Filter">
+      <button type="submit" class="btn btn-sm btn-dark" value="Filter">
         {% trans "Search" %}
       </button>
 
       <span class="pl-2">
-        <a href="{% url 'blog-search' %}" class="btn btn-danger justify-content-center align-items-center" role="button">
+        <a href="{% url 'blog-search' %}" class="btn btn-sm btn-danger justify-content-center align-items-center" role="button">
           <i class="fas fa-history primary"></i>
         </a>
       </span>
@@ -347,7 +347,7 @@
 <!-- Search result text for RUSSIAN users -->
 {% if LANGUAGE_CODE == "ru" %}
   <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and contains_query == None %}
+  {% if tags_query == None and blog_category_query == None and keyword_query == None %}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
         <b>
@@ -373,7 +373,7 @@
     </div>
 
   <!-- Outcome #2: The user presses search without any specific criteria -->
-  {% elif contains_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..."%}
+  {% elif keyword_query == '' and store_type_query == "Тип..." and special_feature_query == "Характеристики..." and nearest_station_query == "Станция..." and price_rating_query == "Цена..." and overall_rating_query == "Рейтинг ≥ ..."%}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
         <b>
@@ -421,7 +421,7 @@
       {% if queryset.paginator.count == 0 %}
       <section id="no-search-results">
         <div class="container pt-3">
-          <h5 style="font-family: Kurale;">
+          <h5 style="font-family: ;">
             {% trans "No places found with that specific criteria" %} :(.
             <br>
             <br>
@@ -476,7 +476,7 @@
 {% if LANGUAGE_CODE == "en" %}
 
   <!-- Search results text and criteria -->
-  {% if contains_query == None and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
+  {% if keyword_query == None and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
   <div class="container text-center">
     {% if queryset.paginator.count == 0 %}
       <b>(0) Blogs:</b>
@@ -494,7 +494,7 @@
     {% endif %}
   </div>
 
-  {% elif contains_query == '' and store_type_query == "Type..." and special_feature_query == "Features..." and nearest_station_query == "Station..." and price_rating_query == "Price..." and overall_rating_query == "Rating ≥ ..." %}
+  {% elif keyword_query == '' and store_type_query == "Type..." and special_feature_query == "Features..." and nearest_station_query == "Station..." and price_rating_query == "Price..." and overall_rating_query == "Rating ≥ ..." %}
   <div class="container text-center">
     {% if queryset.paginator.count == 0 %}
       <b>(0) Blogs:</b>
@@ -528,7 +528,7 @@
       {% if queryset.paginator.count == 0 %}
       <section id="no-search-results">
         <div class="container pt-3">
-          <h5 style="font-family: Kurale;">
+          <h5 style="font-family: ;">
             {% trans "No places found with that specific criteria" %} :(.
             <br>
             <br>
@@ -1492,32 +1492,36 @@
   <div class="row">
     <div class="col">
 
-        {% if queryset.has_previous and contains_query == '' %}
-          <a href="?page={{ queryset.previous_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and keyword_query == '' %}
+          <a href="?page={{ queryset.previous_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and contains_query %}
-          <a href="?page={{ queryset.previous_page_number }}&title={{contains_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and keyword_query %}
+          <a href="?page={{ queryset.previous_page_number }}&title={{keyword_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
         {% if queryset.has_previous and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
-          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %} 
 
-        <span class="px-2" style="vertical-align: middle;">
-            {{ queryset.number }} of {{ queryset.paginator.num_pages }}
-        </span>
+        {% for num in queryset.paginator.page_range %}
+          {% if queryset.number == num %}
+            {% if queryset.paginator.num_pages != 1 %}
+              <a class="btn btn-sm btn-dark" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
 
-        {% if queryset.has_next and contains_query == '' %}
-          <a href="?page={{ queryset.next_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and keyword_query == '' %}
+          <a href="?page={{ queryset.next_page_number }}&title=&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and contains_query %}
-          <a href="?page={{ queryset.next_page_number }}&title={{contains_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and keyword_query %}
+          <a href="?page={{ queryset.next_page_number }}&title={{keyword_query}}&store_type={{store_type_query}}&special_feature={{special_feature_query}}&nearest_station={{nearest_station_query}}&price_rating={{price_rating_query}}&overall_rating={{overall_rating_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
         {% if queryset.has_next and store_type_query == None and special_feature_query == None and nearest_station_query == None and price_rating_query == None and overall_rating_query == None %}
-          <a href="?page={{ queryset.next_page_number }}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+          <a href="?page={{ queryset.next_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %} 
     </div>
   </div>

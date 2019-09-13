@@ -13,7 +13,7 @@ from .views import (
   JobUpdateView,
   JobDeleteView,
   SendEmailCreateView,
-  FaqView
+  FaqView,
 )
 
 urlpatterns = [
@@ -25,8 +25,8 @@ urlpatterns = [
   path('ad/<int:pk>/delete/', AdDeleteView.as_view(), name='ad-delete'),
 
   # jobs
-  path('create/jobs-ad/', JobCreateView.as_view(), name='job-wanted-create'),
-  path('jobs/', JobListView, name='jobs-list'),
+  path('create/jobs-ad/', JobCreateView.as_view(), name='job-create'),
+  path('jobs/', JobListView, name='job-list'),
   path('job-ad/<int:pk>/', JobDetailView.as_view(), name='job-detail'),
   path('job-ad/<int:pk>/update/', JobUpdateView.as_view(), name='job-update'),
   path('job-ad/<int:pk>/delete/', JobDeleteView.as_view(), name='job-delete'),

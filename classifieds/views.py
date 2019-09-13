@@ -2,6 +2,12 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse, HttpR
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import get_language, gettext_noop
+from django.contrib.postgres import search
+from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import SearchQuery
+from django.core.exceptions import ValidationError
 from django.core.paginator import Paginator
 from django.views.generic import ListView, CreateView, DetailView, TemplateView, UpdateView, DeleteView
 from . models import (
@@ -9,17 +15,16 @@ from . models import (
     Job,
     AdEmail,
     Buyer,
-    Seller
+    Seller,
+    BuyAndSellBanner,
+    JobBanner
 )
+from django import forms
 from . forms import (
     AdForm,
     JobForm,
-    SendEmailForm
+    SendEmailForm,
 )
-from django.utils.translation import gettext_lazy as _
-from django.utils.translation import get_language
-from django.contrib.postgres import search
-from django.contrib.postgres.search import SearchVector
 
 
 class AdCreateView(LoginRequiredMixin, CreateView):
@@ -30,11 +35,8 @@ class AdCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form, *args, **kwargs):
         form.instance.author = self.request.user
         return super().form_valid(form)
-
+        
     def get_success_url(self): 
-        """
-        After posting comment, provide success message and return to associated blog post.
-        """
         messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully posted!'))
         return reverse('ad-list')
 
@@ -45,117 +47,202 @@ def valid_query(param):
 
 
 def AdListView(request):
-    model = Ad
-    template_name = 'classifieds/ad_list.html'
-    context_object_name = 'ads'
-    ordering = ['-date_posted']
+
     all_ads = Ad.objects.all()
+    qs = Ad.objects.all()
+    carousel_images = BuyAndSellBanner.objects.all()
+    language = get_language()
 
-    contains_query = request.GET.get('contains_filter')
+    # Default ENGLISH placeholder/values for each field in the HTML template:
+    default_contains = ''
+    default_category = _('Category...')
+    default_role = _('I want to buy / sell...')
+    default_price = ''
+
+    # Get the user queries
+    keyword_query = request.GET.get('keyword_filter')
+    price_query = request.GET.get('price_filter')
+    role_query = request.GET.get('role_filter')
     category_query = request.GET.get('category_filter')
-    # split the string value from the count and grab just the string itself:
-    if category_query != None:
-        category_query = request.GET.get('category_filter').split('-')[0]
+    
+    if category_query is not None and category_query != default_category:
+        category_query = request.GET.get('category_filter').split(' -')[0]
         
-    LANGUAGE_CODE = get_language()
 
-    # English views
-    # Outcome #1: default page load
-    if category_query == None and contains_query == None:
-        qs = all_ads
+    # Outcome #1: Default page load
+    if category_query is None and keyword_query is None and price_query is None and role_query is None:
+        qs = qs.order_by('-date_posted')
 
-    # Outcome #2: a user presses search with no values
-    if (category_query == 'Category...' and contains_query == '') or (category_query == 'Категория...' and contains_query == ''):
-        qs = all_ads
+    # Outcome #2: A user presses submit without any values
+    if category_query == default_category and role_query == default_role and keyword_query == default_contains and price_query == default_price:
+        qs = qs.order_by('-date_posted')
 
-    # Outcome #3: a user provides search values
-    # Searching for "Contains...", user actually submits a value
-    if valid_query(contains_query) and contains_query != "Contains..." and contains_query != "Название содержит...":
-        qs = Ad.objects.annotate(search=SearchVector('title', 'description', 'items_or_model_names'),).filter(search=contains_query)
+    # Outcome #3: Individual field searches and combination searches:
+    # Create valid search functions for each field, all of which store results as 'qs', allowing chain filtering:
+    
+    # Contains:
+    if keyword_query is not None and keyword_query != default_contains:
+        # Search by value
+        search_contains = qs.annotate(search=SearchVector('title', 'description', 'item_or_model_names')).filter(search=keyword_query)
+        # Search only by: Contains
+        qs = search_contains.order_by('-date_posted')
 
-
-    # If a category is submitted, pull English their respective ads as well.
-    if valid_query(category_query):
-
-        if 'посуда и приборы' in category_query:
-            qs = all_ads.filter(category__search='kitchenware and appliances').order_by('-date_posted')
-
-        if 'искусства и ремесла' in category_query:
-            qs = all_ads.filter(category__search='arts and crafts').order_by('-date_posted')
-
-        if 'малыш и дети' in category_query:
-            qs = all_ads.filter(category__search='baby and kids').order_by('-date_posted')
-
-        if 'красота и здоровье' in category_query:
-            qs = all_ads.filter(category__search='beauty and health').order_by('-date_posted')
-
-        if 'велосипеды' in category_query:
-            qs = all_ads.filter(category__search='bikes').order_by('-date_posted')
-
-        if 'книги' in category_query:
-            qs = all_ads.filter(category__search='books').order_by('-date_posted')
-
-        if 'телефоны' in category_query:
-            qs = all_ads.filter(category__search='cell phones').order_by('-date_posted')
-
-        if 'одежда' in category_query:
-            qs = all_ads.filter(category__search='clothing').order_by('-date_posted')
-
-        if 'предметы коллекционирования' in category_query:
-            qs = all_ads.filter(category__search='collectibles').order_by('-date_posted')
-
-        if 'компьютеры' in category_query:
-            qs = all_ads.filter(category__search='computers').order_by('-date_posted')
+    # Category:
+    if category_query is not None and category_query != default_category:
         
-        if 'электроника' in category_query:
-            qs = all_ads.filter(category__search='electronics').order_by('-date_posted')
+        # Search by value
+        if language == 'en':
+            search_category = qs.annotate(search=SearchVector('category')).filter(search=category_query)
 
-        if 'сад' in category_query:
-            qs = all_ads.filter(category__search='garden').order_by('-date_posted')
+        # If language is Russian, convert the terms to English so they can pull English equivalents
+        elif language == 'ru':
 
-        if 'мебель' in category_query:
-            qs = all_ads.filter(category__search='furniture').order_by('-date_posted')
+            if category_query == _('arts and crafts'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='arts and crafts')
 
-        if 'свободно' in category_query:
-            qs = all_ads.filter(category__search='free').order_by('-date_posted')
+            elif category_query == _('baby and kids'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='baby and kids')
+
+            elif category_query == _('beauty and health'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='beauty and health')
+
+            elif category_query == _('bikes'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='bikes')
+
+            elif category_query == _('books'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='books') 
+
+            elif category_query == _('cell phones'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='cell phones')
+            
+            elif category_query == _('clothing'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='clothing')
+            
+            elif category_query == _('collectibles'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='collectibles')
+            
+            elif category_query == _('computers'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='computers')
+            
+            elif category_query == _('electronics'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='electronics')
+            
+            elif category_query == _('garden'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='garden')
+            
+            elif category_query == _('furniture'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='furniture')
+            
+            elif category_query == _('free'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='free')
+            
+            elif category_query == _('general'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='general')
+            
+            elif category_query == _('household'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='household') 
+            
+            elif category_query == _('pets'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='pets')
+            
+            elif category_query == _('jewelery'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='jewelery')
+
+            elif category_query == _('kitchenware and appliances'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='kitchenware and appliances')
+            
+            elif category_query == _('materials'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='materials')
+            
+            elif category_query == _('musical instruments'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='musical instruments')
+            
+            elif category_query == _('cameras'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='cameras')
+            
+            elif category_query == _('tools'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='tools')
+            
+            elif category_query == _('games'):
+                search_category = qs.annotate(search=SearchVector('category')).filter(search='games')
+
+            else:
+                # handle the error that occurs from language toggling immediately after doing a search 
+                return redirect('ad-list')
+
+        # Search only by: Category
+        qs = search_category.order_by('-date_posted')
         
-        if 'генеральный' in category_query:
-            qs = all_ads.filter(category__search='general').order_by('-date_posted')
-
-        if 'домашнее хозяйство' in category_query:
-            qs = all_ads.filter(category__search='household').order_by('-date_posted')
-
-        if 'домашнее животное' in category_query:
-            qs = all_ads.filter(category__search='pets').order_by('-date_posted')
+    # Role:
+    if role_query is not None and role_query != default_role:
         
-        if 'ювелирные изделия' in category_query:
-            qs = all_ads.filter(category__search='jewelery').order_by('-date_posted')
+        if language == 'en':
 
-        if 'материалы' in category_query:
-            qs = all_ads.filter(category__search='materials').order_by('-date_posted')
+            if role_query == 'I want to buy':
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I'm a seller")
+                # Search only by: I want to sell
+                qs = search_role.order_by('-date_posted')
 
-        if 'музыкальные инструменты' in category_query:
-            qs = all_ads.filter(category__search='musical instruments').order_by('-date_posted')
+            elif role_query == 'I want to sell':
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I'm a buyer")
+                # Search only by: I want to sell
+                qs = search_role.order_by('-date_posted')
 
-        if 'камеры' in category_query:
-            qs = all_ads.filter(category__search='cameras').order_by('-date_posted')
+            elif role_query == 'I want to trade':
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I want to trade")
+                # Search only by: I want to trade
+                qs = search_role.order_by('-date_posted')
+        
+            else:
+                # handle the error that occurs from language toggling immediately after doing a search 
+                return redirect('ad-list')
 
-        if 'инструменты' in category_query:
-            qs = all_ads.filter(category__search='tools').order_by('-date_posted')
+        elif language == 'ru':
+            
+            if role_query == _('I want to buy'):
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I'm a seller")
+                # Search only by: I want to sell
+                qs = search_role.order_by('-date_posted')
 
-        if 'игры' in category_query:
-            qs = all_ads.filter(category__search='games').order_by('-date_posted')   
+            elif role_query == _('I want to sell'):
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I'm a buyer")
+                # Search only by: I want to sell
+                qs = search_role.order_by('-date_posted')
+
+            elif role_query == _('I want to trade'):
+                # Search by value
+                search_role = qs.annotate(search=SearchVector('buying_or_selling')).filter(search="I want to trade")
+                # Search only by: I want to trade
+                qs = search_role.order_by('-date_posted')
+
+            else:
+                # handle the error that occurs from language toggling immediately after doing a search 
+                return redirect('ad-list')
+
+    # Price:
+    if price_query is not None and price_query != default_price:
+        # Search by value
+        search_price = qs.filter(asking_price__lte=price_query)
+        # Search only by: Price
+        qs = search_price.order_by('-date_posted')
 
     # paginate
-    paginator = Paginator(qs, 30) # controls the # of objects per page
+    paginator = Paginator(qs, 20) # controls the # of ads per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
     context = {
         'ads': qs,
-        'contains_query': contains_query,
+        'carousel_images': carousel_images,
+        'keyword_query': keyword_query,
         'category_query': category_query,
-        'CODE': LANGUAGE_CODE
+        'role_query': role_query,
+        'price_query': price_query,
     }
 
     return render(request, 'classifieds/ad_list.html', context)
@@ -171,10 +258,10 @@ class AdUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     context_object_name = 'ad'
     fields = [
         'title',
-        'image_1',
+        'main_image',
         'image_2',
         'image_3',
-        'items_or_model_names',
+        'item_or_model_names',
         'category',
         'buying_or_selling',
         'condition',
@@ -240,31 +327,96 @@ class JobCreateView(LoginRequiredMixin, CreateView):
         After posting comment, provide success message and return to associated blog post.
         """
         messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully posted!'))
-        return reverse('jobs-list')
+        return reverse('job-list')
 
 
 def JobListView(request):
-    model = Job
-    template_name = 'classifieds/job_list.html'
-    context_object_name = 'ads'
-    ordering = ['-date_posted']
-    full_qs = Job.objects.all().order_by('-date_posted')
-    paginator_qs = Job.objects.all().order_by('-date_posted')
-    paginator = Paginator(paginator_qs, 5) # controls the # of objects per page
+
+    # Base queries
+    all_ads = Job.objects.all()
+    qs = Job.objects.all()
+    carousel_images = JobBanner.objects.all()
+    location_list = Job.objects.all().values_list('location', flat=True).distinct()
+    language = get_language()
+
+    # Default placeholder/values for each field as written in the HTML template:
+    default_contains = ''
+    default_salary = ''
+    default_location = _('Location...')
+    default_position = _('Position Type...')
+
+    # Get the user queries
+    keyword_query = request.GET.get('keyword_filter')
+    salary_query = request.GET.get('salary_filter')
+    location_query = request.GET.get('location_filter')
+    position_query = request.GET.get('position_filter')
+
+    # Outcome #1: Default page load (tested and handles both en and ru)
+    if keyword_query is None and salary_query is None and location_query is None and position_query is None:
+        qs = all_ads.order_by('-date_posted')
+        
+    # Outcome #2: A user presses submit without any values:efault_salary and location_query == default_location and position_query == default_position:
+        qs = all_ads.order_by('-date_posted')
+        
+    # Outcome #3: Individual field searches and combination searches:
+    # Create valid search functions for each field, all of which store results back into 'qs', allowing chain filtering:
+
+    # Contains:
+    if keyword_query is not None and keyword_query != default_contains:
+        qs = qs.annotate(search=SearchVector('title', 'title_of_position', 'job_description')).filter(search=keyword_query).order_by('-date_posted')
+        
+    # Location:
+    if location_query is not None and location_query != default_location:
+        qs = qs.annotate(search=SearchVector('location')).filter(search=location_query).order_by('-date_posted')
+
+    # Salary:
+    if salary_query is not None and salary_query != default_salary:
+        qs = qs.annotate(search=SearchVector('salary')).filter(salary__gte=salary_query)
+
+    # Position Type
+    if position_query is not None and position_query != default_position:
+
+        if language == 'en':
+            if position_query == _('All-paid'):
+                qs = qs.exclude(position_type__icontains='Volunteer')
+            elif position_query == _('Part-time'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Part-time').order_by('-date_posted')
+            elif position_query == _('Volunteer'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Volunteer').order_by('-date_posted')
+            elif position_query == _('Full-time'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Full-time').order_by('-date_posted')
+            else:
+                # handle the error that occurs from language toggling immediately after doing a search 
+                return redirect('job-list')
+
+        if language == 'ru':
+            if position_query == _('All-paid'):
+                qs = qs.exclude(position_type__icontains='Volunteer')
+            elif position_query == _('Part-time'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Part-time').order_by('-date_posted')
+            elif position_query == _('Volunteer'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Volunteer').order_by('-date_posted')
+            elif position_query == _('Full-time'):
+                qs = qs.annotate(search=SearchVector('position_type')).filter(search='Full-time').order_by('-date_posted')
+            else:
+                # handle the error that occurs from language toggling immediately after doing a search 
+                return redirect('job-list')
+    
+
+    # paginate
+    paginator = Paginator(qs, 20) # controls the # of ads per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
-    salary_query = request.GET.get('salary_filter')
-    contains_query = request.GET.get('contains_filter')
-
-    if valid_query(salary_query) and salary_query != 'Salary of at least...' and salary_query != 'Зарплата как минимум ...':
-        # look for a match containing first 6 digits of query, because the embedded counts in the template get passed into the query also and interfere with the matching. 
-        qs = full_qs.filter(salary__gte=salary_query[:6]).order_by('-date_posted')
-
-    if valid_query(contains_query) and salary_query != 'Contains...':
-        qs = full_qs.filter(title__icontains=contains_query).order_by('-date_posted')
 
     context = {
         'ads': qs,
+        'carousel_images': carousel_images,
+        'keyword_query': keyword_query,
+        'salary_query': salary_query,
+        'location_query': location_query,
+        'position_query': position_query,
+        'all_ads': all_ads,
+        'location_list': location_list,
     }
     
     return render(request, 'classifieds/job_list.html', context)
@@ -279,22 +431,23 @@ class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Job
     template_name = 'classifieds/job_update_form.html'
     context_object_name = 'ad'
+
     fields = [
         'title',
-        'image',
+        'main_image',
+        'image_2',
+        'image_3',
         'title_of_position',
-        'experience',
         'position_type',
-        'education',
+        'experience',
+        'degree_required',
         'salary',
         'location',
         'involves_travel',
-        'name',
+        'company_name',
         'skype_id',
-        'email',
         'company_website',
-        'company_description',
-        'job_description'
+        'job_description',
         ]
 
     def form_valid(self, form, *args, **kwargs):
@@ -312,7 +465,7 @@ class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         After updating ad, provide success message and return to the detail view of associated ad.
         """
         messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully updated!'))
-        return reverse('jobs-list')
+        return reverse('job-list')
 
 
 class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -332,7 +485,7 @@ class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         After deleting ad, provide success message and return to the list of ads.
         """
         messages.add_message(self.request, messages.SUCCESS, _('Your ad has been successfully deleted!'))
-        return reverse('jobs-list')
+        return reverse('job-list')
 
 
 class SendEmailCreateView(CreateView):

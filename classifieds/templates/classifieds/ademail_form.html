@@ -5,26 +5,33 @@
 {% block content %}
 {% load i18n %}
 
-<div class="container py-5">
-   <legend class="pb-2" style="font-size: 1.2rem;">
-    {% trans "Reply to:" %} <strong>{{ad.title}}</strong>
-    <hr> 
-    <div class="pb-3" style="font-size: 0.8rem;">
-        <em>{% trans "posted by <strong>{{ad.author}}</strong>, on {{ad.date_posted}}"%}</em>
+
+<section id="ad-email">
+  <div class="container py-5">
+    <h4>
+      {% trans "Reply to:" %}
+      <a href="{% url 'ad-detail' ad.id %}" style="color:royalblue;">
+        {{ad.title}}
+      </a>
+    </h4>
+    <hr>
+    <div class="pb-3">
+      <em>Posted by: <strong>{{ad.author}}</strong>, on <strong>{{ad.date_posted|date:"m/d/Y"}}</strong></em>
     </div>
-   </legend> 
-  <div class="content-section">
+    <div class="content-section">
       <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset class="form-group">
-            {{ form|crispy }}
-          </fieldset>
-          <div class="form-group">
-              <button class="btn-outline-dark" type="submit">{% trans "Send Email*" %}</button>
-              <p class="pt-3">{% trans "*The author of this ad will be given the ability to contact you at the email address provided on your profile page. Check your email for their response." %}</p>
-          </div>
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{ form|crispy }}
+        </fieldset>
+        <div class="form-group">
+          <button class="btn btn-sm btn-primary" type="submit">
+            {% trans "Send Email" %}
+          </button>
+        </div>
       </form>
+    </div>
   </div>
-</div>
+</section>
 
 {% endblock content %}

@@ -6,7 +6,7 @@
 {% block content %}
 {% load i18n %}
 
-<section id="ad-list">
+<section id="faq-page">
 
 <div class="container py-5">
   <div class="row">
@@ -89,7 +89,7 @@
               </div>
             </div>
           </div>
-          <div class="row pt-3">
+          <div class="row pt-3 border-bottom">
             <div class="col">
               <h5>
                 {% trans "7) What things are prohibited?" %}
@@ -109,9 +109,6 @@
               <div class="container">
                 <p>
                   {% trans "When you click the <b>I'm Interested!</b> button and send an email to a user, the email will be sent from our email server at <b>notifications@whattheblin.com</b>. This is so that users <b>do not have to display their email address publically</b> on their ads. The email address in your profile will be attached in the email you send. If the author of the ad wishes to reply to you, they must contact you using the attached address. In other words, What The Blin will place you in initial contact with one another, but all further communications must be done privately, outside of our domain." %}
-                  <br>
-                  <br>
-                  <b>{% trans "We do not have access to the contents of your email, and all communications to and from the server are encrypted." %}</b>
                 </p>
               </div>
             </div>
@@ -121,17 +118,13 @@
     </div>
   </div>
 </div>
-</section>
-
-
 <!-- Adding padding at the bottom. *Must be in a container, or will mess up navbar -->
 <div class="container">
   <div class="row">
     <div class="col" style="height: 100px;"></div>
   </div>
 </div>
-
-      
+</section>
 
 {% endblock content %}
 

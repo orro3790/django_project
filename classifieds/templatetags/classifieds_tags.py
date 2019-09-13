@@ -106,6 +106,18 @@ def total_jewelery():
     return total_jewelery
 
 @register.simple_tag
+def total_general():
+    qs = Ad.objects.all()
+    total_general = qs.filter(category="general").count()
+    return total_general
+
+@register.simple_tag
+def total_kitchenware_and_appliances():
+    qs = Ad.objects.all()
+    total_kitchenware_and_appliances = qs.filter(category="kitchenware and appliances").count()
+    return total_kitchenware_and_appliances
+
+@register.simple_tag
 def total_materials():
     qs = Ad.objects.all()
     total_materials = qs.filter(category="materials").count()

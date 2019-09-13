@@ -14,7 +14,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', FoodBlogListView.as_view(), name='blog-home'),
+    path('', FoodBlogListView, name='blog-home'),
     path('blog/filtered/', FoodBlogFilter, name='blog-search'),
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('about/', about, name='blog-about'),

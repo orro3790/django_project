@@ -131,14 +131,14 @@
 <section id="search-fields">
   <div class="w-100 search-sec-life-blog d-md-block d-none">
     <form method="GET" action=".">
-      <div class="container pt-3">
+      <div class="container">
         <!-- Search by title: -->
         <div class="row">
           <div class="col-3">
-            <div class="form-group">
+            <div class="form-group my-auto">
                 <div class="input-group">
-                  <input class="form-control border-right-0 border" type="search" name="title" placeholder=
-                    "Contains..."/>
+                  <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder=
+                    "Keyword..."/>
                     <span class="input-group-append">
                       <div class="input-group-text">
                         <i class="fa fa-search"></i>
@@ -149,8 +149,8 @@
           </div>
           
           <!-- Search by blog type -->
-          <div class="col-3">
-            <select id="blog_category" class="form-control" name="blog_category">
+          <div class="col-3 my-auto">
+            <select id="blog_category" class="custom-select custom-select-sm" name="blog_category">
               <option selected>
                 {% if blog_category_query %}
                   {{ blog_category_query }}
@@ -175,8 +175,8 @@
           </div>
 
           <!-- Search by tags -->
-          <div class="col-3">
-            <select id="tags" class="form-control" name="tags">
+          <div class="col-3 my-auto">
+            <select id="tags" class="custom-select custom-select-sm" name="tags">
               <option selected>
                 {% if tags_query %}
                   {{ tags_query }}
@@ -199,12 +199,12 @@
               {% endif %}
             </select>
           </div>
-          <div class="col-md-3 text-center">
-            <button type="submit" class="btn btn-primary" value="Filter">
+          <div class="col-md-3 text-center my-auto">
+            <button type="submit" class="btn btn-sm btn-dark" value="Filter">
               {% trans "Search" %}
             </button>
-            <span class="pl-2">
-              <a href="{% url 'life-blog-search' %}" class="btn btn-danger justify-content-center align-items-center" role="button">
+            <soan class="pl-2 my-auto">
+              <a href="{% url 'life-blog-search' %}" class="btn btn-sm btn-danger justify-content-center align-items-center" role="button">
                 <i class="fas fa-history primary"></i>
               </a>
             </span>
@@ -222,7 +222,7 @@
     <!-- Search by Title -->
       <div class="col-12">
         <div class="input-group">
-          <input class="form-control border-right-0 border" type="search" name="title" placeholder="Contains..." />
+          <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder="Keyword..." />
             <span class="input-group-append">
               <div class="input-group-text bg-transparent">
                 <i class="fa fa-search"></i>
@@ -232,7 +232,7 @@
       </div>
     <!-- Search by blog type -->
       <div class="col-12">
-        <select id="blog_category" class="form-control" name="blog_category">
+        <select id="blog_category" class="custom-select custom-select-sm" name="blog_category">
           <option selected>
             {% trans "Category..." %}
           </option>
@@ -254,7 +254,7 @@
 
       <!-- Search by tags -->
       <div class="col-12">
-        <select id="tags" class="form-control" name="tags">
+        <select id="tags" class="custom-select custom-select-sm" name="tags">
           <option selected>
             {% trans "Tags..." %}
           </option>
@@ -274,11 +274,11 @@
         </select>
       </div>
       <div class="col-md-3 text-center pt-3">
-        <button type="submit" class="btn btn-primary" value="Filter">
+        <button type="submit" class="btn btn-sm  btn-dark" value="Filter">
           {% trans "Search" %}
         </button>
         <span class="pl-2">
-          <a href="{% url 'life-blog-search' %}" class="btn btn-danger justify-content-center align-items-center" role="button">
+          <a href="{% url 'life-blog-search' %}" class="btn btn-sm btn-danger" role="button">
             <i class="fas fa-history primary"></i>
           </a>
         </span>
@@ -295,7 +295,7 @@
 {% if LANGUAGE_CODE == "en" %}
 
   <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and contains_query == None %}
+  {% if tags_query == None and blog_category_query == None and title_query == None %}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
         <b>(0) Blogs:</b>
@@ -312,7 +312,7 @@
     </div>
 
   <!-- Outcome #2: A user presses search, but without any criteria selected -->
-  {% elif tags_query == 'Tags...' and blog_category_query == 'Category...' and contains_query == '' %}
+  {% elif tags_query == 'Tags...' and blog_category_query == 'Category...' and title_query == '' %}
   <div class="container text-center">
     {% if queryset.paginator.count == 1 %}
           <b>(1) Blog:</b>
@@ -345,7 +345,7 @@
         {% if queryset.paginator.count == 0 %}
         <section id="no-search-results">
           <div class="container pt-3">
-            <h5 style="font-family: Kurale;">
+            <h5 style="font-family: ;">
               Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!
             </h5>
           </div>
@@ -396,7 +396,7 @@
 {% if LANGUAGE_CODE == "ru" %}
 
   <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and contains_query == None %}
+  {% if tags_query == None and blog_category_query == None and title_query == None %}
     {% if queryset.paginator.count == 1 %}
       <div class="container text-center">
         <b>
@@ -421,7 +421,7 @@
     {% endif %}
 
   <!-- Outcome #2: A user presses search, but without any criteria selected -->
-  {% elif tags_query == 'Теги...' and blog_category_query == 'Категория...' and contains_query == '' %}
+  {% elif tags_query == 'Теги...' and blog_category_query == 'Категория...' and title_query == '' %}
     {% if queryset.paginator.count == 1 %}
       <div class="container text-center">
         <b>
@@ -478,7 +478,7 @@
       {% if queryset.paginator.count == 0 %}
       <section id="no-search-results">
         <div class="container pt-3">
-          <h5 style="font-family: Kurale;">
+          <h5 style="font-family: ;">
             {% trans "Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!" %}
           </h5>
         </div>
@@ -592,32 +592,36 @@
 <div class="container text-center pb-5">
   <div class="row">
     <div class="col">
-        {% if queryset.has_previous and contains_query == '' %}
-          <a href="?page={{ queryset.previous_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and title_query == '' %}
+          <a href="?page={{ queryset.previous_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and contains_query %}
-          <a href="?page={{ queryset.previous_page_number }}&title={{contains_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and title_query %}
+          <a href="?page={{ queryset.previous_page_number }}&title={{title_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and tags_query == None and blog_category_query == None and contains_query == None %}
-          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and tags_query == None and blog_category_query == None and title_query == None %}
+          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %} 
 
-        <span class="px-2" style="vertical-align: middle;">
-            {{ queryset.number }} of {{ queryset.paginator.num_pages }}
-        </span>
+        {% for num in queryset.paginator.page_range %}
+          {% if queryset.number == num %}
+            {% if queryset.paginator.num_pages != 1 %}
+              <a class="btn btn-sm btn-dark" href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
         
-        {% if queryset.has_next and contains_query == '' %}
-          <a href="?page={{ queryset.next_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and title_query == '' %}
+          <a href="?page={{ queryset.next_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and contains_query %}
-          <a href="?page={{ queryset.next_page_number }}&title={{contains_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and title_query %}
+          <a href="?page={{ queryset.next_page_number }}&title={{title_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and tags_query == None and blog_category_query == None and contains_query == None %}
-          <a href="?page={{ queryset.next_page_number }}" class="btn btn-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and tags_query == None and blog_category_query == None and title_query == None %}
+          <a href="?page={{ queryset.next_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %} 
     </div>
   </div>

@@ -16,8 +16,8 @@
                           <h5 class="pt-2 pb-3">{% trans "Are you sure you want to delete your ad: "%} {{ ad.title }} ? </h5>
                       </fieldset>
                       <div class="form-group text-center">
-                          <button class="btn btn-danger" type="submit">{% trans "Yes, Delete" %}</button>
-                          <a class="btn btn-secondary" href="{% url 'ad-detail' ad.id %}">{% trans "Cancel" %}</a>
+                          <button class="btn btn-sm btn-danger" type="submit">{% trans "Yes, Delete" %}</button>
+                          <a class="btn btn-sm btn-secondary" href="{% url 'ad-detail' ad.id %}">{% trans "Cancel" %}</a>
                       </div>
                     </div>
                   </div>  

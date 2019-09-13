@@ -4,6 +4,7 @@
 {% load static %}
 {% block content %}
 {% load i18n %}
+
 <section id="ad-update-delete">
 <div class="container py-5">
   <div class="content-section">
@@ -14,7 +15,7 @@
                   {{ form|crispy }}
           </fieldset>
           <div class="form-group text-center">
-              <button class="btn btn-primary" type="submit">{% trans "Update" %}</button>
+              <button class="btn btn-sm btn-primary" type="submit">{% trans "Update" %}</button>
           </div>
       </form>
   </div>

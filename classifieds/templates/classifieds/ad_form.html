@@ -5,7 +5,7 @@
 {% block content %}
 {% load i18n %}
 
-
+<section id="ad-create">
 <div class="container py-5">
   <div class="content-section">
       <form method="POST" enctype="multipart/form-data" onsubmit="return submitUserForm();">
@@ -17,12 +17,13 @@
           <div class="g-recaptcha" data-sitekey="6Le9ArYUAAAAANZ_UerCig5v9iUPrR8v0yIOnMS2" data-callback="verifyCaptcha"></div>
             <div id="g-recaptcha-error" class="form-group pb-3"></div>
                 <div class="container text-center pb-5">
-                    <button class="btn btn-primary" name="submit" type="submit">{% trans "Post Ad" %}</button>
+                    <button class="btn btn-dark" name="submit" type="submit">{% trans "Post Ad" %}</button>
               </div>
           </div>
       </form>
   </div>
 </div>
+</section>
 
 <!-- Google ReCaptchav2 -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -42,3 +43,4 @@ function verifyCaptcha() {
 </script>
 
 {% endblock content %}
+

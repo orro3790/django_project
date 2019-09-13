@@ -10,106 +10,62 @@
 
 <section id="about-body">
 
-<!-- VIDEO PLAY -->
 
-<section id="blog-banner">
-{% for banner in banner %}
-  {% if banner.visibility == 'Display' %}
-    <div class="container-fluid" style="padding:0;">
-      <div class="row-full">
-        <div class="banner-text d-none d-md-block">
-          {{ banner.caption }}
-        </div>
-        <img class="w-100 img-fluid" src="{{ banner.image.url }}">
-      </div>
+<section class="section-a">
+  <div class="container two-columns">
+    <div>
+      <h1>{% trans "...why Moscow!?" %}</h1>
+      <p>
+        {% trans "We get that question <em>a lot.</em>" %}
+        <p>
+          {% trans "<b>After living in Korea</b> for almost four years, it was time for a new adventure. What bigger adventure is there, than Russia? We have been fascinated by Russia for many years, and so much is either unknown, or misunderstood about this country and its people. <b>We moved to Russia</b> to explore it for ourselves, and share the things that we learn along the way. If you're curious about life in Moscow, you came to the right place." %}
+        </p>
+      
+      </p>
     </div>
-  {% endif %}
-{% endfor %}
-</section>
+    <div class="container">
+      <!-- Matt's Profile-->
+      <div class="col text-center pt-2">
+        <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
 
-<!-- Social Media Cards -->
-<section id="socialmedia" class="mb-5 text-center">
-  <div class="container-fluid p-3">
-    <div class="row">
-      <div class="col">
-        <div class="info-header mb-5">
-          <h3 class="pb-3 pt-5">
-            {% trans "Reach us on Social Media" %}
-          </h3>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <img src="{{qs.0.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
-            <h3>{% trans "Matt" %}</h3>
-            <h5 class="text" style=font-size:1.2rem;>
-              "Coffee + Dessert = Life"
-            </h5>
-            <hr>
-            <p>{% trans "For years, I've been fascinated by Russia and dreamed of exploring it. Finally, I'm here! I moved to Moscow to discover the city for myself, from its streets, sweet shops and cafes, to its restaurants, museums, and more. Now it's my passion to help cultivate the expat community here by sharing all the incredible places that I've discovered. Don't be shy, say hi!" %}
-            </p>
-            <div class="d-flex justify-content-center">
-              <div class="p-4">
-                <a href="https://twitter.com/Whattheblin">
-                  <i class="fab fa-twitter fa-3x"></i>
-                </a>
-              </div>
-              <div class="p-4">
-                <a href="https://www.instagram.com/theblinmachine/">
-                  <i class="fab fa-instagram fa-3x"></i>
-                </a>
-              </div>
-            </div>
-
+        <!-- Row of icons -->
+        <div class="d-flex justify-content-center pt-2 pb-0">
+          <div class="p-1">
+            <a href="{{matt.profile.twitter_link}}">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+          <div class="p-1 pl-3">
+            <a href="{{matt.profile.instagram_link}}">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+          <div class="p-1 pl-3">
+            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+            <i class="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
       </div>
+      
+      <hr style="width: 50px;">
 
-      <div class="col-md-6">
-        <div class="card">
-          <div class="card-body">
-            <img src="{{qs.1.image.url}}" alt="" class="img-fluid rounded-circle w-55 mb-3">
-            <h3>{% trans "Steph" %}</h3>
-            <h5 class="text">{% trans "Sweets Obsessed" %}</h5>
-            <hr>
-            <p>
-              {% trans "My motivations for travelling are to see the amazing sights and learn new games from other cultures. Although they are certainly fun, and I do enjoy them, my real motivation is...food! I love exploring different cultures through tasting the food. It is always the most exciting part of travelling and I look forward to sharing my food adventures in Russia with you all!" %}
-            </p>
-            <div class="d-flex justify-content-center">
-              <div class="p-4">
-                <a href="https://www.instagram.com/labelle44/">
-                  <i class="fab fa-instagram fa-3x"></i>
-                </a>
-              </div>
 
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Steph's Profile -->
+      <div class="col text-center py-3">
+        <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
 
-      <div class="container mt-5">
-        <div class="row">
-          <div class="col-12">
-            <h3 style=font-size:1.8rem;>
-              {% trans "Business Inquiries:" %}
-            </h3>
+        <!-- Row of icons -->
+        <div class="d-flex justify-content-center pt-2 pb-0">
+          <div class="p-1">
+            <a href="{{steph.profile.instagram_link}}">
+              <i class="fab fa-instagram"></i>
+            </a>
           </div>
-          <div class="col-12">
-            contact@whattheblin.com"
-          </div>
-        </div>
-        <div class="py-3">
-          <i class="far fa-envelope fa-3x"></i>
-        </div>
-      </div>
-             
-            </div>
+          <div class="p-1 pl-3">
+            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+            <i class="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
       </div>
@@ -117,36 +73,55 @@
   </div>
 </section>
 
-<!-- VIDEO MODAL -->
-<div class="modal fade" id="videoModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <button class="close" data-dismiss="modal">
-          <span>&times;</span>
-        </button>
-        <iframe src="" frameborder="0" height="350" width="100%" allowfullscreen></iframe>
-      </div>
+<!-- Large Text -->
+<section id="about" class="section-b">
+  <div class="overlay">
+    <div class="section-b-inner py-5">
+      <h3 class="text-2">{% trans "Podcast Series" %}</h3>
+      <h2 class="text-5 mt-1">{% trans "The Adventure Continues" %}</h2>
+      <p class="mt-1">
+        {% trans "Once a week, we release a new podcast episode where we discuss what it's really like to live and work in Moscow. We document every part of our lives here, starting from the first week we arrived. You can listen to them on our YouTube channel here." %}
+      </p>
     </div>
   </div>
-</div>
+</section>
+
+<!-- Gallery -->
+<section class="section-c">
+  <div class="gallery">
+    <!-- Far Left Big -->
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/thailand.png' %}" alt=""/>
+    </a>
+    <!-- Center Top (wide) -->
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/Osaka.png' %}" alt=""/>
+    </a>
+    <!-- Far Right -->
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/seoul.png' %}" alt=""/>
+    </a>
+    <!-- Center bottom left -->
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/deer.png' %}" alt=""/>
+    </a>
+    <!-- Center bottom right -->
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/calgary.png' %}" alt=""/>
+    </a>
+    <a style="cursor: default;">
+      <img src="{% static 'blog/images/beach.png' %}" alt=""/>
+    </a>
+  </div>
+</section>
 
 </section>
-{% endblock content %}
+
 
 <script>
-  // Video Play
-  $(function () {
-    // Auto play modal video
-    $(".video").click(function () {
-      var theModal = $(this).data("target"),
-        videoSRC = $(this).attr("data-video"),
-        videoSRCauto = videoSRC + "?modestbranding=1&rel=0&controls=0&showinfo=0&html5=1&autoplay=1";
-      $(theModal + ' iframe').attr('src', videoSRCauto);
-      $(theModal).click(function () {
-        $(theModal + ' iframe').attr('src', videoSRC);
-      });
-    });
-  });
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
 </script>
 
+{% endblock content %}
