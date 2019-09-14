@@ -497,10 +497,11 @@ a:hover {
         z-index: 1;
         position: relative;
         top: -66px;
-        margin-bottom: -66px;
+        margin-bottom: -77px;
         background: rgba(0, 0, 0, 0.50);
     }
 }
+
 
 :root {
   --overlay-about-color: rgba(0, 0, 0, 0.7);

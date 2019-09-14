@@ -4,6 +4,12 @@
 {% load i18n %}
 {% block content %}
 
+{% trans "Update your account settings: enable or disable email notifications, link your social media accounts, update email and profile image, and keep track of all your active ads from the classifieds section." as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
+
 <br>
 
 <section id="profile-page">

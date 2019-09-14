@@ -64,7 +64,7 @@ def FoodBlogListView(request):
         posts = FoodBlog.objects.all().filter(publish_translated_blog=True)
     
     # paginate settings
-    paginator = Paginator(posts, 1) # Show # blogs per page
+    paginator = Paginator(posts, 18) # Show # blogs per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
@@ -171,11 +171,13 @@ def valid_query(param):
 def FoodBlogFilter(request):
 
     # Query all life post objects
+    qs = FoodBlog.objects.all()
     carousel_image = FoodSearchBanner.objects.all()
+
+    # Query models necessary to populate dropdown menus
     store_type = StoreType.objects.all()
     nearest_station = Station.objects.all()
     special_feature = SpecialFeature.objects.all()
-    overall_rating = OverallRating.objects.all()
     taste_rating = TasteRating.objects.all()
     appearance_rating = AppearanceRating.objects.all()
     atmosphere_rating = AtmosphereRating.objects.all()
@@ -187,7 +189,7 @@ def FoodBlogFilter(request):
     price_rating_russian = RussianPriceRating.objects.all()
 
     # retreive the form request
-    keyword_query = request.GET.get('title')
+    keyword_query = request.GET.get('keyword')
     store_type_query = request.GET.get('store_type')
     nearest_station_query = request.GET.get('nearest_station')
     special_feature_query = request.GET.get('special_feature')
@@ -197,9 +199,7 @@ def FoodBlogFilter(request):
     # check the language settings of the user
     language = get_language()
     
-    if language == "en":
-
-        qs = FoodBlog.objects.all()
+    if language == "en": 
 
         if valid_query(keyword_query):
             qs = LifeBlog.objects.annotate(search=SearchVector('title', 'paragraph_1'),).filter(search='Cheese')
@@ -243,7 +243,7 @@ def FoodBlogFilter(request):
         
 
     # paginate settings
-    paginator = Paginator(qs, 1) # Show 27 blogs per page
+    paginator = Paginator(qs, 18) # Show 18 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
@@ -257,7 +257,6 @@ def FoodBlogFilter(request):
         'nearest_station_query': nearest_station_query,
         'special_feature': special_feature,
         'special_feature_query': special_feature_query,
-        'overall_rating': overall_rating,
         'overall_rating_query': overall_rating_query,
         'taste_rating': taste_rating,
         'appearance_rating': appearance_rating,
@@ -401,13 +400,15 @@ def LifeBlogFilter(request):
     # Query all life post objects and blog types for logged-in users
     qs = LifeBlog.objects.all()
     carousel_image = LifeBlogSearchBanner.objects.all()
+
+    # Query the models necessary to populate drop down menus
     blog_category = BlogCategory.objects.all()
     tags = Tag.objects.all()
     blog_category_russian = RussianBlogCategory.objects.all()
-    tags_russian= RussianTag.objects.all()
+    tags_russian = RussianTag.objects.all()
     
     # retreive form requests
-    keyword_query = request.GET.get('title')
+    keyword_query = request.GET.get('keyword')
     blog_category_query = request.GET.get('blog_category')
     tags_query = request.GET.get('tags')
 
@@ -437,7 +438,7 @@ def LifeBlogFilter(request):
 
 
     # paginate
-    paginator = Paginator(qs, 1) # Show 1 blogs per page
+    paginator = Paginator(qs, 18) # Show 18 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 

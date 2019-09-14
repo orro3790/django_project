@@ -5,6 +5,12 @@
 {% block content %}
 {% load i18n %}
 
+{% trans "Post a free ad on the Moscow Buy and Sell board. English and Russian language support, built primarily for expats living in the city." as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
+
 <section id="ad-create">
 <div class="container py-5">
   <div class="content-section">

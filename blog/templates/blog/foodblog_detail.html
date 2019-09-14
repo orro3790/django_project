@@ -4,7 +4,11 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
-<link href="https://fonts.googleapis.com/css?family=Unica+One&display=swap" rel="stylesheet">
+{% trans "Moscow's greatest food blog and home to the city's greatest expat community. Search for cafes, desserts, restaurants, and more. Use filters to find exactly what you're in the mood for, with location pins for every blog. Learn about life in Moscow by following our weekly blogs!" as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
 
 <!-- In case someone forces the /ru/ URL for the post, before a translation is out -->
 {% if LANGUAGE_CODE == 'ru' and post.publish_translated_blog == False %}
@@ -135,42 +139,42 @@
                 {% if post.overall_rating.get.rating == 1 %}
                 <span>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 1.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 2 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 2.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 3 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 3.5 %}
                 <span> 
@@ -178,7 +182,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 4 %}
                 <span> 
@@ -186,7 +190,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.overall_rating.get.rating == 4.5 %}
                 <span> 
@@ -211,42 +215,42 @@
                 {% if post.taste_rating.get.rating == 1 %}
                 <span>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 1.5 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 2 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 2.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 3 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 3.5 %}
                 <span>
@@ -254,7 +258,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 4 %}
                 <span>
@@ -262,7 +266,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.taste_rating.get.rating == 4.5 %}
                 <span>
@@ -287,50 +291,50 @@
                 {% if post.appearance_rating.get.rating == 1 %}
                 <span>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 1.5 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 2 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 2.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 3 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 3.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 4 %}
                 <span>
@@ -338,7 +342,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.appearance_rating.get.rating == 4.5 %}
                 <span>
@@ -363,42 +367,42 @@
                 {% if post.atmosphere_rating.get.rating == 1 %}
                 <span>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 1.5 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 2 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 2.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 3 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 3.5 %}
                 <span>
@@ -406,7 +410,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 4 %}
                 <span>
@@ -414,7 +418,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.atmosphere_rating.get.rating == 4.5 %}
                 <span>
@@ -471,42 +475,42 @@
                 {% if post.service_rating.get.rating == 1 %}
                 <span>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 1.5 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 2 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 2.5 %}
                 <span>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 3 %}
                 <span> 
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 3.5 %}
                 <span>
@@ -514,7 +518,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star-half-alt"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 4 %}
                 <span>
@@ -522,7 +526,7 @@
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
                   <i class="fas fa-star"></i>
-                  <i class="fas fa-star unfilled"></i>
+                  
                 </span>
                 {% elif post.service_rating.get.rating == 4.5 %}
                 <span>

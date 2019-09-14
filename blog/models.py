@@ -316,12 +316,12 @@ class LifeBlog(models.Model):
 
     # Text fields
     title = models.CharField(max_length=100)
-    card_content = models.TextField(default='Write your article here!', max_length=300)
-    paragraph_1 = models.TextField(default='Paragraph 1', max_length=3000)
-    paragraph_2 = models.TextField(default='Paragraph 2', max_length=3000)
-    paragraph_3 = models.TextField(default='Paragraph 3', max_length=3000)
-    paragraph_4 = models.TextField(default='Paragraph 4', max_length=3000)
-    paragraph_5 = models.TextField(default='Paragraph 5', max_length=3000)
+    card_content = models.TextField(default='', help_text="This is the small preview paragraph that will be shown on the card.", max_length=300)
+    paragraph_1 = models.TextField(blank=True, help_text='Paragraph 1', default=None, max_length=3000)
+    paragraph_2 = models.TextField(blank=True, help_text='Paragraph 2', default=None, max_length=3000)
+    paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
+    paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
+    paragraph_5 = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
 
     # Image fields
     card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')

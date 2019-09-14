@@ -7,8 +7,10 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% trans "Post a free ad on the Moscow Buy and Sell board. English and Russian language support, built primarily for expats living in the city." as meta_tag %}
+
 <head>
-<meta name="description" CONTENT="Welcome to Moscow's expat classifieds board. New to Moscow and looking for something? Got something to sell? Check the Buy and Sell board. Want a new job? Head to jobs section.">
+  <meta name="description" content={{meta_tag}}>
 </head>
 
 <!-- Carousel -->

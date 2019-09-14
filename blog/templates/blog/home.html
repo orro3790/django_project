@@ -5,6 +5,13 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% trans "Moscow's greatest food blog and home to the city's expat community. Search for cafes, desserts, restaurants, and more. Use filters to find exactly what you're in the mood for, with location pins for every blog. Learn about life in Moscow by following our weekly blogs and podcast!" as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
+
+
 <section id="carousel-section" class="d-md-block d-none">
   <div class="container-fluid px-0">
     <div id="foodsearch-banner" class="carousel slide carousel-fade" data-ride="carousel">
@@ -278,42 +285,31 @@
           <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
           <div class="card-body">
             <h4 class="card-title">{{ post.title }}</h4>
-            {% if post.overall_rating.get.rating == 1 %}
+            {% if post.overall_rating.get.rating == 1.0 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 1.5 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
-            {% elif post.overall_rating.get.rating == 2 %}
+            {% elif post.overall_rating.get.rating == 2.0 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.5 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
-            {% elif post.overall_rating.get.rating == 3 %}
+            {% elif post.overall_rating.get.rating == 3.0 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star unfilled"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.5 %}
             <span>Overall: 
@@ -321,15 +317,13 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
-            {% elif post.overall_rating.get.rating == 4 %}
+            {% elif post.overall_rating.get.rating == 4.0 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
-              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.5 %}
             <span>Overall: 
@@ -339,7 +333,7 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
             </span>
-            {% elif post.overall_rating.get.rating == 5 %}
+            {% elif post.overall_rating.get.rating == 5.0 %}
             <span>Overall: 
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -392,7 +386,7 @@
             <hr>
             <p class="card-text">{{ post.card_content }}</p>
             <hr>
-            <footer class="blockquote-footer ">
+            <footer class="blockquote-footer text-center">
               <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
             </footer>
           </div>
@@ -410,42 +404,31 @@
             <div class="card-body">
               <h4 class="card-title">{{ post.title_russian }}</h4>
               {% trans "Overall:" %}
-              {% if post.overall_rating.get.rating == 1 %}
+              {% if post.overall_rating.get.rating == 1.0 %}
               <span>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
               {% elif post.overall_rating.get.rating == 1.5 %}
               <span>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
-              {% elif post.overall_rating.get.rating == 2 %}
+              {% elif post.overall_rating.get.rating == 2.0 %}
               <span>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
+                <i class="fas fa-star"></i>  
               </span>
               {% elif post.overall_rating.get.rating == 2.5 %}
               <span>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
-              {% elif post.overall_rating.get.rating == 3 %}
+              {% elif post.overall_rating.get.rating == 3.0 %}
               <span>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star unfilled"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
               {% elif post.overall_rating.get.rating == 3.5 %}
               <span>
@@ -453,15 +436,13 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
-              {% elif post.overall_rating.get.rating == 4 %}
+              {% elif post.overall_rating.get.rating == 4.0 %}
               <span>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
-                <i class="fas fa-star unfilled"></i>
               </span>
               {% elif post.overall_rating.get.rating == 4.5 %}
               <span>
@@ -471,7 +452,7 @@
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
               </span>
-              {% elif post.overall_rating.get.rating == 5 %}
+              {% elif post.overall_rating.get.rating == 5.0 %}
               <span>
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>

@@ -3,6 +3,13 @@
 {% load crispy_forms_tags %}
 {% block content %}
 {% load i18n %}
+
+{% trans "Create a free account, and gain access to Moscow's greatest food map, classifieds section, and enable email notifications for new blog releases." as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
+
 <div class="content-section p-3 pb-5">
   <div class="container p-4 pb-5">
     <div class="card">

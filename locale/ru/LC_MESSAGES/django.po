@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-13 18:38-0400\n"
+"POT-Creation-Date: 2019-09-14 13:00-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,15 +28,27 @@ msgstr "Оставьте свой комментарий здесь."
 msgid "comment"
 msgstr "комментарий"
 
-#: .\blog\templates\blog\about.html:17
+#: .\blog\templates\blog\about.html:7
+msgid ""
+"So much is either unknown, or misunderstood about Russia and its people. We "
+"moved to Moscow to explore it for ourselves, and to share the things that we "
+"learn along the way. If you're curious about life in Moscow, you came to the "
+"right place."
+msgstr ""
+"Столько всего либо неизвестно, либо неправильно понято о России и ее народе. "
+"Мы переехали в Москву, чтобы исследовать это сами и поделиться тем, что мы "
+"узнаем по пути. Если вам интересно узнать о жизни в Москве, вы попали по "
+"адресу."
+
+#: .\blog\templates\blog\about.html:18
 msgid "...why Moscow!?"
 msgstr "...почему Москва!?"
 
-#: .\blog\templates\blog\about.html:19
+#: .\blog\templates\blog\about.html:20
 msgid "We get that question <em>a lot.</em>"
 msgstr "Мы получаем этот вопрос <em> много. </em>"
 
-#: .\blog\templates\blog\about.html:21
+#: .\blog\templates\blog\about.html:22
 msgid ""
 "<b>After living in Korea</b> for almost four years, it was time for a new "
 "adventure. What bigger adventure is there, than Russia? We have been "
@@ -44,78 +56,89 @@ msgid ""
 "misunderstood about this country and its people. <b>We moved to Russia</b> "
 "to explore it for ourselves, and share the things that we learn along the "
 "way. If you're curious about life in Moscow, you came to the right place."
-msgstr "<b> Прожив в Корее </b> почти четыре года, пришло время для нового приключения. Что может быть важнее приключений, чем Россия? Мы были очарованы Россией много лет, и многое из этого либо неизвестно или неправильно поняли об этой стране и ее людях. <b> Мы переехали в Россию </b>, чтобы исследовать ее для себя и поделиться тем, что мы узнаем по пути. Если вам интересно узнать о жизни в Москве, вы приехали в нужное место."
+msgstr ""
+"<b> Прожив в Корее </b> почти четыре года, пришло время для нового "
+"приключения. Что может быть важнее приключений, чем Россия? Мы были "
+"очарованы Россией много лет, и многое из этого либо неизвестно или "
+"неправильно поняли об этой стране и ее людях. <b> Мы переехали в Россию </"
+"b>, чтобы исследовать ее для себя и поделиться тем, что мы узнаем по пути. "
+"Если вам интересно узнать о жизни в Москве, вы приехали в нужное место."
 
-#: .\blog\templates\blog\about.html:44 .\blog\templates\blog\about.html:66
+#: .\blog\templates\blog\about.html:45 .\blog\templates\blog\about.html:67
+#: .\blog\templates\blog\about.html:95 .\blog\templates\blog\about.html:117
 msgid "Email:"
 msgstr "Эл. адрес"
 
-#: .\blog\templates\blog\about.html:80
+#: .\blog\templates\blog\about.html:134
 msgid "Podcast Series"
 msgstr "Серия подкастов"
 
-#: .\blog\templates\blog\about.html:81
+#: .\blog\templates\blog\about.html:135
 msgid "The Adventure Continues"
 msgstr "Больше приключений"
 
-#: .\blog\templates\blog\about.html:83
+#: .\blog\templates\blog\about.html:137
 msgid ""
 "Once a week, we release a new podcast episode where we discuss what it's "
 "really like to live and work in Moscow. We document every part of our lives "
 "here, starting from the first week we arrived. You can listen to them on our "
 "YouTube channel here."
-msgstr "Раз в неделю мы выпускаем новый эпизод подкаста, в котором обсуждаем, каково это жить и работать в Москве. Мы регистрируем каждую часть нашей жизни здесь, начиная с первой недели, когда мы прибыли. Вы можете прослушать их на нашем канале YouTube здесь."
+msgstr ""
+"Раз в неделю мы выпускаем новый эпизод подкаста, в котором обсуждаем, каково "
+"это жить и работать в Москве. Мы регистрируем каждую часть нашей жизни "
+"здесь, начиная с первой недели, когда мы прибыли. Вы можете прослушать их на "
+"нашем канале YouTube здесь."
 
-#: .\blog\templates\blog\base.html:57
+#: .\blog\templates\blog\base.html:56
 msgid "Search Food Blogs"
 msgstr "Поиск еды"
 
-#: .\blog\templates\blog\base.html:63
+#: .\blog\templates\blog\base.html:62
 msgid "Life in Moscow"
 msgstr "Жизнь в москве"
 
-#: .\blog\templates\blog\base.html:70
+#: .\blog\templates\blog\base.html:69
 msgid "Map"
 msgstr "карта"
 
-#: .\blog\templates\blog\base.html:77
+#: .\blog\templates\blog\base.html:76
 msgid "Classifieds"
 msgstr "Объявления"
 
-#: .\blog\templates\blog\base.html:81
+#: .\blog\templates\blog\base.html:80
 msgid "Buy and Sell"
 msgstr "Покупать и продавать"
 
-#: .\blog\templates\blog\base.html:84
+#: .\blog\templates\blog\base.html:83
 msgid "Jobs"
 msgstr "Работы"
 
-#: .\blog\templates\blog\base.html:88
-#: .\classifieds\templates\classifieds\faq.html:17
+#: .\blog\templates\blog\base.html:87
+#: .\classifieds\templates\classifieds\faq.html:23
 msgid "FAQ & Terms of Use"
 msgstr "ЧаВо и и условия использования"
 
-#: .\blog\templates\blog\base.html:96
+#: .\blog\templates\blog\base.html:95
 msgid "Contact"
 msgstr "Контакт"
 
-#: .\blog\templates\blog\base.html:125
+#: .\blog\templates\blog\base.html:124
 msgid "Profile"
 msgstr "Профиль"
 
-#: .\blog\templates\blog\base.html:133
+#: .\blog\templates\blog\base.html:132
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\blog\templates\blog\base.html:141 .\users\templates\users\login.html:31
+#: .\blog\templates\blog\base.html:140 .\users\templates\users\login.html:37
 msgid "Login"
 msgstr "Вход"
 
-#: .\blog\templates\blog\base.html:148
+#: .\blog\templates\blog\base.html:147
 msgid "Register"
 msgstr "Регистрировать"
 
-#: .\blog\templates\blog\base.html:185
+#: .\blog\templates\blog\base.html:184
 msgid "Copyright"
 msgstr "Aвторское право"
 
@@ -129,86 +152,112 @@ msgstr "Оставьте свой комментарий для:"
 msgid "Post"
 msgstr "Оставьте"
 
-#: .\blog\templates\blog\foodblog_detail.html:85
+#: .\blog\templates\blog\foodblog_detail.html:7
+msgid ""
+"Moscow's greatest food blog and home to the city's greatest expat community. "
+"Search for cafes, desserts, restaurants, and more. Use filters to find "
+"exactly what you're in the mood for, with location pins for every blog. "
+"Learn about life in Moscow by following our weekly blogs!"
+msgstr ""
+"Самый большой блог о еде в Москве и дом для величайшего эмигрантского "
+"сообщества города. Ищите кафе, десерты, рестораны и многое другое. "
+"Используйте фильтры, чтобы найти именно то, что вам нравится, с указанием "
+"местоположения для каждого блога. Узнайте о жизни в Москве, следя за нашими "
+"еженедельными блогами!"
+
+#: .\blog\templates\blog\foodblog_detail.html:89
 msgid "The Good"
 msgstr "Плюсы"
 
-#: .\blog\templates\blog\foodblog_detail.html:105
+#: .\blog\templates\blog\foodblog_detail.html:109
 msgid "The Bad"
 msgstr "Минусы"
 
-#: .\blog\templates\blog\foodblog_detail.html:126
+#: .\blog\templates\blog\foodblog_detail.html:130
 msgid "Score Breakdown"
 msgstr "Рейтинги"
 
-#: .\blog\templates\blog\foodblog_detail.html:133
-#: .\blog\templates\blog\home.html:412 .\blog\templates\blog\search.html:597
-#: .\blog\templates\blog\search.html:1047
+#: .\blog\templates\blog\foodblog_detail.html:137
+#: .\blog\templates\blog\home.html:419 .\blog\templates\blog\search.html:588
+#: .\blog\templates\blog\search.html:1038
 msgid "Overall:"
 msgstr "Общая оценка:"
 
-#: .\blog\templates\blog\foodblog_detail.html:210
-#: .\blog\templates\blog\search.html:688 .\blog\templates\blog\search.html:1138
+#: .\blog\templates\blog\foodblog_detail.html:214
+#: .\blog\templates\blog\search.html:679 .\blog\templates\blog\search.html:1129
 msgid "Taste:"
 msgstr "Вкус"
 
-#: .\blog\templates\blog\foodblog_detail.html:286
-#: .\blog\templates\blog\search.html:764 .\blog\templates\blog\search.html:1214
+#: .\blog\templates\blog\foodblog_detail.html:290
+#: .\blog\templates\blog\search.html:755 .\blog\templates\blog\search.html:1205
 msgid "Appearance:"
 msgstr "Вид"
 
-#: .\blog\templates\blog\foodblog_detail.html:362
-#: .\blog\templates\blog\search.html:841 .\blog\templates\blog\search.html:1291
+#: .\blog\templates\blog\foodblog_detail.html:366
+#: .\blog\templates\blog\search.html:832 .\blog\templates\blog\search.html:1282
 msgid "Atmosphere:"
 msgstr "Атмосфера:"
 
-#: .\blog\templates\blog\foodblog_detail.html:438
-#: .\blog\templates\blog\home.html:485 .\blog\templates\blog\search.html:917
-#: .\blog\templates\blog\search.html:1367
+#: .\blog\templates\blog\foodblog_detail.html:442
+#: .\blog\templates\blog\home.html:492 .\blog\templates\blog\search.html:908
+#: .\blog\templates\blog\search.html:1358
 msgid "Price:"
 msgstr "Цена:"
 
-#: .\blog\templates\blog\foodblog_detail.html:470
+#: .\blog\templates\blog\foodblog_detail.html:474
 msgid "Service"
 msgstr "Oбслуживание"
 
-#: .\blog\templates\blog\foodblog_detail.html:548
+#: .\blog\templates\blog\foodblog_detail.html:552
 msgid "Special Features:"
 msgstr "Особые возможности:"
 
-#: .\blog\templates\blog\foodblog_detail.html:729
-#: .\blog\templates\blog\foodblog_detail.html:802
+#: .\blog\templates\blog\foodblog_detail.html:733
+#: .\blog\templates\blog\foodblog_detail.html:806
 #: .\blog\templates\blog\life_detail.html:228
 #: .\blog\templates\blog\life_detail.html:301
 msgid "Add a Comment"
 msgstr "Добавить комментарий"
 
-#: .\blog\templates\blog\foodblog_detail.html:733
-#: .\blog\templates\blog\foodblog_detail.html:806
+#: .\blog\templates\blog\foodblog_detail.html:737
+#: .\blog\templates\blog\foodblog_detail.html:810
 #: .\blog\templates\blog\life_detail.html:232
 #: .\blog\templates\blog\life_detail.html:305
 msgid "<strong>Login</strong> to add a new comment"
 msgstr "<strong> Войти </ strong>, чтобы добавить новый комментарий"
 
-#: .\blog\templates\blog\foodblog_detail.html:741
+#: .\blog\templates\blog\foodblog_detail.html:745
 #: .\blog\templates\blog\life_detail.html:240
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: .\blog\templates\blog\home.html:246
+#: .\blog\templates\blog\home.html:8
+msgid ""
+"Moscow's greatest food blog and home to the city's expat community. Search "
+"for cafes, desserts, restaurants, and more. Use filters to find exactly what "
+"you're in the mood for, with location pins for every blog. Learn about life "
+"in Moscow by following our weekly blogs and podcast!"
+msgstr ""
+"Самый большой блог о еде в Москве и дом для эмигрантского сообщества города. "
+"Ищите кафе, десерты, рестораны и многое другое. Используйте фильтры, чтобы "
+"найти именно то, что вам нравится, с указанием местоположения для каждого "
+"блога. Узнайте о жизни в Москве, следя за нашими еженедельными блогами и "
+"подкастами!"
+
+#: .\blog\templates\blog\home.html:253
 msgid "Cafes & Restaurants"
 msgstr "Кафе и рестораны"
 
-#: .\blog\templates\blog\home.html:247
+#: .\blog\templates\blog\home.html:254
 msgid ""
 "Browse a variety of cafes, coffee houses, dessert cafes, and restaurants."
 msgstr "Просмотрите множество кафе, кофеен, десертных кафе и ресторанов."
 
-#: .\blog\templates\blog\home.html:255
+#: .\blog\templates\blog\home.html:262
 msgid "Search by Features"
 msgstr "Поиск по функциям"
 
-#: .\blog\templates\blog\home.html:256
+#: .\blog\templates\blog\home.html:263
 msgid ""
 "Click to Search destinations by ratings, nearest subway station, unique "
 "features, and more."
@@ -216,11 +265,11 @@ msgstr ""
 "Нажмите, чтобы найти пункты назначения по рейтингу, ближайшей станции метро, ​​"
 "уникальной особенности и многое другое."
 
-#: .\blog\templates\blog\home.html:262
+#: .\blog\templates\blog\home.html:269
 msgid "View Locations"
 msgstr "Посмотреть места"
 
-#: .\blog\templates\blog\home.html:263
+#: .\blog\templates\blog\home.html:270
 msgid ""
 "Every review contains a location pin. You can also click here to browse the "
 "Tasty Map."
@@ -228,41 +277,52 @@ msgstr ""
 "Каждый отзыв содержит указатель местоположения. Вы также можете нажать "
 "здесь, чтобы просмотреть карту"
 
-#: .\blog\templates\blog\home.html:516 .\blog\templates\blog\search.html:673
-#: .\blog\templates\blog\search.html:1123
+#: .\blog\templates\blog\home.html:523 .\blog\templates\blog\search.html:664
+#: .\blog\templates\blog\search.html:1114
 msgid "Nearest Station:"
 msgstr "Ближайшая станция:"
 
-#: .\blog\templates\blog\home.html:528
-#: .\blog\templates\blog\life_search.html:553
-#: .\blog\templates\blog\life_search.html:579
-#: .\blog\templates\blog\search.html:1476
+#: .\blog\templates\blog\home.html:535
+#: .\blog\templates\blog\life_search.html:513
+#: .\blog\templates\blog\life_search.html:539
+#: .\blog\templates\blog\search.html:1020
+#: .\blog\templates\blog\search.html:1467
 msgid "Posted on"
 msgstr "Написано в"
 
-#: .\blog\templates\blog\life_search.html:158
-#: .\blog\templates\blog\life_search.html:237
-#: .\classifieds\templates\classifieds\ad_list.html:66
+#: .\blog\templates\blog\life_search.html:9
+msgid ""
+"Learn about daily life in Russia, from the perspective of two Canadians who "
+"decided to move to Moscow!"
+msgstr ""
+"Узнайте о повседневной жизни в России с точки зрения двух канадцев, которые "
+"решил переехать в Москву!"
+
+#: .\blog\templates\blog\life_search.html:163
+#: .\blog\templates\blog\life_search.html:242
+#: .\classifieds\templates\classifieds\ad_list.html:68
 #: .\classifieds\views.py:58
 msgid "Category..."
 msgstr "Категория..."
 
-#: .\blog\templates\blog\life_search.html:184
-#: .\blog\templates\blog\life_search.html:259
+#: .\blog\templates\blog\life_search.html:189
+#: .\blog\templates\blog\life_search.html:264
 msgid "Tags..."
 msgstr "Теги..."
 
-#: .\blog\templates\blog\life_search.html:204
-#: .\blog\templates\blog\life_search.html:278
-#: .\blog\templates\blog\search.html:254 .\blog\templates\blog\search.html:334
-#: .\classifieds\templates\classifieds\ad_list.html:130
-#: .\classifieds\templates\classifieds\ad_list.html:144
-#: .\classifieds\templates\classifieds\job_list.html:117
-#: .\classifieds\templates\classifieds\job_list.html:131
+#: .\blog\templates\blog\life_search.html:209
+#: .\blog\templates\blog\life_search.html:283
+#: .\blog\templates\blog\search.html:265 .\blog\templates\blog\search.html:345
+#: .\classifieds\templates\classifieds\ad_list.html:132
+#: .\classifieds\templates\classifieds\ad_list.html:146
+#: .\classifieds\templates\classifieds\job_list.html:119
+#: .\classifieds\templates\classifieds\job_list.html:133
 msgid "Search"
 msgstr "Поиск"
 
-#: .\blog\templates\blog\life_search.html:482
+#: .\blog\templates\blog\life_search.html:345
+#: .\blog\templates\blog\life_search.html:443
+#: .\blog\templates\blog\search.html:437 .\blog\templates\blog\search.html:527
 msgid ""
 "Looking for something? Tell us on Twitter or Instagram, and we'll blog about "
 "it for you!"
@@ -270,47 +330,53 @@ msgstr ""
 "Ищете что-то? Сообщите нам в Твиттере или Инстаграме, и мы об этом сообщим в "
 "блоге!"
 
-#: .\blog\templates\blog\search.html:141
+#: .\blog\templates\blog\map.html:7
+msgid ""
+"Welcome to What The Blin's Food Blog Map. Here you can find location pins "
+"for every blog we've ever written. We saved you time, so you can spend more "
+"of it eating!"
+msgstr ""
+"Добро пожаловать на карту еды. Здесь вы можете найти контакты для каждого "
+"блога, который мы когда-либо писали. Мы сэкономили ваше время, чтобы вы "
+"могли тратить больше на еду!"
+
+#: .\blog\templates\blog\search.html:9
+msgid ""
+"We're two Canadians living and working in Moscow. Learn about life in Moscow "
+"along with us by following our weekly blogs!"
+msgstr ""
+"Мы два канадца, живущие и работающие в Москве. Узнай о жизни в Москве вместе "
+"с нами, следя за нашими еженедельными блогами!"
+
+#: .\blog\templates\blog\search.html:146
 msgid "Type..."
 msgstr "Тип..."
 
-#: .\blog\templates\blog\search.html:162
+#: .\blog\templates\blog\search.html:167
 msgid "Features..."
 msgstr "Характеристики..."
 
-#: .\blog\templates\blog\search.html:183
+#: .\blog\templates\blog\search.html:188
 msgid "Station..."
 msgstr "Станция..."
 
-#: .\blog\templates\blog\search.html:204
+#: .\blog\templates\blog\search.html:209
 msgid "Price..."
 msgstr "Цена..."
 
-#: .\blog\templates\blog\search.html:225
+#: .\blog\templates\blog\search.html:230
 msgid "Rating ≥ ..."
 msgstr "Рейтинг ≥ ..."
 
-#: .\blog\templates\blog\search.html:243
+#: .\blog\templates\blog\search.html:254
 msgid "Keyword..."
 msgstr "Cодержит..."
 
-#: .\blog\templates\blog\search.html:425 .\blog\templates\blog\search.html:532
-msgid "No places found with that specific criteria"
-msgstr "Не найдено мест с такими конкретными критериями"
-
-#: .\blog\templates\blog\search.html:428 .\blog\templates\blog\search.html:535
-msgid ""
-"If you have a suggestion, tell us on Twitter or Instagram, and we'll blog "
-"about it for you!"
-msgstr ""
-"Если у вас есть предложения, сообщите нам в Twitter или Instagram, и мы "
-"будем вести блог об этом для вас!"
-
-#: .\blog\templates\blog\search.html:949 .\blog\templates\blog\search.html:1399
+#: .\blog\templates\blog\search.html:940 .\blog\templates\blog\search.html:1390
 msgid "Service:"
 msgstr "Oбслуживание"
 
-#: .\blog\views.py:311 .\blog\views.py:395
+#: .\blog\views.py:310 .\blog\views.py:394
 msgid "Your comment has been successfully posted!"
 msgstr "Ваш комментарий был успешно отправлен!"
 
@@ -331,139 +397,139 @@ msgid "Upload Image 2 before you try to upload Image 3."
 msgstr "Загрузите изображение 2, прежде чем пытаться загрузить изображение 3."
 
 #: .\classifieds\models.py:79
-#: .\classifieds\templates\classifieds\ad_list.html:87
+#: .\classifieds\templates\classifieds\ad_list.html:89
 #: .\classifieds\views.py:151
 msgid "kitchenware and appliances"
 msgstr "посуда и приборы"
 
 #: .\classifieds\models.py:80
-#: .\classifieds\templates\classifieds\ad_list.html:70
+#: .\classifieds\templates\classifieds\ad_list.html:72
 #: .\classifieds\views.py:100
 msgid "arts and crafts"
 msgstr "искусства и ремесла"
 
 #: .\classifieds\models.py:81
-#: .\classifieds\templates\classifieds\ad_list.html:71
+#: .\classifieds\templates\classifieds\ad_list.html:73
 #: .\classifieds\views.py:103
 msgid "baby and kids"
 msgstr "малыш и дети"
 
 #: .\classifieds\models.py:82
-#: .\classifieds\templates\classifieds\ad_list.html:72
+#: .\classifieds\templates\classifieds\ad_list.html:74
 #: .\classifieds\views.py:106
 msgid "beauty and health"
 msgstr "красота и здоровье"
 
 #: .\classifieds\models.py:83
-#: .\classifieds\templates\classifieds\ad_list.html:73
+#: .\classifieds\templates\classifieds\ad_list.html:75
 #: .\classifieds\views.py:109
 msgid "bikes"
 msgstr "велосипеды"
 
 #: .\classifieds\models.py:84
-#: .\classifieds\templates\classifieds\ad_list.html:74
+#: .\classifieds\templates\classifieds\ad_list.html:76
 #: .\classifieds\views.py:112
 msgid "books"
 msgstr "книги"
 
 #: .\classifieds\models.py:85
-#: .\classifieds\templates\classifieds\ad_list.html:75
+#: .\classifieds\templates\classifieds\ad_list.html:77
 #: .\classifieds\views.py:115
 msgid "cell phones"
 msgstr "телефоны"
 
 #: .\classifieds\models.py:86
-#: .\classifieds\templates\classifieds\ad_list.html:76
+#: .\classifieds\templates\classifieds\ad_list.html:78
 #: .\classifieds\views.py:118
 msgid "clothing"
 msgstr "одежда"
 
 #: .\classifieds\models.py:87
-#: .\classifieds\templates\classifieds\ad_list.html:77
+#: .\classifieds\templates\classifieds\ad_list.html:79
 #: .\classifieds\views.py:121
 msgid "collectibles"
 msgstr "предметы коллекционирования"
 
 #: .\classifieds\models.py:88
-#: .\classifieds\templates\classifieds\ad_list.html:78
+#: .\classifieds\templates\classifieds\ad_list.html:80
 #: .\classifieds\views.py:124
 msgid "computers"
 msgstr "компьютеры"
 
 #: .\classifieds\models.py:89
-#: .\classifieds\templates\classifieds\ad_list.html:79
+#: .\classifieds\templates\classifieds\ad_list.html:81
 #: .\classifieds\views.py:127
 msgid "electronics"
 msgstr "электроника"
 
 #: .\classifieds\models.py:90
-#: .\classifieds\templates\classifieds\ad_list.html:80
+#: .\classifieds\templates\classifieds\ad_list.html:82
 #: .\classifieds\views.py:130
 msgid "garden"
 msgstr "сад"
 
 #: .\classifieds\models.py:91
-#: .\classifieds\templates\classifieds\ad_list.html:85
+#: .\classifieds\templates\classifieds\ad_list.html:87
 #: .\classifieds\views.py:133
 msgid "furniture"
 msgstr "мебель"
 
 #: .\classifieds\models.py:92
-#: .\classifieds\templates\classifieds\ad_list.html:82
+#: .\classifieds\templates\classifieds\ad_list.html:84
 #: .\classifieds\views.py:136
 msgid "free"
 msgstr "свободно"
 
 #: .\classifieds\models.py:93
-#: .\classifieds\templates\classifieds\ad_list.html:81
+#: .\classifieds\templates\classifieds\ad_list.html:83
 #: .\classifieds\views.py:139
 msgid "general"
 msgstr "генеральный"
 
 #: .\classifieds\models.py:94
-#: .\classifieds\templates\classifieds\ad_list.html:83
+#: .\classifieds\templates\classifieds\ad_list.html:85
 #: .\classifieds\views.py:142
 msgid "household"
 msgstr "домашнее хозяйство"
 
 #: .\classifieds\models.py:95
-#: .\classifieds\templates\classifieds\ad_list.html:84
+#: .\classifieds\templates\classifieds\ad_list.html:86
 #: .\classifieds\views.py:145
 msgid "pets"
 msgstr "домашнее животное"
 
 #: .\classifieds\models.py:96
-#: .\classifieds\templates\classifieds\ad_list.html:86
+#: .\classifieds\templates\classifieds\ad_list.html:88
 #: .\classifieds\views.py:148
 msgid "jewelery"
 msgstr "ювелирные изделия"
 
 #: .\classifieds\models.py:97
-#: .\classifieds\templates\classifieds\ad_list.html:88
+#: .\classifieds\templates\classifieds\ad_list.html:90
 #: .\classifieds\views.py:154
 msgid "materials"
 msgstr "материалы"
 
 #: .\classifieds\models.py:98
-#: .\classifieds\templates\classifieds\ad_list.html:89
+#: .\classifieds\templates\classifieds\ad_list.html:91
 #: .\classifieds\views.py:157
 msgid "musical instruments"
 msgstr "музыкальные инструменты"
 
 #: .\classifieds\models.py:99
-#: .\classifieds\templates\classifieds\ad_list.html:90
+#: .\classifieds\templates\classifieds\ad_list.html:92
 #: .\classifieds\views.py:160
 msgid "cameras"
 msgstr "камеры"
 
 #: .\classifieds\models.py:100
-#: .\classifieds\templates\classifieds\ad_list.html:91
+#: .\classifieds\templates\classifieds\ad_list.html:93
 #: .\classifieds\views.py:163
 msgid "tools"
 msgstr "инструменты"
 
 #: .\classifieds\models.py:101
-#: .\classifieds\templates\classifieds\ad_list.html:92
+#: .\classifieds\templates\classifieds\ad_list.html:94
 #: .\classifieds\views.py:166
 msgid "games"
 msgstr "игры"
@@ -478,7 +544,7 @@ msgstr "Я продавец"
 
 #: .\classifieds\models.py:107
 #: .\classifieds\templates\classifieds\ad_detail.html:122
-#: .\classifieds\templates\classifieds\ad_list.html:112
+#: .\classifieds\templates\classifieds\ad_list.html:114
 #: .\classifieds\views.py:217
 msgid "I want to trade"
 msgstr "Я хочу торговать"
@@ -555,7 +621,7 @@ msgstr "Oбраз 3"
 
 #: .\classifieds\models.py:129
 msgid "What is the exact model name of the item?"
-msgstr ""
+msgstr "Какое точное название модели предмета?"
 
 #: .\classifieds\models.py:129
 msgid "Item or Model Name(s)"
@@ -690,21 +756,21 @@ msgstr "5+ лет"
 
 #: .\classifieds\models.py:211
 #: .\classifieds\templates\classifieds\job_detail.html:128
-#: .\classifieds\templates\classifieds\job_list.html:90
+#: .\classifieds\templates\classifieds\job_list.html:92
 #: .\classifieds\views.py:382 .\classifieds\views.py:395
 msgid "Part-time"
 msgstr "Частичная занятость"
 
 #: .\classifieds\models.py:212
 #: .\classifieds\templates\classifieds\job_detail.html:126
-#: .\classifieds\templates\classifieds\job_list.html:87
+#: .\classifieds\templates\classifieds\job_list.html:89
 #: .\classifieds\views.py:386 .\classifieds\views.py:399
 msgid "Full-time"
 msgstr "Полная занятость"
 
 #: .\classifieds\models.py:213
 #: .\classifieds\templates\classifieds\job_detail.html:130
-#: .\classifieds\templates\classifieds\job_list.html:96
+#: .\classifieds\templates\classifieds\job_list.html:98
 #: .\classifieds\views.py:384 .\classifieds\views.py:397
 msgid "Volunteer"
 msgstr "Волонтерство"
@@ -871,7 +937,7 @@ msgstr "отменить"
 #: .\classifieds\templates\classifieds\ad_detail.html:18
 #: .\classifieds\templates\classifieds\job_detail.html:18
 msgid "posted by"
-msgstr "Написано в"
+msgstr "-"
 
 #: .\classifieds\templates\classifieds\ad_detail.html:90
 #: .\classifieds\templates\classifieds\job_detail.html:91
@@ -899,9 +965,9 @@ msgid "Cosmetic Damage"
 msgstr "Косметический ущерб"
 
 #: .\classifieds\templates\classifieds\ad_detail.html:131
-#: .\classifieds\templates\classifieds\ad_list.html:181
+#: .\classifieds\templates\classifieds\ad_list.html:183
 #: .\classifieds\templates\classifieds\job_detail.html:176
-#: .\classifieds\templates\classifieds\job_list.html:168
+#: .\classifieds\templates\classifieds\job_list.html:170
 msgid "Location"
 msgstr "Посмотреть места"
 
@@ -940,62 +1006,71 @@ msgstr "Обновить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\classifieds\templates\classifieds\ad_form.html:14
+#: .\classifieds\templates\classifieds\ad_form.html:8
+#: .\classifieds\templates\classifieds\ad_list.html:10
+msgid ""
+"Post a free ad on the Moscow Buy and Sell board. English and Russian "
+"language support, built primarily for expats living in the city."
+msgstr ""
+"Разместите бесплатное объявление на московской доске объявлений о покупке и "
+"продаже. Поддержка английского и русского языков, построенная в основном для "
+"эмигрантов, проживающих в городе."
+
+#: .\classifieds\templates\classifieds\ad_form.html:20
 msgid "Post A New Ad"
 msgstr "Добавить новое объявление"
 
-#: .\classifieds\templates\classifieds\ad_form.html:20
+#: .\classifieds\templates\classifieds\ad_form.html:26
 #: .\classifieds\templates\classifieds\job_form.html:19
-#: .\classifieds\templates\classifieds\job_wanted_form.html:19
 msgid "Post Ad"
 msgstr "Оставьте"
 
-#: .\classifieds\templates\classifieds\ad_list.html:102
+#: .\classifieds\templates\classifieds\ad_list.html:104
 #: .\classifieds\views.py:59
 msgid "I want to buy / sell..."
 msgstr "Я хочу купить / продать..."
 
-#: .\classifieds\templates\classifieds\ad_list.html:106
+#: .\classifieds\templates\classifieds\ad_list.html:108
 #: .\classifieds\views.py:205
 msgid "I want to buy"
 msgstr "Я хочу купить"
 
-#: .\classifieds\templates\classifieds\ad_list.html:109
+#: .\classifieds\templates\classifieds\ad_list.html:111
 #: .\classifieds\views.py:211
 msgid "I want to sell"
 msgstr "Я хочу продать"
 
-#: .\classifieds\templates\classifieds\ad_list.html:120
+#: .\classifieds\templates\classifieds\ad_list.html:122
 msgid "Less than ... (₽)"
 msgstr "Менее чем ... (₽)"
 
-#: .\classifieds\templates\classifieds\ad_list.html:162
+#: .\classifieds\templates\classifieds\ad_list.html:164
 msgid "Community Ads"
 msgstr "Комментарии:"
 
-#: .\classifieds\templates\classifieds\ad_list.html:167
-#: .\classifieds\templates\classifieds\job_list.html:154
+#: .\classifieds\templates\classifieds\ad_list.html:169
+#: .\classifieds\templates\classifieds\job_list.html:156
 msgid "No results found."
 msgstr "Результаты не найдены."
 
-#: .\classifieds\templates\classifieds\ad_list.html:169
-#: .\classifieds\templates\classifieds\job_list.html:156
+#: .\classifieds\templates\classifieds\ad_list.html:171
+#: .\classifieds\templates\classifieds\job_list.html:158
 msgid "result."
 msgstr "Результат."
 
-#: .\classifieds\templates\classifieds\ad_list.html:171
-#: .\classifieds\templates\classifieds\job_list.html:158
+#: .\classifieds\templates\classifieds\ad_list.html:173
+#: .\classifieds\templates\classifieds\job_list.html:160
 msgid "results."
 msgstr "Результаты."
 
-#: .\classifieds\templates\classifieds\ad_list.html:178
+#: .\classifieds\templates\classifieds\ad_list.html:180
 msgid "Price"
 msgstr "Цена:"
 
-#: .\classifieds\templates\classifieds\ad_list.html:279
-#: .\classifieds\templates\classifieds\job_list.html:262
+#: .\classifieds\templates\classifieds\ad_list.html:281
+#: .\classifieds\templates\classifieds\job_list.html:264
 msgid "Post An Ad"
-msgstr "Написано в"
+msgstr "создать объявление"
 
 #: .\classifieds\templates\classifieds\ad_update_form.html:14
 #: .\classifieds\templates\classifieds\job_update_form.html:15
@@ -1010,11 +1085,21 @@ msgstr "Ответить на:"
 msgid "Send Email"
 msgstr "Отправить письмо*"
 
-#: .\classifieds\templates\classifieds\faq.html:23
+#: .\classifieds\templates\classifieds\faq.html:9
+msgid ""
+"Commonly asked questions and answers about using What the Blin's Moscow "
+"classified's section. Before posting an ad, please review the FAQ and terms "
+"of agreement."
+msgstr ""
+"Часто задаваемые вопросы и ответы об использовании раздела «Что такое "
+"Блинская Москва». Перед размещением рекламы ознакомьтесь с разделом часто "
+"задаваемых вопросов и условиями соглашения."
+
+#: .\classifieds\templates\classifieds\faq.html:29
 msgid "1) Do I need to create an account in order to create an ad?"
 msgstr "1) Нужно ли создавать аккаунт для создания рекламы?"
 
-#: .\classifieds\templates\classifieds\faq.html:27
+#: .\classifieds\templates\classifieds\faq.html:33
 msgid ""
 "<b>Yes, you will need an account</b> in order to create an ad, or send an "
 "email to the owner of an ad."
@@ -1022,11 +1107,11 @@ msgstr ""
 "<b>Да, вам понадобится аккаунт</b>, чтобы создать объявление или отправить "
 "электронное письмо владельцу объявления."
 
-#: .\classifieds\templates\classifieds\faq.html:35
+#: .\classifieds\templates\classifieds\faq.html:41
 msgid "2) I'm interested in an ad, how can I contact that user?"
 msgstr "2) Меня интересует реклама, как я могу связаться с этим пользователем?"
 
-#: .\classifieds\templates\classifieds\faq.html:39
+#: .\classifieds\templates\classifieds\faq.html:45
 msgid ""
 "When a user creates an ad, they are given the opportunity to select their "
 "preferred method of contact. Supported methods are: <b>twitter, instagram, "
@@ -1038,13 +1123,13 @@ msgstr ""
 "<b> Twitter, Instagram, Facebook и электронная почта </b>. Вы можете найти "
 "все эти способы контакта в подробном просмотре объявления."
 
-#: .\classifieds\templates\classifieds\faq.html:47
+#: .\classifieds\templates\classifieds\faq.html:53
 msgid "3) Can everybody see my email address or social media links?"
 msgstr ""
 "3) Все могут видеть мой адрес электронной почты или ссылки в социальных "
 "сетях?"
 
-#: .\classifieds\templates\classifieds\faq.html:51
+#: .\classifieds\templates\classifieds\faq.html:57
 msgid ""
 "No. <b>Your email is never displayed publicly</b>, even in your ads (this is "
 "why we use a mail server for you: notifications@whattheblin.com). It is not "
@@ -1059,19 +1144,19 @@ msgstr ""
 "сетях с вашим профилем, вы можете разрешить пользователям отвечать на ваши "
 "объявления или связываться с вами через любую из этих учетных записей."
 
-#: .\classifieds\templates\classifieds\faq.html:59
+#: .\classifieds\templates\classifieds\faq.html:65
 msgid "4) Is it free to create an ad?"
 msgstr "4) Это бесплатно для создания рекламы?"
 
-#: .\classifieds\templates\classifieds\faq.html:63
+#: .\classifieds\templates\classifieds\faq.html:69
 msgid "Yes, it's completely free!"
 msgstr "Да, это абсолютно бесплатно!"
 
-#: .\classifieds\templates\classifieds\faq.html:71
+#: .\classifieds\templates\classifieds\faq.html:77
 msgid "5) Can I update or delete an ad once it has been made?"
 msgstr "5) Могу ли я обновить или удалить объявление после его создания?"
 
-#: .\classifieds\templates\classifieds\faq.html:75
+#: .\classifieds\templates\classifieds\faq.html:81
 msgid ""
 "Yes. Beside your ad you will see two icons, one for editing your ad and one "
 "for deleting it. Additionally, you have the option of updating or deleting "
@@ -1082,11 +1167,11 @@ msgstr ""
 "возможность обновить или удалить свое объявление из детального просмотра "
 "вашего объявления."
 
-#: .\classifieds\templates\classifieds\faq.html:83
+#: .\classifieds\templates\classifieds\faq.html:89
 msgid "6) Someone scammed me or is harassing me! What should I do?"
 msgstr "6) Кто-то обманул меня или преследует меня! Что я должен делать?"
 
-#: .\classifieds\templates\classifieds\faq.html:87
+#: .\classifieds\templates\classifieds\faq.html:93
 msgid ""
 "<b>You as the user take full responsibility</b> for any and all transactions "
 "or agreements that take place upon creating ad, or responding to another "
@@ -1103,11 +1188,11 @@ msgstr ""
 "обмануть или преследует, свяжитесь с нами по адресу <b> contact@whattheblin."
 "com </b>."
 
-#: .\classifieds\templates\classifieds\faq.html:95
+#: .\classifieds\templates\classifieds\faq.html:101
 msgid "7) What things are prohibited?"
 msgstr "7) Какие вещи запрещены?"
 
-#: .\classifieds\templates\classifieds\faq.html:99
+#: .\classifieds\templates\classifieds\faq.html:105
 msgid ""
 "Use common sense when creating or responding to ads. <b>You must comply with "
 "Russia's laws.</b> Therefore, any items or actions prohibited by Russian law "
@@ -1122,12 +1207,12 @@ msgstr ""
 "с российским законодательством. Любая реклама, которая нарушает это "
 "соглашение, будет удалена, и эти пользователи будут навсегда заблокированы."
 
-#: .\classifieds\templates\classifieds\faq.html:107
+#: .\classifieds\templates\classifieds\faq.html:113
 msgid ""
 "8) I am interested in an ad, but the author is not answering my messages!"
 msgstr "8) Меня интересует реклама, но автор не отвечает на мои сообщения!"
 
-#: .\classifieds\templates\classifieds\faq.html:111
+#: .\classifieds\templates\classifieds\faq.html:117
 msgid ""
 "When you click the <b>I'm Interested!</b> button and send an email to a "
 "user, the email will be sent from our email server at "
@@ -1163,7 +1248,7 @@ msgid "Position Type"
 msgstr "Тип занятости..."
 
 #: .\classifieds\templates\classifieds\job_detail.html:135
-#: .\classifieds\templates\classifieds\job_list.html:165
+#: .\classifieds\templates\classifieds\job_list.html:167
 msgid "Salary"
 msgstr "Оплата труда"
 
@@ -1176,26 +1261,35 @@ msgid "Involves Travel"
 msgstr "Требуется путешествие"
 
 #: .\classifieds\templates\classifieds\job_form.html:13
-#: .\classifieds\templates\classifieds\job_wanted_form.html:13
 msgid "Post A Job Ad"
 msgstr "Разместить объявление о работе"
 
-#: .\classifieds\templates\classifieds\job_list.html:66
+#: .\classifieds\templates\classifieds\job_list.html:10
+msgid ""
+"Search for a new job in the Moscow classifieds. English and Russian language "
+"support, connecting Russian employers with English speakers seeking "
+"employment in Moscow."
+msgstr ""
+"Поиск новой работы в московских объявлениях. Поддержка английского и "
+"русского языка, связывающая российских работодателей с носителями "
+"английского языка, которые ищут работу в Москве."
+
+#: .\classifieds\templates\classifieds\job_list.html:68
 #: .\classifieds\views.py:345
 msgid "Location..."
 msgstr "Место..."
 
-#: .\classifieds\templates\classifieds\job_list.html:82
+#: .\classifieds\templates\classifieds\job_list.html:84
 #: .\classifieds\views.py:346
 msgid "Position Type..."
 msgstr "Тип занятости..."
 
-#: .\classifieds\templates\classifieds\job_list.html:93
+#: .\classifieds\templates\classifieds\job_list.html:95
 #: .\classifieds\views.py:380 .\classifieds\views.py:393
 msgid "All-paid"
 msgstr "Все оплаченные позиции"
 
-#: .\classifieds\templates\classifieds\job_list.html:149
+#: .\classifieds\templates\classifieds\job_list.html:151
 msgid "Job Ads"
 msgstr "Объявления о работе"
 
@@ -1303,15 +1397,20 @@ msgstr ""
 msgid "subscribe_to_Life_in_Moscow_blogs"
 msgstr "подписаться на блоги Жизнь в Москве"
 
-#: .\users\templates\users\login.html:22
+#: .\users\templates\users\login.html:8
+msgid ""
+"Login to gain access to Moscow's greatest food blogs, food map and classifieds section. Curious about life in Moscow? Check out our weekly blogs and podcast!"
+msgstr "Войдите, чтобы получить доступ к крупнейшим блогам о еде в Москве, карте продуктов и разделу объявлений. Интересуетесь жизнью в Москве? Проверьте наши еженедельные блоги и подкаст!"
+
+#: .\users\templates\users\login.html:28
 msgid "Log In"
 msgstr "Bход"
 
-#: .\users\templates\users\login.html:36
+#: .\users\templates\users\login.html:42
 msgid "Click <strong>here</strong> to create a new account.</small>"
 msgstr "<strong>Создать новый аккаунт?</strong></small>"
 
-#: .\users\templates\users\login.html:41
+#: .\users\templates\users\login.html:47
 msgid "Forgot your password? Click <strong>here</strong> to reset it.</small>"
 msgstr ""
 "Забыли пароль? Нажмите <strong> здесь </strong>, чтобы сбросить его. </small>"
@@ -1351,16 +1450,20 @@ msgstr "Нажмите <strong> здесь </strong>, чтобы войти."
 msgid "An email has been sent with instructions to reset your password."
 msgstr "Письмо было отправлено с инструкциями для восстановления пароля."
 
-#: .\users\templates\users\profile.html:19
-#: .\users\templates\users\profile.html:132
+#: .\users\templates\users\profile.html:7
+msgid "Update your account settings: enable or disable email notifications, link your social media accounts, update email and profile image, and keep track of all your active ads from the classifieds section."
+msgstr "Обновите настройки своей учетной записи: включите или отключите уведомления по электронной почте, свяжите свои учетные записи в социальных сетях, обновите электронную почту и изображение профиля, а также отслеживайте все свои активные объявления в разделе объявлений."
+
+#: .\users\templates\users\profile.html:25
+#: .\users\templates\users\profile.html:138
 msgid "Update Your Profile"
 msgstr "Обновите свой профиль"
 
-#: .\users\templates\users\profile.html:30
+#: .\users\templates\users\profile.html:36
 msgid "My Active Ads*"
 msgstr "Aктивные объявления *"
 
-#: .\users\templates\users\profile.html:64
+#: .\users\templates\users\profile.html:70
 msgid ""
 "You haven't created any ads. Any ads that you create in the Classifieds - "
 "Buy and Sell section will appear here."
@@ -1368,13 +1471,13 @@ msgstr ""
 "Вы не создали ни одной рекламы. Любая реклама, которую вы создаете в "
 "объявлениях - Здесь появится раздел« Купить и продать"
 
-#: .\users\templates\users\profile.html:71
-#: .\users\templates\users\profile.html:143
-#: .\users\templates\users\profile.html:179
+#: .\users\templates\users\profile.html:77
+#: .\users\templates\users\profile.html:149
+#: .\users\templates\users\profile.html:185
 msgid "My Active Job Ads*"
 msgstr "Aктивная работа объявления *"
 
-#: .\users\templates\users\profile.html:105
+#: .\users\templates\users\profile.html:111
 msgid ""
 "You haven't created any job ads. Any job ads that you create in the "
 "Classifieds - Jobs section will appear here."
@@ -1382,24 +1485,33 @@ msgstr ""
 "Вы не создали ни одной вакансии. Все объявления о вакансиях, которые вы "
 "создадите в разделе Объявления - Работа, будут отображаться здесь."
 
-#: .\users\templates\users\profile.html:113
-#: .\users\templates\users\profile.html:214
+#: .\users\templates\users\profile.html:119
+#: .\users\templates\users\profile.html:220
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: .\users\templates\users\register.html:13
+#: .\users\templates\users\register.html:7
+msgid ""
+"Create a free account, and gain access to Moscow's greatest food map, "
+"classifieds section, and enable email notifications for new blog releases."
+msgstr ""
+"Создайте бесплатную учетную запись и получите доступ к самой большой карте "
+"продуктов питания Москвы, разделу объявлений и включите уведомления по "
+"электронной почте о новых выпусках блогов."
+
+#: .\users\templates\users\register.html:20
 msgid "Create a New Account"
 msgstr "Создать новый аккаунт"
 
-#: .\users\templates\users\register.html:17
+#: .\users\templates\users\register.html:24
 msgid "Sign Up"
 msgstr "Подписаться"
 
-#: .\users\templates\users\register.html:21
+#: .\users\templates\users\register.html:28
 msgid "Already Have An Account?"
 msgstr "Уже есть аккаунт?"
 
-#: .\users\templates\users\register.html:21
+#: .\users\templates\users\register.html:28
 msgid "Sign In"
 msgstr "Войти в систему"
 
@@ -1410,6 +1522,16 @@ msgstr "Ваша учетная запись создана! Теперь вы �
 #: .\users\views.py:38 .\users\views.py:81
 msgid "Your account has been updated!"
 msgstr "Ваш аккаунт был обновлен!"
+
+#~ msgid "No places found with that specific criteria"
+#~ msgstr "Не найдено мест с такими конкретными критериями"
+
+#~ msgid ""
+#~ "If you have a suggestion, tell us on Twitter or Instagram, and we'll blog "
+#~ "about it for you!"
+#~ msgstr ""
+#~ "Если у вас есть предложения, сообщите нам в Twitter или Instagram, и мы "
+#~ "будем вести блог об этом для вас!"
 
 #~ msgid "Reach us on Social Media"
 #~ msgstr "Свяжитесь с нами в социальных сетях"

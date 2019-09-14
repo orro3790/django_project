@@ -6,8 +6,10 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% trans "Learn about daily life in Russia, from the perspective of two Canadians who decided to move to Moscow!" as meta_tag %}
+
 <head>
-  <meta name="description" CONTENT="We're two Canadians living and working in Moscow. Learn about life in Moscow along with us by following our weekly blogs!">
+  <meta name="description" content={{meta_tag}}>
 </head>
 
 <section id="carousel-section">
@@ -125,7 +127,7 @@
   </div>
 </section>
 
-<!-- Standard view, style.css removes shadow and positioning at medium breakpoint -->
+<!-- Standard view -->
 <!-- Search Section Starts -->
 <section id="search-fields">
   <div class="w-100 search-sec-life-blog d-md-block d-none">
@@ -133,11 +135,15 @@
       <div class="container">
         <!-- Search by title: -->
         <div class="row">
-          <div class="col-3">
+          <div class="col-md-3">
             <div class="form-group my-auto">
                 <div class="input-group">
-                  <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder=
-                    "Keyword..."/>
+                  <input class="form-control form-control-sm border-right-0 border" type="search" name="keyword" placeholder="Keyword..."
+                  value={% if keyword_query %}
+                      {{keyword_query}}
+                    {% else %}
+                      ""
+                    {% endif %}/>
                     <span class="input-group-append">
                       <div class="input-group-text">
                         <i class="fa fa-search"></i>
@@ -202,7 +208,7 @@
             <button type="submit" class="btn btn-sm btn-dark" value="Filter">
               {% trans "Search" %}
             </button>
-            <soan class="pl-2 my-auto">
+            <span class="pl-2 my-auto">
               <a href="{% url 'life-blog-search' %}" class="btn btn-sm btn-danger justify-content-center align-items-center" role="button">
                 <i class="fas fa-history primary"></i>
               </a>
@@ -215,13 +221,13 @@
 </section>
 
 <!-- Mobile View -->
-<form method="GET" action="." class="d-md-none d-sm-block">
-  <div class="container py-3">
+<form method="GET" action="." class="d-md-none d-sm-block pt-3">
+  <div class="container">
     <div class="row">
     <!-- Search by Title -->
-      <div class="col-12">
+      <div class="col-12 text-center">
         <div class="input-group">
-          <input class="form-control form-control-sm border-right-0 border" type="search" name="title" placeholder="Keyword..." />
+          <input class="form-control form-control-sm border-right-0 border" type="search" name="keyword" placeholder="Keyword..." />
             <span class="input-group-append">
               <div class="input-group-text bg-transparent">
                 <i class="fa fa-search"></i>
@@ -289,195 +295,53 @@
 
 <br>
 
-
 <!-- Search result text for ENGLISH users -->
 {% if LANGUAGE_CODE == "en" %}
 
   <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and title_query == None %}
+  {% if tags_query == None and blog_category_query == None and keyword_query == '' %}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
-        <b>(0) Blogs:</b>
+        <b>(0) Blogs</b>
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) Blog</b>
+      {% elif queryset.paginator.count > 1 %}
+        <b>({{ queryset.paginator.count }}) Blogs</b>
       {% endif %}
-
-      {% if queryset.paginator.count == 1 %}
-        <b>(1) Blog:</b>
-      {% endif %}
-
-      {% if queryset.paginator.count > 1 %}
-        <b>({{ queryset.paginator.count }}) Blogs:</b>
+      <hr>
+    </div>
+      
+  <!-- Outcome #2: A user presses search, but without any criteria selected -->
+  {% elif tags_query == 'Tags...' and blog_category_query == 'Category...' and keyword_query == '' %}
+    <div class="container text-center">
+      {% if queryset.paginator.count == 0 %}
+        <b>(0) Blogs</b>
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) Blog</b>
+      {% elif queryset.paginator.count > 1 %}
+        <b>({{ queryset.paginator.count }}) Blogs</b>
       {% endif %}
       <hr>
     </div>
 
-  <!-- Outcome #2: A user presses search, but without any criteria selected -->
-  {% elif tags_query == 'Tags...' and blog_category_query == 'Category...' and title_query == '' %}
-  <div class="container text-center">
-    {% if queryset.paginator.count == 1 %}
-          <b>(1) Blog:</b>
-        {% endif %}
-
-        {% if queryset.paginator.count > 1 %}
-          <b>({{ queryset.paginator.count }}) Blogs</b>
-        {% endif %}
-    <hr>
-  </div>
-
     <!-- Outcome #3: A user searches with some combination of criteria selected-->
-    {% else %}
-      <div class="container text-center">
-        {% if queryset.paginator.count == 0 %}
-          <b>(0) Blogs</b>
-        {% endif %}
-
-        {% if queryset.paginator.count == 1 %}
-          <b>(1) Blog:</b>
-        {% endif %}
-
-        {% if queryset.paginator.count > 1 %}
-          <b>({{ queryset.paginator.count }}) Blogs</b>
-        {% endif %}
-
-        <hr>
-        
-        <!-- Outcome #4: There are no results to show -->
-        {% if queryset.paginator.count == 0 %}
-        <section id="no-search-results">
-          <div class="container pt-3">
-            <h5 style="font-family: ;">
-              Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!
-            </h5>
-          </div>
-          <div class="row py-5">
-            <div class="col-3 d-none d-md-block">
-              <!-- empty spacing -->
-            </div>
-            <div class="col-md-3 col-6">
-              <div>
-                <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
-              </div>
-              <div class="d-flex justify-content-center py-2 text-right">
-                <div class="p-1">
-                  <a href="https://www.twitter.com/whattheblin">
-                    <i class="fab fa-twitter" style="font-size: 2rem;"></i>
-                  </a>
-                </div>
-                <div class="p-1">
-                  <a href="https://www.instagram.com/theblinmachine">
-                    <i class="fab fa-instagram" style="font-size: 2rem;"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-6">
-              <div>
-              <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
-              </div>
-              <div class="d-flex justify-content-center py-2 text-left">
-                <div class="p-1">
-                  <a href="https://www.instagram.com/labelle44">
-                    <i class="fab fa-instagram" style="font-size: 2rem;"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="col-3 d-none d-md-block">
-              <!-- empty spacing -->
-            </div>
-          </div>
-        </section>
-        {% endif %}
-      </div>
-  {% endif %}
-{% endif %}
-
-<!-- Search result text for RUSSIAN users -->
-{% if LANGUAGE_CODE == "ru" %}
-
-  <!-- Outcome #1: Default view upon first page load -->
-  {% if tags_query == None and blog_category_query == None and title_query == None %}
-    {% if queryset.paginator.count == 1 %}
-      <div class="container text-center">
-        <b>
-          1 блог:
-        </b> 
-        <hr>
-      </div>
-    {% elif queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
-      <div class="container text-center">
-        <b>
-          ({{queryset.paginator.count}}) блога:
-        </b> 
-        <hr>
-      </div>
-    {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:"-1" == 5 %}
-      <div class="container text-center">
-        <b>
-          ({{queryset.paginator.count}}) блогов:
-        </b> 
-        <hr>
-      </div>
-    {% endif %}
-
-  <!-- Outcome #2: A user presses search, but without any criteria selected -->
-  {% elif tags_query == 'Теги...' and blog_category_query == 'Категория...' and title_query == '' %}
-    {% if queryset.paginator.count == 1 %}
-      <div class="container text-center">
-        <b>
-          (1) блог:
-        </b> 
-        <hr>
-      </div>
-    {% elif queryset.paginator.count|slice:"-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
-      <div class="container text-center">
-        <b>
-          ({{queryset.paginator.count}}) блога:
-        </b> 
-        <hr>
-      </div>
-    {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:":-1" == 5 %}
-      <div class="container text-center">
-        <b>
-          ({{queryset.paginator.count}}) блогов:
-        </b> 
-        <hr>
-      </div>
-    {% endif %}
-
-  <!-- Outcome #3: A user searches with some combination of criteria selected-->
   {% else %}
     <div class="container text-center">
       {% if queryset.paginator.count == 0 %}
-        <b>(0) блогов:</b>
+        <b>(0) Blogs</b>
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) Blog</b>
+      {% elif queryset.paginator.count > 1 %}
+        <b>({{ queryset.paginator.count }}) Blogs</b>
       {% endif %}
-
-      {% if queryset.paginator.count == 1 %}
-        <b>(1) блог:</b>
-      {% endif %}
-
-      {% if queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
-        <div class="container text-center">
-          <b>
-            ({{queryset.paginator.count}}) блога:
-          </b> 
-          <hr>
-        </div>
-      {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:":-1" == 5 %}
-        <div class="container text-center">
-          <b>
-            ({{queryset.paginator.count}}) блогов:
-          </b> 
-          <hr>
-        </div>
-      {% endif %}
-
       <hr>
-      
-      <!-- Outcome #4: There are no results to show -->
-      {% if queryset.paginator.count == 0 %}
+    </div>
+
+    <!-- If there are no results, show this additional container -->
+    {% if queryset.paginator.count == 0 %}
       <section id="no-search-results">
-        <div class="container pt-3">
-          <h5 style="font-family: ;">
+        <div class="container text-center pt-3">
+          <h5>
             {% trans "Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!" %}
           </h5>
         </div>
@@ -485,7 +349,7 @@
           <div class="col-3 d-none d-md-block">
             <!-- empty spacing -->
           </div>
-          <div class="col-md-3 col-6">
+          <div class="col-md-3 col-6 text-center">
             <div>
               <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
             </div>
@@ -502,7 +366,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3 col-6">
+          <div class="col-md-3 col-6 text-center">
             <div>
             <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
             </div>
@@ -519,8 +383,105 @@
           </div>
         </div>
       </section>
+    {% endif %}
+  {% endif %}
+{% endif %}
+
+<!-- Search result text for RUSSIAN users -->
+{% if LANGUAGE_CODE == "ru" %}
+
+  <!-- Outcome #1: Default view upon first page load -->
+  {% if tags_query == None and blog_category_query == None and keyword_query == None %}
+    <div class="container text-center">
+      {% if queryset.paginator.count == 0 %}
+        <b>(0) блогов</b> 
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) блог</b> 
+      {% elif queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
+        <b>({{queryset.paginator.count}}) блога</b>
+      {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:"-1" == 5 %}
+        <b>({{queryset.paginator.count}}) блогов</b> 
       {% endif %}
+        <hr>
     </div>
+
+  <!-- Outcome #2: A user presses search, but without any criteria selected -->
+  {% elif tags_query == 'Теги...' and blog_category_query == 'Категория...' and keyword_query == '' %}
+    <div class="container text-center">
+      {% if queryset.paginator.count == 0 %}
+        <b>(0) блогов</b> 
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) блог</b> 
+      {% elif queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
+        <b>({{queryset.paginator.count}}) блога</b>
+      {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:"-1" == 5 %}
+        <b>({{queryset.paginator.count}}) блогов</b> 
+      {% endif %}
+        <hr>
+    </div>
+
+  <!-- Outcome #3: A user searches with some combination of criteria selected-->
+  {% else %}
+    <div class="container text-center">
+      {% if queryset.paginator.count == 0 %}
+        <b>(0) блогов</b> 
+      {% elif queryset.paginator.count == 1 %}
+        <b>(1) блог</b> 
+      {% elif queryset.paginator.count|slice:":-1" == 2 or queryset.paginator.count|slice:":-1" == 3 or queryset.paginator.count|slice:":-1" == 4 %}
+        <b>({{queryset.paginator.count}}) блога</b>
+      {% elif queryset.paginator.count > 5 or queryset.paginator.count|slice:"-1" == 5 %}
+        <b>({{queryset.paginator.count}}) блогов</b> 
+      {% endif %}
+        <hr>
+    </div>
+
+    <!-- If there are no results, show this additional container -->
+    {% if queryset.paginator.count == 0 %}
+      <section id="no-search-results">
+        <div class="container text-center pt-3">
+          <h5>
+            {% trans "Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!" %}
+          </h5>
+        </div>
+        <div class="row py-5">
+          <div class="col-3 d-none d-md-block">
+            <!-- empty spacing -->
+          </div>
+          <div class="col-md-3 col-6 text-center">
+            <div>
+              <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
+            </div>
+            <div class="d-flex justify-content-center py-2 text-right">
+              <div class="p-1">
+                <a href="https://www.twitter.com/whattheblin">
+                  <i class="fab fa-twitter" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+              <div class="p-1">
+                <a href="https://www.instagram.com/theblinmachine">
+                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 col-6 text-center">
+            <div>
+            <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
+            </div>
+            <div class="d-flex justify-content-center py-2 text-left">
+              <div class="p-1">
+                <a href="https://www.instagram.com/labelle44">
+                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 d-none d-md-block">
+            <!-- empty spacing -->
+          </div>
+        </div>
+      </section>
+    {% endif %}
   {% endif %}
 {% endif %}
 
@@ -548,7 +509,7 @@
             <i class="fas fa-comments"></i>  {{ post.lifeblogcomment_set.all.count }}
           </div>
           <hr>
-          <footer class="blockquote-footer ">
+          <footer class="blockquote-footer text-center ">
             <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
           </footer>
         </div>
@@ -591,15 +552,15 @@
 <div class="container text-center pb-5">
   <div class="row">
     <div class="col">
-        {% if queryset.has_previous and title_query == '' %}
+        {% if queryset.has_previous and keyword_query == '' %}
           <a href="?page={{ queryset.previous_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and title_query %}
-          <a href="?page={{ queryset.previous_page_number }}&title={{title_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
+        {% if queryset.has_previous and keyword_query %}
+          <a href="?page={{ queryset.previous_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %}
 
-        {% if queryset.has_previous and tags_query == None and blog_category_query == None and title_query == None %}
+        {% if queryset.has_previous and tags_query == None and blog_category_query == None and keyword_query == None %}
           <a href="?page={{ queryset.previous_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
         {% endif %} 
 
@@ -611,15 +572,15 @@
           {% endif %}
         {% endfor %}
         
-        {% if queryset.has_next and title_query == '' %}
+        {% if queryset.has_next and keyword_query == '' %}
           <a href="?page={{ queryset.next_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and title_query %}
-          <a href="?page={{ queryset.next_page_number }}&title={{title_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
+        {% if queryset.has_next and keyword_query %}
+          <a href="?page={{ queryset.next_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %}
 
-        {% if queryset.has_next and tags_query == None and blog_category_query == None and title_query == None %}
+        {% if queryset.has_next and tags_query == None and blog_category_query == None and keyword_query == None %}
           <a href="?page={{ queryset.next_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
         {% endif %} 
     </div>

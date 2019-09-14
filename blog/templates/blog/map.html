@@ -3,8 +3,11 @@
 {% load static %}
 {% block content %}
 {% load i18n %}
+
+{% trans "Welcome to What The Blin's Food Blog Map. Here you can find location pins for every blog we've ever written. We saved you time, so you can spend more of it eating!" as meta_tag %}
+
 <head>
-<meta name="description" CONTENT="Welcome to What The Blin's Tasty Map. Here you can find location pins for every blog we've ever written. We saved you time, so you can spend more of it eating!">
+  <meta name="description" content={{meta_tag}}>
 </head>
 
 

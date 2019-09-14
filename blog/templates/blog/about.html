@@ -3,174 +3,174 @@
 {% block content %}
 {% load static %}
 {% load i18n %}
+
+{% trans "So much is either unknown, or misunderstood about Russia and its people. We moved to Moscow to explore it for ourselves, and to share the things that we learn along the way. If you're curious about life in Moscow, you came to the right place." as meta_tag %}
+
 <head>
-<meta name="description" CONTENT="We're two Canadians living and working in Moscow. Learn about life in Moscow along with us by following our weekly blogs!">
+  <meta name="description" content={{meta_tag}}>
 </head>
 
 
 <section id="about-body">
-
-
-<section class="section-a">
-  <div class="container two-columns">
-    <div>
-      <h1>{% trans "...why Moscow!?" %}</h1>
-      <p>
-        {% trans "We get that question <em>a lot.</em>" %}
+  <section class="section-a">
+    <div class="container two-columns">
+      <div>
+        <h1>{% trans "...why Moscow!?" %}</h1>
         <p>
-          {% trans "<b>After living in Korea</b> for almost four years, it was time for a new adventure. What bigger adventure is there, than Russia? We have been fascinated by Russia for many years, and so much is either unknown, or misunderstood about this country and its people. <b>We moved to Russia</b> to explore it for ourselves, and share the things that we learn along the way. If you're curious about life in Moscow, you came to the right place." %}
-        </p>
-      
-      </p>
-    </div>
-    <div class="container">
-      <!-- Matt's Profile-->
-      <div class="col text-center pt-2 d-none d-md-block">
-        <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-        <!-- Row of icons -->
-        <div class="d-flex justify-content-center pt-2 pb-0">
-          <div class="p-1">
-            <a href="{{matt.profile.twitter_link}}">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
-          <div class="p-1 pl-3">
-            <a href="{{matt.profile.instagram_link}}">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-          <div class="p-1 pl-3">
-            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-            <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <hr class="d-none d-md-block" style="width: 50px;">
-
-
-      <!-- Steph's Profile -->
-      <div class="col text-center py-3 d-none d-md-block">
-        <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-        <!-- Row of icons -->
-        <div class="d-flex justify-content-center pt-2 pb-0">
-          <div class="p-1">
-            <a href="{{steph.profile.instagram_link}}">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-          <div class="p-1 pl-3">
-            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-            <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile view, shift the profile pics below the opening paragraph -->
-  <div class="container d-sm-block d-md-none pt-3">
-      <!-- Matt's Profile-->
-      <div class="col text-center d-sm-block d-md-none">
-        <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-        <!-- Row of icons -->
-        <div class="d-flex justify-content-center pt-3">
-          <div class="p-2">
-            <a href="{{matt.profile.twitter_link}}">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </div>
-          <div class="p-2">
-            <a href="{{matt.profile.instagram_link}}">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-          <div class="p-2">
-            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-            <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      
-      <hr class="d-sm-block d-md-none" style="width: 65px;">
-
-
-      <!-- Steph's Profile -->
-      <div class="col text-center pb-0 pt-3 d-sm-block d-md-none">
-        <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-        <!-- Row of icons -->
-        <div class="d-flex justify-content-center pt-3">
-          <div class="p-2">
-            <a href="{{steph.profile.instagram_link}}">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
-          <div class="p-2">
-            <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-            <i class="fas fa-envelope"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-</section>
-
-<!-- Large Text -->
-<div class="section-b ">
-  <div class="overlay-about">
-    <div class="section-b-inner py-5">
-      <div class="container text-center">
-        <h3>{% trans "Podcast Series" %}</h3>
-        <h2 class="py-1">{% trans "The Adventure Continues" %}</h2>
-        <p class="py-1">
-          {% trans "Once a week, we release a new podcast episode where we discuss what it's really like to live and work in Moscow. We document every part of our lives here, starting from the first week we arrived. You can listen to them on our YouTube channel here." %}
+          {% trans "We get that question <em>a lot.</em>" %}
+          <p>
+            {% trans "<b>After living in Korea</b> for almost four years, it was time for a new adventure. What bigger adventure is there, than Russia? We have been fascinated by Russia for many years, and so much is either unknown, or misunderstood about this country and its people. <b>We moved to Russia</b> to explore it for ourselves, and share the things that we learn along the way. If you're curious about life in Moscow, you came to the right place." %}
+          </p>
+        
         </p>
       </div>
+      <div class="container">
+        <!-- Matt's Profile-->
+        <div class="col text-center pt-2 d-none d-md-block">
+          <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+
+          <!-- Row of icons -->
+          <div class="d-flex justify-content-center pt-2 pb-0">
+            <div class="p-1">
+              <a href="{{matt.profile.twitter_link}}">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+            <div class="p-1 pl-3">
+              <a href="{{matt.profile.instagram_link}}">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+            <div class="p-1 pl-3">
+              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+              <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="d-none d-md-block" style="width: 50px;">
+
+
+        <!-- Steph's Profile -->
+        <div class="col text-center py-3 d-none d-md-block">
+          <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+
+          <!-- Row of icons -->
+          <div class="d-flex justify-content-center pt-2 pb-0">
+            <div class="p-1">
+              <a href="{{steph.profile.instagram_link}}">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+            <div class="p-1 pl-3">
+              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+              <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile view, shift the profile pics below the opening paragraph -->
+    <div class="container d-sm-block d-md-none pt-3">
+        <!-- Matt's Profile-->
+        <div class="col text-center d-sm-block d-md-none">
+          <img src='{{matt.profile.image.url}}' class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+
+          <!-- Row of icons -->
+          <div class="d-flex justify-content-center pt-3">
+            <div class="p-2">
+              <a href="{{matt.profile.twitter_link}}">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+            <div class="p-2">
+              <a href="{{matt.profile.instagram_link}}">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+            <div class="p-2">
+              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+              <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <hr class="d-sm-block d-md-none" style="width: 65px;">
+
+
+        <!-- Steph's Profile -->
+        <div class="col text-center pb-0 pt-3 d-sm-block d-md-none">
+          <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+
+          <!-- Row of icons -->
+          <div class="d-flex justify-content-center pt-3">
+            <div class="p-2">
+              <a href="{{steph.profile.instagram_link}}">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+            <div class="p-2">
+              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+              <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- Large Text -->
+  <div class="section-b ">
+    <div class="overlay-about">
+      <div class="section-b-inner py-5">
+        <div class="container text-center">
+          <h3>{% trans "Podcast Series" %}</h3>
+          <h2 class="py-1">{% trans "The Adventure Continues" %}</h2>
+          <p class="py-1">
+            {% trans "Once a week, we release a new podcast episode where we discuss what it's really like to live and work in Moscow. We document every part of our lives here, starting from the first week we arrived. You can listen to them on our YouTube channel here." %}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
 
 
-<!-- Gallery -->
-<section class="section-c">
-  <div class="gallery">
-    <!-- Far Left Big -->
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/thailand.png' %}" alt=""/>
-    </a>
-    <!-- Center Top (wide) -->
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/Osaka.png' %}" alt=""/>
-    </a>
-    <!-- Far Right -->
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/seoul.png' %}" alt=""/>
-    </a>
-    <!-- Center bottom left -->
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/deer.png' %}" alt=""/>
-    </a>
-    <!-- Center bottom right -->
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/calgary.png' %}" alt=""/>
-    </a>
-    <a style="cursor: default;">
-      <img src="{% static 'blog/images/beach.png' %}" alt=""/>
-    </a>
-  </div>
-</section>
-
+  <!-- Gallery -->
+  <section class="section-c">
+    <div class="gallery">
+      <!-- Far Left Big -->
+      <a href="{% static 'blog/images/thailand.png' %}">
+        <img src="{% static 'blog/images/thailand.png' %}"/>
+      </a>
+      <!-- Center Top (wide) -->
+      <a href="{% static 'blog/images/Osaka.png' %}">
+        <img src="{% static 'blog/images/Osaka.png' %}"/>
+      </a>
+      <!-- Far Right -->
+      <a href="{% static 'blog/images/seoul.png' %}">
+        <img src="{% static 'blog/images/seoul.png' %}"/>
+      </a>
+      <!-- Center bottom left -->
+      <a href="{% static 'blog/images/deer.png' %}">
+        <img src="{% static 'blog/images/deer.png' %}"/>
+      </a>
+      <!-- Center bottom right -->
+      <a href="{% static 'blog/images/calgary.png' %}">
+        <img src="{% static 'blog/images/calgary.png' %}"/>
+      </a>
+      <a href="{% static 'blog/images/beach.png' %}">
+        <img src="{% static 'blog/images/beach.png' %}"/>
+      </a>
+    </div>
+  </section>
 </section>
 
 

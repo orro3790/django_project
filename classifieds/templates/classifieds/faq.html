@@ -6,6 +6,12 @@
 {% block content %}
 {% load i18n %}
 
+{% trans "Commonly asked questions and answers about using What the Blin's Moscow classified's section. Before posting an ad, please review the FAQ and terms of agreement." as meta_tag %}
+
+<head>
+  <meta name="description" content={{meta_tag}}>
+</head>
+
 <section id="faq-page">
 
 <div class="container py-5">
