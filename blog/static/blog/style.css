@@ -357,15 +357,6 @@ a:hover {
 
 /* About Page */
 
-.dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-}
-
 #socialmedia h3 {
   color: #343a40;
   
@@ -512,7 +503,7 @@ a:hover {
 }
 
 :root {
-  --overlay-color: rgba(0, 0, 0, 0.7);
+  --overlay-about-color: rgba(0, 0, 0, 0.7);
 }
 
 #about-body body {
@@ -568,7 +559,7 @@ h4 {
 }
 
 .section-a p {
-  margin: 1rem 0;
+  font-size: 1.1rem;
 }
 
 .section-b {
@@ -587,21 +578,33 @@ h4 {
   text-align: center;
   margin: auto;
   max-width: 860px;
-  padding: 5rem 0;
 }
+
 
 .section-b-inner h3 {
   font-size: 2rem;
 }
 
 .section-b-inner h2 {
-  font-size: 5rem;
-  margin-top: 1rem;
+  font-size: 3rem;
 }
 
 .section-b-inner p {
-  margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+
+@media (max-width: 700px) {
+  .section-b-inner h3 {
+    font-size: 1.7rem;
+  }
+
+  .section-b-inner h2 {
+    font-size: 2.5rem;
+  }
+
+  .section-b-inner p {
+    font-size: 1.1rem;
+  }
 }
 
 .section-c .gallery {
@@ -626,13 +629,13 @@ h4 {
   height: 100%;
 }
 
-.overlay {
+.overlay-about {
   height: 100%;
   width: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: var(--overlay-color);
+  background-color: var(--overlay-about-color);
 }
 
 @media (max-width: 700px) {
@@ -671,3 +674,4 @@ h4 {
   .section-c .gallery a:last-child {
     display: none;
   }
+}
