@@ -548,7 +548,7 @@ h4 {
 .section-a .two-columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 3rem;
+  grid-column-gap: 3rem;
   align-items: center;
   justify-content: center;
 }
@@ -559,7 +559,7 @@ h4 {
 }
 
 .section-a p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 .section-b {
@@ -593,17 +593,18 @@ h4 {
   font-size: 1.7rem;
 }
 
+/* Mobile view for Contact page section-b */
 @media (max-width: 700px) {
   .section-b-inner h3 {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
   }
 
   .section-b-inner h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
   }
 
   .section-b-inner p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }
 
