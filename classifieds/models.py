@@ -310,7 +310,7 @@ class AdEmail(models.Model):
         """
         After posting comment, provide success message and return to associated blog post.
         """
-        messages.add_message(self.request, messages.SUCCESS, _('Your email has been successfully posted!'))
+        messages.add_message(self.request, messages.SUCCESS, _('Your email has been successfully sent!'))
         return reverse('ad-list', kwargs={'pk': self.kwargs['pk'],})
 
     def __str__(self):

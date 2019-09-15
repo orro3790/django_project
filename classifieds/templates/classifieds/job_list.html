@@ -104,7 +104,7 @@
         <div class="col-lg-2 col-md-3 px-1">
           {% if LANGUAGE_CODE == "en" %}
             <input class="form-control form-control-sm" type="search" name="salary_filter" placeholder=
-              "Salary of at least..."
+              "{% trans 'Salary of at least...' %}"
               {% if salary_query %}
                 value="{{salary_query}}"
               {% endif %}>

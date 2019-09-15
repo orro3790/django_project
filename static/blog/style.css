@@ -30,7 +30,6 @@ a:hover {
     border-radius: 15px;
 }
 
-
 .floatingNav {
   width: calc(100vh - 100px); 
   border-radius: 2px;
@@ -245,8 +244,8 @@ a:hover {
 
 #comments .comment-img {
   margin-top: -50px;
-  width: 50px;
-  height: 50px;
+  width: 65px;
+  height: 65px;
 }
 
 #comments h1 {
@@ -263,12 +262,12 @@ a:hover {
 
 #comments i.link-active {
   color: #F5A65B;
-  font-size: 85%;
+  font-size: 100%;
 }
 
 #comments i.link-inactive {
   color: rgba(0, 0, 0, 0.10);
-  font-size: 85%;
+  font-size: 100%;
 }
 
 #comments img {
@@ -658,3 +657,7 @@ h4 {
     display: none;
   }
 }
+
+
+
+
