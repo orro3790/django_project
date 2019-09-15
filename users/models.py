@@ -17,6 +17,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default_profile.jpg', upload_to='profile_pics', help_text=_("For the best looking profile picture, use a 1:1 size ratio. Images will be rescaled to 150x150 pixels!"), verbose_name=_('image'))
+    vk_link = models.CharField(max_length=150, help_text=_("Links your VK URL to your comments. You can optionally enable people to respond to your classified ads, via VK."), default="https://vk.com", blank=True, verbose_name=_('vk_link'))
     twitter_link = models.CharField(max_length=150, help_text=_("Links your twitter URL to your comments. You can optionally enable people to respond to your classified ads, via twitter."), default="https://twitter.com", blank=True, verbose_name=_('twitter_link'))
     instagram_link = models.CharField(max_length=150, help_text=_("Links your instagram URL to your comments. You can optionally enable people to respond to your classified ads, via instagram"), default="https://www.instagram.com", blank=True, verbose_name=_('instagram_link'))
     facebook_link = models.CharField(max_length=150, help_text=_("Links your facebook URL to your comments. You can optionally enable people to respond to your classified ads, via facebook"), default="https://www.facebook.com", blank=True, verbose_name=_('facebook_link'))

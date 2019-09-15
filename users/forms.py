@@ -28,10 +28,11 @@ class ProfileUpdateForm(forms.ModelForm):
             'language', 
             'image', 
             'subscribe_to_food_blogs', 
-            'subscribe_to_Life_in_Moscow_blogs', 
-            'twitter_link', 
-            'instagram_link', 
-            'facebook_link'
+            'subscribe_to_Life_in_Moscow_blogs',
+            'vk_link',
+            'facebook_link',
+            'instagram_link',
+            'twitter_link'
             ]
 
     def clean_facebook_link(self, *args, **kwargs):
@@ -66,4 +67,15 @@ class ProfileUpdateForm(forms.ModelForm):
             if ".com" not in twitter_link:
                 raise forms.ValidationError("Check spelling. (Ex: https://twitter.com/whattheblin)")
         return twitter_link
+    
+    def clean_vk_link(self, *args, **kwargs):
+        vk_link = self.cleaned_data.get("vk_link")
+        if vk_link != '':
+            if "https://" not in vk_link:
+                raise forms.ValidationError("Please include 'https://' in your link! (Ex: https://vk.com/id270055926)")
+            if "vk" not in vk_link:
+                raise forms.ValidationError("VK URLs only! (Ex: https://vk.com/id270055926)")
+            if ".com" not in vk_link:
+                raise forms.ValidationError("Check spelling. (Ex: https://vk.com/id270055926)")
+        return vk_link
     

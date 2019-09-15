@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
+
 {% block content %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -7,29 +9,53 @@
 <div class="container py-5">
   <div class="row">
     <div class="col">
-      <p>
+      {% if LANGUAGE_CODE == "en" %}
+        <h3 class="d-inline-block">
         {% trans "Post your comment for:" %}
-        <a href="{% url 'post-detail' post.pk %}">
-          {% if LANGUAGE_CODE == "en" %}
+          <a href="{% url 'post-detail' post.pk %}" style="color: #0275d8;">
             {{ post.title }}
-          {% elif LANGUAGE_CODE == "ru" %}
-            {{ post.title_russian }}
-          {% endif %}
-        </a>
-      </p>
-      <form action="" method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="form-group">
-          <button class="btn btn-dark" type="submit">
-            {% trans "Post" %}</button>
-        </div>
-      </form>
+          </a>
+        </h3>
+        <form action="" method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">
+              {% trans "Post" %}</button>
+          </div>
+        </form>
+      {% endif %}
+
+      {% if LANGUAGE_CODE == "ru" %}
+        {% if post.publish_translated_blog == False %}
+          <div class="container text-center">
+            <div class="row">
+              <div class="col py-5">
+                <img src="{% static 'blog/images/notranslatedyet.jpg' %}" class="rounded mt-3">
+              </div>
+            </div>
+          </div>
+        {% elif post.publish_translated_blog == True %}
+          <h3 class="d-inline-block">
+          {% trans "Post your comment for:" %}
+            <a href="{% url 'post-detail' post.pk %}" style="color: #0275d8;">
+              {{ post.title_russian }}
+            </a>
+          </h3>
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-group">
+              <button class="btn btn-primary" type="submit">
+                {% trans "Post" %}</button>
+            </div>
+          </form>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
 
 {% endblock %}
-
 
 

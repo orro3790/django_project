@@ -135,6 +135,7 @@ class Ad(models.Model):
     location = models.CharField(max_length=30, help_text=_("Where are you located?"), verbose_name=_('location'))
     willing_to_travel = models.BooleanField(verbose_name=_('Are You Willing to Travel?'))
     twitter_contact = models.BooleanField(help_text=_("Can people respond to you via your Twitter? (you can update the link from your profile page)"), verbose_name=_('Twitter Contact'))
+    vk_contact = models.BooleanField(help_text=_("Can people respond to you via your VK? (you can update the link from your profile page)"), verbose_name=_('VK Contact'))
     instagram_contact = models.BooleanField(help_text=_("Can people respond to you via your Instagram? (you can update the link from your profile page)"), verbose_name=_('Instagram Contact'))
     facebook_contact = models.BooleanField(help_text=_("Can people respond to you via your Facebook? (you can update the link from your profile page)"), verbose_name=_('Facebook Contact'))
     description = models.TextField(max_length=1200, help_text=_("Write your ad here."), verbose_name=_('Ad Description'))

@@ -22,6 +22,7 @@ class AdForm(forms.ModelForm):
         'asking_price',
         'location',
         'willing_to_travel',
+        'vk_contact',
         'twitter_contact',
         'instagram_contact',
         'facebook_contact',

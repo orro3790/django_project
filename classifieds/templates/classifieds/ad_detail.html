@@ -153,6 +153,18 @@
           <td>  
             <section id="ad-contact-methods">
             <div class="d-flex justify-content-left">
+              {% if ad.vk_contact == True %}
+                <div class="pr-3">
+                  <a href="{{ ad.author.profile.vk_link }}">
+                    <i class="fab fa-vk fa-1x method-enabled"></i>
+                  </a>
+                </div>
+              {% elif ad.vk_contact == False %}
+                <div class="pr-3">
+                  <i class="fab fa-vk fa-1x method-disabled"></i>
+                </div>
+              {% endif %}
+
               {% if ad.twitter_contact == True %}
                 <div class="pr-3">
                   <a href="{{ ad.author.profile.twitter_link }}">
