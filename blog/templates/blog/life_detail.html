@@ -70,9 +70,9 @@
   <section id="blog-detail-body">
   <div class="container pb-5">
     {% if LANGUAGE_CODE == "en" %}
-      {{ post.paragraph_1 }}
+      {{ post.paragraph_1|linebreaksbr }}
     {% elif LANGUAGE_CODE == "ru" %}
-      {{ post.paragraph_1_russian }}
+      {{ post.paragraph_1_russian|linebreaksbr }}
     {% endif %}
   </div>
 
@@ -98,9 +98,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_2 }}
+        {{ post.paragraph_2|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_2_russian }}
+        {{ post.paragraph_2_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -125,9 +125,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_3 }}
+        {{ post.paragraph_3|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_3_russian }}
+        {{ post.paragraph_3_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -152,9 +152,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_4 }}
+        {{ post.paragraph_4|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_4_russian }}
+        {{ post.paragraph_4_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -179,9 +179,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_5 }}
+        {{ post.paragraph_5|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_5_russian }}
+        {{ post.paragraph_5_russian|linebreaksbr }}
       {% endif %}
     </div>
 

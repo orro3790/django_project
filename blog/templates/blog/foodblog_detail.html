@@ -8,8 +8,14 @@
 
 <head>
   <meta name="description" content={{meta_tag}}>
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@whattheblin">
+  <meta name="twitter:title" content="Check out this place in Moscow: {{post.title}}">
+  <meta name="twitter:description" content="{{post.card_content|truncatechars:125}}">
+  <meta name="twitter:creator" content="@Matt">
+  <meta name="twitter:image"  content="https://www.whattheblin.com{{post.card_image.url}}">
+  <meta name="twitter:domain" content="whattheblin.com">
 </head>
-
 <!-- In case someone forces the /ru/ URL for the post, before a translation is out -->
 {% if LANGUAGE_CODE == 'ru' and post.publish_translated_blog == False %}
 <div class="container text-center">
@@ -574,9 +580,9 @@
   <section id="blog-detail-body">
   <div class="container pb-5">
     {% if LANGUAGE_CODE == "en" %}
-      {{ post.paragraph_1|safe }}
+      {{ post.paragraph_1|linebreaksbr }}
     {% elif LANGUAGE_CODE == "ru" %}
-      {{ post.paragraph_1_russian|safe }}
+      {{ post.paragraph_1_russian|linebreaksbr }}
     {% endif %}
   </div>
   <div>
@@ -601,9 +607,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_2|safe }}
+        {{ post.paragraph_2|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_2_russian|safe }}
+        {{ post.paragraph_2_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -628,9 +634,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_3|safe }}
+        {{ post.paragraph_3|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_3_russian|safe }}
+        {{ post.paragraph_3_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -655,9 +661,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_4|safe }}
+        {{ post.paragraph_4|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_4_russian|safe }}
+        {{ post.paragraph_4_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -682,9 +688,9 @@
   <div>
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_5|safe }}
+        {{ post.paragraph_5|linebreaksbr }}
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_5_russian|safe }}
+        {{ post.paragraph_5_russian|linebreaksbr }}
       {% endif %}
     </div>
 
@@ -717,10 +723,17 @@
     </div>
   {% endif %}
   
-
-
   <hr>
 
+  <!-- Twitter share button -->
+  <div class="container text-center">
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Check out this place in Moscow called: {{post.title}}! {{post.card_content|truncatechars:125}}" data-hashtags="Moscow #WhatTheBlin #MoscowEats #LifeinRussia" data-show-count="false">
+      Tweet
+    </a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
+
+  
   <!-- Comments Section Starts -->
   <section id="comments">
   <!-- Comment Cards -->

@@ -40,6 +40,7 @@ class PostAdmin(admin.ModelAdmin):
     ("Metrics", {"fields": ["taste_rating", "appearance_rating", "atmosphere_rating", "price_rating",
     "service_rating", "overall_rating","special_feature", "store_type", "nearest_station", ]}),
     ("Location Pin", {"fields": ["google_map"]}),
+    ("Social Media Share Buttons", {"fields": ["twitter_card_image"]}),
 
     # Russian fields
     ("Russian Card", {"fields": ["title_russian", "card_content_russian"]}),

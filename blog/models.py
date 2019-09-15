@@ -163,6 +163,7 @@ class FoodBlog(models.Model):
     snapshot_4_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 4.')
     snapshot_5 = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots')
     snapshot_5_B = models.ImageField(blank=True, default='', upload_to='food_blog_snapshots', help_text='This is an optional image, placed beside snapshot 1.')
+    twitter_card_image = models.ImageField(blank=True, default='', upload_to='twitter_card_images', help_text='This is the image that will be displayed on twitter cards (1200 x 628).')
 
     # Metric fields
     store_type = models.ManyToManyField(StoreType)
