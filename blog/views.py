@@ -64,7 +64,7 @@ def FoodBlogListView(request):
         posts = FoodBlog.objects.all().filter(publish_translated_blog=True)
     
     # paginate settings
-    paginator = Paginator(posts, 18) # Show # blogs per page
+    paginator = Paginator(posts, 27) # Show # blogs per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
@@ -243,7 +243,7 @@ def FoodBlogFilter(request):
         
 
     # paginate settings
-    paginator = Paginator(qs, 18) # Show 18 blogs per page
+    paginator = Paginator(qs, 27) # Show 18 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
@@ -428,7 +428,11 @@ def LifeBlogFilter(request):
 
     # retrieve the Russian form request queries
     if language == 'ru':
-        qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+
+        qs = LifeBlog.objects.all().filter(publish_translated_blog=True)
+
+        if valid_query(keyword_query):
+            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
 
         if valid_query(blog_category_query) and blog_category_query != 'Категория...':
             qs = qs.filter(blog_category_russian__name=blog_category_query)
@@ -438,7 +442,7 @@ def LifeBlogFilter(request):
 
 
     # paginate
-    paginator = Paginator(qs, 18) # Show 18 blogs per page
+    paginator = Paginator(qs, 27) # Show 18 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 

@@ -164,7 +164,7 @@
     </div>
 {% endfor %}
 
-<body class="my-0 pb-5">
+
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QHDHD"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -173,17 +173,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 {% block content %}
 {% endblock %}
-</body>
+
 
 <!-- FOOTER -->
-<footer id="main-footer" class="text-center py-3">
+<footer id="main-footer" class="text-center my-auto py-3">
   <div class="container">
     <div class="row">
-      <div class="col">
-        <p>
-          {% trans "Copyright" %} &copy;
-          <span id="year"></span> What the Blin?!
-        </p>
+      <div class="col my-auto">
+        {% trans "Copyright" %} &copy;
+        <span id="year"></span> What the Blin?!
       </div>
     </div>
   </div>

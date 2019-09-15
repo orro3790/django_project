@@ -1,22 +1,16 @@
 html {
     position: relative;
-    min-height: 100%;
-    
+    min-height: 1000px;
 }
 
 body {
   overflow-x: hidden;
-  margin: 0 0 7rem;
-  margin-bottom: 5rem;
-  
 }
 
 /* Control the font for all text-elements */
 :root p, h1, h2, h3, h4, h5, a, b, i, input, select, label, .btn {
   font-family: 'Alegreya Sans', sans-serif;
 }
-
-
 
 /* Global styling: prevent url links from lighting up or adding any styling when hovering over */
 a {
@@ -35,6 +29,7 @@ a:hover {
     font-size: 12px;
     border-radius: 15px;
 }
+
 
 .floatingNav {
   width: calc(100vh - 100px); 
@@ -178,10 +173,6 @@ a:hover {
   font-size: 1.4rem;
 }
 
-.card-columns {
-  font-size: 0.9rem;
-}
-
 /* Badges on the cards */
 .notify-badge {
     position: absolute;
@@ -191,6 +182,11 @@ a:hover {
     color: white;
     font-size:12px;
     opacity: 0.6;
+}
+
+.grid-item {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
 }
 
 .card-hover:hover {
@@ -203,32 +199,19 @@ a:hover {
   -moz-transform: translate(1px, -1px);
 }
 
-.card-columns img:hover { 
+.card img:hover { 
   opacity: 0.95;
 }
 
 #main-footer {
   background: #343a40;
   color: #fff;
-  height: 60px;
+  height: 50px;
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   font-size: 0.8rem;
-  margin-top: 0%;
-}
-
-#tldr {
-  
-}
-
-.blog-title {
-  
-}
-
-#blog-detail-body {
-  
 }
 
 #blog-detail-body .card:hover {
@@ -267,12 +250,10 @@ a:hover {
 }
 
 #comments h1 {
-  
   color: #343a40;
 }
 
 #comments h5 {
-  
   color: #343a40;
 }
 
@@ -497,10 +478,11 @@ a:hover {
         z-index: 1;
         position: relative;
         top: -66px;
-        margin-bottom: -66px;
+        margin-bottom: -77px;
         background: rgba(0, 0, 0, 0.50);
     }
 }
+
 
 :root {
   --overlay-about-color: rgba(0, 0, 0, 0.7);

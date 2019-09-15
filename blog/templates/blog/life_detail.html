@@ -220,15 +220,15 @@
   <section id="comments">
   <!-- Comment Cards -->
   {% if user_comments.count == 0 %}
-    <div class="container text-center py-2">
+    <div class="container text-center pt-3" style="margin-bottom: 100px;">
       <div class="row pb-5">
         <div class="col text-center">
           {% if user.is_authenticated %}
-            <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-dark btn-sm text-white">
+            <a href="{% url 'life-blog-comment' post.id %}" class="py-2 btn btn-primary btn-sm text-white">
               {% trans "Add a Comment" %}
             </a>
           {% else %}
-            <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-dark btn-sm text-white" style=font-size:0.8rem;>
+            <a href="{% url 'login' %}?next={{ request.path }}" class="py-2 btn btn-primary btn-sm text-white" style=font-size:0.8rem;>
               {% trans "<strong>Login</strong> to add a new comment" %}
             </a>
           {% endif %} 

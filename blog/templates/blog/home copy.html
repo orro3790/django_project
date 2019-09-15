@@ -11,11 +11,6 @@
   <meta name="description" content={{meta_tag}}>
 </head>
 
-<!-- Masonry -->
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script src="/django_project/blog/static/blog/js/masonry.pkgd.min.js"></script>
-
-
 
 <section id="carousel-section" class="d-md-block d-none">
   <div class="container-fluid px-0">
@@ -280,252 +275,250 @@
 </section>
 
 <!-- Blog Cards -->
-{% if LANGUAGE_CODE == 'en' %}
-  <div class="container-fluid" style="width: 90%;">
-    <div class="grid">
-      <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
+<section id="search-results">
+  <div class="row1">
+    {% if LANGUAGE_CODE == 'en' %}
       {% for post in posts %}
-        <div class="grid-item col-xs col-md-6 col-lg-3">
-          <a href="{% url 'post-detail' post.id %}" class="card stretched-link card-hover">
-          <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
-          <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
-          <div class="card-body">
-            <h4 class="card-title">{{ post.title }}</h4>
-            {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% endif %}
-            <div>
+      <div class="column">
+        <a href="{% url 'post-detail' post.id %}" class="card stretched-link card-hover">
+        <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+        <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
+        <div class="card-body">
+          <h4 class="card-title">{{ post.title }}</h4>
+          {% if post.overall_rating.get.rating == 1.0 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 1.5 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 2.0 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 2.5 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 3.0 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 3.5 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 4.0 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 4.5 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </span>
+          {% elif post.overall_rating.get.rating == 5.0 %}
+          <span>Overall: 
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </span>
+          {% endif %}
+          <div>
 
-            Price:
-            {% if post.price_rating.get.name == "Cheap" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Average" %}
-            <span> 
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Expensive" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Very Expensive" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-            </span>
-            {% endif %}
-            <div></div>
-            Nearest Station: <em>{{ post.nearest_station.get }}</em>
-            </div>
-            <div class="text-right pr-0">
-              <i class="fas fa-comments"></i>
-              <span>
-                {{ post.comment_set.all.count }}
-              </span>
-            </div>
-            <hr>
-            <p class="card-text">{{ post.card_content }}</p>
-            <hr>
-            <footer class="blockquote-footer text-center">
-              <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
-            </footer>
+          Price:
+          {% if post.price_rating.get.name == "Cheap" %}
+          <span>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+          </span>
+          {% elif post.price_rating.get.name == "Average" %}
+          <span> 
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+          </span>
+          {% elif post.price_rating.get.name == "Expensive" %}
+          <span>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign unfilled"></i>
+          </span>
+          {% elif post.price_rating.get.name == "Very Expensive" %}
+          <span>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+            <i class="fas fa-ruble-sign"></i>
+          </span>
+          {% endif %}
+          <div></div>
+          Nearest Station: <em>{{ post.nearest_station.get }}</em>
           </div>
-          </a>
+          <div class="text-right pr-0">
+            <i class="fas fa-comments"></i>
+            <span>
+              {{ post.comment_set.all.count }}
+            </span>
+          </div>
+          <hr>
+          <p class="card-text">{{ post.card_content }}</p>
+          <hr>
+          <footer class="blockquote-footer text-center">
+            <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
+          </footer>
+        </div>
+        </a>
+      </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="row">
+    {% if LANGUAGE_CODE == 'ru' %}
+      {% for post in posts %}
+        <div class="column">
+          {% if post.publish_translated_blog == True %}
+            <a href="{% url 'post-detail' post.id %}" class="card stretched-link card-hover">
+              <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+              <span class="badge badge-pill notify-badge badge-light">{{ post.store_type_russian.get }}</span>
+              <div class="card-body">
+                <h4 class="card-title">{{ post.title_russian }}</h4>
+                {% trans "Overall:" %}
+                {% if post.overall_rating.get.rating == 1.0 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 1.5 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 2.0 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>  
+                </span>
+                {% elif post.overall_rating.get.rating == 2.5 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 3.0 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 3.5 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 4.0 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 4.5 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </span>
+                {% elif post.overall_rating.get.rating == 5.0 %}
+                <span>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </span>
+                {% endif %}
+                <div>
+
+                {% trans "Price:" %}
+                {% if post.price_rating.get.name == "Cheap" %}
+                <span>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                </span>
+                {% elif post.price_rating.get.name == "Average" %}
+                <span> 
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                </span>
+                {% elif post.price_rating.get.name == "Expensive" %}
+                <span>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign unfilled"></i>
+                </span>
+                {% elif post.price_rating.get.name == "Very Expensive" %}
+                <span>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                  <i class="fas fa-ruble-sign"></i>
+                </span>
+                {% endif %}
+                <div></div>
+                {% trans "Nearest Station:" %} <em>{{ post.nearest_station_russian.get }}</em>
+                </div>
+                <div class="text-right pr-0">
+                  <i class="fas fa-comments"></i>
+                  <span>
+                    {{ post.comment_set.all.count }}
+                  </span>
+                </div>
+                <hr>
+                <p class="card-text">{{ post.card_content_russian }}</p>
+                <hr>
+                <footer class="blockquote-footer ">
+                  <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
+                </footer>
+              </div>
+            </a>
+          {% endif %}
         </div>
       {% endfor %}
-    </div>
+    {% endif %}
   </div>
-{% endif %}
-
-<!-- Russian Cards -->
-{% if LANGUAGE_CODE == 'ru' %}
-  <div class="container-fluid" style="width: 90%;">
-    <div class="grid">
-      <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
-      {% for post in posts %}
-        <div class="grid-item col-xs col-md-6 col-lg-3">
-          <a href="{% url 'post-detail' post.id %}" class="card stretched-link card-hover">
-          <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
-          <span class="badge badge-pill notify-badge badge-light">{{ post.store_type_russian.get }}</span>
-          <div class="card-body">
-            <h4 class="card-title">{{ post.title_russian }}</h4>
-            {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
-            </span>
-            {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </span>
-            {% endif %}
-            <div>
-
-            Price:
-            {% if post.price_rating.get.name == "Cheap" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Average" %}
-            <span> 
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Expensive" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign unfilled"></i>
-            </span>
-            {% elif post.price_rating.get.name == "Very Expensive" %}
-            <span>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-              <i class="fas fa-ruble-sign"></i>
-            </span>
-            {% endif %}
-            <div></div>
-            Nearest Station: <em>{{ post.nearest_station_russian.get }}</em>
-            </div>
-            <div class="text-right pr-0">
-              <i class="fas fa-comments"></i>
-              <span>
-                {{ post.comment_set.all.count }}
-              </span>
-            </div>
-            <hr>
-            <p class="card-text">{{ post.card_content }}</p>
-            <hr>
-            <footer class="blockquote-footer text-center">
-              <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
-            </footer>
-          </div>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-{% endif %}
+</section>
 
 <section id="paginate-buttons" class="container text-center my-5">
   <div class="row">
@@ -554,13 +547,5 @@
   </div>
 </section>
 
-<!-- Masonry Script -->
-<script>
-$('.grid').masonry({
-  itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
-  columnWidth: '.grid-sizer',
-  percentPosition: true,
-});
-</script>
 
 {% endblock content %}

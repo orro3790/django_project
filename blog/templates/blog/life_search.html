@@ -12,6 +12,10 @@
   <meta name="description" content={{meta_tag}}>
 </head>
 
+<!-- Masonry -->
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="/django_project/blog/static/blog/js/masonry.pkgd.min.js"></script>
+
 <section id="carousel-section">
   <div class="container-fluid px-0">
     <div id="foodsearch-banner" class="carousel slide carousel-fade" data-ride="carousel">
@@ -295,7 +299,7 @@
 
 <br>
 
-<!-- Search result text for ENGLISH users -->
+
 {% if LANGUAGE_CODE == "en" %}
 
   <!-- Outcome #1: Default view upon first page load -->
@@ -437,68 +441,101 @@
 
     <!-- If there are no results, show this additional container -->
     {% if queryset.paginator.count == 0 %}
-      <section id="no-search-results">
-        <div class="container text-center pt-3">
-          <h5>
-            {% trans "Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!" %}
-          </h5>
+      <div class="container text-center pt-3">
+        <h5>
+          {% trans "Looking for something? Tell us on Twitter or Instagram, and we'll blog about it for you!" %}
+        </h5>
+      </div>
+      <div class="row py-5">
+        <div class="col-3 d-none d-md-block">
+          <!-- empty spacing -->
         </div>
-        <div class="row py-5">
-          <div class="col-3 d-none d-md-block">
-            <!-- empty spacing -->
+        <div class="col-md-3 col-6 text-center">
+          <div>
+            <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
           </div>
-          <div class="col-md-3 col-6 text-center">
-            <div>
-              <img class="img-fluid rounded-circle" src="{% static 'blog/images/mandu.png' %}" style="width: 150px;">
+          <div class="d-flex justify-content-center py-2 text-right">
+            <div class="p-1">
+              <a href="https://www.twitter.com/whattheblin">
+                <i class="fab fa-twitter" style="font-size: 2rem;"></i>
+              </a>
             </div>
-            <div class="d-flex justify-content-center py-2 text-right">
-              <div class="p-1">
-                <a href="https://www.twitter.com/whattheblin">
-                  <i class="fab fa-twitter" style="font-size: 2rem;"></i>
-                </a>
-              </div>
-              <div class="p-1">
-                <a href="https://www.instagram.com/theblinmachine">
-                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
-                </a>
-              </div>
+            <div class="p-1">
+              <a href="https://www.instagram.com/theblinmachine">
+                <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+              </a>
             </div>
-          </div>
-          <div class="col-md-3 col-6 text-center">
-            <div>
-            <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
-            </div>
-            <div class="d-flex justify-content-center py-2 text-left">
-              <div class="p-1">
-                <a href="https://www.instagram.com/labelle44">
-                  <i class="fab fa-instagram" style="font-size: 2rem;"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 d-none d-md-block">
-            <!-- empty spacing -->
           </div>
         </div>
-      </section>
+        <div class="col-md-3 col-6 text-center">
+          <div>
+          <img class="img-fluid rounded-circle" src="{% static 'blog/images/StephYellow.png' %}" style="width: 150px;">
+          </div>
+          <div class="d-flex justify-content-center py-2 text-left">
+            <div class="p-1">
+              <a href="https://www.instagram.com/labelle44">
+                <i class="fab fa-instagram" style="font-size: 2rem;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 d-none d-md-block">
+          <!-- empty spacing -->
+        </div>
+      </div>
     {% endif %}
   {% endif %}
 {% endif %}
 
-
-
-<!-- Search results -->
-<div class="container pb-5">
-  <div class="card-columns">
-    {% if LANGUAGE_CODE == 'en' %}
+<!-- English Cards -->
+{% if LANGUAGE_CODE == 'ru' %}
+  <div class="container-fluid" style="width: 90%;">
+    <div class="grid">
+      <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
       {% for post in queryset %}
-        <a href="{% url 'life-blog-detail' post.id %}" class="card stretched-link card-hover my-4">
-        <img src="{{ post.card_image.url }}" class="card-img-top">
-        <span class="badge badge-pill notify-badge badge-light">
-          {{ post.blog_category.get }}
-        </span>
-        <div class="card-body">
-          <h4 class="card-title">
+        <div class="grid-item col-xs col-md-6 col-lg-3">
+          <a href="{% url 'life-blog-detail' post.id %}" class="card stretched-link card-hover">
+          <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+          <span class="badge badge-pill notify-badge badge-light">
+            {{ post.blog_category_russian.get }}
+          </span>
+          <div class="card-body">
+            <h4 class="card-title">
+            {{ post.title_russian }}
+          </h4>
+          <hr>
+          <p class="card-text">
+            {{ post.card_content_russian }}
+          </p>
+          <div class="text-center">
+            <i class="fas fa-comments"></i>  {{ post.lifeblogcomment_set.all.count }}
+          </div>
+          <hr>
+          <footer class="blockquote-footer text-center ">
+            <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
+          </footer>
+          </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+<!-- Russian Cards -->
+{% if LANGUAGE_CODE == 'en' %}
+  <div class="container-fluid" style="width: 90%;">
+    <div class="grid">
+      <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
+      {% for post in queryset %}
+        <div class="grid-item col-xs col-md-6 col-lg-3">
+          <a href="{% url 'life-blog-detail' post.id %}" class="card stretched-link card-hover">
+          <img src="{{ post.card_image.url }}" alt="" class="card-img-top">
+          <span class="badge badge-pill notify-badge badge-light">
+            {{ post.blog_category.get }}
+          </span>
+          <div class="card-body">
+            <h4 class="card-title">
             {{ post.title }}
           </h4>
           <hr>
@@ -512,83 +549,65 @@
           <footer class="blockquote-footer text-center ">
             <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
           </footer>
-        </div>
-        </a>
-      {% endfor %}
-    {% elif LANGUAGE_CODE == 'ru' %}
-      {% if post.publish_translated_blog == True %}
-        {% for post in queryset %}
-          <a href="{% url 'life-blog-detail' post.id %}" class="card stretched-link card-hover my-4">
-          <img src="{{ post.card_image.url }}" class="card-img-top">
-          <span class="badge badge-pill notify-badge badge-light">
-            {{ post.blog_category_russian.get }}
-          </span>
-          <div class="card-body">
-            <h4 class="card-title">
-              {{ post.title_russian }}
-            </h4>
-            <hr>
-            <p class="card-text">
-              {{ post.card_content_russian }}
-            </p>
-            <div class="text-center">
-              <i class="fas fa-comments"></i>  {{ post.lifeblogcomment_set.all.count }}
-            </div>
-            <hr>
-            <footer class="blockquote-footer ">
-              <cite title="Source Title">{% trans "Posted on" %} {{ post.date_posted|date:"m/d/Y" }}</cite>
-            </footer>
           </div>
           </a>
-        {% endfor %}
-      {% endif %}
-    {% endif %}
-  </div>
-</div>
-
-<!-- Paginate Buttons -->
-{% if queryset.paginator.num_pages > 1 %}
-<section id="paginate-buttons">
-<div class="container text-center pb-5">
-  <div class="row">
-    <div class="col">
-        {% if queryset.has_previous and keyword_query == '' %}
-          <a href="?page={{ queryset.previous_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
-        {% endif %}
-
-        {% if queryset.has_previous and keyword_query %}
-          <a href="?page={{ queryset.previous_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
-        {% endif %}
-
-        {% if queryset.has_previous and tags_query == None and blog_category_query == None and keyword_query == None %}
-          <a href="?page={{ queryset.previous_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
-        {% endif %} 
-
-        {% for num in queryset.paginator.page_range %}
-          {% if queryset.number == num %}
-            {% if queryset.paginator.num_pages != 1 %}
-              <a class="btn btn-sm btn-dark" href="?page={{ num }}">{{ num }}</a>
-            {% endif %}
-          {% endif %}
-        {% endfor %}
-        
-        {% if queryset.has_next and keyword_query == '' %}
-          <a href="?page={{ queryset.next_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
-        {% endif %}
-
-        {% if queryset.has_next and keyword_query %}
-          <a href="?page={{ queryset.next_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
-        {% endif %}
-
-        {% if queryset.has_next and tags_query == None and blog_category_query == None and keyword_query == None %}
-          <a href="?page={{ queryset.next_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
-        {% endif %} 
+        </div>
+      {% endfor %}
     </div>
   </div>
-</div>
-</section>
 {% endif %}
 
+<!-- Pagination -->
+<section id="paginate-buttons" class="container text-center my-5">
+  <div class="row">
+    <div class="col">
+      {% if queryset.paginator.num_pages > 1 %}
+        <div class="container pb-5 d-inline-block">
+          {% if queryset.has_previous and keyword_query == '' %}
+            <a href="?page={{ queryset.previous_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
+          {% endif %}
+
+          {% if queryset.has_previous and keyword_query %}
+            <a href="?page={{ queryset.previous_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
+          {% endif %}
+
+          {% if queryset.has_previous and tags_query == None and blog_category_query == None and keyword_query == None %}
+            <a href="?page={{ queryset.previous_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-left"></i></a>
+          {% endif %} 
+
+          {% for num in queryset.paginator.page_range %}
+            {% if queryset.number == num %}
+              {% if queryset.paginator.num_pages != 1 %}
+                <a class="btn btn-sm btn-dark" href="?page={{ num }}">{{ num }}</a>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          
+          {% if queryset.has_next and keyword_query == '' %}
+            <a href="?page={{ queryset.next_page_number }}&title=&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
+          {% endif %}
+
+          {% if queryset.has_next and keyword_query %}
+            <a href="?page={{ queryset.next_page_number }}&title={{keyword_query}}&blog_category={{blog_category_query}}&tags={{tags_query}}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
+          {% endif %}
+
+          {% if queryset.has_next and tags_query == None and blog_category_query == None and keyword_query == None %}
+            <a href="?page={{ queryset.next_page_number }}" class="btn btn-sm btn-outline-dark"><i class="fas fa-angle-right"></i></a>
+          {% endif %} 
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- Masonry Script -->
+<script>
+$('.grid').masonry({
+  itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+  columnWidth: '.grid-sizer',
+  percentPosition: true,
+});
+</script>
 
 {% endblock %}
 
