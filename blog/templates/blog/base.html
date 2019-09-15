@@ -172,21 +172,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Insert Content -->
 
 {% block content %}
+
 {% endblock %}
 
 
 <!-- FOOTER -->
-<footer id="main-footer" class="text-center my-auto py-3">
-  <div class="container">
-    <div class="row">
-      <div class="col my-auto">
-        {% trans "Copyright" %} &copy;
-        <span id="year"></span> What the Blin?!
-      </div>
-    </div>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    {% trans "Copyright" %} &copy;
+      <span id="year"></span> What the Blin?!
   </div>
 </footer>
-</html>
 
 <script>
   // Get the current year for the copyright

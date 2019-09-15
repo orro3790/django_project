@@ -204,6 +204,31 @@
     </div>
   </div>
 
+   <!-- share buttons -->
+  <div class="row justify-content-center pb-4" style="font-size: 1.5rem;">
+    Help support us by sharing!
+  </div>
+  <div class="row justify-content-center">
+      <!-- Twitter share button -->
+      <div class="d-block pr-2">
+      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Check out this place in Moscow called: {{post.title}}! {{post.card_content|truncatechars:125}}" data-hashtags="Moscow #WhatTheBlin #MoscowEats #LifeinRussia" data-show-count="false">
+        Tweet
+      </a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+
+      <!-- VK share button -->
+      <div class="d-inline-block px-2">
+      <script type="text/javascript"><!--
+      document.write(VK.Share.button(false,{type: "custom", text: "<img src=\"https://vk.com/images/share_32.png\" width=\"32\" height=\"32\" />"}));
+      --></script>
+      </div>
+
+      <!-- Facebook share button -->
+      <div class="fb-share-button d-inline-block pl-2" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+  </div>
+  
+
   <!-- Google Maps -->
   {% if post.google_map != 'Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca' %}
     <div class="container text-center mt-5 pb-4">
