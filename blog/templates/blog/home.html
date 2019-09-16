@@ -1,6 +1,18 @@
 {% extends "blog/base.html" %}
 {% block nav_item_home %}active{% endblock nav_item_home %} 
 {% block content %}
+<script>
+// init Masonry, at the top to be loaded first before anything else
+var $grid = $('.grid').masonry({
+  itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    percentPosition: true,
+});
+// layout Masonry after each image loads
+$grid.imagesLoaded().progress( function() {
+  $grid.masonry('layout');
+});
+</script>
 {% load static %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -556,18 +568,7 @@
 
 
 
-<script>
-// init Masonry
-var $grid = $('.grid').masonry({
-  itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-});
-// layout Masonry after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry('layout');
-});
-</script>
+
 
 
 
