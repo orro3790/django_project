@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-15 17:56-0400\n"
+"POT-Creation-Date: 2019-09-16 15:59-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,20 +64,35 @@ msgstr ""
 "b>, чтобы исследовать ее для себя и поделиться тем, что мы узнаем по пути. "
 "Если вам интересно узнать о жизни в Москве, вы приехали в нужное место."
 
-#: .\blog\templates\blog\about.html:47 .\blog\templates\blog\about.html:69
-#: .\blog\templates\blog\about.html:97 .\blog\templates\blog\about.html:119
+#: .\blog\templates\blog\about.html:32
+msgid "Co-owner & Site Developer"
+msgstr "Совладелец и Pазработчик Cайта"
+
+#: .\blog\templates\blog\about.html:32
+msgid "Matt"
+msgstr "Мэтт"
+
+#: .\blog\templates\blog\about.html:59
+msgid "Co-owner"
+msgstr "Совладелец"
+
+#: .\blog\templates\blog\about.html:59
+msgid "Steph"
+msgstr "Стеф"
+
+#: .\blog\templates\blog\about.html:73
 msgid "Email:"
 msgstr "Электронный адрес"
 
-#: .\blog\templates\blog\about.html:136
+#: .\blog\templates\blog\about.html:90
 msgid "Podcast Series"
 msgstr "Серия подкастов"
 
-#: .\blog\templates\blog\about.html:137
+#: .\blog\templates\blog\about.html:91
 msgid "The Adventure Continues"
 msgstr "Больше приключений"
 
-#: .\blog\templates\blog\about.html:139
+#: .\blog\templates\blog\about.html:93
 msgid ""
 "Once a week, we release a new podcast episode where we discuss what it's "
 "really like to live and work in Moscow. We document every part of our lives "
@@ -126,17 +141,13 @@ msgstr "Профиль"
 msgid "Logout"
 msgstr "Выйти"
 
-#: .\blog\templates\blog\base.html:140 .\users\templates\users\login.html:37
+#: .\blog\templates\blog\base.html:140 .\users\templates\users\login.html:51
 msgid "Login"
 msgstr "Войти"
 
 #: .\blog\templates\blog\base.html:147
 msgid "Register"
 msgstr "Список"
-
-#: .\blog\templates\blog\base.html:182
-msgid "Copyright"
-msgstr "Авторские права"
 
 #: .\blog\templates\blog\comment_form.html:14
 #: .\blog\templates\blog\comment_form.html:40
@@ -159,7 +170,6 @@ msgid ""
 "exactly what you're in the mood for, with location pins for every blog. "
 "Learn about life in Moscow by following our weekly blogs!"
 msgstr ""
-
 
 #: .\blog\templates\blog\foodblog_detail.html:110
 msgid "The Good"
@@ -203,12 +213,12 @@ msgstr "Обслуживание"
 msgid "Special Features:"
 msgstr "Особые Характеристики:"
 
-#: .\blog\templates\blog\foodblog_detail.html:839
+#: .\blog\templates\blog\foodblog_detail.html:841
 #: .\blog\templates\blog\life_detail.html:319
 msgid "Add a Comment"
 msgstr "Добавить Комментарий"
 
-#: .\blog\templates\blog\foodblog_detail.html:843
+#: .\blog\templates\blog\foodblog_detail.html:845
 #: .\blog\templates\blog\life_detail.html:323
 msgid "<strong>Login</strong> to add a new comment"
 msgstr "<strong>Войти</strong>, чтобы добавить новый комментарий"
@@ -221,20 +231,20 @@ msgid ""
 "in Moscow by following our weekly blogs and podcast!"
 msgstr ""
 
-#: .\blog\templates\blog\home copy.html:253 .\blog\templates\blog\home.html:258
+#: .\blog\templates\blog\home copy.html:253 .\blog\templates\blog\home.html:257
 msgid "Cafes & Restaurants"
 msgstr "Кафе и Рестораны"
 
-#: .\blog\templates\blog\home copy.html:254 .\blog\templates\blog\home.html:259
+#: .\blog\templates\blog\home copy.html:254 .\blog\templates\blog\home.html:258
 msgid ""
 "Browse a variety of cafes, coffee houses, dessert cafes, and restaurants."
 msgstr "Просматривайте различные кафе, кофейни, десертные кафе и рестораны."
 
-#: .\blog\templates\blog\home copy.html:262 .\blog\templates\blog\home.html:267
+#: .\blog\templates\blog\home copy.html:262 .\blog\templates\blog\home.html:266
 msgid "Search by Features"
 msgstr "Поиск по Характеристикам"
 
-#: .\blog\templates\blog\home copy.html:263 .\blog\templates\blog\home.html:268
+#: .\blog\templates\blog\home copy.html:263 .\blog\templates\blog\home.html:267
 msgid ""
 "Click to Search destinations by ratings, nearest subway station, unique "
 "features, and more."
@@ -242,11 +252,11 @@ msgstr ""
 "Нажмите для поиска мест по рейтингу, ближайшей станции метро, особенным "
 "характеристикам и многому другому."
 
-#: .\blog\templates\blog\home copy.html:269 .\blog\templates\blog\home.html:274
+#: .\blog\templates\blog\home copy.html:269 .\blog\templates\blog\home.html:273
 msgid "View Locations"
 msgstr "Посмотреть Местоположения"
 
-#: .\blog\templates\blog\home copy.html:270 .\blog\templates\blog\home.html:275
+#: .\blog\templates\blog\home copy.html:270 .\blog\templates\blog\home.html:274
 msgid ""
 "Every review contains a location pin. You can also click here to browse the "
 "Tasty Map."
@@ -259,8 +269,8 @@ msgid "Nearest Station:"
 msgstr "Ближайшая станция"
 
 #: .\blog\templates\blog\home copy.html:512
-#: .\blog\templates\blog\life_search.html:515
-#: .\blog\templates\blog\life_search.html:550
+#: .\blog\templates\blog\life_search.html:476
+#: .\blog\templates\blog\life_search.html:511
 msgid "Posted on"
 msgstr "Опубликовано"
 
@@ -292,9 +302,9 @@ msgstr "Теги..."
 msgid "Search"
 msgstr "Поиск"
 
-#: .\blog\templates\blog\life_search.html:349
-#: .\blog\templates\blog\life_search.html:446
-#: .\blog\templates\blog\search.html:439 .\blog\templates\blog\search.html:527
+#: .\blog\templates\blog\life_search.html:347
+#: .\blog\templates\blog\life_search.html:425
+#: .\blog\templates\blog\search.html:440 .\blog\templates\blog\search.html:509
 msgid "Looking for something? Tell us and we'll blog about it for you!"
 msgstr "Ищешь что-то? Сообщите нам, и мы об этом сообщим в блоге!"
 
@@ -338,7 +348,7 @@ msgstr "Рейтинг ≥ ..."
 msgid "Keyword..."
 msgstr "Kлючевое слово..."
 
-#: .\blog\views.py:310 .\blog\views.py:394
+#: .\blog\views.py:327 .\blog\views.py:411
 msgid "Your comment has been successfully posted!"
 msgstr "Ваш комментарий был успешно опубликован!"
 
@@ -1238,7 +1248,6 @@ msgid ""
 "employment in Moscow."
 msgstr ""
 
-
 #: .\classifieds\templates\classifieds\job_list.html:68
 #: .\classifieds\views.py:345
 msgid "Location..."
@@ -1385,28 +1394,28 @@ msgid ""
 "blogs and podcast!"
 msgstr ""
 
-#: .\users\templates\users\login.html:28
+#: .\users\templates\users\login.html:42
 msgid "Log In"
 msgstr "Войти"
 
-#: .\users\templates\users\login.html:42
+#: .\users\templates\users\login.html:56
 msgid "Click <strong>here</strong> to create a new account.</small>"
 msgstr "<strong>Создать новый аккаунт?</strong></small>"
 
-#: .\users\templates\users\login.html:47
+#: .\users\templates\users\login.html:61
 msgid "Forgot your password? Click <strong>here</strong> to reset it.</small>"
 msgstr ""
 "Забыли пароль? Нажмите <strong> здесь </strong>, чтобы сбросить его. </small>"
 
-#: .\users\templates\users\logout.html:20
+#: .\users\templates\users\logout.html:21
 msgid "Logged Out."
 msgstr "Выйти."
 
-#: .\users\templates\users\logout.html:24
+#: .\users\templates\users\logout.html:25
 msgid "Thanks for stopping by!"
 msgstr "Спасибо, что заглянули!"
 
-#: .\users\templates\users\logout.html:28
+#: .\users\templates\users\logout.html:29
 msgid "Click <strong>here</strong> to log in again.</small>"
 msgstr "Нажмите <strong> здесь </strong>, чтобы войти снова. </small>"
 
@@ -1482,7 +1491,6 @@ msgid ""
 "classifieds section, and enable email notifications for new blog releases."
 msgstr ""
 
-
 #: .\users\templates\users\register.html:20
 msgid "Create a New Account"
 msgstr "Создать Новый Аккаунт"
@@ -1503,6 +1511,9 @@ msgstr "Зарегистрироваться"
 msgid "Your account has been created! You are now able to login!"
 msgstr "Ваша учетная запись создана! Теперь вы можете войти!"
 
-#: .\users\views.py:38 .\users\views.py:81
+#: .\users\views.py:42
 msgid "Your account has been updated!"
 msgstr "Ваш аккаунт был обновлен!"
+
+#~ msgid "Copyright"
+#~ msgstr "Авторские права"
