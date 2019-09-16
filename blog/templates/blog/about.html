@@ -28,105 +28,60 @@
       </div>
       <div class="container">
         <!-- Matt's Profile-->
-        <div class="col text-center pt-2 d-none d-md-block">
+        <div class="col text-center pt-2">
+          <a role="button" title='Co-owner & Site Developer'  data-trigger="hover" data-content="Matt" data-toggle="popover">
           <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+          </a>
 
-          <!-- Row of icons -->
-          <div class="d-flex justify-content-center pt-2 pb-0">
-            <div class="p-1">
-              <a href="{{matt.profile.twitter_link}}">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
-            <div class="p-1 pl-3">
-              <a href="{{matt.profile.instagram_link}}">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-            <div class="p-1 pl-3">
-              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-              <i class="fas fa-envelope"></i>
-              </a>
+          <!-- Matt's row of icons -->
+          <div class="about-socials-section">
+            <ul class="about-socials p-0 m-0">
+              <li>
+                <a href="https://twitter.com/whattheblin">
+                  <i class="fab fa-twitter twitter-icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/theblinmachine">
+                  <i class="fab fa-instagram instagram-icon"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://vk.com/id270055926">
+                  <i class="fab fa-vk vk-icon"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <hr class="d-none d-md-block" style="width: 50px;">
+
+          <!-- Steph's Profile -->
+          <a role="button" title='Co-owner'  data-trigger="hover" data-content="Matt" data-toggle="popover">
+          <div class="col text-center py-3">
+            <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+          </a>
+
+            <!-- Steph's row of icons -->
+            <div class="about-socials-section">
+              <ul class="about-socials p-0 m-0">
+                <li>
+                  <a href="https://www.instagram.com/slabelle44">
+                    <i class="fab fa-instagram instagram-icon"></i>
+                  </a>
+                </li>
+                <li>
+                  <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
+                    <i class="fas fa-envelope email-icon"></i>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
-        
-        <hr class="d-none d-md-block" style="width: 50px;">
-
-
-        <!-- Steph's Profile -->
-        <div class="col text-center py-3 d-none d-md-block">
-          <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-          <!-- Row of icons -->
-          <div class="d-flex justify-content-center pt-2 pb-0">
-            <div class="p-1">
-              <a href="{{steph.profile.instagram_link}}">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-            <div class="p-1 pl-3">
-              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-              <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile view, shift the profile pics below the opening paragraph -->
-    <div class="container d-sm-block d-md-none pt-3">
-        <!-- Matt's Profile-->
-        <div class="col text-center d-sm-block d-md-none">
-          <img src='{{matt.profile.image.url}}' class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-          <!-- Row of icons -->
-          <div class="d-flex justify-content-center pt-3">
-            <div class="p-2">
-              <a href="{{matt.profile.twitter_link}}">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
-            <div class="p-2">
-              <a href="{{matt.profile.instagram_link}}">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-            <div class="p-2">
-              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-              <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <hr class="d-sm-block d-md-none" style="width: 65px;">
-
-
-        <!-- Steph's Profile -->
-        <div class="col text-center pb-0 pt-3 d-sm-block d-md-none">
-          <img src='{{steph.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-
-          <!-- Row of icons -->
-          <div class="d-flex justify-content-center pt-3">
-            <div class="p-2">
-              <a href="{{steph.profile.instagram_link}}">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </div>
-            <div class="p-2">
-              <a role="button" title='{% trans "Email:" %}' data-trigger="hover" data-content="contact@whattheblin.com" data-toggle="popover">
-              <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      </div>  
     </div>
   </section>
-
-  </section>
+</section>
 
   <!-- Large Text -->
   <div class="section-b">
@@ -140,8 +95,6 @@
       </div>
     </div>
   </div>
-
-
 
   <!-- Gallery -->
   <section class="section-c">
