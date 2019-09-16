@@ -701,11 +701,6 @@ ul.footer-socials li a:hover i {
 
 /* About Icons */
 /* Footer */
-.about-socials-section {
-  padding-top: 20px;
-  padding-bottom: 20px;
-	text-align: center;
-}
 
 ul.about-socials li {
 	float: none;
@@ -814,6 +809,33 @@ ul.about-socials .email-icon:hover {
 	border-color: #F5A65B;
 }
 
+/* About Youtube Icon */
+ul.about-socials .youtube-icon {
+	width: 36px;
+	height: 36px;
+	line-height: 34px;
+	display: inline-block;
+	border-radius: 50%; /*make the icons into circles! */
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	background: #FF0000;;
+	color: white;
+	border: 1px solid #FF0000;;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+	transition: all 0.2s ease-in-out;
+}
+
+/* About YouTube Icon-hover */
+ul.about-socials .youtube-icon:hover {
+	background: white;
+	color: #FF0000;
+	border-color: transparent;
+}
+
+
 .popover {
   text-align: center;
 }
+
