@@ -97,7 +97,7 @@ msgid ""
 "Once a week, we release a new podcast episode where we discuss what it's "
 "really like to live and work in Moscow. We document every part of our lives "
 "here, starting from the first week we arrived. You can listen to them on our "
-"YouTube channel here."
+"YouTube channel:"
 msgstr ""
 
 #: .\blog\templates\blog\base.html:56
