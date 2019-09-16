@@ -216,7 +216,7 @@ class Job(models.Model):
 
 
     title = models.CharField(max_length=60, help_text=_("This is the title that will be displayed on the job board."), verbose_name=_('Title'))
-    main_image = models.ImageField(default='default_ad.jpg', help_text=_("Upload an image. This image will be displayed beside your ad."), verbose_name=_('Image, Company Logo, or Faceshot'))
+    main_image = models.ImageField(default='default_ad.jpg', help_text=_("Upload an image. This image will be displayed beside your ad."), verbose_name=_('Image or Company Logo'))
     image_2 = models.ImageField(blank=True, default='', help_text=_("Upload a second image (optional)"), verbose_name=_('Image 2'))
     image_3 = models.ImageField(blank=True, default='', help_text=_("Upload a third image (optional)"), verbose_name=_('Image 3'))
     title_of_position = models.CharField(max_length=70, help_text=_("What is the title of the position Ex. 'English teacher'?"), verbose_name=_('Title of Job Position'))

@@ -774,8 +774,8 @@ msgstr ""
 "объявлением."
 
 #: .\classifieds\models.py:219
-msgid "Image, Company Logo, or Faceshot"
-msgstr "Изображение, логотип компании или фотография себя"
+msgid "Image or Company Logo"
+msgstr "Изображение или логотип компании"
 
 #: .\classifieds\models.py:220
 msgid "Upload a second image (optional)"
