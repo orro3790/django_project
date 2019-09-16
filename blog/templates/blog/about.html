@@ -3,6 +3,7 @@
 {% block content %}
 {% load static %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% trans "So much is either unknown, or misunderstood about Russia and its people. We moved to Moscow to explore it for ourselves, and to share the things that we learn along the way. If you're curious about life in Moscow, you came to the right place." as meta_tag %}
 
@@ -29,9 +30,17 @@
       <div class="container">
         <!-- Matt's Profile-->
         <div class="col text-center pt-0">
-          <a role="button" title={% trans 'Co-owner & Site Developer' %} data-trigger="hover" data-content={% trans "Matt" %} data-toggle="popover">
-          <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
-          </a>
+          <!-- Auto translation isn't working for "Co-owner & Site Developer" string, so using an "if" statement here -->
+          {% if LANGUAGE_CODE == 'en' %}
+            <a role="button" title="Co-owner & Site Developer" data-trigger="hover" data-content={% trans "Matt" %} data-toggle="popover">
+              <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+            </a>
+          {% elif LANGUAGE_CODE == 'ru' %}
+            <a role="button" title="Совладелец и Pазработчик Cайта" data-trigger="hover" data-content={% trans "Matt" %} data-toggle="popover">
+              <img src='{{matt.profile.image.url}}' alt="" class="img-fluid rounded-circle comment-img" style="width: 250px; height: 250px;">
+            </a>
+          {% endif %}
+
 
           <!-- Matt's row of icons -->
           <div class="about-socials-section">
