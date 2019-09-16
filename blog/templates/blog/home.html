@@ -1,18 +1,6 @@
 {% extends "blog/base.html" %}
 {% block nav_item_home %}active{% endblock nav_item_home %} 
 {% block content %}
-<script>
-// init Masonry, at the top to be loaded first before anything else
-var $grid = $('.grid').masonry({
-  itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    percentPosition: true,
-});
-// layout Masonry after each image loads
-$grid.imagesLoaded().progress( function() {
-  $grid.masonry('layout');
-});
-</script>
 {% load static %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
@@ -26,7 +14,6 @@ $grid.imagesLoaded().progress( function() {
 <!-- Masonry -->
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="/django_project/blog/static/blog/js/masonry.pkgd.min.js"></script>
-
 
 
 <section id="carousel-section" class="d-md-block d-none">
@@ -566,12 +553,13 @@ $grid.imagesLoaded().progress( function() {
   </div>
 </section>
 
-
-
-
-
-
-
-
+<!-- Masonry Script -->
+<script>
+$('.grid').masonry({
+  itemSelector: '.grid-item', // use a separate class for itemSelector, other than .col-
+  columnWidth: '.grid-sizer',
+  percentPosition: true,
+});
+</script>
 
 {% endblock content %}

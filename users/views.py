@@ -7,7 +7,7 @@ from . models import (
     Profile
 )
 from django.utils.translation import gettext_lazy as _
-
+from django.utils import translation
 
 
 def register(request):
@@ -28,13 +28,17 @@ def profile(request):
     # fetch all ads belonging to the user
     ads = Ad.objects.all()
     job_ads = Job.objects.all()
-    
+
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
+            if request.user.profile.language == 'English':
+                translation.activate('en')
+            if request.user.profile.language == 'Russian':
+                translation.activate('ru')
             messages.success(request, _(f'Your account has been updated!'))
             return redirect('profile')
 
@@ -51,44 +55,3 @@ def profile(request):
     return render(request, 'users/profile.html', context)
 
 
-def LoginLogo(request):
-    model = LoginLogo
-    template_name = 'blog/home.html' #<app>/<model>_<viewtype>.html
-    context_object_name = 'posts'
-    ordering = ['-date_posted']
-    paginate_by = 27
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['carousel'] = CarouselImage.objects.all()
-        return context
-
-
-# Russian views
-
-@login_required
-def russianprofile(request):
-    # fetch all ads belonging to the user
-    ads = Ad.objects.all()
-    job_ads = Job.objects.all()
-    
-    if request.method == 'POST':
-        u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(request, _(f'Your account has been updated!'))
-            return redirect('profile')
-
-    else:
-        u_form = UserUpdateForm(instance=request.user)
-        p_form = ProfileUpdateForm(instance=request.user.profile)
-
-    context = {
-        'u_form': u_form,
-        'p_form': p_form,
-        'ads': ads,
-        'job_ads': job_ads
-    }
-    return render(request, 'users/profile_ru.html', context)

@@ -336,7 +336,7 @@ msgstr "Рейтинг ≥ ..."
 
 #: .\blog\templates\blog\search.html:256
 msgid "Keyword..."
-msgstr "Cодержит..."
+msgstr "Kлючевое слово..."
 
 #: .\blog\views.py:310 .\blog\views.py:394
 msgid "Your comment has been successfully posted!"

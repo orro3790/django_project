@@ -296,12 +296,10 @@
   </div>
 </form>
 
-
 <br>
 
-
+<section id="search-results" style="margin-top: -10px;">
 {% if LANGUAGE_CODE == "en" %}
-
   <!-- Outcome #1: Default view upon first page load -->
   {% if tags_query == None and blog_category_query == None and keyword_query == '' %}
     <div class="container text-center">
@@ -448,6 +446,7 @@
     {% endif %}
   {% endif %}
 {% endif %}
+</section>
 
 <!-- English Cards -->
 {% if LANGUAGE_CODE == 'ru' %}

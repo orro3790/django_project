@@ -226,7 +226,6 @@ a:hover {
 }
 
 #blog-detail-body .view-all {
-  
   font-size: 1.5rem;
 }
 
@@ -457,6 +456,11 @@ a:hover {
 
 #no-search-results i:hover {
   color: #F5A65B;
+}
+
+#search-results hr {
+  width: 30%;
+  margin-bottom: 25px;
 }
 
 .search-sec{

@@ -54,7 +54,7 @@ def AdListView(request):
     language = get_language()
 
     # Default ENGLISH placeholder/values for each field in the HTML template:
-    default_contains = ''
+    default_keyword = ''
     default_category = _('Category...')
     default_role = _('I want to buy / sell...')
     default_price = ''
@@ -74,14 +74,14 @@ def AdListView(request):
         qs = qs.order_by('-date_posted')
 
     # Outcome #2: A user presses submit without any values
-    if category_query == default_category and role_query == default_role and keyword_query == default_contains and price_query == default_price:
+    if category_query == default_category and role_query == default_role and keyword_query == default_keyword and price_query == default_price:
         qs = qs.order_by('-date_posted')
 
     # Outcome #3: Individual field searches and combination searches:
     # Create valid search functions for each field, all of which store results as 'qs', allowing chain filtering:
     
     # Contains:
-    if keyword_query is not None and keyword_query != default_contains:
+    if keyword_query is not None and keyword_query != default_keyword:
         # Search by value
         search_contains = qs.annotate(search=SearchVector('title', 'description', 'item_or_model_names')).filter(search=keyword_query)
         # Search only by: Contains
@@ -340,7 +340,7 @@ def JobListView(request):
     language = get_language()
 
     # Default placeholder/values for each field as written in the HTML template:
-    default_contains = ''
+    default_keyword = ''
     default_salary = ''
     default_location = _('Location...')
     default_position = _('Position Type...')
@@ -362,7 +362,7 @@ def JobListView(request):
     # Create valid search functions for each field, all of which store results back into 'qs', allowing chain filtering:
 
     # Contains:
-    if keyword_query is not None and keyword_query != default_contains:
+    if keyword_query is not None and keyword_query != default_keyword:
         qs = qs.annotate(search=SearchVector('title', 'title_of_position', 'job_description')).filter(search=keyword_query).order_by('-date_posted')
         
     # Location:
