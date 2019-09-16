@@ -206,27 +206,27 @@
           {% if user == ad.author %}
             <span class="text-left" class="py-0">
               <a href="{% url 'ad-update' ad.id %}" class="py-0">
-                <i class="fas fa-edit py-0 " style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
+                <i class="fas fa-edit py-0 pl-2" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
               </a>
               <a href="{% url 'ad-delete' ad.id %}" class="py-0">
-                <i class="fas fa-trash py-0" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
+                <i class="fas fa-trash py-0 pl-1" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
               </a>
             </span>
           {% endif %} 
         </div>
 
         <!-- Mobile View (title, author, icons) -->
-        <div class="col-12 d-sm-block d-md-none py-2">
+        <div class="col-12 d-sm-block d-md-none">
           <span class="text-muted small text-left">
             {{ad.date_posted|date:"M d"}}
           </span>
           {% if user == ad.author %}
             <span class="text-right" style="position:relative; left:80%;">
               <a href="{% url 'ad-update' ad.id %}">
-                <i class="fas fa-edit" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
+                <i class="fas fa-edit pl-2" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
               </a>
               <a href="{% url 'ad-delete' ad.id %}">
-                <i class="fas fa-trash" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
+                <i class="fas fa-trash pl-1" style="color: rgb(245, 91, 91); font-size: 0.75rem;"></i>
               </a>
             </span>
           {% endif %}
