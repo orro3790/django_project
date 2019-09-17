@@ -1,9 +1,11 @@
 html {
     position: relative;
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -16,7 +18,7 @@ body {
   bottom: 0;
   width: 100%;
   font-size: 0.8rem;
-  overflow-x: hidden;
+
 }
 
 /* Control the font for all text-elements */
