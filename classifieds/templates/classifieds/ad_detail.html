@@ -211,15 +211,23 @@
     </div>
   </div>
 
-  <div class="container mt-4 py-4 border" style="width: 450px; border-radius: 15px;">
-    <div class="row">
-      <h4 class="pl-3">
-        {% trans 'Description' %}:
-        <hr class="my-0 pb-1">
-      </h4>
+  <div class="row">
+    <div class="col-md-3 col-sm-1">
+      <!-- Empty spacing -->
     </div>
-    <div class="col">
-      {{ad.description|linebreaks}}
+    <div class="col-md-6 col-sm-10">
+      <div class="container mt-4 py-4 border" style="border-radius: 15px;">
+        <h4 class="pl-3">
+          {% trans 'Description' %}:
+          <hr class="my-0 pb-1">
+        </h4>
+        <div class="container">
+          {{ad.description|linebreaks}}
+        </div>
+        </div>
+      </div>
+    <div class="col-3">
+      <!-- Empty Spacing -->
     </div>
   </div>
 

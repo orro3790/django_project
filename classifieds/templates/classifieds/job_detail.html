@@ -94,131 +94,138 @@
     <div class="col-3">
       <!-- Empty padding for large view -->
     </div>
-  <div class="col-lg-6" style="width: 450px;">
-    <table class="table table-hover">
-      <tbody style="width: 40%;">
-        {% if ad.company_name %}
+    <div class="col-lg-6" style="width: 450px;">
+      <table class="table table-hover">
+        <tbody style="width: 40%;">
+          {% if ad.company_name %}
+            <tr>
+              <td>{% trans "Company Name" %}</td>
+              <td></td>
+              <td>{{ad.company_name}}</td>
+            </tr>
+          {% endif %}
+          {% if ad.company_website %}
+            <tr>
+              <td>{% trans "Company Website" %}</td>
+              <td></td>
+              <td>
+                <a href="{{ad.company_website}}" style="color:royalblue;">{{ad.company_website}}</a>
+              </td>
+            </tr>
+          {% endif %}
           <tr>
-            <td>{% trans "Company Name" %}</td>
+            <td>{% trans "Position" %}</td>
             <td></td>
-            <td>{{ad.company_name}}</td>
+            <td>{{ad.title_of_position}}</td> 
           </tr>
-        {% endif %}
-        {% if ad.company_website %}
           <tr>
-            <td>{% trans "Company Website" %}</td>
+            <td>{% trans "Position Type" %}</td>
             <td></td>
             <td>
-              <a href="{{ad.company_website}}" style="color:royalblue;">{{ad.company_website}}</a>
+              {% if ad.position_type == "Full-time" %}
+                {% trans "Full-time" %}
+              {% elif ad.position_type == "Part-time" %}
+                {% trans "Part-time" %}
+              {% elif ad.position_type == "Volunteer" %}
+                {% trans "Volunteer" %}
+              {% endif %}
+            </td>                
+          </tr>
+          <tr>
+            <td>{% trans "Salary" %}</td>
+            <td></td>
+            <td>
+              {% if ad.position_type == "Volunteer" or ad.salary == 0 %}
+                <i class="fas fa-times" style="color: red;"></i>
+              {% else %}
+                {{ad.salary|intcomma}}
+              {% endif %}
             </td>
           </tr>
-        {% endif %}
-        <tr>
-          <td>{% trans "Position" %}</td>
-          <td></td>
-          <td>{{ad.title_of_position}}</td> 
-        </tr>
-        <tr>
-          <td>{% trans "Position Type" %}</td>
-          <td></td>
-          <td>
-            {% if ad.position_type == "Full-time" %}
-              {% trans "Full-time" %}
-            {% elif ad.position_type == "Part-time" %}
-              {% trans "Part-time" %}
-            {% elif ad.position_type == "Volunteer" %}
-              {% trans "Volunteer" %}
-            {% endif %}
-          </td>                
-        </tr>
-        <tr>
-          <td>{% trans "Salary" %}</td>
-          <td></td>
-          <td>
-            {% if ad.position_type == "Volunteer" or ad.salary == 0 %}
-              <i class="fas fa-times" style="color: red;"></i>
-            {% else %}
-              {{ad.salary|intcomma}}
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-          <td>{% trans "Experience" %}</td>
-          <td></td>
-          <td>
-            {% if ad.experience == "0-1 year" %}
-              {% trans "o-1 year" %}
-            {% elif ad.experience == "1-2 years" %}
-              {% trans "1-2 years" %}
-            {% elif ad.experience == "2-3 years" %}
-              {% trans "2-3 years" %}
-            {% elif ad.experience == "3-4 years" %}
-              {% trans "3-4 years" %}
-            {% elif ad.experience == "4-5 years" %}
-              {% trans "4-5 years" %}
-            {% elif ad.experience == "5+ years" %}
-              {% trans "5+ years" %}
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-          <td>{% trans "Degree Required" %}</td>
-          <td></td>
-          <td>
-            {% if ad.degree_required == True %}
-              <i class="fas fa-check" style="color: seagreen;"></i>
-            {% else %}
-              <i class="fas fa-times" style="color: red;"></i>
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-          <td>{% trans "Location" %}</td>
-          <td></td>
-          <td>{{ad.location}}</td>
-        </tr>
-        <tr>
-          <td>{% trans "Involves Travel" %}</td>
-          <td></td>
-          <td>
-            {% if ad.involves_travel == True %}
-              <i class="fas fa-check" style="color: seagreen;"></i>
-            {% else %}
-              <i class="fas fa-times" style="color: red;"></i>
-            {% endif %}
-          </td>
-        </tr>
-        <tr>
-          <td>{% trans "Date Posted" %}</td>
-          <td></td>
-          <td>{{ad.date_posted|date:"m/d/Y"}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          <tr>
+            <td>{% trans "Experience" %}</td>
+            <td></td>
+            <td>
+              {% if ad.experience == "0-1 year" %}
+                {% trans "o-1 year" %}
+              {% elif ad.experience == "1-2 years" %}
+                {% trans "1-2 years" %}
+              {% elif ad.experience == "2-3 years" %}
+                {% trans "2-3 years" %}
+              {% elif ad.experience == "3-4 years" %}
+                {% trans "3-4 years" %}
+              {% elif ad.experience == "4-5 years" %}
+                {% trans "4-5 years" %}
+              {% elif ad.experience == "5+ years" %}
+                {% trans "5+ years" %}
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>{% trans "Degree Required" %}</td>
+            <td></td>
+            <td>
+              {% if ad.degree_required == True %}
+                <i class="fas fa-check" style="color: seagreen;"></i>
+              {% else %}
+                <i class="fas fa-times" style="color: red;"></i>
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>{% trans "Location" %}</td>
+            <td></td>
+            <td>{{ad.location}}</td>
+          </tr>
+          <tr>
+            <td>{% trans "Involves Travel" %}</td>
+            <td></td>
+            <td>
+              {% if ad.involves_travel == True %}
+                <i class="fas fa-check" style="color: seagreen;"></i>
+              {% else %}
+                <i class="fas fa-times" style="color: red;"></i>
+              {% endif %}
+            </td>
+          </tr>
+          <tr>
+            <td>{% trans "Date Posted" %}</td>
+            <td></td>
+            <td>{{ad.date_posted|date:"m/d/Y"}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="col-3">
       <!-- Empty padding for large view -->
     </div>
   </div>
 
-  <div class="container mt-4 py-4 border" style="width: 450px; border-radius: 15px;">
-    <div class="row">
-      <h4 class="pl-3">
-        {% trans 'Description' %}:
-        <hr class="my-0 pb-1">
-      </h4>
+  <div class="row">
+    <div class="col-md-3 col-sm-1">
+      <!-- Empty spacing -->
     </div>
-    <div class="col">
-      {{ad.job_description|linebreaks}}
+    <div class="col-md-6 col-sm-10">
+      <div class="container mt-4 py-4 border" style="border-radius: 15px;">
+        <h4 class="pl-3">
+          {% trans 'Description' %}:
+          <hr class="my-0 pb-1">
+        </h4>
+        <div class="container">
+          {{ad.job_description|linebreaks}}
+        </div>
+        </div>
+      </div>
+    <div class="col-3">
+      <!-- Empty Spacing -->
     </div>
   </div>
 
   {% if user != ad.author %}
-    <div class="row">
-      <div class="col text-center pt-4 pb-5">
-        <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-sm">{% trans "I'm interested!" %}</a>
-      </div>
+    <div class="container text-center pt-4 pb-5">
+      <a href="{% url 'send-email' ad.id %}" class="btn btn-primary btn-sm">{% trans "I'm interested!" %}</a>
     </div>
+
   {% elif user == ad.author %}
     <div class="row">
       <div class="col-6 text-right pt-4 pb-5">
@@ -230,7 +237,7 @@
     </div>
   {% endif %}
 </div>
-
+</div>
 
 
 {% endblock content %}
