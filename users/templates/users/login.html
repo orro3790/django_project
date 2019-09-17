@@ -11,19 +11,6 @@
   <meta name="description" content={{meta_tag}}>
 </head>
 
-<div>
-  {% if user.is_authenticated %}
-    {% if user.profile.language == 'Russian' %}
-      <script>
-        document.langselect.language.value='ru'; document.langselect.submit();
-      </script>
-    {% elif user.profile.language == 'English' %}
-      <script>
-        document.langselect.language.value='en'; document.langselect.submit();
-      </script>
-    {% endif %}
-  {% endif %}
-</div>
 
 <section id="login-logout" style="min-height: 100vh; vertical-align: middle;">
   
