@@ -1304,8 +1304,8 @@ msgstr ""
 "Изображения будут изменены до 150x150 пикселей!"
 
 #: .\users\models.py:19
-msgid "image"
-msgstr "образ"
+msgid "Profile Image"
+msgstr "Oбраз"
 
 #: .\users\models.py:20
 msgid ""
@@ -1316,8 +1316,8 @@ msgstr ""
 "разрешить людям отвечать на ваши объявления через ВКонтакте."
 
 #: .\users\models.py:20
-msgid "vk_link"
-msgstr "ссылка на ВКонтакте"
+msgid "Vk Link"
+msgstr "Cсылка на ВКонтакте"
 
 #: .\users\models.py:21
 msgid ""
@@ -1328,8 +1328,8 @@ msgstr ""
 "разрешить людям отвечать на ваши объявления через твиттер."
 
 #: .\users\models.py:21
-msgid "twitter_link"
-msgstr "ссылка на твиттер"
+msgid "Twitter Link"
+msgstr "Cсылка на твиттер"
 
 #: .\users\models.py:22
 msgid ""
@@ -1340,8 +1340,8 @@ msgstr ""
 "включить людей отвечать на ваши объявления через инстаграм"
 
 #: .\users\models.py:22
-msgid "instagram_link"
-msgstr "instagram_контакт"
+msgid "Instagram Link"
+msgstr "Instagram контакт"
 
 #: .\users\models.py:23
 msgid ""
@@ -1352,15 +1352,15 @@ msgstr ""
 "разрешить людям отвечать на ваши объявления через Facebook"
 
 #: .\users\models.py:23
-msgid "facebook_link"
-msgstr "facebook_контакт"
+msgid "Facebook link"
+msgstr "Facebook контакт"
 
 #: .\users\models.py:24
 msgid "(Blogs are written in English first.)"
 msgstr "(Блоги пишутся на английском языке: сперва.)"
 
 #: .\users\models.py:24
-msgid "language"
+msgid "Language"
 msgstr "язык"
 
 #: .\users\models.py:25
@@ -1372,8 +1372,8 @@ msgstr ""
 "поста в блоге о продуктах питания? Опубликованы?"
 
 #: .\users\models.py:25
-msgid "subscribe_to_food_blogs"
-msgstr "подписаться_на_блоги_о_еде"
+msgid "Subscribe to Food Blogs"
+msgstr "подписаться на блоги о еде"
 
 #: .\users\models.py:26
 msgid ""
@@ -1384,8 +1384,8 @@ msgstr ""
 "поста в блоге Жизнь в Москве?"
 
 #: .\users\models.py:26
-msgid "subscribe_to_Life_in_Moscow_blogs"
-msgstr "подписаться_на_блог_жизнь_в_Москве"
+msgid "Subscribe to Life in Moscow blogs"
+msgstr "подписаться на блог жизнь в Москве"
 
 #: .\users\templates\users\login.html:8
 msgid ""
