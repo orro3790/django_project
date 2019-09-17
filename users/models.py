@@ -22,7 +22,7 @@ class Profile(models.Model):
     instagram_link = models.CharField(max_length=150, help_text=_("Links your instagram URL to your comments. You can optionally enable people to respond to your classified ads, via instagram"), default="https://www.instagram.com", blank=True, verbose_name=_('Instagram Link'))
     facebook_link = models.CharField(max_length=150, help_text=_("Links your facebook URL to your comments. You can optionally enable people to respond to your classified ads, via facebook"), default="https://www.facebook.com", blank=True, verbose_name=_('Facebook Link'))
     language = models.CharField(max_length=30, choices=LANGUAGE, default=ENGLISH, help_text=_("(Blogs are written in English first.)"), verbose_name=_('Language'))
-    subscribe_to_food_blogs = models.BooleanField(default=True, help_text=_('Do you wish to be notified with an email when a new food blog post is published?'), verbose_name=_('Subscribe to food blogs'))
+    subscribe_to_food_blogs = models.BooleanField(default=True, help_text=_('Do you wish to be notified with an email when a new food blog post is published?'), verbose_name=_('Subscribe to Food Blogs'))
     subscribe_to_Life_in_Moscow_blogs = models.BooleanField(default=True, help_text=_('Do you wish to be notified with an email when a new Life in Moscow blog is published?'), verbose_name=_('Subscribe to Life in Moscow blogs'))
 
     def __str__(self):

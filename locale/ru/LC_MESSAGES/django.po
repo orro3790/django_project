@@ -1352,7 +1352,7 @@ msgstr ""
 "разрешить людям отвечать на ваши объявления через Facebook"
 
 #: .\users\models.py:23
-msgid "Facebook link"
+msgid "Facebook Link"
 msgstr "Facebook контакт"
 
 #: .\users\models.py:24
