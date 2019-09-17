@@ -338,6 +338,7 @@ class LifeBlog(models.Model):
     snapshot_4_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 4.')
     snapshot_5 = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots')
     snapshot_5_B = models.ImageField(blank=True, default='', upload_to='life_blog_snapshots', help_text='This is an optional image, placed beside snapshot 5.')
+    twitter_card_image = models.ImageField(blank=True, default='', upload_to='twitter_card_images', help_text='This is the image that will be displayed on twitter cards (1200 x 628).')
 
     # Russian fields
     title_russian = models.CharField(max_length=100, blank=True)

@@ -4,7 +4,30 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
-<link href="https://fonts.googleapis.com/css?family=Unica+One&display=swap" rel="stylesheet">
+<head>
+  <meta name="description" content={{meta_tag}} />
+  <!-- Twitter card construction -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@whattheblin" />
+  <meta name="twitter:creator" content="@Matt" />
+  <meta property="og:title" content="Check out this place in Moscow: {{post.title}}" />
+  <meta property="og:type"  content="website" />
+  <meta property="og:description" content="{{post.card_content|truncatechars:125}}" />
+  <meta property ="og:image"  content="https://www.whattheblin.com{{post.card_image.url}}" />
+  <meta property="og:url" content="https://www.whattheblin.com{{request.get_full_path}}" />
+  <!-- VK Share -->
+  <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+</head>
+
 
 <!-- In case someone forces the /ru/ URL for the post, before a translation is out -->
 {% if LANGUAGE_CODE == 'ru' and post.publish_translated_blog == False %}
