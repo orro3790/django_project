@@ -1,9 +1,16 @@
 html {
     position: relative;
     overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+#entire-life-search-template {
+  max-width: 100%;
   overflow-x: hidden;
 }
 
