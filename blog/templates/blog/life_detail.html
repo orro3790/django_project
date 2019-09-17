@@ -69,15 +69,17 @@
 
   <!-- Blog Start -->
   <section id="blog-detail-body">
-  <div class="container pb-5">
-    {% if LANGUAGE_CODE == "en" %}
-      {{ post.paragraph_1|linebreaksbr }}
-    {% elif LANGUAGE_CODE == "ru" %}
-      {{ post.paragraph_1_russian|linebreaksbr }}
-    {% endif %}
-  </div>
+    {% if post.paragraph_1 or post.paragraph_1_russian %}
+    <div class="container pb-5">
+      {% if LANGUAGE_CODE == "en" %}
+        {{ post.paragraph_1|linebreaksbr }}
+      {% elif LANGUAGE_CODE == "ru" %}
+        {{ post.paragraph_1_russian|linebreaksbr }}
+      {% endif %}
+    </div>
+  {% endif %}
 
-  <div>
+  {% if post.snapshot_1 or post.snapshot_1_B %}
     <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_1 and post.snapshot_1_B %}
@@ -94,9 +96,9 @@
         {% endif %}
       </div>
     </div>
-  </div>
+  {% endif %}
 
-  <div>
+  {% if post.paragraph_2 or post.paragraph_2_russian %}
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
         {{ post.paragraph_2|linebreaksbr }}
@@ -104,7 +106,9 @@
         {{ post.paragraph_2_russian|linebreaksbr }}
       {% endif %}
     </div>
+  {% endif %}
 
+  {% if post.snapshot_2 or post.snapshot_2_B %}
     <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_2 and post.snapshot_2_B %}
@@ -121,9 +125,9 @@
         {% endif %}
       </div>
     </div>
-  </div>
+  {% endif %}
 
-  <div>
+  {% if post.paragraph_3 or post.paragraph_3_russian %}
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
         {{ post.paragraph_3|linebreaksbr }}
@@ -131,7 +135,9 @@
         {{ post.paragraph_3_russian|linebreaksbr }}
       {% endif %}
     </div>
+  {% endif %}
 
+  {% if post.snapshot_3 or post.snapshot_3_B %}
     <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_3 and post.snapshot_3_B %}
@@ -148,9 +154,10 @@
         {% endif %}
       </div>
     </div>
-  </div>
+  {% endif %}
 
-  <div>
+
+  {% if post.paragraph_4 or post.paragraph_4_russian %}
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
         {{ post.paragraph_4|linebreaksbr }}
@@ -158,7 +165,9 @@
         {{ post.paragraph_4_russian|linebreaksbr }}
       {% endif %}
     </div>
+  {% endif %}
 
+  {% if post.snapshot_4 or post.snapshot_4_B %}
     <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_4 and post.snapshot_4_B %}
@@ -176,8 +185,9 @@
       </div>
     </div>
   </div>
+  {% endif %}
 
-  <div>
+  {% if post.paragraph_5 or post.paragraph_5_russian %}
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
         {{ post.paragraph_5|linebreaksbr }}
@@ -185,7 +195,9 @@
         {{ post.paragraph_5_russian|linebreaksbr }}
       {% endif %}
     </div>
+  {% endif %}
 
+  {% if post.snapshot_5 or post.snapshot_5_B %}
     <div class="container text-center pb-5">
       <div class="row">
         {% if post.snapshot_5 and post.snapshot_5_B %}
@@ -202,7 +214,8 @@
         {% endif %}
       </div>
     </div>
-  </div>
+  {% endif %}
+
 
    <!-- share buttons -->
   <div class="row justify-content-center pb-4" style="font-size: 1.5rem;">
