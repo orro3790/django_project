@@ -217,6 +217,10 @@ a:hover {
 }
 
 
+#blog-detail-body a {
+  color: #1DA1F2;
+}
+
 #blog-detail-body .card:hover {
   border-color: #F5A65B;
   border-width: 1px;
