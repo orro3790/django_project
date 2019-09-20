@@ -21,6 +21,7 @@ from .models import (
   LifeBlogSearchBanner,
   AboutUsBanner,
   FoodMap,
+  ThingsWeLove,
   # Russian Models
   RussianStoreType,
   RussianStation,
@@ -98,6 +99,7 @@ admin.site.register(FoodSearchBanner)
 admin.site.register(LifeBlogSearchBanner)
 admin.site.register(AboutUsBanner)
 admin.site.register(FoodMap)
+admin.site.register(ThingsWeLove)
 admin.site.register(RussianStation)
 admin.site.register(RussianStoreType)
 admin.site.register(RussianSpecialFeature)

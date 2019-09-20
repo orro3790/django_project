@@ -562,3 +562,19 @@ class FoodMap(models.Model):
     def __str__(self):
         return self.link
 
+class ThingsWeLove(models.Model):
+
+    title = models.CharField(max_length=300)
+    subtitle = models.CharField(max_length=300, help_text="Accompanying title, ex: Favorite Cafe, Coolest Station, Best Park")
+    image = models.ImageField(blank=False, help_text='The image should be (598 x 468).', upload_to='things_we_love', default='')
+    paragraph = models.TextField(default='', help_text="This is the small paragraph that will be shown beside the image.", max_length=400)
+    link = models.CharField(blank=True, max_length=200, help_text='If applicable, attach a link.')
+    address = models.CharField(max_length=200)
+    
+
+    class Meta:
+        # Display the plural form correctly in the admin panel
+        verbose_name_plural = "Things We Love"
+
+    def __str__(self):
+        return self.title

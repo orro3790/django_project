@@ -33,6 +33,7 @@ from .models import (
     AboutUsBanner,
     FoodMap,
     Profile,
+    ThingsWeLove,
     # Russian models
     RussianBlogCategory,
     RussianTag,
@@ -352,6 +353,19 @@ class MapView(TemplateView):
         # Query the map model to grab the url
         map_query = FoodMap.objects.all()
         context['map'] = map_query
+        return context
+
+
+class ThingsWeLoveView(TemplateView):
+    template_name = "blog/things_we_love.html"
+
+    # Add map url context
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super().get_context_data(**kwargs)
+        # Query the map model to grab the url
+        things_we_love = ThingsWeLove.objects.all().order_by('pk')
+        context['things_we_love'] = things_we_love
         return context
 
 

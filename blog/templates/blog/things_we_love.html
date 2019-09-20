@@ -1,0 +1,70 @@
+{% extends "blog/base.html" %}
+{% block nav_item_about %}active{% endblock nav_item_about %} 
+{% block content %}
+{% load static %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<head>
+  <meta description="We love Moscow! Here's a list of things we at What the Blin support and love in Moscow.">
+</head>
+
+<section id="thingswelove">
+
+{% for post in things_we_love %}
+  <div class="wrapper">
+    <div class="box box1">
+      <!-- Empty column -->
+    </div>
+    <div class="box box2">
+      <div class="div badge-area">
+
+        <!-- Website Link -->
+        {% if post.link != '' %}
+          <div class="badge website-badge badge-light d-block">
+            <i class="fas fa-link"></i>
+              {{ post.link|urlize }}
+          </div>
+        {% endif%}
+        <!-- Address Link -->
+        <div class="badge location-badge badge-light d-block">
+          <i class="fas fa-map-marker-alt"></i>
+          {{ post.address }}
+        </div>
+
+      </div>
+
+      <div class="nested-box2">
+        <!-- Title -->
+        <div class="box-title container-fluid">
+          <h5 class="mb-0">
+            {{ post.subtitle }}
+          </h5>
+          {{ post.title }}
+        </div>
+        <!-- Photo -->
+        <div class="container-fluid">
+          <img class="box2-photo" src={{post.image.url}}>
+        </div>
+      </div>
+    </div>
+    <div class="box box3">
+      <div class="nested-box3">
+        <div class="box-number">
+          {{ post.id|stringformat:"02d" }}
+          <hr>
+        </div> 
+        <div class="box-blurb">
+          <!-- Blurb -->
+          {{ post.paragraph }}
+        </div>
+      </div>
+    </div>
+    <div class="box box4">
+      <!-- Empty column -->
+    </div>
+  </div>
+{% endfor %}
+
+</section>
+{% endblock content %}
