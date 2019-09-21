@@ -271,12 +271,7 @@
   <div class="row">
     <div class="col-md-2">
       <div class="input-group">
-        <input class="form-control form-control-sm border-right-0 border" type="search" name="keyword" placeholder="Keyword..." />
-          <span class="input-group-append">
-            <div class="input-group-text ">
-              <i class="fa fa-search"></i>
-            </div>
-          </span> 
+        <input class="form-control form-control-sm border" type="search" name="keyword" placeholder="Keyword..." /> 
       </div>
     </div>
 <!-- Search by store type -->
@@ -316,7 +311,7 @@
         </select>
     </div>
     <!-- Search by overall rating -->
-    <div class="col-md-2 pb-3">
+    <div class="col-md-2">
         <select id="overall_rating" class="custom-select custom-select-sm" name="overall_rating">
           <option selected>Rating ≥ ...</option>
           {% for rating in overall_rating %}
@@ -325,7 +320,7 @@
         </select>
     </div>
 
-    <div class="container text-center py-2">
+    <div class="container text-center py-2" style="height: 100px;" >
       <!-- Search button -->
       <button type="submit" class="btn-search-mobile" value="Filter">
         <i class="fas fa-search"></i>
