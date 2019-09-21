@@ -35,7 +35,7 @@
                 {% if LANGUAGE_CODE == 'en' %}
                   <a href="{{ image.link }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
                       </h4>
@@ -47,7 +47,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -66,7 +66,7 @@
                 {% if LANGUAGE_CODE == 'en' %}
                   <a href="{{ image.link }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
                       </h4>
@@ -78,7 +78,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -97,10 +97,10 @@
                 {% if LANGUAGE_CODE == 'en' %}
                   <a href="{{ image.link }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
-                      </h4>
+                      </h4 >
                       <p>
                         {{ image.caption }}
                       </p>
@@ -109,7 +109,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -136,98 +136,87 @@
 </section>
 
 <!-- Search Section Starts -->
-<section id="search-fields">
-  <div class="w-100 search-sec-life-blog d-md-block d-none">
-    <form method="GET" action=".">
-      <div class="container">
-        <!-- Search by title: -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="form-group my-auto">
-                <div class="input-group">
-                  <input class="form-control form-control-sm border-right-0 border" type="search" name="keyword" placeholder="Keyword..."
-                  value={% if keyword_query %}
-                      {{keyword_query}}
-                    {% else %}
-                      ""
-                    {% endif %}/>
-                    <span class="input-group-append">
-                      <div class="input-group-text">
-                        <i class="fa fa-search"></i>
-                      </div>
-                    </span> 
-                </div>
-            </div>
-          </div>
-          
-          <!-- Search by blog type -->
-          <div class="col-3 my-auto">
-            <select id="blog_category" class="custom-select custom-select-sm" name="blog_category">
-              <option selected>
-                {% if blog_category_query %}
-                  {{ blog_category_query }}
-                {% else %}
-                  {% trans "Category..." %}
-                {% endif %}
-              </option>
-              {% if LANGUAGE_CODE == "en" %}
-                {% for type in blog_category %}
-                  <option value="{{ type }}">
-                    {{ type }}
-                  </option>
-                {% endfor %}
-              {% elif LANGUAGE_CODE == "ru" %}
-                {% for type in blog_category_russian %}
-                  <option value="{{ type }}">
-                    {{ type }}
-                  </option>
-                {% endfor %}
-              {% endif %}
-            </select>
-          </div>
+<section id="search-fields" class="d-none d-md-flex">
+  <form class="justify-content-center align-items-center" style="width: 600px;">
+    <div class="inner-form">
 
-          <!-- Search by tags -->
-          <div class="col-3 my-auto">
-            <select id="tags" class="custom-select custom-select-sm" name="tags">
-              <option selected>
-                {% if tags_query %}
-                  {{ tags_query }}
-                {% else %}
-                  {% trans "Tags..." %}
-                {% endif %}
-              </option>
-              {% if LANGUAGE_CODE == "en" %}
-                {% for tag in tags %}
-                  <option value="{{ tag }}">
-                    {{ tag }}
-                  </option>
-                {% endfor %}
-              {% elif LANGUAGE_CODE == "ru" %}
-                {% for tag in tags_russian %}
-                  <option value="{{ tag }}">
-                    {{ tag }}
-                  </option>
-                {% endfor %}
-              {% endif %}
-            </select>
-          </div>
-          <div class="col-md-3 text-center my-auto">
-            <button type="submit" class="btn btn-sm btn-dark" value="Filter">
-              {% trans "Search" %}
-            </button>
-            <span class="pl-2 my-auto">
-              <a href="{% url 'life-blog-search' %}" class="btn btn-sm btn-danger justify-content-center align-items-center" role="button">
-                <i class="fas fa-history primary"></i>
-              </a>
-            </span>
-          </div>
-        </div>
+      <!-- Search by keyword -->
+      <div class="input-field first-wrap">
+        <input type="text" name="keyword" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                {{keyword_query}}
+              {% else %}
+                ""
+              {% endif %}/>
       </div>
-    </form>
-  </div>
+      
+      <!-- Search by blog type -->
+      <select class="input-field middle-wrap" id="blog_category" name="blog_category">
+        <option selected>
+          {% if blog_category_query %}
+            {{ blog_category_query }}
+          {% else %}
+            {% trans "Category..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == "en" %}
+          {% for type in blog_category %}
+            <option value="{{ type }}">
+              {{ type }}
+            </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {% for type in blog_category_russian %}
+            <option value="{{ type }}">
+              {{ type }}
+            </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+            
+
+      <!-- Search by tags -->
+      <select id="tags" class="input-field last-wrap" name="tags">
+        <option selected>
+          {% if tags_query %}
+            {{ tags_query }}
+          {% else %}
+            {% trans "Tags..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == "en" %}
+          {% for tag in tags %}
+            <option value="{{ tag }}">
+              {{ tag }}
+            </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == "ru" %}
+          {% for tag in tags_russian %}
+            <option value="{{ tag }}">
+              {{ tag }}
+            </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+
+      <!-- Search button -->
+      <div class="input-field search-button-wrap">
+        <button type="submit" class="btn-search" value="Filter">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <!-- Reset button -->
+      <div class="input-field reset-button-wrap">
+        <button type="button" class="btn-reset" onclick="window.location.href='{% url 'life-blog-search' %}'">
+          <i class="fas fa-undo"></i>
+        </button>
+      </div>
+      
+    </div> <!-- inner-form ends -->
+  </form>
 </section>
 
-<!-- Mobile View -->
+<!-- Search Section Mobile View -->
 <form method="GET" action="." class="d-md-none d-sm-block pt-3">
   <div class="container">
     <div class="row">
@@ -285,23 +274,24 @@
           {% endif %}
         </select>
       </div>
-      <div class="col-md-3 text-center pt-3">
-        <button type="submit" class="btn btn-sm  btn-dark" value="Filter">
-          {% trans "Search" %}
+      
+      <div class="container text-center py-2">
+        <!-- Search button -->
+        <button type="submit" class="btn-search-mobile" value="Filter">
+          <i class="fas fa-search"></i>
         </button>
-        <span class="pl-2">
-          <a href="{% url 'life-blog-search' %}" class="btn btn-sm btn-danger" role="button">
-            <i class="fas fa-history primary"></i>
-          </a>
-        </span>
+
+        <!-- Reset button -->
+        <button type="button" class="btn-reset-mobile" onclick="window.location.href='{% url 'life-blog-search' %}'">
+          <i class="fas fa-undo"></i>
+        </button>
       </div>
+
     </div>
   </div>
 </form>
 
-<br>
-
-<section id="search-results" style="margin-top: -10px;">
+<section id="search-results-text">
 {% if LANGUAGE_CODE == "en" %}
   <!-- Outcome #1: Default view upon first page load -->
   {% if tags_query == None and blog_category_query == None and keyword_query == '' %}
@@ -345,7 +335,7 @@
     <!-- If there are no results, show this additional container -->
     {% if queryset.paginator.count == 0 %}
       <section id="no-search-results">
-        <div class="container text-center pt-3">
+        <div class="container text-center">
           <h5>
             {% trans "Looking for something? Tell us and we'll blog about it for you!" %}
           </h5>
@@ -408,7 +398,7 @@
 
     <!-- If there are no results, show this additional container -->
     {% if queryset.paginator.count == 0 %}
-      <div class="container text-center pt-3">
+      <div class="container text-center">
         <h5>
           {% trans "Looking for something? Tell us and we'll blog about it for you!" %}
         </h5>
@@ -421,9 +411,9 @@
 {% endif %}
 </section>
 
-<!-- English Cards -->
+<!-- Russian Cards -->
 {% if LANGUAGE_CODE == 'ru' %}
-  <div class="container-fluid" style="width: 90%;">
+  <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
     <div class="grid">
       <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
       {% for post in queryset %}
@@ -456,9 +446,9 @@
   </div>
 {% endif %}
 
-<!-- Russian Cards -->
+<!-- English Cards -->
 {% if LANGUAGE_CODE == 'en' %}
-  <div class="container-fluid" style="width: 90%;">
+  <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
     <div class="grid">
       <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
       {% for post in queryset %}

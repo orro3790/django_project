@@ -31,9 +31,9 @@
             {% for image in carousel_images %}
               {% if image.slide_number == 'First' %}
                 {% if LANGUAGE_CODE == 'en' %}
-                  <a href="{{ image.link }}" class="stretched-link">
+                  <a href="{{ image.link }}" class="stretched-link" >
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
                       </h4>
@@ -45,7 +45,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -64,7 +64,7 @@
                 {% if LANGUAGE_CODE == 'en' %}
                   <a href="{{ image.link }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
                       </h4>
@@ -76,7 +76,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -95,7 +95,7 @@
                 {% if LANGUAGE_CODE == 'en' %}
                   <a href="{{ image.link }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title }}
                       </h4>
@@ -107,7 +107,7 @@
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <a href="{{ image.link_russian }}" class="stretched-link">
                     <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-                    <div class="carousel-caption carousel-caption-center d-lg-block d-none">
+                    <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
                       <h4>
                         {{ image.title_russian }}
                       </h4>
@@ -133,159 +133,140 @@
   </div>
 </section>
 
-<!-- Search by store type-->
-<section id="search-fields">
-<div class="w-100 search-sec d-lg-block d-none">
-  <form method="GET" action=".">
-    <div class="container">
+<!-- Search Section Starts -->
+<section id="search-fields" class="d-none d-md-flex">
+  <form class="justify-content-center align-items-center">
+    <div class="inner-form">
+
+      <!-- Search by keyword -->
+      <div class="input-field first-wrap">
+        <input type="text" name="keyword" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                {{keyword_query}}
+              {% else %}
+                ""
+              {% endif %}/>
+      </div>
+      
       <!-- Search by store type -->
-      <div class="row">
-        <div class="col-md-1"></div>
-          <div class="col-md-2 my-auto">
-              <select id="store_type" class="custom-select custom-select-sm custom-select custom-select-sm-sm" name="store_type">
-                <option selected>
-                  {% if store_type_query %}
-                    {{ store_type_query }}
-                  {% else %}
-                    {% trans "Type..." %}
-                  {% endif %}
-                </option>
-                {% if LANGUAGE_CODE == 'en' %}
-                  {% for type in store_type %}
-                    <option value="{{ type }}"> {{ type }} </option>
-                  {% endfor %}
-                {% elif LANGUAGE_CODE == 'ru' %}
-                  {% for type in store_type_russian %}
-                    <option value="{{ type }}"> {{ type }} </option>
-                  {% endfor %}
-                {% endif %}
-              </select>
-          </div>
-          <!-- Search by special feature -->
-          <div class="col-md-2 my-auto">
-            <select id="special_feature" class="custom-select custom-select-sm" name="special_feature">
-              <option selected>
-                {% if special_feature_query %}
-                  {{ special_feature_query }}
-                {% else %}
-                  {% trans "Features..." %}
-                {% endif %}
-              </option>
-              {% if LANGUAGE_CODE == 'en' %}
-                {% for feature in special_feature %}
-                  <option value="{{ feature }}"> {{ feature }} </option>
-                {% endfor %}
-              {% elif LANGUAGE_CODE == 'ru' %}
-                {% for feature in special_feature_russian %}
-                  <option value="{{ feature }}"> {{ feature }} </option>
-                {% endfor %}
-              {% endif %}
-            </select>
-          </div>
-          <!-- Search by nearest station -->
-          <div class="col-md-2 my-auto">
-            <select id="nearest_station" class="custom-select custom-select-sm" name="nearest_station">
-              <option selected>
-                {% if nearest_station_query %}
-                  {{ nearest_station_query }}
-                {% else %}
-                  {% trans "Station..." %}
-                {% endif %}
-              </option>
-              {% if LANGUAGE_CODE == 'en' %}
-                {% for station in nearest_station %}
-                  <option value="{{ station }}"> {{ station }} </option>
-                {% endfor %}
-              {% elif LANGUAGE_CODE == 'ru' %}
-                {% for station in nearest_station_russian %}
-                  <option value="{{ station }}"> {{ station }} </option>
-                {% endfor %}
-              {% endif %}
-            </select>
-          </div>
-          <!-- Search by price -->
-          <div class="col-md-2 my-auto">
-            <select id="price_rating" class="custom-select custom-select-sm" name="price_rating">
-              <option selected>
-                {% if price_rating_query %}
-                  {{ price_rating_query }}
-                {% else %}
-                  {% trans "Price..." %}
-                {% endif %}
-              </option>
-              {% if LANGUAGE_CODE == 'en' %}
-                {% for rating in price_rating %}
-                  <option value="{{ rating }}"> {{ rating }} </option>
-                {% endfor %}
-              {% elif LANGUAGE_CODE == 'ru' %}
-                {% for rating in price_rating_russian %}
-                  <option value="{{ rating }}"> {{ rating }} </option>
-                {% endfor %}
-              {% endif %}
-            </select>
-          </div>
-          <!-- Search by overall rating -->
-          <div class="col-md-2 my-auto">
-            <select id="overall_rating" class="custom-select custom-select-sm" name="overall_rating">
-              <option selected>
-                {% if overall_rating_query %}
-                  {{ overall_rating_query }}
-                {% else %}
-                  {% trans "Rating ≥ ..." %}
-                {% endif %}
-              </option>
-              <option>1.0</option>
-              <option>1.5</option>
-              <option>2.0</option>
-              <option>2.5</option>
-              <option>3.0</option>
-              <option>3.5</option>
-              <option>4.0</option>
-              <option>4.5</option>
-              <option>5.0</option>
-            </select>
-          </div>
-        <div class="col-md-1"></div>
+      <select id="store_type" class="input-field middle-wrap" name="store_type">
+        <option selected>
+          {% if store_type_query %}
+            {{ store_type_query }}
+          {% else %}
+            {% trans "Type..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == 'en' %}
+          {% for type in store_type %}
+            <option value="{{ type }}"> {{ type }} </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == 'ru' %}
+          {% for type in store_type_russian %}
+            <option value="{{ type }}"> {{ type }} </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+            
+      <!-- Search by special feature -->
+      <select id="special_feature" class="input-field middle-wrap" name="special_feature">
+        <option selected>
+          {% if special_feature_query %}
+            {{ special_feature_query }}
+          {% else %}
+            {% trans "Features..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == 'en' %}
+          {% for feature in special_feature %}
+            <option value="{{ feature }}"> {{ feature }} </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == 'ru' %}
+          {% for feature in special_feature_russian %}
+            <option value="{{ feature }}"> {{ feature }} </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+
+      <!-- Search by nearest station -->
+      <select id="nearest_station" class="input-field middle-wrap" name="nearest_station">
+        <option selected>
+          {% if nearest_station_query %}
+            {{ nearest_station_query }}
+          {% else %}
+            {% trans "Station..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == 'en' %}
+          {% for station in nearest_station %}
+            <option value="{{ station }}"> {{ station }} </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == 'ru' %}
+          {% for station in nearest_station_russian %}
+            <option value="{{ station }}"> {{ station }} </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+
+      <!-- Search by price -->
+      <select id="price_rating" class="input-field middle-wrap" name="price_rating">
+        <option selected>
+          {% if price_rating_query %}
+            {{ price_rating_query }}
+          {% else %}
+            {% trans "Price..." %}
+          {% endif %}
+        </option>
+        {% if LANGUAGE_CODE == 'en' %}
+          {% for rating in price_rating %}
+            <option value="{{ rating }}"> {{ rating }} </option>
+          {% endfor %}
+        {% elif LANGUAGE_CODE == 'ru' %}
+          {% for rating in price_rating_russian %}
+            <option value="{{ rating }}"> {{ rating }} </option>
+          {% endfor %}
+        {% endif %}
+      </select>
+
+      <!-- Search by overall rating -->
+      <select id="overall_rating" class="input-field last-wrap" name="overall_rating">
+        <option selected>
+          {% if overall_rating_query %}
+            {{ overall_rating_query }}
+          {% else %}
+            {% trans "Rating ≥ ..." %}
+          {% endif %}
+        </option>
+        <option>1.0</option>
+        <option>1.5</option>
+        <option>2.0</option>
+        <option>2.5</option>
+        <option>3.0</option>
+        <option>3.5</option>
+        <option>4.0</option>
+        <option>4.5</option>
+        <option>5.0</option>
+      </select>
+
+      <!-- Search button -->
+      <div class="input-field search-button-wrap">
+        <button type="submit" class="btn-search" value="Filter">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
 
-      <!-- New row for title, search, and reset buttons-->
-      <div class="row pt-3">
-        <div class="col-md-3">
-          <!-- 3 empty cols -->
-        </div>
-        <div class="col-md-4 my-auto">
-          <div class="input-group">
-            <input class="form-control form-control-sm border-right-0 border" type="search" name="keyword" placeholder="{% trans "Keyword..." %}"/>
-              <span class="input-group-append">
-                <div class="input-group-text">
-                  <i class="fa fa-search"></i>
-                </div>
-              </span> 
-          </div>
-        </div>
-        <!-- Search Submit Button -->
-        <div class="col-md-2 text-center my-auto">
-          <button type="submit" class="btn btn-sm btn-dark" value="Filter">
-            {% trans "Search" %}
-          </button>
-          <span class="pl-2">
-            <a href="{% url 'blog-search' %}" class="btn btn-sm btn-danger justify-content-center" role="button">
-              <i class="fas fa-history primary"></i>
-            </a>
-          </span>
-        </div>
-        <div class="col-md-3">
-          <!-- 3 empty cols -->
-        </div>
+      <!-- Reset button -->
+      <div class="input-field reset-button-wrap">
+        <button type="button" class="btn-reset" onclick="window.location.href='{% url 'blog-search' %}'">
+          <i class="fas fa-undo"></i>
+        </button>
       </div>
-    </div>
+      
+    </div> <!-- inner-form ends -->
   </form>
-</div>
 </section>
 
 <!-- Mobile View: Search Menu  -->
-<!-- Search by store type-->
-<form method="GET" action="." class="d-lg-none d-md-block">
+<form method="GET" action="." class="d-md-none d-sm-block">
 <div class="container py-3">
   <div class="row">
     <div class="col-md-2">
@@ -343,25 +324,25 @@
           {% endfor %}
         </select>
     </div>
-    <!-- Search Submit Button -->
-    <div class="col-12 text-center my-auto">
-      <button type="submit" class="btn btn-sm btn-dark" value="Filter">
-        {% trans "Search" %}
+
+    <div class="container text-center py-2">
+      <!-- Search button -->
+      <button type="submit" class="btn-search-mobile" value="Filter">
+        <i class="fas fa-search"></i>
       </button>
 
-      <span class="pl-2">
-        <a href="{% url 'blog-search' %}" class="btn btn-sm btn-danger justify-content-center align-items-center" role="button">
-          <i class="fas fa-history primary"></i>
-        </a>
-      </span>
+      <!-- Reset button -->
+      <button type="button" class="btn-reset-mobile" onclick="window.location.href='{% url 'life-blog-search' %}'">
+        <i class="fas fa-undo"></i>
+      </button>
     </div>
+  
   </div>
 </div>
 </form>
 
-
-<!-- ussian Search Results -->
-<section id="search-results">
+<!-- Russian Search Results -->
+<section id="search-results-text">
   {% if LANGUAGE_CODE == "ru" %}
     <!-- Outcome #1: Default view upon first page load -->
     {% if tags_query == None and blog_category_query == None and keyword_query == None %}
@@ -437,7 +418,7 @@
       
       <!-- If there are no results, show this additional container -->
       {% if queryset.paginator.count == 0 %}
-        <div class="container text-center pt-3">
+        <div class="container text-center">
           <h5>
             {% trans "Looking for something? Tell us and we'll blog about it for you!" %}
           </h5>
@@ -491,7 +472,7 @@
 
     <!-- If there are no results, show this additional container -->
     {% if queryset.paginator.count == 0 %}
-      <div class="container text-center pt-3">
+      <div class="container text-center">
         <h5>
           {% trans "Looking for something? Tell us and we'll blog about it for you!" %}
         </h5>
@@ -505,7 +486,7 @@
 
 <!-- Blog Cards -->
 {% if LANGUAGE_CODE == 'en' %}
-  <div class="container-fluid" style="width: 90%;">
+  <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
     <div class="grid">
       <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
       {% for post in queryset %}
@@ -629,7 +610,7 @@
 
 <!-- Russian Cards -->
 {% if LANGUAGE_CODE == 'ru' %}
-  <div class="container-fluid">
+  <div class="container-fluid" style="padding-left: 5%; padding-right: 5%;">
     <div class="grid">
       <div class="grid-sizer col-xs col-md-6 col-lg-3"></div>
       {% for post in queryset %}

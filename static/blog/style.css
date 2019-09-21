@@ -148,6 +148,15 @@ a:hover {
   max-width: 100%;
 }
 
+/* Add a dark-overlay to all carousels */
+.carousel-caption {
+  background: rgba(0,0,0,0.25);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+}
 .carousel-caption-center {
   top: 50%;
   transform: translateY(-50%);
@@ -155,26 +164,26 @@ a:hover {
   -webkit-transform-style: preserve-3d;
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .carousel-caption-top-left {
-  top: 5%;
-  transform: translateX(-10%);
-  bottom: 0;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+  height: 100%;
   text-align: left;
+  align-items: left;
+  padding: 50px;
 }
 
 .carousel-caption-top-right {
-  top: 1%;
-  transform: translateX(5%);
-  bottom: 0;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
+  height: 100%;
   text-align: right;
+  align-items: right;
+  padding: 50px;
 }
 
 /* Home icons: Restaurants and Cafes, Browse, Location Pins */
@@ -446,45 +455,14 @@ a:hover {
   font-family: 'Kurale', serif !important;
 }
 
-#no-search-results i:hover {
-  color: #F5A65B;
-}
-
-#search-results hr {
+#search-results-text hr {
   width: 30%;
   margin-bottom: 25px;
 }
 
-.search-sec{
-    padding: 1.1rem;
-    z-index: 1;
+#search-results-text {
+  margin-top: 30px;
 }
-
-@media (min-width: 992px){
-    .search-sec{
-        z-index: 1;
-        position: relative;
-        top: -113px;
-        margin-bottom: -100px;
-        background: rgba(0, 0, 0, 0.50);
-    }
-}
-
-.search-sec-life-blog{
-    padding: 1.1rem;
-    z-index: 1;
-}
-
-@media (min-width: 992px){
-    .search-sec-life-blog{
-        z-index: 1;
-        position: relative;
-        top: -66px;
-        margin-bottom: -67px;
-        background: rgba(0, 0, 0, 0.50);
-    }
-}
-
 
 :root {
   --overlay-about-color: rgba(0, 0, 0, 0.7);
@@ -843,3 +821,290 @@ ul.about-socials .youtube-icon:hover {
   text-align: center;
 }
 
+#thingswelove {
+  font-family: 'Alegreya Sans', sans-serif;
+}
+
+#thingswelove i {
+  font-size: 1rem;
+  padding-right: 3px;
+  color: #976d3f;
+}
+
+@media (min-width: 1200px) {
+#thingswelove .wrapper {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 1fr;
+  grid-template-rows: 100px auto;
+  column-gap: 4rem;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+#thingswelove .wrapper {
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-top: 50px;
+}
+}
+
+#thingswelove .box1 {
+  grid-row: 1/6;
+}
+
+#thingswelove .box2 {
+  grid-row: 1/6;
+  position: relative; /*to align badges */
+}
+
+#thingswelove .box2-photo {
+  padding-bottom: 1rem;
+  object-fit: cover;
+  width: 100%;
+
+}
+
+/* Image top, photo below */
+#thingswelove .nested-box2 {
+  display: grid;
+  grid-template-rows: 2fr 4fr;
+  height: 100%;
+  justify-self: end;
+  align-self: end;
+  background: #231f20;
+}
+
+#thingswelove .box-title {
+  font-size: 2.5rem;
+  align-self: end;
+  padding-left: 1rem;
+  color: #b2b2b2;
+}
+
+#thingswelove .box3 {
+  grid-row: 1/6;
+}
+
+#thingswelove .nested-box3 {
+  display: grid;
+  grid-template-rows: 2fr 2fr;
+  height: 100%;
+}
+
+#thingswelove .box-number {
+ align-self: end;
+ font-size: 8rem;
+ padding-bottom: 50px;
+ padding-left: 2rem;
+ justify-self: left;
+ color: #976d3f;
+ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#thingswelove .box-blurb {
+ padding-left: 2rem;
+ padding-right: 2rem;
+ color: #231f20; 
+ font-size: 1.15rem;
+}
+
+#thingswelove .box4 {
+  grid-row: 1/6;
+}
+
+#thingswelove .badge-area {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: 'Alegreya Sans', sans-serif;
+  font-size: 1.3rem;
+}
+
+#thingswelove .website-badge {
+    background: #231f20;
+    color: #b2b2b2;
+    opacity: 0.6;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+#thingswelove .location-badge {
+    background: #231f20;
+    color: #b2b2b2;
+    opacity: 0.6;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+
+#search-fields {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  z-index: 1;
+  margin-top: -70px;
+  position: relative;
+}
+
+/* the entire search bar area */
+#search-fields form {
+  width: 1000px;
+  max-width: 1290px;
+  overflow:visible;
+}
+
+/* the black box around the search fields */
+ form .inner-form {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 10px;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: center;
+      align-items: center;
+  border-radius: 2.5px;
+}
+
+/* applies styling to each individual field */
+#search-fields form .inner-form .input-field {
+  height: 35px;
+  font-size: 16px;
+  color: #616161;
+  box-shadow: none;
+  outline: 0;
+  border-top: none;
+  border-bottom: none;
+  border-left: none;
+}
+
+/* styles the keyword field */
+#search-fields form .inner-form .input-field input {
+  height: 100%;
+  background: #fff;
+  border: 0;
+  display: block;
+  width: 100%;
+  padding-left: 10px;
+  box-shadow: none;
+  outline: 0;
+  border-top-left-radius: 2.5px;
+  border-bottom-left-radius: 2.5px;
+}
+
+::placeholder {
+  color: #616161;
+}
+
+#search-fields form .inner-form .input-field input:hover, .s01 form .inner-form .input-field input:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+#search-fields form .inner-form .input-field.first-wrap {
+  width: 33%;
+  border-right: 1.5px solid #ececec;
+}
+
+#search-fields form .inner-form .input-field.middle-wrap {
+  width: 33%;
+  padding-left: 10px;
+  border-right: 1.5px solid #ececec;
+}
+
+#search-fields form .inner-form .input-field.last-wrap {
+  width: 33%;
+  padding-left: 10px;
+  border-right: 0;
+}
+
+#search-fields form .inner-form .input-field.search-button-wrap {
+  width: 50px;
+}
+#search-fields form .inner-form .input-field.search-button-wrap .btn-search {
+  width: 40px;
+  height: 100%;
+  margin-right: 10px;
+  white-space: nowrap;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  background:#F5A65B;
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+#search-fields form .inner-form .input-field.search-button-wrap .btn-search:hover {
+  background: rgb(255, 178, 106);
+}
+
+#search-fields form .inner-form .input-field.search-button-wrap .btn-search:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+#search-fields form .inner-form .input-field.reset-button-wrap {
+  width: 35px;
+}
+
+#search-fields form .inner-form .input-field.reset-button-wrap .btn-reset {
+  width: 35px;
+  height: 35px;
+  white-space: nowrap;
+  color: #fff;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background:rgb(51, 51, 51);
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+#search-fields form .inner-form .input-field.reset-button-wrap .btn-reset:hover {
+  background: rgb(253, 64, 64);
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+#search-fields form .inner-form .input-field.reset-button-wrap .btn-reset:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-search-mobile {
+  height: 40px;
+  width: 40px;
+  border-radius: 2.5px;
+  white-space: nowrap;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  background:#F5A65B;
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+.btn-search-mobile:hover {
+  background:rgb(255, 178, 106);
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+.btn-reset-mobile {
+  height: 40px;
+  width: 40px;
+  border-radius: 2.5px;
+  white-space: nowrap;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  background: rgb(51, 51, 51);
+  transition: all .2s ease-out, color .2s ease-out;
+}
+
+.btn-reset-mobile:hover {
+  background: rgb(253, 64, 64);
+  transition: all .2s ease-out, color .2s ease-out;
+}
