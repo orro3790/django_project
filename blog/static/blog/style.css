@@ -68,6 +68,12 @@ a:hover {
   font-size: 1rem;
 }
 
+/* remove the outline around the hamburger icon on mobile */
+.navbar-toggler:focus, .navbar-toggler:active {
+  outline: none;
+  box-shadow: none;
+}
+
 .navbar .nav-link {
   padding-left: 1rem !important;
   padding-right: 1rem !important;
@@ -157,6 +163,7 @@ a:hover {
   left: 0;
   top: 0;
 }
+
 .carousel-caption-center {
   top: 50%;
   transform: translateY(-50%);
@@ -447,7 +454,7 @@ a:hover {
 }
 
 #ad-list-results {
-  
+  margin-top: 40px;
   font-size: 0.9rem;
 }
 
@@ -1107,6 +1114,5 @@ ul.about-socials .youtube-icon:hover {
 
 .btn-reset-mobile:hover {
   background: rgb(253, 64, 64);
-  border: rgb(253, 64, 64);
   transition: all .2s ease-out, color .2s ease-out;
 }

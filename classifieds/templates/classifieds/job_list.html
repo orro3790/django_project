@@ -22,11 +22,11 @@
         <div class="carousel-item active">
           {% for image in carousel_images %}
             <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-            <div class="carousel-caption carousel-caption-center d-lg-block d-none">
-              <h4 style="color:black">
+            <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
+              <h4>
                 {{ image.title }}
               </h4>
-              <p style="color:black">
+              <p>
                 {{ image.caption }}
               </p>
             </div>
@@ -38,113 +38,80 @@
 </section>
 
 <!-- Search bars -->
-<div class="container">
-  <form method="GET" action=".">
-      <div class="row pb-4">
+<section id="search-fields" class="d-none d-md-flex">
+  <form class="justify-content-center align-items-center" style="width:900px;">
+    <div class="inner-form">
 
-        <!-- Search by Contains -->
-        <div class="col-lg-3 col-md-3 px-1">
-          <div class="input-group">
-            {% if LANGUAGE_CODE == "en" %}
-              <input class="form-control form-control-sm" type="search" name="keyword_filter" placeholder=
-                "Keyword..."
-                {% if keyword_query %}
-                  value="{{keyword_query}}"
-                {% endif %}>
-            {% elif LANGUAGE_CODE == "ru" %}
-              <input class="form-control form-control-sm" type="search" name="keyword_filter" placeholder="Название содержит..." />
-            {% endif %}
-            <span class="input-group-append">
-              <div class="input-group-text">
-                <i class="fa fa-search" bg></i>
-              </div>
-            </span>
-          </div>
-        </div>
+        <!-- Search by keyword -->
+      <div class="input-field first-wrap">
+        <input type="text" name="keyword_filter" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                {{keyword_query}}
+              {% else %}
+                ""
+              {% endif %}/>
+      </div>
 
-        <!-- Search by category -->
-        <div class="col-lg-3 col-md-3 px-1">
-          <select class="custom-select custom-select-sm" name="location_filter">
-            {% if location_query == None %}
-              <option selected>{% trans "Location..." %}</option>
-            {% elif location_query %}
-              <option selected>{{ location_query }}</option>
+        <!-- Search by location -->
+        <select id="location_filter" class="input-field middle-wrap" name="location_filter">
+          {% if location_query == None %}
+            <option selected>{% trans "Location..." %}</option>
+          {% elif location_query %}
+            <option selected>{{ location_query }}</option>
+          {% endif %}
+          {% for location in location_list %}
+            {% if location != location_query %}
+              <option>{{ location }}</option>
             {% endif %}
-            {% for location in location_list %}
-              {% if location != location_query %}
-                <option>{{ location }}</option>
-              {% endif %}
-            {% endfor %}
-          </select>
-        </div>
+          {% endfor %}
+        </select>
+     
 
         <!-- Search by position type -->
-        <div class="col-lg-2 col-md-3 px-1">
-          <select class="custom-select custom-select-sm" name="position_filter">
-              {% if position_query == None %}
-                <option selected>{% trans "Position Type..." %}</option>
-              {% elif position_query %}
-                <option selected>{{position_query}}</option>
-              {% endif %}
-              {% if position_query != 'Полная занятость' and position_query != None %}
-                <option>{% trans 'Full-time' %}</option>
-              {% endif %}
-              {% if position_query != 'Частичная занятость' %}
-                <option>{% trans 'Part-time' %}</option>
-              {% endif %}>
-              {% if position_query != 'Все оплаченные позиции' %}
-                <option>{% trans 'All-paid' %}</option>
-              {% endif %}
-              {% if position_query != 'Волонтерство' %}
-                <option>{% trans 'Volunteer' %}</option>
-              {% endif %}
-          </select>
-        </div>
+        <select id="position_filter" class="input-field middle-wrap" name="position_filter">
+          {% if position_query == None %}
+            <option selected>{% trans "Position Type..." %}</option>
+          {% elif position_query %}
+            <option selected>{{position_query}}</option>
+          {% endif %}
+          {% if position_query != 'Полная занятость' and position_query != None %}
+            <option>{% trans 'Full-time' %}</option>
+          {% endif %}
+          {% if position_query != 'Частичная занятость' %}
+            <option>{% trans 'Part-time' %}</option>
+          {% endif %}>
+          {% if position_query != 'Все оплаченные позиции' %}
+            <option>{% trans 'All-paid' %}</option>
+          {% endif %}
+          {% if position_query != 'Волонтерство' %}
+            <option>{% trans 'Volunteer' %}</option>
+          {% endif %}
+        </select>
+
 
         <!-- Search by salary -->
-        <div class="col-lg-2 col-md-3 px-1">
-          {% if LANGUAGE_CODE == "en" %}
-            <input class="form-control form-control-sm" type="search" name="salary_filter" placeholder=
-              "{% trans 'Salary of at least...' %}"
+        <input type="text" name="salary_filter" class="input-field last-wrap" placeholder="{% trans 'Salary of at least...' %}"
               {% if salary_query %}
                 value="{{salary_query}}"
               {% endif %}>
-          {% elif LANGUAGE_CODE == "ru" %}
-            <input class="form-control form-control-sm" type="search" name="salary_filter" placeholder="Зарплата как минимум..." />
-          {% endif %}
-        </div>
 
-        <!-- Search Button -->
-        <div class="col-lg-1 d-none d-lg-block text-right my-auto px-1">
-         <button type="submit" class="btn btn-sm btn-primary" value="Filter">
-            {% trans "Search" %}
+
+        <!-- Search button -->
+        <div class="input-field search-button-wrap">
+          <button type="submit" class="btn-search" value="Filter">
+            <i class="fas fa-search"></i>
           </button>
         </div>
 
-        <!-- Reset Button -->
-        <div class="col-lg-1 d-none d-lg-block text-left my-auto px-1">
-          <a href="{% url 'job-list' %}" class="btn btn-sm btn-danger" role="button">
-            <i class="fas fa-history primary"></i>
-          </a>
+        <!-- Reset button -->
+        <div class="input-field reset-button-wrap">
+          <button type="button" class="btn-reset" onclick="window.location.href='{% url 'job-list' %}'">
+            <i class="fas fa-undo"></i>
+          </button>
         </div>
 
-        <!-- Search Button (Mobile, drops to a new row) -->
-        <div class="container text-center pt-2">
-            <button type="submit" class="btn btn-sm btn-primary d-lg-none d-md-inline-block" value="Filter">
-              {% trans "Search" %}
-            </button>
-
-          <!-- Reset Button (Mobile, drops to a new row) -->
-          <span>
-            <a href="{% url 'ad-list' %}" class="btn btn-sm btn-danger d-lg-none d-md-inline-block" role="button">
-              <i class="fas fa-history primary"></i>
-            </a>
-        </div>
-
-      </div>
     </div>
   </form>
-</div>
+</section>
 
 <!-- Results: Column Titles -->
 <section id="ad-list-results">

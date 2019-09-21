@@ -22,11 +22,11 @@
         <div class="carousel-item active">
           {% for image in carousel_images %}
             <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-            <div class="carousel-caption carousel-caption-center d-lg-block d-none">
-              <h4 style="color:black">
+            <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
+              <h4>
                 {{ image.title }}
               </h4>
-              <p style="color:black">
+              <p>
                 {{ image.caption }}
               </p>
             </div>
@@ -37,127 +37,95 @@
   </div>
 </section>
 
-<!-- Search bars -->
-<div class="container">
-  <form method="GET" action=".">
-      <div class="row pb-4">
+<!-- Search Section Starts -->
+<section id="search-fields" class="d-none d-md-flex">
+  <form class="justify-content-center align-items-center">
+    <div class="inner-form">
 
-        <!-- Search by Contains -->
-        <div class="col-lg-3 col-md-3 px-1">
-          <div class="input-group">
-            {% if LANGUAGE_CODE == "en" %}
-              <input class="form-control form-control-sm" type="search" name="keyword_filter" placeholder=
-                "Keyword..."
-                {% if keyword_query %}
-                  value="{{keyword_query}}"
-                {% endif %}>
-            {% elif LANGUAGE_CODE == "ru" %}
-              <input class="form-control form-control-sm" type="search" name="keyword_filter" placeholder="Название содержит..." />
-            {% endif %}
-            <span class="input-group-append">
-              <div class="input-group-text">
-                <i class="fa fa-search" bg></i>
-              </div>
-            </span>
-          </div>
-        </div>
-
-        <!-- Search by category -->
-        <div class="col-lg-3 col-md-3 px-1">
-          <select class="custom-select custom-select-sm" name="category_filter">
-              {% if category_query == None %}
-                <option selected>{% trans 'Category...' %}</option>
-              {% elif category_query %}
-                <option selected>{{category_query}}</option>
-              {% endif %}
-              <option>{% trans 'arts and crafts' %} - ({% total_arts_and_crafts %})</option>
-              <option>{% trans 'baby and kids' %} - ({% total_baby_and_kids %})</option>
-              <option>{% trans 'beauty and health' %} - ({% total_beauty_and_health %})</option>
-              <option>{% trans 'bikes' %} - ({% total_bikes %})</option>
-              <option>{% trans 'books' %} - ({% total_books %})</option>
-              <option>{% trans 'cell phones' %} - ({% total_cell_phones %})</option>
-              <option>{% trans 'clothing' %} - ({% total_clothing %})</option> 
-              <option>{% trans 'collectibles' %} - ({% total_collectibles %})</option>
-              <option>{% trans 'computers' %} - ({% total_computers %})</option>
-              <option>{% trans 'electronics' %} - ({% total_electronics %})</option>
-              <option>{% trans 'garden' %} - ({% total_garden %})</option>
-              <option>{% trans 'general' %} - ({% total_general %})</option>
-              <option>{% trans 'free' %} - ({% total_free %})</option>
-              <option>{% trans 'household' %} - ({% total_household %})</option>
-              <option>{% trans 'pets' %} - ({% total_pets %})</option>
-              <option>{% trans 'furniture' %} - ({% total_furniture %})</option>
-              <option>{% trans 'jewelery' %} - ({% total_jewelery %})</option>
-              <option>{% trans 'kitchenware and appliances' %} - ({% total_kitchenware_and_appliances %})</option>
-              <option>{% trans 'materials' %} - ({% total_materials %})</option>
-              <option>{% trans 'musical instruments' %} - ({% total_musical_instruments %})</option>
-              <option>{% trans 'cameras' %} - ({% total_cameras %})</option>
-              <option>{% trans 'tools' %} - ({% total_tools %})</option>
-              <option>{% trans 'games' %} - ({% total_games %})</option>
-          </select>
-        </div>
-
-        <!-- Search by buyer/seller -->
-        <div class="col-lg-2 col-md-3 px-1">
-          <select class="custom-select custom-select-sm" name="role_filter">
-              {% if role_query %}
-                <option selected>{{ role_query }}</option>
+      <!-- Search by keyword -->
+      <div class="input-field first-wrap">
+        <input type="text" name="keyword_filter" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                {{keyword_query}}
               {% else %}
-                <option selected>{% trans "I want to buy / sell..." %}</option>
-              {% endif %}
-
-              {% if role_query != 'I want to buy' %}
-                <option>{% trans "I want to buy" %}</option>
-              {% endif %}
-              {% if role_query != 'I want to sell' %}
-                <option>{% trans "I want to sell" %}</option>
-              {% endif %}
-              {% if role_query != 'I want to trade' %}
-                <option>{% trans "I want to trade" %}</option>
-              {% endif %}
-          </select>
-        </div>
-
-        <!-- Search by price -->
-        <div class="col-lg-2 col-md-3 px-1">
-          <div class="input-group">
-            <input class="form-control form-control-sm" type="search" name="price_filter" placeholder="{% trans 'Less than ... (₽)' %}" 
-            {% if price_query %}
-              value={{price_query}}
-            {% endif %}>
-          </div>
-        </div>
-
-        <!-- Search Button -->
-        <div class="col-lg-1 d-none d-lg-block text-right my-auto px-1">
-         <button type="submit" class="btn btn-sm btn-primary" value="Filter">
-            {% trans "Search" %}
-          </button>
-        </div>
-
-        <!-- Reset Button -->
-        <div class="col-lg-1 d-none d-lg-block text-left my-auto px-1">
-          <a href="{% url 'ad-list' %}" class="btn btn-sm btn-danger" role="button">
-            <i class="fas fa-history primary"></i>
-          </a>
-        </div>
-
-        <!-- Search Button (Mobile, drops to a new row) -->
-        <div class="container text-center pt-2">
-            <button type="submit" class="btn btn-sm btn-primary d-lg-none d-md-inline-block" value="Filter">
-              {% trans "Search" %}
-            </button>
-
-          <!-- Reset Button (Mobile, drops to a new row) -->
-          <span>
-            <a href="{% url 'ad-list' %}" class="btn btn-sm btn-danger d-lg-none d-md-inline-block" role="button">
-              <i class="fas fa-history primary"></i>
-            </a>
-        </div>
-
+                ""
+              {% endif %}/>
       </div>
-    </div>
+      
+      <!-- Search by category -->
+      <select id="category_filter" class="input-field middle-wrap" name="category_filter">
+        {% if category_query == None %}
+          <option selected>{% trans 'Category...' %}</option>
+        {% elif category_query %}
+          <option selected>{{category_query}}</option>
+        {% endif %}
+        <option>{% trans 'arts and crafts' %} - ({% total_arts_and_crafts %})</option>
+        <option>{% trans 'baby and kids' %} - ({% total_baby_and_kids %})</option>
+        <option>{% trans 'beauty and health' %} - ({% total_beauty_and_health %})</option>
+        <option>{% trans 'bikes' %} - ({% total_bikes %})</option>
+        <option>{% trans 'books' %} - ({% total_books %})</option>
+        <option>{% trans 'cell phones' %} - ({% total_cell_phones %})</option>
+        <option>{% trans 'clothing' %} - ({% total_clothing %})</option> 
+        <option>{% trans 'collectibles' %} - ({% total_collectibles %})</option>
+        <option>{% trans 'computers' %} - ({% total_computers %})</option>
+        <option>{% trans 'electronics' %} - ({% total_electronics %})</option>
+        <option>{% trans 'garden' %} - ({% total_garden %})</option>
+        <option>{% trans 'general' %} - ({% total_general %})</option>
+        <option>{% trans 'free' %} - ({% total_free %})</option>
+        <option>{% trans 'household' %} - ({% total_household %})</option>
+        <option>{% trans 'pets' %} - ({% total_pets %})</option>
+        <option>{% trans 'furniture' %} - ({% total_furniture %})</option>
+        <option>{% trans 'jewelery' %} - ({% total_jewelery %})</option>
+        <option>{% trans 'kitchenware and appliances' %} - ({% total_kitchenware_and_appliances %})</option>
+        <option>{% trans 'materials' %} - ({% total_materials %})</option>
+        <option>{% trans 'musical instruments' %} - ({% total_musical_instruments %})</option>
+        <option>{% trans 'cameras' %} - ({% total_cameras %})</option>
+        <option>{% trans 'tools' %} - ({% total_tools %})</option>
+        <option>{% trans 'games' %} - ({% total_games %})</option>
+      </select>
+      
+            
+      <!-- Search by role -->
+      <select id="role_filter" class="input-field middle-wrap" name="role_filter">
+        {% if role_query %}
+          <option selected>{{ role_query }}</option>
+        {% else %}
+          <option selected>{% trans "I want to buy / sell..." %}</option>
+        {% endif %}
+
+        {% if role_query != 'I want to buy' %}
+          <option>{% trans "I want to buy" %}</option>
+        {% endif %}
+        {% if role_query != 'I want to sell' %}
+          <option>{% trans "I want to sell" %}</option>
+        {% endif %}
+        {% if role_query != 'I want to trade' %}
+          <option>{% trans "I want to trade" %}</option>
+        {% endif %}
+      </select>
+
+      <!-- Search by price -->
+        <input type="search" class="input-field last-wrap" name="price_filter" placeholder="{% trans 'Less than ... (₽)' %}" 
+        {% if price_query %}
+          value={{price_query}}
+        {% endif %}>
+
+      <!-- Search button -->
+      <div class="input-field search-button-wrap">
+        <button type="submit" class="btn-search" value="Filter">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+      <!-- Reset button -->
+      <div class="input-field reset-button-wrap">
+        <button type="button" class="btn-reset" onclick="window.location.href='{% url 'ad-list' %}'">
+          <i class="fas fa-undo"></i>
+        </button>
+      </div>
+      
+    </div> <!-- inner-form ends -->
   </form>
-</div>
+</section>
 
 <!-- Results: Column Titles -->
 <section id="ad-list-results">
