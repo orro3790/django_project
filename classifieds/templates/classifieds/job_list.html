@@ -23,7 +23,7 @@
 
 <!-- Carousel -->
 <section id="carousel-section">
-<div class="main-carousel d-md-block d-none">
+<div class="main-carousel">
   {% for image in carousel_images %}
     {% if LANGUAGE_CODE == 'en' %}
       <div class="carousel-cell">
@@ -248,11 +248,11 @@
               </a>
             </span>
           {% endif %}
-          <!-- Images (mobile) -->
-          <!-- Only add the container if there is actually an image attached: -->
+
+          <!-- Mobile View: Only add the container if there is actually an image attached: -->
           <div class="container text-center py-2">
-            {% if ad.image != 'default_ad.jpg' %}
-              <img src="{{ ad.image.url }}" class="rounded" style="width:32%;" alt="">
+            {% if ad.main_image != 'default_ad.jpg' %}
+              <img src="{{ ad.main_image.url }}" class="rounded" style="width:32%;" alt="">
             {% endif %}
           </div>
 
@@ -268,9 +268,8 @@
           </div>
         </div>
 
+        <!-- Standard views: Only add the container if there is actually an image attached: -->
         <div class="col-md-2 d-none d-md-block py-2 my-auto">
-          <!-- Images -->
-          <!-- Only add the container if there is actually an image attached: -->
           {% if ad.main_image != 'default_ad.jpg' %}
             <div class="container text-center py-2 my-auto">
               {% if ad.main_image != 'default_ad.jpg' %}
