@@ -53,7 +53,7 @@ from django.contrib.postgres.search import SearchVector
 
 def FoodBlogListView(request):
 
-    carousel_images = CarouselImage.objects.all()
+    carousel_images = CarouselImage.objects.all().order_by('pk')
     template_name = 'blog/home.html'
 
     language = get_language()

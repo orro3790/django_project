@@ -178,7 +178,8 @@ a:hover {
 }
 
 /* Reduce padding for mobile view */
-.carousel-caption-center-mobile {
+@media (max-width: 700px) {
+.carousel-caption-center {
   top: 50%;
   transform: translateY(-50%);
   bottom: 0;
@@ -190,6 +191,8 @@ a:hover {
   text-align: center;
   padding-left: 5%;
   padding-right: 5%;
+  font-size: 1rem;
+}
 }
 
 .carousel-caption-top-left {
