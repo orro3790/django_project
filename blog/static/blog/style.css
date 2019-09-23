@@ -135,23 +135,22 @@ a:hover {
 
 /* Homepage */
 #carousel-section h4 {
-  font-size: 2.3vw;
+  font-size: 2rem;
 }
 
 #carousel-section p {
-  font-size: 1.3vw;
-}
-
-#carousel-section .mobile-h4 {
-  font-size: 5.5vw;
-}
-
-#carousel-section .mobile-p {
-  font-size: 4vw;
+  font-size: 1.4rem;
 }
 
 #carousel-section .carousel-item {
   max-width: 100%;
+}
+
+/* external css: flickity.css */
+.carousel-cell {
+  width: 100%;
+  margin-right: 5px;
+  max-height: 720px;
 }
 
 /* Add a dark-overlay to all carousels */
@@ -168,15 +167,29 @@ a:hover {
   top: 50%;
   transform: translateY(-50%);
   bottom: 0;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  transform-style: preserve-3d;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+/* Reduce padding for mobile view */
+.carousel-caption-center-mobile {
+  top: 50%;
+  transform: translateY(-50%);
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .carousel-caption-top-left {
@@ -191,6 +204,12 @@ a:hover {
   text-align: right;
   align-items: right;
   padding: 50px;
+}
+
+.page-load-status {
+  padding-top: 20px;
+  text-align: center;
+  color: #777;
 }
 
 /* Home icons: Restaurants and Cafes, Browse, Location Pins */
@@ -232,6 +251,10 @@ a:hover {
   opacity: 0.95;
 }
 
+.x-padding {
+  padding-left: 5%;
+  padding-right: 5%;
+}
 
 #blog-detail-body a {
   color: #1DA1F2;
@@ -467,6 +490,10 @@ a:hover {
   margin-bottom: 25px;
 }
 
+.page-load-status > hr {
+  width: 20%;
+}
+
 #search-results-text {
   margin-top: 30px;
 }
@@ -633,13 +660,6 @@ h4 {
 
 
 /* Footer */
-#footer-area{
-	background: #171717;
-	padding: 60px 0;
-	text-align: center;
-	position: relative;
-	clear: both;
-}
 #footer-section {
 	padding: 0;
   border-top: 1px solid #999;
@@ -653,8 +673,8 @@ h4 {
 
 /* Footer */
 .footer-socials-section {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 	text-align: center;
 }
 
@@ -1116,3 +1136,5 @@ ul.about-socials .youtube-icon:hover {
   background: rgb(253, 64, 64);
   transition: all .2s ease-out, color .2s ease-out;
 }
+
+

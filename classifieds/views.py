@@ -48,7 +48,6 @@ def valid_query(param):
 
 def AdListView(request):
 
-    all_ads = Ad.objects.all()
     qs = Ad.objects.all()
     carousel_images = BuyAndSellBanner.objects.all()
     language = get_language()
@@ -333,7 +332,6 @@ class JobCreateView(LoginRequiredMixin, CreateView):
 def JobListView(request):
 
     # Base queries
-    all_ads = Job.objects.all()
     qs = Job.objects.all()
     carousel_images = JobBanner.objects.all()
     location_list = Job.objects.all().values_list('location', flat=True).distinct()
@@ -353,10 +351,10 @@ def JobListView(request):
 
     # Outcome #1: Default page load (tested and handles both en and ru)
     if keyword_query is None and salary_query is None and location_query is None and position_query is None:
-        qs = all_ads.order_by('-date_posted')
+        qs = qs.order_by('-date_posted')
         
     # Outcome #2: A user presses submit without any values:efault_salary and location_query == default_location and position_query == default_position:
-        qs = all_ads.order_by('-date_posted')
+        qs = qs.order_by('-date_posted')
         
     # Outcome #3: Individual field searches and combination searches:
     # Create valid search functions for each field, all of which store results back into 'qs', allowing chain filtering:
@@ -369,9 +367,12 @@ def JobListView(request):
     if location_query is not None and location_query != default_location:
         qs = qs.annotate(search=SearchVector('location')).filter(search=location_query).order_by('-date_posted')
 
-    # Salary:
+    # Price:
     if salary_query is not None and salary_query != default_salary:
-        qs = qs.annotate(search=SearchVector('salary')).filter(salary__gte=salary_query)
+        # Search by value
+        search_salary = qs.filter(salary__gte=salary_query)
+        # Search only by: Price
+        qs = search_salary.order_by('-date_posted')
 
     # Position Type
     if position_query is not None and position_query != default_position:
@@ -415,7 +416,6 @@ def JobListView(request):
         'salary_query': salary_query,
         'location_query': location_query,
         'position_query': position_query,
-        'all_ads': all_ads,
         'location_list': location_list,
     }
     

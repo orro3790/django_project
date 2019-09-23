@@ -8,6 +8,13 @@ from django.utils.translation import gettext_lazy as _
 
 class JobBanner(models.Model):
 
+    TEXT_POSITION = [
+    ('Center', 'Center'),
+    ('Left', 'Left'),
+    ('Right', 'Right'),
+    ]
+
+    text_position = models.CharField(max_length=100, choices=TEXT_POSITION, default='Center')
     title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='job_banners', default='')
@@ -22,6 +29,13 @@ class JobBanner(models.Model):
 
 class BuyAndSellBanner(models.Model):
 
+    TEXT_POSITION = [
+    ('Center', 'Center'),
+    ('Left', 'Left'),
+    ('Right', 'Right'),
+    ]
+
+    text_position = models.CharField(max_length=100, choices=TEXT_POSITION, default='Center')
     title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='buy_and_sell_banners', default='')
@@ -228,7 +242,7 @@ class Job(models.Model):
     involves_travel = models.BooleanField(help_text=_("Does the job involve travel?"), verbose_name=_('Does the Job Involve Travel?'))
     company_name = models.CharField(blank=True, max_length=100, help_text=_("State the name of your company."), verbose_name=_('Company Name'))
     skype_id = models.CharField(blank=True, max_length=100, help_text=_("Provide your Skype ID if you wished to be contacted via skype."), verbose_name=_('Skype ID'))
-    company_website = models.URLField(blank=True, max_length=100, default="N/A", help_text=_("Provide your website url if applicable. Example: https://www.whattheblin.com"), verbose_name=_('Company Website'))
+    company_website = models.URLField(blank=True, max_length=100, default="", help_text=_("Provide your website url if applicable. Example: https://www.whattheblin.com"), verbose_name=_('Company Website'))
     job_description = models.TextField(max_length=3000, help_text=_("Describe the job you are offering."), 
     verbose_name=_('Job Description'))
     author = models.ForeignKey(User, on_delete=models.CASCADE)

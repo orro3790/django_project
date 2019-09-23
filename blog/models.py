@@ -468,13 +468,13 @@ class AboutUsPicture(models.Model):
 
 class CarouselImage(models.Model):
 
-    SLIDE_NUMBER = [
-    ('First', 'First Slide'),
-    ('Second', 'Second Slide'),
-    ('Third', 'Third Slide'),
+    TEXT_POSITION = [
+    ('Center', 'Center'),
+    ('Left', 'Left'),
+    ('Right', 'Right'),
     ]
 
-    slide_number = title = models.CharField(max_length=100, choices=SLIDE_NUMBER, default='First Slide')
+    text_position = models.CharField(max_length=100, choices=TEXT_POSITION, default='Center')
     title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='The caption goes here.')
     image = models.ImageField(blank=False, help_text='This image will be displayed in the carousel (2560 x 720).', upload_to='carousel_images', default='')
@@ -492,15 +492,13 @@ class CarouselImage(models.Model):
 
 class FoodSearchBanner(models.Model):
 
-
-    SLIDE_NUMBER = [
-    ('First', 'First Slide'),
-    ('Second', 'Second Slide'),
-    ('Third', 'Third Slide'),
+    TEXT_POSITION = [
+    ('Center', 'Center'),
+    ('Left', 'Left'),
+    ('Right', 'Right'),
     ]
 
-
-    slide_number = models.CharField(max_length=100, choices=SLIDE_NUMBER, default='First Slide')
+    text_position = models.CharField(max_length=100, choices=TEXT_POSITION, default='Center')
     title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='food_blog_search_banners', default='')
@@ -512,19 +510,18 @@ class FoodSearchBanner(models.Model):
     link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
-        return self.slide_number
+        return self.title
 
 
 class LifeBlogSearchBanner(models.Model):
 
-
-    SLIDE_NUMBER = [
-    ('First', 'First Slide'),
-    ('Second', 'Second Slide'),
-    ('Third', 'Third Slide'),
+    TEXT_POSITION = [
+    ('Center', 'Center'),
+    ('Left', 'Left'),
+    ('Right', 'Right'),
     ]
 
-    slide_number = models.CharField(max_length=100, choices=SLIDE_NUMBER, default='First Slide')
+    text_position = models.CharField(max_length=100, choices=TEXT_POSITION, default='Center')
     title = models.CharField(blank=True, max_length=100, help_text='This is the title that will be displayed over the caption.')
     caption = models.TextField(blank=True, max_length=200, help_text='Creates a caption over the image.')
     image = models.ImageField(blank=False, help_text='This image will be displayed as the banner (2560 x 720).', upload_to='life_blog_search_banners', default='')
@@ -536,7 +533,7 @@ class LifeBlogSearchBanner(models.Model):
     link_russian = models.CharField(blank=True, max_length=200, help_text='Optionally, attach a link for Russian users.')
 
     def __str__(self):
-        return self.slide_number
+        return self.title
 
 
 class AboutUsBanner(models.Model):

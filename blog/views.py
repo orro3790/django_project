@@ -65,7 +65,7 @@ def FoodBlogListView(request):
         posts = FoodBlog.objects.all().filter(publish_translated_blog=True)
     
     # paginate settings
-    paginator = Paginator(posts, 27) # Show # blogs per page
+    paginator = Paginator(posts, 4) # Show 4 blogs per page
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     
@@ -220,7 +220,7 @@ def FoodBlogFilter(request):
         qs = FoodBlog.objects.all()
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
 
         if store_type_query is not None and store_type_query != default_type and store_type_query != default_type_ru:
             qs = qs.filter(store_type__name=store_type_query)
@@ -242,7 +242,7 @@ def FoodBlogFilter(request):
         qs = FoodBlog.objects.all().filter(publish_translated_blog=True)
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad' 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
 
         if store_type_query is not None and store_type_query != default_type and store_type_query != default_type_ru:
             qs = qs.filter(store_type_russian__name=store_type_query)
@@ -261,7 +261,7 @@ def FoodBlogFilter(request):
         
 
     # paginate settings
-    paginator = Paginator(qs, 27) # Show 27 blogs per page
+    paginator = Paginator(qs, 4) # Show 4 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 
@@ -485,7 +485,7 @@ def LifeBlogFilter(request):
 
 
     # paginate
-    paginator = Paginator(qs, 27) # Show 27 blogs per page
+    paginator = Paginator(qs, 4) # Show 4 blogs per page
     page = request.GET.get('page')
     qs = paginator.get_page(page)
 

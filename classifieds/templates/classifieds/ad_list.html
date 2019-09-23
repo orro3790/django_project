@@ -14,15 +14,23 @@
   <title>Moscow's Expat Buy and Sell Board</title>
 </head>
 
+<!-- Flickity -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<script src="/django_project/blog/static/blog/js/flickity.pkgd.min.js"></script>
+<!-- Flickity CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<link rel="stylesheet" href="/django_project/blog/static/blog/flickity.min.css" media="screen">
+
 <!-- Carousel -->
 <section id="carousel-section">
-  <div class="container-fluid px-0">
-    <div id="foodsearch-banner" class="carousel slide carousel-fade" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          {% for image in carousel_images %}
-            <img class="d-block w-100" src="{{ image.image.url }}" alt="First slide">
-            <div class="carousel-caption carousel-caption-center d-lg-flex d-none">
+<div class="main-carousel d-md-block d-none">
+  {% for image in carousel_images %}
+    {% if LANGUAGE_CODE == 'en' %}
+      <div class="carousel-cell">
+        <a href="{{ image.link }}" class="stretched-link">
+          <img class="w-100" src="{{ image.image.url }}">
+          {% if image.text_position == "Center" %}
+            <div class="carousel-caption-center carousel-caption">
               <h4>
                 {{ image.title }}
               </h4>
@@ -30,11 +38,64 @@
                 {{ image.caption }}
               </p>
             </div>
-          {% endfor %}
-        </div>
+          {% elif image.text_position == "Left" %}
+            <div class="carousel-caption-top-left carousel-caption">
+              <h4>
+                {{ image.title }}
+              </h4>
+              <p>
+                {{ image.caption }}
+              </p>
+            </div>
+          {% elif image.text_position == "Right" %}
+            <div class="carousel-caption-top-right carousel-caption">
+              <h4>
+                {{ image.title }}
+              </h4>
+              <p>
+                {{ image.caption }}
+              </p>
+            </div>
+          {% endif %}
+        </a>
       </div>
-    </div>
-  </div>
+    {% elif LANGUAGE_CODE == 'ru' %}
+      <div class="carousel-cell">
+        <a href="{{ image.link }}" class="stretched-link">
+          <img class="w-100" src="{{ image.image.url }}">
+          {% if image.text_position == "Center" %}
+            <div class="carousel-caption-center carousel-caption">
+              <h4>
+                {{ image.title_russian }}
+              </h4>
+              <p>
+                {{ image.caption_russian }}
+              </p>
+            </div>
+          {% elif image.text_position == "Left" %}
+            <div class="carousel-caption-top-left carousel-caption">
+              <h4>
+                {{ image.title_russian }}
+              </h4>
+              <p>
+                {{ image.caption_russian }}
+              </p>
+            </div>
+          {% elif image.text_position == "Right" %}
+            <div class="carousel-caption-top-right carousel-caption">
+              <h4>
+                {{ image.title_russian }}
+              </h4>
+              <p>
+                {{ image.caption_russian }}
+              </p>
+            </div>
+          {% endif %}
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
 </section>
 
 <!-- Search Section Starts -->
@@ -292,8 +353,6 @@
   </div>
 </section>
   
-
-
 <!-- Adding padding at the bottom. -->
 <div class="container">
   <div class="row">
@@ -301,6 +360,20 @@
   </div>
 </div>
 
+<script>
+  // Flickity
+$('.main-carousel').flickity({
+  // options
+  cellAlign: 'left',
+  contain: true,
+  autoPlay: 3000,
+  selectedAttraction: 0.01,
+  friction: 0.15,
+  prevNextButtons: false,
+  wrapAround: true,
+  pageDots: false
+});
+</script>
       
 
 {% endblock content %}
