@@ -82,7 +82,6 @@ class JobForm(forms.ModelForm):
       raise ValidationError("You have forgotten about Fred!")
 
 
-
 class SendEmailForm(forms.ModelForm):
   class Meta: 
     model = AdEmail

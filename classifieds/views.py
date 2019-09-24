@@ -225,7 +225,12 @@ def AdListView(request):
 
     # Price:
     if price_query is not None and price_query != default_price:
-
+        # if the user inputs commas, remove them
+        if ',' in price_query:
+            price_query = price_query.replace(',', '')
+        # if the user inputs decimal points, split on decimal and take everything before it.
+        if '.' in price_query:
+            price_query = price_query.split('.')[0]
         # Search by value
         search_price = qs.filter(asking_price__lte=price_query)
         # Search only by: Price
@@ -372,6 +377,12 @@ def JobListView(request):
 
     # Price:
     if salary_query is not None and salary_query != default_salary:
+        # if the user inputs commas, remove them
+        if ',' in salary_query:
+            salary_query = salary_query.replace(',', '')
+        # if the user inputs decimal points, split on decimal and take everything before it.
+        if '.' in salary_query:
+            salary_query = salary_query.split('.')[0]
         # Search by value
         search_salary = qs.filter(salary__gte=salary_query)
         # Search only by: Price
