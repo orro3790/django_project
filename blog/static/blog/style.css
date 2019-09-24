@@ -135,6 +135,14 @@ a:hover {
   font-size: 1.4rem;
 }
 
+/* Test settings for all other carousels */
+#carousel-section h4 {
+  font-size: 2rem;
+}
+
+#carousel-section p {
+  font-size: 1.4rem;
+}
 
 /* external css: flickity.css */
 .carousel-cell {

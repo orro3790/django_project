@@ -16,11 +16,13 @@
 
 <!-- Flickity -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-<script src="/django_project/blog/static/blog/js/flickity.pkgd.min.js"></script>
+
 <!-- Flickity CSS -->
 <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-<link rel="stylesheet" href="/django_project/blog/static/blog/flickity.min.css" media="screen">
 
+
+<!-- Prevent footer from rising up when there are no ads posted -->
+<section id="ad-list-page" style="min-height:100vh">
 <!-- Carousel -->
 <section id="carousel-section">
 <div class="main-carousel">
@@ -349,16 +351,11 @@
         {% endif %}
       </div>
     </section>
+  </div>
 
-  </div>
-</section>
-  
-<!-- Adding padding at the bottom. -->
-<div class="container">
-  <div class="row">
-    <div class="col" style="height: 50px;"></div>
-  </div>
-</div>
+</section> <!-- ad-list-results ends -->
+
+</section> <!-- Page end -->
 
 <script>
   // Flickity
