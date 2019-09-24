@@ -5,7 +5,6 @@ from PIL import Image
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-
 class JobBanner(models.Model):
 
     TEXT_POSITION = [

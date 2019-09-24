@@ -225,10 +225,16 @@ def AdListView(request):
 
     # Price:
     if price_query is not None and price_query != default_price:
+        if ',' in price_query:
+            raise ValidationError(
+            ('No commas!'))
+
         # Search by value
         search_price = qs.filter(asking_price__lte=price_query)
         # Search only by: Price
         qs = search_price.order_by('-date_posted')
+
+    
 
     # paginate
     paginator = Paginator(qs, 20) # controls the # of ads per page

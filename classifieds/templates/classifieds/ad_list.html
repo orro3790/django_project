@@ -190,6 +190,103 @@
   </form>
 </section>
 
+<!-- Search Section Mobile View -->
+<form class="justify-content-center align-items-center d-md-none d-sm-block">
+  <div class="container pt-3">
+    <div class="row">
+
+      <!-- Search by Keyword -->
+      <div class="col-12 text-center">
+        <div class="input-group">
+          <input class="form-control form-control-sm" type="text" name="keyword_filter" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                  {{keyword_query}}
+                {% else %}
+                  ""
+                {% endif %}/>
+        </div>
+      </div>
+
+      <!-- Search by category -->
+      <div class="col-12">
+        <select id="category_filter" class="custom-select custom-select-sm" name="category_filter">
+          {% if category_query == None %}
+            <option selected>{% trans 'Category...' %}</option>
+          {% elif category_query %}
+            <option selected>{{category_query}}</option>
+          {% endif %}
+          <option>{% trans 'arts and crafts' %} - ({% total_arts_and_crafts %})</option>
+          <option>{% trans 'baby and kids' %} - ({% total_baby_and_kids %})</option>
+          <option>{% trans 'beauty and health' %} - ({% total_beauty_and_health %})</option>
+          <option>{% trans 'bikes' %} - ({% total_bikes %})</option>
+          <option>{% trans 'books' %} - ({% total_books %})</option>
+          <option>{% trans 'cell phones' %} - ({% total_cell_phones %})</option>
+          <option>{% trans 'clothing' %} - ({% total_clothing %})</option> 
+          <option>{% trans 'collectibles' %} - ({% total_collectibles %})</option>
+          <option>{% trans 'computers' %} - ({% total_computers %})</option>
+          <option>{% trans 'electronics' %} - ({% total_electronics %})</option>
+          <option>{% trans 'garden' %} - ({% total_garden %})</option>
+          <option>{% trans 'general' %} - ({% total_general %})</option>
+          <option>{% trans 'free' %} - ({% total_free %})</option>
+          <option>{% trans 'household' %} - ({% total_household %})</option>
+          <option>{% trans 'pets' %} - ({% total_pets %})</option>
+          <option>{% trans 'furniture' %} - ({% total_furniture %})</option>
+          <option>{% trans 'jewelery' %} - ({% total_jewelery %})</option>
+          <option>{% trans 'kitchenware and appliances' %} - ({% total_kitchenware_and_appliances %})</option>
+          <option>{% trans 'materials' %} - ({% total_materials %})</option>
+          <option>{% trans 'musical instruments' %} - ({% total_musical_instruments %})</option>
+          <option>{% trans 'cameras' %} - ({% total_cameras %})</option>
+          <option>{% trans 'tools' %} - ({% total_tools %})</option>
+          <option>{% trans 'games' %} - ({% total_games %})</option>
+        </select>
+      </div>
+      
+            
+      <!-- Search by role -->
+      <div class="col-12">
+        <select id="role_filter" class="custom-select custom-select-sm" name="role_filter">
+          {% if role_query %}
+            <option selected>{{ role_query }}</option>
+          {% else %}
+            <option selected>{% trans "I want to buy / sell..." %}</option>
+          {% endif %}
+
+          {% if role_query != 'I want to buy' %}
+            <option>{% trans "I want to buy" %}</option>
+          {% endif %}
+          {% if role_query != 'I want to sell' %}
+            <option>{% trans "I want to sell" %}</option>
+          {% endif %}
+          {% if role_query != 'I want to trade' %}
+            <option>{% trans "I want to trade" %}</option>
+          {% endif %}
+        </select>
+      </div>
+
+      <!-- Search by price -->
+      <div class="div col-12">
+        <input type="search" class="form-control form-control-sm" name="price_filter" placeholder="{% trans 'Less than ... (₽)' %}" 
+        {% if price_query %}
+          value={{price_query}}
+        {% endif %}>
+
+        <div class="container text-center py-2">
+          <!-- Search button -->
+          <button type="submit" class="btn-search-mobile" value="Filter">
+            <i class="fas fa-search"></i>
+          </button>
+
+          <!-- Reset button -->
+          <button type="button" class="btn-reset-mobile" onclick="window.location.href='{% url 'ad-list' %}'">
+            <i class="fas fa-undo"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
 <!-- Results: Column Titles -->
 <section id="ad-list-results">
   <div class="container w-100 px-3">

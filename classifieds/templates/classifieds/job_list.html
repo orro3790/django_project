@@ -99,8 +99,6 @@
 </div>
 </section>
 
-
-
 <!-- Search bars -->
 <section id="search-fields" class="d-none d-md-flex">
   <form class="justify-content-center align-items-center" style="width:900px;">
@@ -129,7 +127,6 @@
           {% endfor %}
         </select>
      
-
         <!-- Search by position type -->
         <select id="position_filter" class="input-field middle-wrap" name="position_filter">
           {% if position_query == None %}
@@ -151,13 +148,11 @@
           {% endif %}
         </select>
 
-
         <!-- Search by salary -->
         <input type="text" name="salary_filter" class="input-field last-wrap" placeholder="{% trans 'Salary of at least...' %}"
               {% if salary_query %}
                 value="{{salary_query}}"
               {% endif %}>
-
 
         <!-- Search button -->
         <div class="input-field search-button-wrap">
@@ -176,6 +171,83 @@
     </div>
   </form>
 </section>
+
+<!-- Search Section Mobile View -->
+<form class="justify-content-center align-items-center d-md-none d-sm-block">
+  <div class="container py-3">
+    <div class="row">
+
+    <!-- Search by keyword -->
+    <div class="col-12 text-center">
+      <input class="form-control form-control-sm" type="text" name="keyword_filter" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+              {{keyword_query}}
+            {% else %}
+              ""
+            {% endif %}/>
+    </div>
+
+      <!-- Search by location -->
+      <div class="col-12">
+        <select id="location_filter" class="custom-select custom-select-sm" name="location_filter">
+          {% if location_query == None %}
+            <option selected>{% trans "Location..." %}</option>
+          {% elif location_query %}
+            <option selected>{{ location_query }}</option>
+          {% endif %}
+          {% for location in location_list %}
+            {% if location != location_query %}
+              <option>{{ location }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
+      
+      <!-- Search by position type -->
+      <div class="col-12">
+        <select id="position_filter" class="custom-select custom-select-sm" name="position_filter">
+          {% if position_query == None %}
+            <option selected>{% trans "Position Type..." %}</option>
+          {% elif position_query %}
+            <option selected>{{position_query}}</option>
+          {% endif %}
+          {% if position_query != 'Полная занятость' and position_query != None %}
+            <option>{% trans 'Full-time' %}</option>
+          {% endif %}
+          {% if position_query != 'Частичная занятость' %}
+            <option>{% trans 'Part-time' %}</option>
+          {% endif %}>
+          {% if position_query != 'Все оплаченные позиции' %}
+            <option>{% trans 'All-paid' %}</option>
+          {% endif %}
+          {% if position_query != 'Волонтерство' %}
+            <option>{% trans 'Volunteer' %}</option>
+          {% endif %}
+        </select>
+      </div>
+
+      <!-- Search by salary -->
+      <div class="col-12">
+        <input type="text" name="salary_filter" class="form-control form-control-sm" placeholder="{% trans 'Salary of at least...' %}"
+              {% if salary_query %}
+                value="{{salary_query}}"
+              {% endif %}>
+      </div>
+
+      <div class="container text-center py-2">
+        <!-- Search button -->
+        <button type="submit" class="btn-search-mobile" value="Filter">
+          <i class="fas fa-search"></i>
+        </button>
+
+        <!-- Reset button -->
+        <button type="button" class="btn-reset-mobile" onclick="window.location.href='{% url 'job-list' %}'">
+          <i class="fas fa-undo"></i>
+        </button>
+      </div>
+
+  </div>
+</form>
+
 
 <!-- Results: Column Titles -->
 <section id="ad-list-results">

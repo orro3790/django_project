@@ -488,9 +488,18 @@ a:hover {
   max-width: 380px;
 }
 
+/* Search bars are moved up with neg top margin, so add some margin on the results */
 #ad-list-results {
   margin-top: 40px;
   font-size: 0.9rem;
+}
+
+/* Search bars are not moved up with neg top margin on mobile view, no margin needed */
+@media (max-width: 700px) {
+#ad-list-results {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  }
 }
 
 #ad-update-delete .ad-link {
@@ -1148,5 +1157,3 @@ ul.about-socials .youtube-icon:hover {
   background: rgb(253, 64, 64);
   transition: all .2s ease-out, color .2s ease-out;
 }
-
-
