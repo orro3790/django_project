@@ -464,48 +464,66 @@
           <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
           <div class="card-body">
             <h4 class="card-title">{{ post.title }}</h4>
+
+            Overall: 
             {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -513,7 +531,7 @@
               <i class="fas fa-star-half-alt"></i>
             </span>
             {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -588,48 +606,65 @@
           <span class="badge badge-pill notify-badge badge-light">{{ post.store_type_russian.get }}</span>
           <div class="card-body">
             <h4 class="card-title">{{ post.title_russian }}</h4>
+            Overall: 
             {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -637,7 +672,7 @@
               <i class="fas fa-star-half-alt"></i>
             </span>
             {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -743,7 +778,7 @@ $('.main-carousel').flickity({
   // options
   cellAlign: 'left',
   contain: true,
-  autoPlay: 3000,
+  autoPlay: 5000,
   selectedAttraction: 0.01,
   friction: 0.15,
   prevNextButtons: false,

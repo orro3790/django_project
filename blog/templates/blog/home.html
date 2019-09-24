@@ -28,7 +28,7 @@
 <script src="/static/blog/js/infinite-scroll.pkgd.min.js"></script>
 
 <!-- Carousel -->
-<section id="carousel-section">
+<section id="carousel-section-home">
 <div class="main-carousel d-md-block d-none">
   {% for image in carousel_images %}
     {% if LANGUAGE_CODE == 'en' %}
@@ -105,7 +105,7 @@
 </section>
 
 <!-- Carousel (Mobile) -->
-<section id="carousel-section">
+<section id="carousel-section-home">
 <div class="main-carousel d-sm-block d-md-none">
   {% for image in carousel_images %}
     {% if LANGUAGE_CODE == 'en' %}
@@ -224,48 +224,65 @@
           <span class="badge badge-pill notify-badge badge-light">{{ post.store_type.get }}</span>
           <div class="card-body">
             <h4 class="card-title">{{ post.title }}</h4>
+            Overall: 
             {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -273,7 +290,7 @@
               <i class="fas fa-star-half-alt"></i>
             </span>
             {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
