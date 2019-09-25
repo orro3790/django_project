@@ -260,27 +260,10 @@ class AdDetailView(DetailView):
 
 
 class AdUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    
     model = Ad
+    form_class = AdForm
     template_name = 'classifieds/ad_update_form.html'
-    context_object_name = 'ad'
-    fields = [
-        'title',
-        'main_image',
-        'image_2',
-        'image_3',
-        'item_or_model_names',
-        'category',
-        'buying_or_selling',
-        'condition',
-        'cosmetic_damage',
-        'asking_price',
-        'location',
-        'willing_to_travel',
-        'twitter_contact',
-        'instagram_contact',
-        'facebook_contact',
-        'description',
-        ]
 
     def form_valid(self, form, *args, **kwargs):
         form.instance.author = self.request.user

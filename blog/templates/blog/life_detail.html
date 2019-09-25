@@ -5,7 +5,12 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 <head>
-  <meta name="description" content={{meta_tag}} />
+  {% if post.meta_description != None or post.meta_description != '' %}
+    <meta name="description" content="{{post.meta_description}}" lang="en" />
+  {% endif %}
+  {% if post.meta_description_russian != None or post.meta_description_russian != '' %}
+    <meta name="description" content="{{post.meta_description_russian}}" lang="ru" />
+  {% endif %}
   <!-- Twitter card construction -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@whattheblin" />
@@ -54,7 +59,7 @@
       {% endif %}
       <div class="banner-text d-none d-md-block">
         {% if LANGUAGE_CODE == "en" %}
-          {{post.title}}
+          <h1>{{post.title}}</h1>
         {% elif LANGUAGE_CODE == "ru" %}
           {{post.title_russian}}
         {% endif %}
@@ -78,7 +83,7 @@
         </a>  
       {% endif %}
       <div class="mobile-banner-text">
-        {{post.title}}
+        <h1>{{post.title}}</h1>
         {% if post.author.username == 'Matt' or 'Steph' %}
           <div>
             <img src="{{ post.author.profile.image.url }}" class="rounded-circle mt-3" style="width:85px;">
@@ -92,14 +97,25 @@
 
 <!-- Blog Start -->
 <section id="blog-detail-body">
-  {% if post.paragraph_1 or post.paragraph_1_russian %}
-    <div class="container pb-5">
+  <!-- Section 1 -->
+  {% if post.subheader_1 or post.subheader_1_russian %}
+    <div class="container">
       {% if LANGUAGE_CODE == "en" %}
-        {{ post.paragraph_1|linebreaksbr|urlize }}
+        <h2>{{post.subheader_1}}</h2>
       {% elif LANGUAGE_CODE == "ru" %}
-        {{ post.paragraph_1_russian|linebreaksbr|urlize }}
+        <h2>{{post.subheader_1_russian}}</h2>
       {% endif %}
     </div>
+  {% endif %}
+
+  {% if post.paragraph_1 or post.paragraph_1_russian %}
+  <div class="container pb-5">
+    {% if LANGUAGE_CODE == "en" %}
+      {{ post.paragraph_1|linebreaksbr|urlize }}
+    {% elif LANGUAGE_CODE == "ru" %}
+      {{ post.paragraph_1_russian|linebreaksbr|urlize }}
+    {% endif %}
+  </div>
   {% endif %}
 
   {% if post.snapshot_1 or post.snapshot_1_B %}
@@ -118,6 +134,17 @@
           </div>
         {% endif %}
       </div>
+    </div>
+  {% endif %}
+
+  <!-- Section 2 -->
+  {% if post.subheader_2 or post.subheader_2_russian %}
+    <div class="container">
+      {% if LANGUAGE_CODE == "en" %}
+        <h2>{{post.subheader_2}}</h2>
+      {% elif LANGUAGE_CODE == "ru" %}
+        <h2>{{post.subheader_2_russian}}</h2>
+      {% endif %}
     </div>
   {% endif %}
 
@@ -150,6 +177,17 @@
     </div>
   {% endif %}
 
+  <!-- Section 3 -->
+  {% if post.subheader_3 or post.subheader_3_russian %}
+    <div class="container">
+      {% if LANGUAGE_CODE == "en" %}
+        <h2>{{post.subheader_3}}</h2>
+      {% elif LANGUAGE_CODE == "ru" %}
+        <h2>{{post.subheader_3_russian}}</h2>
+      {% endif %}
+    </div>
+  {% endif %}
+
   {% if post.paragraph_3 or post.paragraph_3_russian %}
     <div class="container pb-5">
       {% if LANGUAGE_CODE == "en" %}
@@ -179,6 +217,16 @@
     </div>
   {% endif %}
 
+  <!-- Section 4 -->
+  {% if post.subheader_4 or post.subheader_4_russian %}
+    <div class="container">
+      {% if LANGUAGE_CODE == "en" %}
+        <h2>{{post.subheader_4}}</h2>
+      {% elif LANGUAGE_CODE == "ru" %}
+        <h2>{{post.subheader_4_russian}}</h2>
+      {% endif %}
+    </div>
+  {% endif %}
 
   {% if post.paragraph_4 or post.paragraph_4_russian %}
     <div class="container pb-5">
@@ -206,6 +254,18 @@
           </div>
         {% endif %}
       </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- Section 5 -->
+  {% if post.subheader_5 or post.subheader_5_russian %}
+    <div class="container">
+      {% if LANGUAGE_CODE == "en" %}
+        <h2>{{post.subheader_5}}</h2>
+      {% elif LANGUAGE_CODE == "ru" %}
+        <h2>{{post.subheader_5_russian}}</h2>
+      {% endif %}
     </div>
   {% endif %}
 
@@ -245,23 +305,24 @@
     Help support us by sharing!
   </div>
   <div class="row justify-content-center">
-      <!-- Twitter share button -->
-      <div class="d-block pr-2">
-      <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Check out this place in Moscow called: {{post.title}}! {{post.card_content|truncatechars:125}}" data-hashtags="Moscow #WhatTheBlin #MoscowEats #LifeinRussia" data-show-count="false">
-        Tweet
-      </a>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-      </div>
+    <!-- Twitter share button -->
+    <div class="d-block pr-2">
+    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="{{post.title}}: {{post.card_content|truncatechars:125}}" data-hashtags="Moscow #WhatTheBlin #MoscowEats #LifeinRussia" data-show-count="false">
+      Tweet
+    </a>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 
-      <!-- VK share button -->
-      <div class="d-inline-block px-2">
-      <script type="text/javascript"><!--
-      document.write(VK.Share.button(false,{type: "custom", text: "<img src=\"https://vk.com/images/share_32.png\" width=\"32\" height=\"32\" />"}));
-      --></script>
-      </div>
+    <!-- VK share button -->
+    <div class="d-inline-block px-2">
+    <script type="text/javascript"><!--
+    document.write(VK.Share.button(false,{type: "custom", text: "<img src=\"https://vk.com/images/share_32.png\" width=\"32\" height=\"32\" />"}));
+    --></script>
+    </div>
 
-      <!-- Facebook share button -->
-      <div class="fb-share-button d-inline-block pl-2" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+    <!-- Facebook share button -->
+    <div class="fb-share-button d-inline-block pl-2" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+    </div>
   </div>
   
 

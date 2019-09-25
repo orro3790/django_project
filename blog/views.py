@@ -257,7 +257,7 @@ def FoodBlogFilter(request):
             qs = qs.filter(overall_rating__rating__gte=overall_rating_query)
 
         if price_rating_query is not None and price_rating_query != default_price and price_rating_query != default_price_ru:
-            qs = qs.filter(price_rating__name=price_rating_query)
+            qs = qs.filter(price_rating_russian__name=price_rating_query)
         
 
     # paginate settings

@@ -148,6 +148,12 @@ class FoodBlog(models.Model):
     paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
     paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
     paragraph_5 = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    subheader_1 = models.CharField(blank=True, help_text='Subtitle for paragraph 1 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_2 = models.CharField(blank=True, help_text='Subtitle for paragraph 2 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_3 = models.CharField(blank=True, help_text='Subtitle for paragraph 3 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_4 = models.CharField(blank=True, help_text='Subtitle for paragraph 4 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_5 = models.CharField(blank=True, help_text='Subtitle for paragraph 5 (try to include keywords for SEO)',  default=None, max_length=300)
+
 
     # Image fields
     banner = models.ImageField(blank=False, help_text='This is the banner at the top of the page (2560 x 720).', upload_to='food_blog_banners', default='')
@@ -185,6 +191,11 @@ class FoodBlog(models.Model):
     paragraph_3_russian = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
     paragraph_4_russian = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
     paragraph_5_russian = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    subheader_1_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 1 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_2_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 2 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_3_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 3 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_4_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 4 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_5_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 5 (try to include keywords for SEO)',  default=None, max_length=300)
     store_type_russian = models.ManyToManyField(RussianStoreType, blank=True)
     nearest_station_russian = models.ManyToManyField(RussianStation, blank=True)
     special_feature_russian = models.ManyToManyField(RussianSpecialFeature, blank=True)
@@ -201,6 +212,8 @@ class FoodBlog(models.Model):
     google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    meta_description = models.TextField(blank=True, help_text="Write a short description of this post that will appear under the google search results. Pick strategic keywords strategically, to match user search inputs.", default=None, max_length=160)
+    meta_description_russian = models.TextField(blank=True, help_text="Write a short description of this post that will appear under the google search results, for Russians. Pick strategic keywords strategically, to match user search inputs.", default=None, max_length=160)
 
     def __str__(self):
         return self.title
@@ -323,6 +336,11 @@ class LifeBlog(models.Model):
     paragraph_3 = models.TextField(blank=True, help_text='Paragraph 3', default=None, max_length=3000)
     paragraph_4 = models.TextField(blank=True, help_text='Paragraph 4', default=None, max_length=3000)
     paragraph_5 = models.TextField(blank=True, help_text='Paragraph 5', default=None, max_length=3000)
+    subheader_1 = models.CharField(blank=True, help_text='Subtitle for paragraph 1 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_2 = models.CharField(blank=True, help_text='Subtitle for paragraph 2 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_3 = models.CharField(blank=True, help_text='Subtitle for paragraph 3 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_4 = models.CharField(blank=True, help_text='Subtitle for paragraph 4 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_5 = models.CharField(blank=True, help_text='Subtitle for paragraph 5 (try to include keywords for SEO)',  default=None, max_length=300)
 
     # Image fields
     card_image = models.ImageField(blank=True, default='', upload_to='life_blog_card_images')
@@ -348,6 +366,11 @@ class LifeBlog(models.Model):
     paragraph_3_russian = models.TextField(help_text='Paragraph 3', default=None, max_length=3000, blank=True)
     paragraph_4_russian = models.TextField(help_text='Paragraph 4', default=None, max_length=3000, blank=True)
     paragraph_5_russian = models.TextField(help_text='Paragraph 5', default=None, max_length=3000, blank=True)
+    subheader_1_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 1 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_2_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 2 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_3_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 3 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_4_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 4 (try to include keywords for SEO)',  default=None, max_length=300)
+    subheader_5_russian = models.CharField(blank=True, help_text='Subtitle for paragraph 5 (try to include keywords for SEO)',  default=None, max_length=300)
     blog_category_russian = models.ManyToManyField(RussianBlogCategory, blank=True)
     tags_russian = models.ManyToManyField(RussianTag, blank=True)
     publish_translated_blog = models.BooleanField(help_text='When enabled, the Russian post will become visible for Russian users. Keep unchecked until the blog has been fully translated.', default=False)
@@ -362,6 +385,8 @@ class LifeBlog(models.Model):
     blog_category = models.ManyToManyField(BlogCategory, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     google_map = models.CharField(blank=True, default='Ex: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.6833389633666!2d37.60298461590133!3d55.76400288055638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54bfc8bcfdc57%3A0x9fc4876420a8dffc!2sRestoran+Kafe+Pushkin%22!5e0!3m2!1sen!2sca!4v1559308017720!5m2!1sen!2sca', max_length=600)
+    meta_description = models.TextField(blank=True, help_text="Write a short description of this post that will appear under the google search results. Pick strategic keywords strategically, to match user search inputs.", default=None, max_length=160)
+    meta_description_russian = models.TextField(blank=True, help_text="Write a short description of this post that will appear under the google search results, for Russians. Pick strategic keywords strategically, to match user search inputs.", default=None, max_length=160)
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

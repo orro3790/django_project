@@ -70,6 +70,20 @@
       </a>
     </div>
     <div class="col-lg-2 col-md-12 my-auto py-1"></div>
+    <!-- Outcome #4: A user uploaded all three images, but deleted image_2 -->
+    {% elif ad.image_2 == '' and ad.image_3 != '' and 'default_ad' not in ad.main_image %}
+    <div class="col-lg-2 col-md-12 my-auto py-1"></div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.main_image.url }}">
+        <img src="{{ ad.main_image.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-4 col-md-12 my-auto py-1">
+      <a href="{{ ad.image_3.url }}">
+        <img src="{{ ad.image_3.url }}" class="d-block w-100 rounded-border" style="border-radius: 15px;">
+      </a>
+    </div>
+    <div class="col-lg-2 col-md-12 my-auto py-1"></div>
     {% endif %}
   </div>
 </div>

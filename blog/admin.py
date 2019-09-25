@@ -37,16 +37,28 @@ from django.db import models
 class PostAdmin(admin.ModelAdmin):
   fieldsets = [
     ("Card", {"fields": ["card_image","title", "card_content"]}),
-    ("Blog Article", {"fields": ["banner", "mobile_banner", "the_good", "the_bad", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B",]}),
+    ("Blog Banners and TLDR", {"fields": ["banner", "mobile_banner", "the_good", "the_bad"]}),
+    ("Section 1", {"fields": ["subheader_1","paragraph_1", "snapshot_1", "snapshot_1_B"]}),
+    ("Section 2", {"fields": ["subheader_2","paragraph_2", "snapshot_2", "snapshot_2_B"]}),
+    ("Section 3", {"fields": ["subheader_3","paragraph_3", "snapshot_3", "snapshot_3_B"]}),
+    ("Section 4", {"fields": ["subheader_4","paragraph_4", "snapshot_4", "snapshot_4_B"]}),
+    ("Section 5", {"fields": ["subheader_5","paragraph_5", "snapshot_5", "snapshot_5_B"]}),
     ("Metrics", {"fields": ["taste_rating", "appearance_rating", "atmosphere_rating", "price_rating",
     "service_rating", "overall_rating","special_feature", "store_type", "nearest_station", ]}),
     ("Location Pin", {"fields": ["google_map"]}),
-    ("Social Media Share Buttons", {"fields": ["twitter_card_image"]}),
+    ("Twitter Card (Share Button)", {"fields": ["twitter_card_image"]}),
+    ("Meta Description", {"fields": ["meta_description"]}),
 
     # Russian fields
     ("Russian Card", {"fields": ["title_russian", "card_content_russian"]}),
-    ("Russian Blog Article", {"fields": ["the_good_russian", "the_bad_russian", "paragraph_1_russian", "paragraph_2_russian", "paragraph_3_russian", "paragraph_4_russian", "paragraph_5_russian"]}),
+    ("Russian Blog Banners and TLDR", {"fields": ["the_good_russian", "the_bad_russian"]}),
+    ("Section 1 (RU)", {"fields": ["subheader_1_russian","paragraph_1_russian"]}),
+    ("Section 2 (RU)", {"fields": ["subheader_2_russian","paragraph_2_russian"]}),
+    ("Section 3 (RU)", {"fields": ["subheader_3_russian","paragraph_3_russian"]}),
+    ("Section 4 (RU)", {"fields": ["subheader_4_russian","paragraph_4_russian"]}),
+    ("Section 5 (RU)", {"fields": ["subheader_5_russian","paragraph_5_russian"]}),
     ("Russian Metrics", {"fields": ["special_feature_russian", "store_type_russian", "nearest_station_russian", 'price_rating_russian']}),
+    ("Meta Description (RU)", {"fields": ["meta_description_russian"]}),
     ("Publish Russian Version", {"fields": ["publish_translated_blog"]}),
     ("Send Emails", {"fields": ["send_emails_english", "email_message_english", 'send_emails_russian', 'email_message_russian']}),
   ]
@@ -59,16 +71,25 @@ class PostAdmin(admin.ModelAdmin):
 class LifeBlogAdmin(admin.ModelAdmin):
   fieldsets = [
     ("Card", {"fields": ["card_image","title", "card_content"]}),
-    ("Blog Article", {"fields": ["banner", "mobile_banner", "paragraph_1", "snapshot_1", "snapshot_1_B", "paragraph_2", "snapshot_2", "snapshot_2_B", "paragraph_3", "snapshot_3", "snapshot_3_B", "paragraph_4", "snapshot_4", "snapshot_4_B", "paragraph_5", "snapshot_5", "snapshot_5_B"]}),
+    ("Blog Article", {"fields": ["banner", "mobile_banner"]}),
+    ("Section 1", {"fields": ["subheader_1","paragraph_1", "snapshot_1", "snapshot_1_B"]}),
+    ("Section 2", {"fields": ["subheader_2","paragraph_2", "snapshot_2", "snapshot_2_B"]}),
+    ("Section 3", {"fields": ["subheader_3","paragraph_3", "snapshot_3", "snapshot_3_B"]}),
+    ("Section 4", {"fields": ["subheader_4","paragraph_4", "snapshot_4", "snapshot_4_B"]}),
+    ("Section 5", {"fields": ["subheader_5","paragraph_5", "snapshot_5", "snapshot_5_B"]}),
     ("Location", {"fields": ["google_map"]}),
-    ("Meta Data", {"fields": ["blog_category", "tags"]}),
-    ("Subscriber Notifications", {"fields": ["send_emails_english", "email_message_english"]}),
+    ("Meta Data", {"fields": ["blog_category", "tags", "meta_description"]}),
 
     # Russian fields
     ("Russian Card", {"fields": ["title_russian", "card_content_russian"]}),
-    ("Russian Blog Article", {"fields": ["paragraph_1_russian", "paragraph_2_russian", "paragraph_3_russian", "paragraph_4_russian", "paragraph_5_russian"]}),
-    ("Russian Meta", {"fields": ["blog_category_russian", "tags_russian"]}),
+    ("Section 1 (RU)", {"fields": ["subheader_1_russian","paragraph_1_russian"]}),
+    ("Section 2 (RU)", {"fields": ["subheader_2_russian","paragraph_2_russian"]}),
+    ("Section 3 (RU)", {"fields": ["subheader_3_russian","paragraph_3_russian"]}),
+    ("Section 4 (RU)", {"fields": ["subheader_4_russian","paragraph_4_russian"]}),
+    ("Section 5 (RU)", {"fields": ["subheader_5_russian","paragraph_5_russian"]}),
+    ("Meta Data (RU)", {"fields": ["blog_category_russian", "tags_russian", "meta_description_russian"]}),
     ("Publish and Notify Subscribers", {"fields": ["publish_translated_blog"]}),
+    ("Send Emails", {"fields": ["send_emails_english", "email_message_english", 'send_emails_russian', 'email_message_russian']})
   ]
 
 
