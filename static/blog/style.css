@@ -1157,3 +1157,7 @@ ul.about-socials .youtube-icon:hover {
   background: rgb(253, 64, 64);
   transition: all .2s ease-out, color .2s ease-out;
 }
+
+#comment-create-form {
+  min-height: 100vh;
+}

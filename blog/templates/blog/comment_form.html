@@ -1,11 +1,11 @@
 {% extends "blog/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-
 {% block content %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+<section id="comment-create-form">
 <div class="container py-5">
   <div class="row">
     <div class="col">
@@ -19,6 +19,11 @@
         <form action="" method="post">
           {% csrf_token %}
           {{ form|crispy }}
+          
+          <!-- Captcha -->
+          <div class="g-recaptcha" data-sitekey="6Le9ArYUAAAAANZ_UerCig5v9iUPrR8v0yIOnMS2" data-callback="verifyCaptcha"></div>
+          <div id="g-recaptcha-error" class="form-group pb-3"></div>
+
           <div class="form-group">
             <button class="btn btn-primary" type="submit">
               {% trans "Post" %}</button>
@@ -45,6 +50,9 @@
           <form action="" method="post">
             {% csrf_token %}
             {{ form|crispy }}
+            <!-- Captcha -->
+            <div class="g-recaptcha" data-sitekey="6Le9ArYUAAAAANZ_UerCig5v9iUPrR8v0yIOnMS2" data-callback="verifyCaptcha"></div>
+            <div id="g-recaptcha-error" class="form-group pb-3"></div>
             <div class="form-group">
               <button class="btn btn-primary" type="submit">
                 {% trans "Post" %}</button>
@@ -55,6 +63,24 @@
     </div>
   </div>
 </div>
+</section>
+
+<!-- Google ReCaptchav2 -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+function submitUserForm() {
+    var response = grecaptcha.getResponse();
+    if(response.length == 0) {
+        document.getElementById('g-recaptcha-error').innerHTML = '<span style="color:red;">This field is required.</span>';
+        return false;
+    }
+    return true;
+}
+ 
+function verifyCaptcha() {
+    document.getElementById('g-recaptcha-error').innerHTML = '';
+}
+</script>
 
 {% endblock %}
 

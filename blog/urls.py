@@ -10,7 +10,7 @@ from .views import (
     LifeBlogCommentCreateView,
     LifeBlogFilter,
     about,
-    ThingsWeLoveView
+    ThingsWeLoveView,
     # Russian views
 )
 

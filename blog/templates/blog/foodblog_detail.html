@@ -492,15 +492,13 @@
                 {% endif %}
                 <div class="py-2"></div>
 
-                
-                <p class="card-text">
                 {% trans "Special Features:" %}
                 {% if LANGUAGE_CODE == 'en' %}
                   <em>{{ post.special_feature.get }}</em>
                 {% elif LANGUAGE_CODE == 'ru' %}
                   <em>{{ post.special_feature_russian.get }}</em>
                 {% endif %}
-                </p>
+                
                 </em>
                 </p>
               </div>
@@ -817,6 +815,7 @@
               {% endif %}
             </div>
             <p class=" pt-2 pb-3">{{comment.comment}}</p>
+            <p>pk:{{comment.pk}}</p>
             <footer class="blockquote-footer text-end pb-3">
               <cite>{{ comment.author }}, {{ comment.date_posted|date:"m/d/Y" }}</cite>
             </footer>

@@ -502,3 +502,4 @@ def LifeBlogFilter(request):
     }
 
     return render(request, 'blog/life_search.html', context)
+
