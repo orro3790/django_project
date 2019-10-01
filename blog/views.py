@@ -59,10 +59,10 @@ def FoodBlogListView(request):
     language = get_language()
     
     if language == "en":
-        posts = FoodBlog.objects.all()
+        posts = FoodBlog.objects.all().order_by('-pk')
 
     if language == "ru":
-        posts = FoodBlog.objects.all().filter(publish_translated_blog=True)
+        posts = FoodBlog.objects.all().filter(publish_translated_blog=True).order_by('-pk')
     
     # paginate settings
     paginator = Paginator(posts, 4) # Show 4 blogs per page
@@ -217,47 +217,47 @@ def FoodBlogFilter(request):
     
     if language == "en":
 
-        qs = FoodBlog.objects.all()
+        qs = FoodBlog.objects.all().order_by('-pk')
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query).order_by('-pk')
 
         if store_type_query is not None and store_type_query != default_type and store_type_query != default_type_ru:
-            qs = qs.filter(store_type__name=store_type_query)
+            qs = qs.filter(store_type__name=store_type_query).order_by('-pk')
         
         if nearest_station_query is not None and nearest_station_query != default_station and nearest_station_query != default_station_ru:
-            qs = qs.filter(nearest_station__name=nearest_station_query)
+            qs = qs.filter(nearest_station__name=nearest_station_query).order_by('-pk')
 
         if special_feature_query is not None and special_feature_query != default_feature and special_feature_query != default_feature_ru:
-            qs = qs.filter(special_feature__name=special_feature_query)
+            qs = qs.filter(special_feature__name=special_feature_query).order_by('-pk')
             
         if overall_rating_query is not None and overall_rating_query != default_overall and overall_rating_query != default_overall_ru:
-            qs = qs.filter(overall_rating__rating__gte=overall_rating_query)
+            qs = qs.filter(overall_rating__rating__gte=overall_rating_query).order_by('-pk')
 
         if price_rating_query is not None and price_rating_query != default_price and price_rating_query != default_price_ru:
-            qs = qs.filter(price_rating__name=price_rating_query)
+            qs = qs.filter(price_rating__name=price_rating_query).order_by('-pk')
     
     if language == "ru":
 
         qs = FoodBlog.objects.all().filter(publish_translated_blog=True)
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad' 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = FoodBlog.objects.annotate(search=SearchVector('title', 'card_content', 'the_good', 'the_bad' 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query).order_by('-pk')
 
         if store_type_query is not None and store_type_query != default_type and store_type_query != default_type_ru:
-            qs = qs.filter(store_type_russian__name=store_type_query)
+            qs = qs.filter(store_type_russian__name=store_type_query).order_by('-pk')
         
         if nearest_station_query is not None and nearest_station_query != default_station and nearest_station_query != default_station_ru:
-            qs = qs.filter(nearest_station_russian__name=nearest_station_query)
+            qs = qs.filter(nearest_station_russian__name=nearest_station_query).order_by('-pk')
 
         if special_feature_query is not None and special_feature_query != default_feature and special_feature_query != default_feature_ru:
-            qs = qs.filter(special_feature_russian__name=special_feature_query)
+            qs = qs.filter(special_feature_russian__name=special_feature_query).order_by('-pk')
             
         if overall_rating_query is not None and overall_rating_query != default_overall and overall_rating_query != default_overall_ru:
-            qs = qs.filter(overall_rating__rating__gte=overall_rating_query)
+            qs = qs.filter(overall_rating__rating__gte=overall_rating_query).order_by('-pk')
 
         if price_rating_query is not None and price_rating_query != default_price and price_rating_query != default_price_ru:
-            qs = qs.filter(price_rating_russian__name=price_rating_query)
+            qs = qs.filter(price_rating_russian__name=price_rating_query).order_by('-pk')
         
 
     # paginate settings
@@ -458,30 +458,30 @@ def LifeBlogFilter(request):
     # retrieve the English form request queries
     if language == 'en':
 
-        qs = LifeBlog.objects.all()
+        qs = LifeBlog.objects.all().order_by('-pk')
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query).order_by('-pk')
 
         if blog_category_query is not None and blog_category_query != default_category and blog_category_query != default_category_ru:
-            qs = qs.filter(blog_category__name=blog_category_query)
+            qs = qs.filter(blog_category__name=blog_category_query).order_by('-pk')
 
         if tags_query is not None and tags_query != default_tags and tags_query != default_tags_ru:
-            qs = qs.filter(tags__name=tags_query)
+            qs = qs.filter(tags__name=tags_query).order_by('-pk')
 
     # retrieve the Russian form request queries
     if language == 'ru':
 
-        qs = LifeBlog.objects.all().filter(publish_translated_blog=True)
+        qs = LifeBlog.objects.all().filter(publish_translated_blog=True).order_by('-pk')
 
         if keyword_query is not None and keyword_query != default_keyword:
-            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query)
+            qs = LifeBlog.objects.annotate(search=SearchVector('title', 'card_content', 'paragraph_1', 'paragraph_2', 'paragraph_3', 'paragraph_4', 'paragraph_5')).filter(search=keyword_query).order_by('-pk')
 
         if blog_category_query is not None and blog_category_query != default_category and blog_category_query != default_category_ru:
-            qs = qs.filter(blog_category_russian__name=blog_category_query)
+            qs = qs.filter(blog_category_russian__name=blog_category_query).order_by('-pk')
 
         if tags_query is not None and tags_query != default_tags and tags_query != default_tags_ru:
-            qs = qs.filter(tags_russian__name=tags_query)
+            qs = qs.filter(tags_russian__name=tags_query).order_by('-pk')
 
 
     # paginate
