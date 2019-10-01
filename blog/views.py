@@ -487,7 +487,7 @@ def LifeBlogFilter(request):
     # paginate
     paginator = Paginator(qs, 4) # Show 4 blogs per page
     page = request.GET.get('page')
-    qs = paginator.get_page(page).order_by('pk')
+    qs = paginator.get_page(page).order_by('-date_posted')
 
     context = {
         'queryset': qs,
