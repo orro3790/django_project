@@ -190,14 +190,22 @@
     <!-- Search by Keyword -->
       <div class="col-12 text-center">
         <div class="input-group">
-          <input class="form-control form-control-sm border" type="search" name="keyword" placeholder="Keyword..." />
+          <input class="form-control form-control-sm border" type="search" name="keyword" placeholder={% trans "Keyword..." %} value={% if keyword_query %}
+                {{keyword_query}}
+              {% else %}
+                ""
+              {% endif %}/>
         </div>
       </div>
     <!-- Search by blog type -->
       <div class="col-12">
         <select id="blog_category" class="custom-select custom-select-sm" name="blog_category">
           <option selected>
+          {% if blog_category_query %}
+            {{ blog_category_query }}
+          {% else %}
             {% trans "Category..." %}
+          {% endif %}
           </option>
           {% if LANGUAGE_CODE == "en" %}
             {% for type in blog_category %}
@@ -219,7 +227,11 @@
       <div class="col-12">
         <select id="tags" class="custom-select custom-select-sm" name="tags">
           <option selected>
+          {% if tags_query %}
+            {{ tags_query }}
+          {% else %}
             {% trans "Tags..." %}
+          {% endif %}
           </option>
           {% if LANGUAGE_CODE == "en" %}
             {% for tag in tags %}
