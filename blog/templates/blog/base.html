@@ -106,12 +106,12 @@
               <input name="next" type="hidden" value="{{ redirect_to }}" />
               <input name="language" type="hidden"/>
               <a href="#" class="nav-link dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="/static/blog/images/{{lang.code}}.png" style="width: 25px;">
+                <img src="/static/blog/images/{{lang.code}}.jxr" style="width: 25px;">
               </a>
               <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                 {% for language in languages %}
                   <a class="dropdown-item text-center" href="#" onclick="document.langselect.language.value='{{language.code}}'; document.langselect.submit();">
-                    <img src="/static/blog/images/{{language.code}}.png" style="width: 25px;">
+                    <img src="/static/blog/images/{{language.code}}.jxr" style="width: 25px;">
                   </a>
                 {% endfor %}
               </div>
