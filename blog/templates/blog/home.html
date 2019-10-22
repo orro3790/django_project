@@ -30,7 +30,10 @@
     {% if LANGUAGE_CODE == 'en' %}
       <div class="carousel-cell">
         <a href="{{ image.link }}" class="stretched-link">
-          <img class="w-100" src="{{ image.image.url }}">
+          <picture>
+            <source class="w-100" srcset="{{ image.image.url }}" type="image/webp">
+            <img class="w-100" src="{{ image.image.url }}" alt="Carousel Image">
+          </picture>
           {% if image.text_position == "Center" %}
             <div class="carousel-caption-center carousel-caption">
               <h4>
