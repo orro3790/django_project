@@ -364,48 +364,65 @@
           <span class="badge badge-pill notify-badge badge-light">{{ post.store_type_russian.get }}</span>
           <div class="card-body">
             <h4 class="card-title">{{ post.title_russian }}</h4>
+            Общее: 
             {% if post.overall_rating.get.rating == 1.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 1.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 2.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 3.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
+              <i class="fas fa-star unfilled"></i>
             </span>
             {% elif post.overall_rating.get.rating == 4.5 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -413,7 +430,7 @@
               <i class="fas fa-star-half-alt"></i>
             </span>
             {% elif post.overall_rating.get.rating == 5.0 %}
-            <span>Overall: 
+            <span>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
@@ -423,7 +440,7 @@
             {% endif %}
             <div>
 
-            Price:
+            Цена:
             {% if post.price_rating.get.name == "Cheap" %}
             <span>
               <i class="fas fa-ruble-sign"></i>
@@ -454,7 +471,7 @@
             </span>
             {% endif %}
             <div></div>
-            Nearest Station: <em>{{ post.nearest_station_russian.get }}</em>
+            Ближайшая станция: <em>{{ post.nearest_station_russian.get }}</em>
             </div>
             <div class="text-right pr-0">
               <i class="fas fa-comments"></i>
@@ -466,7 +483,7 @@
             <p class="card-text">{{ post.card_content_russian }}</p>
             <hr>
             <footer class="blockquote-footer text-center">
-              <cite title="Source Title">Posted on {{ post.date_posted|date:"m/d/Y" }}</cite>
+              <cite title="Source Title">Опубликовано {{ post.date_posted|date:"m/d/Y" }}</cite>
             </footer>
           </div>
           </a>
