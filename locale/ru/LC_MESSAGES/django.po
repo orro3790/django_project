@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-09-28 00:05+0300\n"
+"POT-Creation-Date: 2019-10-25 10:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -199,6 +199,11 @@ msgstr "Обслуживание"
 msgid "Special Features:"
 msgstr "Особые Характеристики:"
 
+#: .\blog\templates\blog\foodblog_detail.html:723
+#: .\blog\templates\blog\life_detail.html:305
+msgid "Help support us by sharing!"
+msgstr "Помогите поддержать нас, поделившись!"
+
 #: .\blog\templates\blog\foodblog_detail.html:832
 #: .\blog\templates\blog\life_detail.html:414
 msgid "Add a Comment"
@@ -221,20 +226,20 @@ msgstr ""
 "каждого блога. Узнайте о жизни в Москве, следя за нашими еженедельными "
 "блогами и подкастами!"
 
-#: .\blog\templates\blog\home.html:187
+#: .\blog\templates\blog\home.html:190
 msgid "Cafes & Restaurants"
 msgstr "Кафе и Рестораны"
 
-#: .\blog\templates\blog\home.html:188
+#: .\blog\templates\blog\home.html:191
 msgid ""
 "Browse a variety of cafes, coffee houses, dessert cafes, and restaurants."
 msgstr "Просматривайте различные кафе, кофейни, десертные кафе и рестораны."
 
-#: .\blog\templates\blog\home.html:196
+#: .\blog\templates\blog\home.html:199
 msgid "Search by Features"
 msgstr "Поиск по Характеристикам"
 
-#: .\blog\templates\blog\home.html:197
+#: .\blog\templates\blog\home.html:200
 msgid ""
 "Click to Search destinations by ratings, nearest subway station, unique "
 "features, and more."
@@ -242,11 +247,11 @@ msgstr ""
 "Нажмите для поиска мест по рейтингу, ближайшей станции метро, особенным "
 "характеристикам и многому другому."
 
-#: .\blog\templates\blog\home.html:203
+#: .\blog\templates\blog\home.html:206
 msgid "View Locations"
 msgstr "Посмотреть Местоположения"
 
-#: .\blog\templates\blog\home.html:204
+#: .\blog\templates\blog\home.html:207
 msgid ""
 "Every review contains a location pin. You can also click here to browse the "
 "Tasty Map."
@@ -254,12 +259,15 @@ msgstr ""
 "Каждый отзыв содержит указатель местоположения. Вы также можете нажать "
 "здесь, чтобы просмотреть Вкусная Карта."
 
-#: .\blog\templates\blog\home.html:480
+#: .\blog\templates\blog\home.html:500
+#: .\blog\templates\blog\life_search.html:462
+#: .\blog\templates\blog\search.html:803
 msgid "End of Blogs"
 msgstr "Конец блогов"
 
 #: .\blog\templates\blog\life_search.html:112
-#: .\blog\templates\blog\search.html:113
+#: .\blog\templates\blog\life_search.html:193
+#: .\blog\templates\blog\search.html:113 .\blog\templates\blog\search.html:244
 #: .\classifieds\templates\classifieds\ad_list.html:110
 #: .\classifieds\templates\classifieds\ad_list.html:201
 #: .\classifieds\templates\classifieds\job_list.html:109
@@ -268,7 +276,7 @@ msgid "Keyword..."
 msgstr "Kлючевое слово..."
 
 #: .\blog\templates\blog\life_search.html:125
-#: .\blog\templates\blog\life_search.html:200
+#: .\blog\templates\blog\life_search.html:207
 #: .\classifieds\templates\classifieds\ad_list.html:120
 #: .\classifieds\templates\classifieds\ad_list.html:213
 #: .\classifieds\views.py:57
@@ -276,18 +284,18 @@ msgid "Category..."
 msgstr "Категория..."
 
 #: .\blog\templates\blog\life_search.html:150
-#: .\blog\templates\blog\life_search.html:222
+#: .\blog\templates\blog\life_search.html:233
 msgid "Tags..."
 msgstr "Теги..."
 
-#: .\blog\templates\blog\life_search.html:302
-#: .\blog\templates\blog\life_search.html:365
-#: .\blog\templates\blog\search.html:388 .\blog\templates\blog\search.html:442
+#: .\blog\templates\blog\life_search.html:314
+#: .\blog\templates\blog\life_search.html:377
+#: .\blog\templates\blog\search.html:452 .\blog\templates\blog\search.html:506
 msgid "Looking for something? Tell us and we'll blog about it for you!"
 msgstr "Ищешь что-то? Сообщите нам, и мы об этом сообщим в блоге!"
 
-#: .\blog\templates\blog\life_search.html:401
-#: .\blog\templates\blog\life_search.html:436
+#: .\blog\templates\blog\life_search.html:413
+#: .\blog\templates\blog\life_search.html:448
 msgid "Posted on"
 msgstr "Опубликовано"
 
@@ -307,23 +315,23 @@ msgstr ""
 "Узнайте о повседневной жизни в России с точки зрения двух канадцев, которые "
 "решили переехать в Москву!"
 
-#: .\blog\templates\blog\search.html:126
+#: .\blog\templates\blog\search.html:126 .\blog\templates\blog\search.html:258
 msgid "Type..."
 msgstr "Разновидность..."
 
-#: .\blog\templates\blog\search.html:146
+#: .\blog\templates\blog\search.html:146 .\blog\templates\blog\search.html:279
 msgid "Features..."
 msgstr "Характеристики..."
 
-#: .\blog\templates\blog\search.html:166
+#: .\blog\templates\blog\search.html:166 .\blog\templates\blog\search.html:300
 msgid "Station..."
 msgstr "Станция..."
 
-#: .\blog\templates\blog\search.html:186
+#: .\blog\templates\blog\search.html:186 .\blog\templates\blog\search.html:321
 msgid "Price..."
 msgstr "Цена..."
 
-#: .\blog\templates\blog\search.html:206
+#: .\blog\templates\blog\search.html:206 .\blog\templates\blog\search.html:342
 msgid "Rating ≥ ..."
 msgstr "Рейтинг ≥ ..."
 
